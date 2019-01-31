@@ -11,3 +11,5 @@
 | 1 | 2 | 01-30 | 15 minutes | [#011](https://github.com/cegepmatane/AcheteTaBaguette/issues/11) : Story board : Paiment |  |  |
 | 1 | 2 | 01-30 | 15 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit |  |  |
 | 1 | 2 | 01-30 | 2 heures 30 | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Début du développement de la page de produit |  |
+| 1 | 2 | 01-31 | 2 heures | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue principal page produit terminé |  |
+| 1 | 2 | 01-31 | 1 heure | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue page produit terminé |  |
