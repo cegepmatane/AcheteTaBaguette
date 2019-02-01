@@ -16,3 +16,4 @@
 | 1 | 2 | 02-01 | 1 heure | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | Implementation de bootstrap pour le header |  |
 | 1 | 2 | 02-01 | 30 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Mise en place de la structure des pages du site |  |
 | 1 | 2 | 02-01 | 30 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Restructure de la page produit pour un include facile |  |
+| 1 | 2 | 02-01 | 2 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Simulation include header et contenu produit pour visualisation |  |
