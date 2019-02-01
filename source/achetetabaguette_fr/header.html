@@ -1,106 +1,50 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-   <title>Accueil</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <style>
-      table {
-         border-collapse: collapse;
-      }
-
-      tr {
-         border: 1px solid black;
-      }
-
-      body {
-         background-color: #ffffff;
-         background-repeat: no-repeat;
-         background-position: top left;
-         background-attachment: fixed;
-      }
-
-      h1 {
-         font-family: Arial, sans-serif;
-         color: #000000;
-         background-color: #ffffff;
-      }
-
-      p {
-         font-family: Georgia, serif;
-         font-size: 14px;
-         font-style: normal;
-         font-weight: normal;
-         color: #000000;
-         background-color: #ffffff;
-      }
-
-      a {
-         color: black;
-      }
-
-      a:link {
-         text-decoration: none;
-      }
-
-      a:visited {
-         text-decoration: none;
-      }
-
-      a:hover {
-         text-decoration: underline;
-      }
-
-      a:active {
-         text-decoration: underline;
-      }
-   </style>
-</head>
-
-<body>
-   <header>
-      <div class="header">
-         <center>
-            <table style="width:100%">
-               <tr>
-                  <td>
-                     <center>
-                        <img src="../achetetabaguette_fr - publique/illustration/baguette.jpg" alt="logo" height="60"
-                           width="60">
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <h1>Achète Ta Baguette !</h1>
-                     </center>
-                     <center>
-                        <p>Accueil</p>
-                     </center>
-                  </td>
-               </tr>
-            </table>
-         </center>
-      </div>
-   </header>
-
-   <div style="margin-top: 10px">
-      <table style="width:100%">
-         <tr>
-            <td height=40 style="padding-left: 30px">
-               <a href="https://www.google.com">Accueil</a>
-            </td>
-            <td style="width:33%" align=right>
-               <a href="https://www.google.com">Baguettes</a>
-            </td>
-            <td style="width:33%" align=center>
-               <a href="https://www.google.com">Viénoiseries</a>
-            </td>
-            <td style="width:33%" align=left>
-               <a href="https://www.google.com">Autre</a>
-            </td>
-         </tr>
-      </table>
+<div class="row align-items-center">
+   <div class="col-md-2">
+       <img
+       src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+       alt="produit"
+       class="img-fluid imageProduit"
+       />
    </div>
-</body>
+   <div class="col-md-2"></div>
+   <div class="col-md-6 text-center">
+       <div class="row">
+           <div class="col-md-12">
+               <h1><strong>Achète Ta Baguette</strong></h1>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-md-12">
+               <h4>Accueil</h4>
+           </div>
+       </div>
+   </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+   <a class="navbar-brand" href="#">Accueil</a>
+   
+   <div class="collapse navbar-collapse" id="navbarColor01">
+       <ul class="navbar-nav mr-auto">
+           <li class="nav-item">
+               <a class="nav-link" href="#">Baguette</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="#">Viénoiseries</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="#">Autre</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="#">À propos</a>
+           </li>
+       </ul>
+       <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="text" placeholder="Search">
+           <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+       </form>
+   </div>
+</nav>
 
-</html>
+<ol class="breadcrumb">
+   <li class="breadcrumb-item active">Accueil</li>
+</ol>
