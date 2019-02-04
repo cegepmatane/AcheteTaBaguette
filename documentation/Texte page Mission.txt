@@ -1,0 +1,5 @@
+Ce projet a été créé dans le cadre du cours de Projet Web par Sébastien Bois au Cégep de Matane.  Le but du projet est de créer un site web de commerce en ligne intégrant une option de paiement Paypal, pour mettre en oeuvre ce projet nous avons choisi le thème des baguettes.
+
+Nous devons gérer le projet de la création des différentes pages à l’intégration serveur en passant par l’utilisation du Modèle-vue-contrôleur et par le référencement du site sur les moteurs de recherche.
+
+L’équipe est constituée d’Alexandre Catherine-Mezeray, Maxime Yonnet, Antonin Seiler, Téo Bryer et Arthur Chéramy.
