@@ -2,26 +2,24 @@
 
 ###### Feuille de temps
 
-|    Itération   |     Semaine    |      Date      |      Heure     |     Issue     |  Commentaires de l&#39;issue  |     GitHub     |
+|    Itération   |     Semaine    |      Date      |      Temps de travail     |     Issue     |  Commentaires de l&#39;issue  |     GitHub     |
 | :------------: | :------------: | :------------: | :------------: | :------------ | :------------ | :------------: |
-| 1 | 2 | 2019-01-29 | 15 minutes | [#004](https://github.com/cegepmatane/AcheteTaBaguette/issues/4) :  Maquette de la page connexion |  |  |
-| 1 | 2 | 2019-01-29 | 15 minutes | [#005](https://github.com/cegepmatane/AcheteTaBaguette/issues/5) :  Maquette de la page produit |  |  |
-| 1 | 2 | 2019-01-29 | 2 minutes | [#006](https://github.com/cegepmatane/AcheteTaBaguette/issues/6) : Maquette de la page mission |  |  |
-| 1 | 2 | 01-30 | 5 minutes | [#010](https://github.com/cegepmatane/AcheteTaBaguette/issues/10) : Maquette de la page confirmation paiment |  |  |
-| 1 | 2 | 01-30 | 15 minutes | [#011](https://github.com/cegepmatane/AcheteTaBaguette/issues/11) : Story board : Paiment |  |  |
-| 1 | 2 | 01-30 | 15 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit |  |  |
-| 1 | 2 | 01-30 | 2 heures 30 | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Début du développement de la page de produit |  |
-| 1 | 2 | 01-31 | 2 heures | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue principal page produit terminé |  |
-| 1 | 2 | 01-31 | 1 heure | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue page produit terminé |  |
-| 1 | 2 | 02-01 | 1 heure | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | Implementation de bootstrap pour le header |  |
-| 1 | 2 | 02-01 | 30 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Mise en place de la structure des pages du site |  |
-| 1 | 2 | 02-01 | 30 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Restructure de la page produit pour un include facile |  |
-| 1 | 2 | 02-01 | 2 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Simulation include header et contenu produit pour visualisation |  |
-| 1 | 2 | 02-02 | 5 minutes | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | ajout de details sur le header |  |
-| 1 | 2 | 02-02 | 20 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | reglage de quelques details sur la page produit |  |
-| 1 | 2 | 02-02 | 15 minutes | [#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer | Isolation du footer du reste de la page et optimisation de bootstrap |  |
-| 1 | 2 | 02-02 | 15 minutes |
-[#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer
-[#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type
-[#018](https://github.com/cegepmatane/AcheteTaBaguette/issues/18) : Sidebar utilisateur
-| creation de la sidebar utilisateur  |  |
+| 1 | 2 | 29 janvier | 15 minutes | [#004](https://github.com/cegepmatane/AcheteTaBaguette/issues/4) :  Maquette de la page connexion |  |  |
+| 1 | 2 | 29 janvier | 15 minutes | [#005](https://github.com/cegepmatane/AcheteTaBaguette/issues/5) :  Maquette de la page produit |  |  |
+| 1 | 2 | 29 janvier | 2 minutes | [#006](https://github.com/cegepmatane/AcheteTaBaguette/issues/6) : Maquette de la page mission |  |  |
+| 1 | 2 | 30 janvier | 5 minutes | [#010](https://github.com/cegepmatane/AcheteTaBaguette/issues/10) : Maquette de la page confirmation paiment |  |  |
+| 1 | 2 | 30 janvier | 15 minutes | [#011](https://github.com/cegepmatane/AcheteTaBaguette/issues/11) : Story board : Paiment |  |  |
+| 1 | 2 | 30 janvier | 15 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit |  |  |
+| 1 | 2 | 30 janvier | 2 heures 30 | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Début du développement de la page de produit | [6c678e6](https://github.com/cegepmatane/AcheteTaBaguette/commit/6c678e6ed29ab2ef0d66c41211e5c779c745c633) |
+| 1 | 2 | 31 janvier | 2 heures | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue principal page produit terminé | [04976b6](https://github.com/cegepmatane/AcheteTaBaguette/commit/04976b65294a84311a657eeabc31c4654146d8e1) |
+| 1 | 2 | 31 janvier | 1 heure | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue page produit terminé | [dde24da](https://github.com/cegepmatane/AcheteTaBaguette/commit/dde24dacddf130a0718acba49dbf75b9173798fa) |
+| 1 | 2 | 01 février | 1 heure | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | Implementation de bootstrap pour le header | [59157fe](https://github.com/cegepmatane/AcheteTaBaguette/commit/59157fe6a7a190ff05609e75e010bf3c1d6445c4) |
+| 1 | 2 | 01 février | 30 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Mise en place de la structure des pages du site | [b67160d](https://github.com/cegepmatane/AcheteTaBaguette/commit/b67160dc9e1d3d03a3f80e2ace942dcd084e72db) |
+| 1 | 2 | 01 février | 30 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Restructure de la page produit pour un include facile | [b57b8ea](https://github.com/cegepmatane/AcheteTaBaguette/commit/b57b8ea5a973abe826bace69fbd6ebc8a4ea9950) |
+| 1 | 2 | 01 février | 2 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Simulation include header et contenu produit pour visualisation | [928d8d5](https://github.com/cegepmatane/AcheteTaBaguette/commit/928d8d52e2ff1993e3b133438c01e468e6e20129) |
+| 1 | 2 | 02 février | 5 minutes | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | Ajout de details sur le header | [92a079a](https://github.com/cegepmatane/AcheteTaBaguette/commit/92a079ae786f9f27b547dee38b36725b96985ca6) |
+| 1 | 2 | 02 février | 20 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Reglage de quelques details sur la page produit | [11d5b08](https://github.com/cegepmatane/AcheteTaBaguette/commit/11d5b0829f982e4f1a4f183433e665425e22d22d) |
+| 1 | 2 | 02 février | 15 minutes | [#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer | Isolation du footer du reste de la page et optimisation de bootstrap | [25a9327](https://github.com/cegepmatane/AcheteTaBaguette/commit/25a93278d7b035b7054b974a64564e0861f12447) |
+| 1 | 2 | 02 février | 1 heure | [#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer, [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type, [#018](https://github.com/cegepmatane/AcheteTaBaguette/issues/18) : Sidebar utilisateur | Creation de la sidebar utilisateur  | [5221df1](https://github.com/cegepmatane/AcheteTaBaguette/commit/5221df11cdc620fabc04988fbbf68f0464530f1d) |
+| 1 | 2 | 02 février | 15 minutes | [#018](https://github.com/cegepmatane/AcheteTaBaguette/issues/18) : Sidebar utilisateur | Isolement de la sidebar utilisateur  | [5dfd2d0](https://github.com/cegepmatane/AcheteTaBaguette/commit/5dfd2d0326bf556c52edfb06eb0f167a0978d95b) |
+| 1 | 2 | 03 février | 15 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type, [#015](https://github.com/cegepmatane/AcheteTaBaguette/issues/15) : Création page d'inscription | Integration de bootstrap à la page inscription et Isolement du code  | [eb6018d](https://github.com/cegepmatane/AcheteTaBaguette/commit/eb6018df3665d79ba098ac7a0ddbead308b78b24) |
