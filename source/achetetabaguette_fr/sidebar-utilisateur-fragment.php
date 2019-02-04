@@ -24,12 +24,13 @@ function afficherSideBarUtilisateur($page = null){
     </div>
 
     <!-- Si connecte -->
+    <?php
+    if($page->isConnected == true){
+    ?>
     <div class="connecter" style="display: block;">
         <div class="row mb-3">
             <div class="col-md-12">
-              <?php
-              if($page->isConnected == true)){
-              ?>
+
                 <h3>Bonsoir
                   <?php
                     $page->user;
