@@ -1,91 +1,252 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-        <title>Produit</title>
+<div class="content">
+                        
+    <!-- Ligne image et produit description -->
+    <div class="row">
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- colonne imageProduit -->
+        <div class="col-md-6">
+            <img
+            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+            alt="produit"
+            class="img-fluid imageProduit"
+            />
+        </div>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-
-    </head>
-    <body>
-      
-      <div class="container" id="product-section">
-        <div class="row">
-          <div class="col-md-6">
-              <img
-              src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-              alt="produit"
-              class="image-responsive img-rounded"
-              width="500" height="400"
-              />
-          </div>
-          <div class="col-md-6">
+        <!-- colonne information produit -->
+        <div class="col-md-6">
 
             <!-- Ligne Titre produit -->
             <div class="row">
-              <div class="col-md-12">
-                <h1 class="titreProduit">Du pain</h1>
-              </div>
+            <div class="col-md-12">
+                <h1 class="nomProduit">Du pain</h1>
+            </div>
             </div>
 
             <!-- Ligne description produit -->
             <div class="row">
-              <div class="col-md-12">
-                <span class="labelType label-primary">Pain</span>
-                <span class="labelIdProduit">No. 1960140180</span>
+            <div class="col-md-12">
+                <span class="typeProduit label-primary">Pain</span>
+                <span class="idProduit">No. 1960140180</span>
                 <hr>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
+            </div>
             </div>
 
-            <!-- Prix -->
+            <!-- Prix du produit -->
             <div class="row">
-              <div class="col-md-12 bottom-rule">
+            <div class="col-md-12">
                 <h2 class="product-price">
-                  <span class="labelPrix label-primary">2.50</span>
-                  <span class="labelUnitePrix">$CAD</span>
+                <span class="unitePrixProduit">CDN$</span>
+                <span class="prixProduit label-primary">2.50</span>
                 </h2>
                 <hr>
-              </div>
+            </div>
             </div>
 
             <!-- Ajout au panier -->
-            <div class="row add-to-cart">
-              
-              <div class="col-md-5 product-qty">
-                  <div class="input-group">
-                    <button type="button" class="btn btn-outline-secondary btn-number"  data-type="minus" data-field="quant[1]">-</button>
-                    <input type="text" name="quant[1]" class="form-control input-number text-center" value="1" min="1" max="10">
-                    <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" data-field="quant[1]">+</button>
-                  </div>
-              </div>
-
-              
-
-              <div class="col-md-4">
-                <button class="btn btn-lg btn-primary">Ajouter au panier</button>
-              </div>
+            <div class="row align-items-center add-to-cart">
+            
+                <!-- choix quantite et stock -->
+                <div class="col-md-5 product-qty quantite">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-outline-secondary btn-number"  data-type="minus" data-field="quant[1]">-</button>
+                            <input type="text" name="quant[1]" class="form-control input-number text-center" value="1" min="1" max="10">
+                            <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" data-field="quant[1]">+</button>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <!-- stock -->
+                    <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span class="badge badge-success stockProduit">En stock</span>
+                        <!-- <span class="badge badge-danger stockProduit">Pas de stock</span> -->
+                    </div>
+                    </div>
+                </div>
+    
+                <!-- bouton ajout panier -->
+                <div class="col-md-7">
+                    <!-- <a href="#" class="btn btn-lg btn-primary">Ajouter au panier</a> -->
+                    <button class="btn btn-lg btn-primary boutonAjouterPanier">Ajouter au panier</button>
+                </div>
             </div>
 
-            <!-- Stock ? -->
+        </div><!-- fin colonne description produit -->
+    </div><!-- fin ligne image produit et description -->
+
+    <!-- Ligne produit similaire -->
+    <div class="row">
+        <div class="col-md-12">
+            
+            <!-- Titre produit similaire -->
             <div class="row">
-              <div class="col-md-4 text-center">
-                <span class="badge badge-success">En stock</span>
-                <!-- <span class="badge badge-danger">Pas de stock</span> -->
-              </div>
+                <div class="col-md-12 mt-5">
+                    <h3 class="titreLigneProduitSimilaire">Produit similaire</h3>
+                </div>
             </div>
-
-            <!-- hr -->
+            
+            <!-- liste produit similaire -->
             <div class="row">
-              <div class="col-md-12 bottom-rule top-10"></div>
-            </div>
 
-          </div><!-- end row -->
-      </div><!-- end container -->
-  </body>
-</html>
+                <!-- TODO boucle de 6 articles -->
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+                <!-- Image et titre d'un produit similaire -->
+                <div class="col-md-2 border">
+                    <a href="#">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img
+                                class="img-fluid imageProduit"
+                                src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                                alt="produit"
+                                />               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <span class="unitePrixProduit">CDN$</span>
+                                <span class="prixProduit label-primary">2.50</span>      
+                            </div>
+                        </div> 
+                    </a>
+                </div>
+
+
+            </div><!-- Fin liste produit similaire -->
+
+        </div>
+    </div><!-- Fin ligne produit similaire -->
+  
+</div>

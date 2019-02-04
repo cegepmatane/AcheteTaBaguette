@@ -11,3 +11,17 @@
 | 1 | 2 | 01-30 | 15 minutes | [#011](https://github.com/cegepmatane/AcheteTaBaguette/issues/11) : Story board : Paiment |  |  |
 | 1 | 2 | 01-30 | 15 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit |  |  |
 | 1 | 2 | 01-30 | 2 heures 30 | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Début du développement de la page de produit |  |
+| 1 | 2 | 01-31 | 2 heures | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue principal page produit terminé |  |
+| 1 | 2 | 01-31 | 1 heure | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Vue page produit terminé |  |
+| 1 | 2 | 02-01 | 1 heure | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | Implementation de bootstrap pour le header |  |
+| 1 | 2 | 02-01 | 30 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Mise en place de la structure des pages du site |  |
+| 1 | 2 | 02-01 | 30 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | Restructure de la page produit pour un include facile |  |
+| 1 | 2 | 02-01 | 2 minutes | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type | Simulation include header et contenu produit pour visualisation |  |
+| 1 | 2 | 02-02 | 5 minutes | [#009](https://github.com/cegepmatane/AcheteTaBaguette/issues/9) : Création de l'header | ajout de details sur le header |  |
+| 1 | 2 | 02-02 | 20 minutes | [#013](https://github.com/cegepmatane/AcheteTaBaguette/issues/13) : Création de la page produit | reglage de quelques details sur la page produit |  |
+| 1 | 2 | 02-02 | 15 minutes | [#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer | Isolation du footer du reste de la page et optimisation de bootstrap |  |
+| 1 | 2 | 02-02 | 15 minutes |
+[#012](https://github.com/cegepmatane/AcheteTaBaguette/issues/12) : Création du footer
+[#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type
+[#018](https://github.com/cegepmatane/AcheteTaBaguette/issues/18) : Sidebar utilisateur
+| creation de la sidebar utilisateur  |  |
