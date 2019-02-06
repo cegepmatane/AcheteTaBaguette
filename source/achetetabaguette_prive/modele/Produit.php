@@ -38,4 +38,21 @@ class Personnage
         }
     }
 
+    public function getNom()
+    {
+        return $this->nomProduit;
+    }
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+    public function getNnbStock()
+    {
+        return $this->nbStock;
+    }
+
 }
