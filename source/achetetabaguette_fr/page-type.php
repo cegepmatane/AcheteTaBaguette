@@ -24,7 +24,7 @@
 
                 <!-- inclue header -->
                 <?php
-                  include("header.html");
+                include("header.html");
                 ?>
 
 
@@ -42,7 +42,7 @@
 
                 <?php
                 include("sidebar-utilisateur.html");
-                 ?>
+                ?>
             </div>
 
 
@@ -50,8 +50,8 @@
             <div class="col-md-8">
 
                 <?php
-                  include("boutique.html");
-                 ?>
+                include("boutique.html");
+                ?>
 
             <!-- Bar lateral droite -->
             <div class="col-md-2 border ">
@@ -71,7 +71,7 @@
 
                 <!-- include footer -->
                 <?php
-                  include("footer.html");
+                include("footer.html");
                 ?>
     </div><!-- Fin container -->
   </body>

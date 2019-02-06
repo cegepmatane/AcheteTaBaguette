@@ -9,3 +9,4 @@ Numéro de l'itération  | Numéro de la semaine | Date du jour  | Nombre d'Heur
 1| 2  |31/01/2019   | 1   |Reservation du nom de domaine    |   |   |   |   |   |
 1| 1   | 01/02/2019  | 1   |Lecture du cookbook   |   |   |   |   |   |   |
 1 |1   |03/02/2019   |30 minutes    |  #19 Creation de la sidebar left | https://github.com/cegepmatane/AcheteTaBaguette/issues/19   |   |   |   |   |   |   |
+2|2   | 04/02/2019  |1 heure 30   | Conversion de la page type en php avec les includes  |   |   |   |   |   |   |   |   |
