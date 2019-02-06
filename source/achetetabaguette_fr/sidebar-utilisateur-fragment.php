@@ -16,7 +16,7 @@ function afficherSideBarUtilisateur($page = null){
     <div class="deconnecter" style="display: none;">
         <div class="row mb-2 text-center">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary">Se connecter</a>
+                <a href="#" class="btn btn-outline-primary">__("Se connecter")</a>
             </div>
         </div>
         <div class="row mb-3 text-center">
