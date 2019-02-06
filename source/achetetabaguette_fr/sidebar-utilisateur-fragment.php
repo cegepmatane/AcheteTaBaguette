@@ -7,9 +7,12 @@ function afficherSideBarUtilisateur($page = null){
 
     ?>
 
-<<div class="sidebarLeft">
+<div class="sidebarLeft">
 
     <!-- Si deconnecte -->
+    <?php
+    if($page->isConnected == false){
+    ?>
     <div class="deconnecter" style="display: none;">
         <div class="row mb-2 text-center">
             <div class="col-md-12">
@@ -22,6 +25,9 @@ function afficherSideBarUtilisateur($page = null){
             </div>
         </div>
     </div>
+    <?php
+    }
+    ?>
 
     <!-- Si connecte -->
     <?php
@@ -33,15 +39,16 @@ function afficherSideBarUtilisateur($page = null){
 
                 <h3>Bonsoir
                   <?php
-                    $page->user;
+                  echo  $page->user;
                    ?>
 
                 </h3>
-              <?php
-                }
-              ?>
             </div>
         </div>
+      </div>
+      <?php
+        }
+      ?>
 
         <!-- Informations utilisateur -->
         <div class="row mb-3">
@@ -122,6 +129,7 @@ function afficherSideBarUtilisateur($page = null){
                     </div>
                 </div>
             </div>
+          </div>
             <?php
           }else {
             ?>
@@ -138,18 +146,12 @@ function afficherSideBarUtilisateur($page = null){
                         </div>
                     </div>
                 </div>
-
+            </div>
             <?php
             }
              ?>
 
-
-
-
-        </div>
-
     </div>
-</div>
 
     <?php
 
