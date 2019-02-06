@@ -6,6 +6,7 @@ class Personnage
     private $prix;
     private $categorie;
     private $nbStock;
+    private $idProduit;
 
     public function __construct($nomProduit, $prix, $categorie, $nbStock)
     {
@@ -53,6 +54,9 @@ class Personnage
     public function getNnbStock()
     {
         return $this->nbStock;
+    }
+    public function getId(){
+        return $this->idProduit;
     }
 
 }
