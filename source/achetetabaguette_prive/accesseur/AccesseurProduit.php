@@ -1,28 +1,23 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Produit.php";
+require_once "../modele/Produit.class.php";
 
 class AccesseurProduit
 {
 
-    /* private static $SELECT_PRIX_PRODUIT =
-    "SELECT prix FROM PRODUIT WHERE idProduit = ";
+    private static $AJOUT_PRODUIT =
+        "INSERT INTO PRODUIT(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
 
-    private static $SELECT_NOM_PRODUIT =
-    "SELECT nomProduit FROM PRODUIT WHERE idProduit =";
+    private static $SUPPRIMER_PRODUIT =
+        "DELETE FROM PRODUIT WHERE idProduit = ?";
 
-    private static $RECUPERER_TOUT_LES_PRODUITS =
-    "SELECT * FROM PRODUIT;"; */
+    private static $MISE_A_JOUR_PRODUIT =
+        "UPDATE PRODUIT SET nomProduit = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
 
     private static $GET_ID_PRODUIT =
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
 
-    private static $AJOUT_PRODUIT =
-        "INSERT INTO table(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
-
-    private static $MISE_A_JOUR_PRODUIT =
-        "UPDATE PRODUIT SET nomProduit = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
 
     private static $connexion = null;
 
@@ -49,6 +44,20 @@ class AccesseurProduit
 
         return false;
 
+    }
+
+    public function supprimerProduit($produit)
+    {
+        $requete = $connexion->prepare($SUPPRIMER_PRODUIT);
+        $requete->bindValue(1, $produit->getIdProduit);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     public function getIdProduit($produit)

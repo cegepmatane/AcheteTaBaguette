@@ -1,6 +1,6 @@
 <?php
 
-class Personnage
+class Produit
 {
     private $nomProduit;
     private $prix;
