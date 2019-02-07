@@ -21,6 +21,9 @@ class AccesseurProduit
     private static $AJOUT_PRODUIT =
         "INSERT INTO table(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
 
+    private static $SUPPRIMER_PRODUIT =
+        "DELETE FROM PRODUIT WHERE idProduit = ?";
+
     private static $MISE_A_JOUR_PRODUIT =
         "UPDATE PRODUIT SET nomProduit = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
 
@@ -49,6 +52,20 @@ class AccesseurProduit
 
         return false;
 
+    }
+
+    public function supprimerProduit($produit)
+    {
+        $requete = $connexion->prepare($SUPPRIMER_PRODUIT);
+        $requete->bindValue(1, $produit->getIdProduit);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     public function getIdProduit($produit)
