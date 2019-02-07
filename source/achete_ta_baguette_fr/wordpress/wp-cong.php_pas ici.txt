@@ -1,0 +1,1 @@
+ne pas mettre wp-config.php dans le document root

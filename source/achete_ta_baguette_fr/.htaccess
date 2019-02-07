@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^accueil/?$ ../vue/index.php
+
+
+
