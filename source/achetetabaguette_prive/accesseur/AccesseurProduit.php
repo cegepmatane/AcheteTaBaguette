@@ -1,7 +1,7 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Produit.php";
+require_once "../modele/Produit.class.php";
 
 class AccesseurProduit
 {

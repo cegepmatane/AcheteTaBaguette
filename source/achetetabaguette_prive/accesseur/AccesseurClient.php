@@ -1,22 +1,22 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Produit.php";
+require_once "../modele/Client.class.php";
 
-class AccesseurProduit
+class AccesseurClient
 {
 
-    private static $AJOUT_UTILISATEUR =
-        "INSERT INTO table(nomUtilisateur, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
+    private static $AJOUTER_UTILISATEUR =
+        "INSERT INTO table(nomClient, adresse, email) VALUES (?,?,?)";
 
-    private static $SUPPRIMER_UTILISATEUR =
-        "DELETE FROM PRODUIT WHERE idProduit = ?";
+    private static $SUPPRIMER_CLIENT =
+        "DELETE FROM CLIENT WHERE idClient = ?";
 
     private static $MISE_A_JOUR_UTILISATEUR =
-        "UPDATE PRODUIT SET nomUtilisateur = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
+        "UPDATE CLIENT SET nomClient = ?, adresse = ?, email = ?) WHERE idClient = ?;";
 
     private static $GET_ID_UTILISATEUR =
-        "SELECT idProduit FROM PRODUIT WHERE nomUtilisateur = ?, prix = ?, nomCatégorie = ?";
+        "SELECT idClient FROM CLIENT WHERE nomClient = ?, adresse = ?, email = ?";
 
         
     private static $connexion = null;
@@ -28,13 +28,12 @@ class AccesseurProduit
         }
     }
 
-    public function ajouterUtilisateur($utilisateur)
+    public function ajouterClient($client)
     {
-        $requete = $connexion->prepare($AJOUT_UTILISATEUR);
-        $requete->bindValue(1, $utilisateur->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $utilisateur->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $utilisateur->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $utilisateur->getNomCatégorie(), PDO::PARAM_STR);
+        $requete = $connexion->prepare($AJOUTER_UTILISATEUR);
+        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
+        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -46,10 +45,10 @@ class AccesseurProduit
 
     }
 
-    public function supprimerProduit($utilisateur)
+    public function supprimerClient($client)
     {
-        $requete = $connexion->prepare($SUPPRIMER_UTILISATEUR);
-        $requete->bindValue(1, $utilisateur->getIdProduit);
+        $requete = $connexion->prepare($SUPPRIMER_CLIENT);
+        $requete->bindValue(1, $client->getidClient);
 
         $requete->execute();
 
@@ -60,37 +59,35 @@ class AccesseurProduit
         return false;
     }
 
-    public function getIdProduit($utilisateur)
+    public function getIdClient($client)
     {
         $requete = $connexion->prepare($GET_ID_UTILISATEUR);
-        $requete->bindValue(1, $utilisateur->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $utilisateur->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $utilisateur->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $utilisateur->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
+        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
 
         $requete->execute();
 
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
             if (!is_array($reponse)) {
-                echo "Erreur getIdProduit (AccesseurProduit.php) !";
+                echo "Erreur getidClient (AccesseurCLIENT.php) !";
             }
             if (is_array($reponse)) {
-                return $reponse["idProduit"];
+                return $reponse["idClient"];
             }
         }
     }
 
-    public function miseAJourProduit($utilisateur)
-    // Va mettre à jour dans le base de données le produit correspondant à l'id du produit passé en paramètre
-    // Le produit de la base de données prendra les valeurs des attributs du produit passé en paramètre
+    public function miseAJourClient($client)
+    // Va mettre à jour dans le base de données le CLIENT correspondant à l'id du CLIENT passé en paramètre
+    // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
     {
         $requete = $connexion->prepare($MISE_A_JOUR_UTILISATEUR);
-        $requete->bindValue(1, $utilisateur->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $utilisateur->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $utilisateur->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $utilisateur->getNomCatégorie(), PDO::PARAM_STR);
-        $requete->bindValue(5, getIdProduit($utilisateur), PDO::PARAM_STR);
+        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
+        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
+        $requete->bindValue(5, getidClient($client), PDO::PARAM_STR);
 
         $requete->execute();
 
