@@ -1,6 +1,13 @@
 <?php
 include("header.html");
 ?>
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <div class="content">
     <div class="row justify-content-md-center">
         <div class="col-md-8">
@@ -12,8 +19,12 @@ include("header.html");
                     <input type="text" class="form-control" id="nom">
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label" for="prenom">Prénom</label>
+                  <label class="col-form-label" for="prenom">Prénom  </label>
                     <input type="text" class="form-control" id="Prenom">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="date">Date de Naissance </label>
+                      <input type='text' class="form-control" placeholder="DD/MM/YYY" />
                 </div>
                 <div class="form-group">
                     <label for="mail">Mail</label>
