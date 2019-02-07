@@ -50,57 +50,94 @@ function afficherSideBarUtilisateur($page = null){
         }
       ?>
 
-        <!-- Informations utilisateur -->
-        <div class="row mb-3">
-            <div class="col-md-10 pt-2 mx-auto border">
 
-                <!-- bouton panier -->
-                <div class="row mb-3">
-                    <div class="col-md-12">
-                        <a href="#" class="btn btn-danger">Panier</a>
+            <!-- include sidebar_left -->
+            <div class="sidebarLeft">
+
+                <!-- Si deconnecte -->
+                <div class="deconnecter" style="display: none;">
+                    <div class="row mb-2 text-center">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-outline-primary">Se connecter</a>
+                        </div>
+                    </div>
+                    <div class="row mb-3 text-center">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-outline-primary">S'inscrire</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Adresse de livraison -->
-                <div class="row mb-3">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <strong>Adresse de livraison :</strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>rue :</span>
-                                <span>616 Av. St-Redempteur</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Ville :</span>
-                                <span>Matane</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Provaince :</span>
-                                <span>Québec</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Code postal :</span>
-                                <span>G4W 0H2</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Pays :</span>
-                                <span>Canada</span>
-                            </div>
+                <!-- Si connecte -->
+                <div class="connecter" style="display: block;">
+                    <div class="row mb-3">
+                        <div class="col-md-12">
                         </div>
                     </div>
-                </div>
+
+                    <!-- Informations utilisateur -->
+                    <div class="row mb-3">
+                        <div class="col-md-10 pt-2 mx-auto border">
+
+                            <!-- bouton panier -->
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <a href="#" class="btn btn-danger">Panier</a>
+                                </div>
+                            </div>
+
+                            <!-- Adresse de livraison -->
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <strong>Adresse de livraison :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Rue :</span>
+                                            <span>616 Av. St-Redempteur</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Ville :</span>
+                                            <span>Matane</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Province :</span>
+                                            <span>Québec</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Code postal :</span>
+                                            <span>G4W 0H2</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Pays :</span>
+                                            <span>Canada</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="row mb-3">
+                                <div class="col-md-12">
+                                    plus d'info
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+
+                    <!--  -->
+
 
                 <!-- <div class="row mb-3">
                     <div class="col-md-12">
