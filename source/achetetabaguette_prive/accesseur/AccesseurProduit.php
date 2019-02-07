@@ -7,7 +7,7 @@ class AccesseurProduit
 {
 
     private static $AJOUT_PRODUIT =
-        "INSERT INTO table(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
+        "INSERT INTO PRODUIT(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
 
     private static $SUPPRIMER_PRODUIT =
         "DELETE FROM PRODUIT WHERE idProduit = ?";
@@ -18,7 +18,7 @@ class AccesseurProduit
     private static $GET_ID_PRODUIT =
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
 
-        
+
     private static $connexion = null;
 
     public function __construct()
