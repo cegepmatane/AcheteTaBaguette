@@ -14,36 +14,33 @@ class Client
         $this->montantFacture = $montantFacture;
     }
 
-    public function setNomUtilisateur($idClient)
+    public function setNomFacture($nomFacture)
     {
-        $this->nomUtilisateur = $idClient;
+        $this->nomFacture = $nomFacture;
     }
 
-    public function setAdresse($nomFacture)
+    public function setMontantFacture($montantFacture)
     {
-        $this->adresse = $nomFacture;
+        $this->montantFacture = $montantFacture;
     }
 
-    public function setEmail($montantFacture)
+    public function getNomFacture()
     {
-        $this->email = $montantFacture;
+        return $this->nomFacture;
+    }
+    public function getMontantFacture()
+    {
+        return $this->montantFacture;
     }
 
-    public function getNomUtilisateur()
-    {
-        return $this->nomUtilisateur;
-    }
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    public function getidClient()
+    public function getIdClient()
     {
         return $this->idClient;
+    }
+
+    public function getIdFacture()
+    {
+        return $this->idFacture;
     }
 
 }
