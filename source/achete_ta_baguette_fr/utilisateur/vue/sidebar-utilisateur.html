@@ -1,22 +1,10 @@
-<?php
-
-function afficherSideBarUtilisateur($page = null){
-
-    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
-    if(!is_object($page)) $page = (object)[];
-
-    ?>
-
 <div class="sidebarLeft">
 
     <!-- Si deconnecte -->
-    <?php
-    if($page->isConnected == false){
-    ?>
     <div class="deconnecter" style="display: none;">
         <div class="row mb-2 text-center">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary">__("Se connecter")</a>
+                <a href="#" class="btn btn-outline-primary">Se connecter</a>
             </div>
         </div>
         <div class="row mb-3 text-center">
@@ -25,30 +13,14 @@ function afficherSideBarUtilisateur($page = null){
             </div>
         </div>
     </div>
-    <?php
-    }
-    ?>
-
+    
     <!-- Si connecte -->
-    <?php
-    if($page->isConnected == true){
-    ?>
     <div class="connecter" style="display: block;">
         <div class="row mb-3">
             <div class="col-md-12">
-
-                <h3>Bonsoir
-                  <?php
-                  echo  $page->user;
-                   ?>
-
-                </h3>
+                <h3>Bonsoir Thierry</h3>
             </div>
         </div>
-      </div>
-      <?php
-        }
-      ?>
 
         <!-- Informations utilisateur -->
         <div class="row mb-3">
@@ -104,18 +76,14 @@ function afficherSideBarUtilisateur($page = null){
 
                 <!-- <div class="row mb-3">
                     <div class="col-md-12">
-                        plus d'info
+                        plus d'info 
                     </div>
                 </div> -->
-
+                
             </div>
         </div>
 
         <!--  -->
-        <?php
-        if($page->isConnected == true){
-        ?>
-
         <div class="row mb-3 text-center">
             <div class="col-md-12 align-self-end">
                 <div class="row mb-2">
@@ -129,30 +97,7 @@ function afficherSideBarUtilisateur($page = null){
                     </div>
                 </div>
             </div>
-          </div>
-            <?php
-          }else {
-            ?>
-            <div class="row mb-3 text-center">
-                <div class="col-md-12 align-self-end">
-                    <div class="row mb-2">
-                        <div class="col-md-12">
-                            <a href="#" class="btn btn-outline-primary">Se Connecter</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="#" class="btn btn-outline-primary">S'inscrire</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-            }
-             ?>
-
+        </div>
+        
     </div>
-
-    <?php
-
-}
+</div>
