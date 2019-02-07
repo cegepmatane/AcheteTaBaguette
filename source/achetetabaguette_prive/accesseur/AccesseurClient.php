@@ -7,7 +7,7 @@ class AccesseurClient
 {
 
     private static $AJOUTER_UTILISATEUR =
-        "INSERT INTO table(nomClient, adresse, email) VALUES (?,?,?)";
+        "INSERT INTO CLIENT(nomClient, adresse, email) VALUES (?,?,?)";
 
     private static $SUPPRIMER_CLIENT =
         "DELETE FROM CLIENT WHERE idClient = ?";
