@@ -1,7 +1,9 @@
 <?php
 include("header.html");
+#require_once("Personne.php");
 ?>
 <!--  jQuery -->
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <!-- Bootstrap Date-Picker Plugin -->
@@ -11,32 +13,32 @@ include("header.html");
 <div class="content">
     <div class="row justify-content-md-center">
         <div class="col-md-8">
-            <form action="../controleur/inscription.php" method="post">
+            <form action="Inscription.php" method="post">
                 <fieldset>
                 <legend>Inscription</legend>
                 <div class="form-group">
                     <label class="col-form-label" for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom" required>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
                 </div>
                 <div class="form-group">
                   <label class="col-form-label" for="prenom">Prénom  </label>
-                    <input type="text" class="form-control" id="Prenom" required>
+                    <input type="text" class="form-control" id="Prenom" name="prenom"required>
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="date">Date de Naissance </label>
-                      <input type='text' class="form-control" placeholder="DD/MM/YYY" required/>
+                      <input type='text' class="form-control" placeholder="DD/MM/YYY" name="date" required/>
                 </div>
                 <div class="form-group">
                     <label for="mail">Mail</label>
-                    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" required>
+                    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" name="mail" required>
                 </div>
                 <div class="form-group">
                     <label for="motDePasse1">Mot de passe</label>
-                    <input type="password" class="form-control" id="motDePasse1" required>
+                    <input type="password" class="form-control" id="motDePasse1" name="password" required>
                 </div>
                 <div class="form-group">
                     <label for="motDePasse2">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" id="motDePasse2" required>
+                    <input type="password" class="form-control" id="motDePasse2" name="passwordCheck" required>
                 </div>
                 <div class="row justify-content-md-center">
                   <label class="form-check-label" for="defaultCheck1">
@@ -45,7 +47,7 @@ include("header.html");
                     <input type="checkbox" name="condition" value="agreed" required>
                 </div>
                     <div class="row justify-content-md-center">
-                      <button type="submit" class="btn btn-primary">Envoyer </button>
+                      <button type="submit" class="btn btn-primary" name="submit">Envoyer </button>
                     </div>
                 </fieldset>
             </form>
@@ -53,3 +55,16 @@ include("header.html");
     </div>
 
 </div>
+
+<?php
+function display()
+{
+    echo "hello ".$_POST["nom"];
+}
+if(isset($_POST['submit']))
+{
+   display();
+}
+?>
+
+</html>

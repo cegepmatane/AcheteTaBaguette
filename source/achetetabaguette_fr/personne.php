@@ -17,6 +17,7 @@ class Personne
     private const NOM_NOMBRE_CARACTERE_MAXIMUM = 24;
     private const PRENOM_NOMBRE_CARACTERE_MAXIMUM = 24;
     private const COURRIEL_NOMBRE_CARACTERE_MAXIMUM = 30;
+    private const DATE_NOMBRE_CARACTERE_MAXIMUM = 8;
 
     private static $LISTE_MESSAGE_ERREUR = [];
     private static $LISTE_INFORMATION_CHAMP = [];
@@ -74,7 +75,7 @@ class Personne
                 "defaut" => "";
                 "indice" => "Ex. : 07/02/2019" .
                             "(nombre maximum de caractères : " .
-                            self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM .
+                            self::DATE_NOMBRE_CARACTERE_MAXIMUM .
                             " )";
                 "description" = "Date de naissance";
                 "obligatoire" = true;
