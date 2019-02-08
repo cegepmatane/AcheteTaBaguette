@@ -1,0 +1,36 @@
+IF OBJECT_ID('dbo.PRODUIT') IS NOT NULL
+	DROP TABLE dbo.PRODUIT;
+GO
+IF OBJECT_ID('dbo.CLIENT') IS NOT NULL
+	DROP TABLE dbo.CLIENT;
+GO
+IF OBJECT_ID('dbo.FACTURE') IS NOT NULL
+	DROP TABLE dbo.FACTURE;
+GO
+
+CREATE TABLE PRODUIT
+(
+    idProduit INT NOT NULL IDENTITY(1,1),
+    nomProduit VARCHAR(100),
+    prix FLOAT,
+    nbStock SMALLINT,
+    nomCategorie VARCHAR(100),
+    srcImage VARCHAR(100),
+);
+
+CREATE TABLE CLIENT
+(
+    idClient INT NOT NULL IDENTITY(1,1),
+    nomClient VARCHAR(100),
+    email VARCHAR(100),
+    commandes VARCHAR(100),
+    nbCommandes INT,
+);
+
+CREATE TABLE FACTURE
+(
+    IdFacture INT NOT NULL IDENTITY(1,1),
+    prix FLOAT,
+    nbProduits INT NOT NULL,
+    idClient INT NOT NULL
+);
