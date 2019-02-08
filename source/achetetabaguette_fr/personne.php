@@ -334,6 +334,8 @@ class Personne
 
         }
 
+
+
         // Il est imposible de valider un courriel sans le tester pour de vrai.
         // Les fitres PHP ne sont pas parfait. Un courriel "invalide" ne
         // devrait pas être bloquant.
@@ -341,5 +343,33 @@ class Personne
         $this->courriel = $courriel;
 
     }
+
+    public function getDate(){
+
+        $this->date;
+
+    }
+
+    public function setDate($date){
+
+        // Validation en premier
+
+        if (empty($date)){
+
+            $this->listeMessageErreurActif['date'][] =
+                self::getListeMessageErreur()['date-vide'];
+
+            return;
+        }
+
+        if ( strlen($date) > self::DATE_NOMBRE_CARACTERE_MAXIMUM){
+
+            $this->listeMessageErreurActif['date'][] =
+                self::getListeMessageErreur()['date-trop-long'];
+
+        }
+
+        $this->date = $date;
+      }
 
 }
