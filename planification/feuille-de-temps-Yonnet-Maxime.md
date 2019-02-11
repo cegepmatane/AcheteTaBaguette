@@ -15,3 +15,4 @@ Numéro de l'itération  | Numéro de la semaine | Date du jour  | Nombre d'Heur
 2  |2   |07/02/2019   |1 heure 30   |#15 amélioration de la page inscription   |   |   |   |   |   |   |   |  
 2  |2   | 08/02/2019  |50 minutes   |#15 ajout des identifiants dans le formulaire   |   |   |   |   |   |   |   |  
 2  |2   |10/02/2019   |30 minutes   |#15 Ajout de l'attribut DateDeNaissance et ajout de la verif nom   |   |   |   |   |   |   |   |  
+4  |4   |11/02/2019   |40 minutes   |#15 Ajout verification inscription   |   |   |   |   |   |   |   |  

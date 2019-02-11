@@ -57,19 +57,7 @@ include("header.html");
 </div>
 
 <?php
-function display()
-{
-    echo "hello ".$_POST["nom"];
-}
-if(isset($_POST['submit']))
-{
-  if($_POST['password'] == $_POST['passwordCheck'])display();
-  else echo "Erreur mot de passe differents";
-  $date = date_parse($_POST['date']);
-  if(checkdate($date['day'],$date['month'],$date['year']))
-  display();
-  else echo "date non valide";
-}
+
 ?>
 
 </html>
