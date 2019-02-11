@@ -63,7 +63,12 @@ function display()
 }
 if(isset($_POST['submit']))
 {
-   display();
+  if($_POST['password'] == $_POST['passwordCheck'])display();
+  else echo "Erreur mot de passe differents";
+  $date = date_parse($_POST['date']);
+  if(checkdate($date['day'],$date['month'],$date['year']))
+  display();
+  else echo "date non valide";
 }
 ?>
 
