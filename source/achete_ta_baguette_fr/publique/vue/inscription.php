@@ -57,14 +57,7 @@ include("header.html");
 </div>
 
 <?php
-function display()
-{
-    echo "hello ".$_POST["nom"];
-}
-if(isset($_POST['submit']))
-{
-   display();
-}
+
 ?>
 
 </html>
