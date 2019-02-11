@@ -6,7 +6,7 @@ class Client
     private $adresse;
     private $email;
     private $idClient;
-	private $dateDeNaissance
+	private $dateDeNaissance;
 
     public function __construct($nomClient, $adresse, $email, $idClient, $dateDeNaissance)
     {
@@ -24,7 +24,7 @@ class Client
         "[A-Za-z\x{00C0}-\x{00FF}\'\-]+([\ A-Za-z\x{00C0}-\x{00FF}]" .
         "[A-Za-z\x{00C0}-\x{00FF}\'\-]+)*/u";
 		
-		private static validerNomPropre($nom){
+		private static function validerNomPropre($nom){
 
         /*
         https://andrewwoods.net/blog/2018/name-validation-regex/
