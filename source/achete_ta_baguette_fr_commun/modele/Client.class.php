@@ -3,27 +3,39 @@
 class Client
 {
     private $nomClient;
+    private $prenom;
     private $adresse;
     private $email;
-    private $idClient;
-	private $dateDeNaissance;
+	  private $dateDeNaissance;
+    private $motDePasse;
+    private $motDePasseVerif;
 
-    public function __construct($nomClient, $adresse, $email, $idClient, $dateDeNaissance)
+    public function __construct($nomClient, $prenom, $adresse, $email, $dateDeNaissance, $motDePasse, $motDePasseVerif)
     {
-        $this->nomUtilisateur = $nomClient;
+        $this->nomClient = $nomClient;
+        $this->prenom = $prenom;
         $this->adresse = $adresse;
         $this->email = $email;
-        $this->idClient = $idClient;
-		$this->dateDeNaissance = $dateDeNaissance;
+		    $this->dateDeNaissance = $dateDeNaissance;
+        $this->motDePasse = $motDePasse;
+        $this->motDePasseVerif = $motDePasseVerif;
+
 	}
-	
-	
+
+
 	/* Depuis le cookbook : */
-	private const PATERN_NOM_PROPRE =
+	 private const PATERN_NOM_PROPRE =
         "/^[A-Za-z\x{00C0}-\x{00FF}]" .
         "[A-Za-z\x{00C0}-\x{00FF}\'\-]+([\ A-Za-z\x{00C0}-\x{00FF}]" .
         "[A-Za-z\x{00C0}-\x{00FF}\'\-]+)*/u";
-		
+
+   public static function validerClient($client){
+      if(!$client->validerNomPropre($client->nomClient)) return false;
+      if(!$client->validerNomPropre($client->prenom)) return false;
+      if(!$client->validerMotDePasse($client->motDePasse,$client->motDePasseVerif)) return false;
+      return true;
+    }
+
 		private static function validerNomPropre($nom){
 
         /*
@@ -35,9 +47,12 @@ class Client
         Adding Extended ASCII Character Support
         */
 
-        if (preg_match(self::PATERN_NOM_PROPRE, $nom)) return true;
+        return preg_match(self::PATERN_NOM_PROPRE, $nom);
+    }
 
-        return false;
+    private static function validerMotDePasse($password,$passwordCheck){
+      if($password == $passwordCheck) return true;
+      else return false;
     }
 
     public function setNomUtilisateur($nomClient)
@@ -54,7 +69,7 @@ class Client
     {
         $this->email = $email;
     }
-	
+
 	public function setDateDeNaissance($dateDeNaissance){
 		return $this->dateDeNaissance;
 	}
@@ -75,7 +90,7 @@ class Client
     {
         return $this->idClient;
     }
-	
+
 	public function getDateDeNaissance(){
 		return $this->dateDeNaissance;
 	}

@@ -1,15 +1,35 @@
-<?php
-include("header.html");
-#require_once("Personne.php");
-?>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>Page Type</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+        <!-- En-tete de page -->
+        <div class="row">
+            <div class="col-md-12">
+
+              <?php
+              include("../../commun/vue/header.html");
+              ?>
+
+            </div>
+        </div><!-- Fin en-tete de page -->
+
 <!--  jQuery -->
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
 <div class="content">
     <div class="row justify-content-md-center">
         <div class="col-md-8">
@@ -25,8 +45,12 @@ include("header.html");
                     <input type="text" class="form-control" id="Prenom" name="prenom"required>
                 </div>
                 <div class="form-group">
+                  <label class="col-form-label" for="prenom">Adresse  </label>
+                    <input type="text" class="form-control" id="adresse" name="adresse"required>
+                </div>
+                <div class="form-group">
                     <label class="col-form-label" for="date">Date de Naissance </label>
-                      <input type='text' class="form-control" placeholder="DD/MM/YYY" name="date" required/>
+                      <input type="date" class="form-control" placeholder="DD/MM/YYY" name="date" required/>
                 </div>
                 <div class="form-group">
                     <label for="mail">Mail</label>
@@ -34,11 +58,11 @@ include("header.html");
                 </div>
                 <div class="form-group">
                     <label for="motDePasse1">Mot de passe</label>
-                    <input type="password" class="form-control" id="motDePasse1" name="password" required>
+                    <input type="password" class="form-control" id="motDePasse1" name="motDePasse1" required>
                 </div>
                 <div class="form-group">
                     <label for="motDePasse2">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" id="motDePasse2" name="passwordCheck" required>
+                    <input type="password" class="form-control" id="motDePasse2" name="motDePasse2" required>
                 </div>
                 <div class="row justify-content-md-center">
                   <label class="form-check-label" for="defaultCheck1">
@@ -56,8 +80,16 @@ include("header.html");
 
 </div>
 
-<?php
+<div class="row mt-4">
+    <div class="col-md-12 bg-primary">
+      <?php
+      include('../../commun/vue/footer.html');
+      include('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
+      if(isset($_POST['submit'])){
+        $client = new Client($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['mail'], $_POST['date'], $_POST['motDePasse1'], $_POST['motDePasse2']);
+      }
 
-?>
-
+      ?>
+    </div><!-- Fin container -->
+  </body>
 </html>
