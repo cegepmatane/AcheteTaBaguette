@@ -23,11 +23,7 @@
             <div class="col-md-12">
 
                 <!-- inclue header -->
-                <?php
-                include("header.html");
-                ?>
-
-
+                <?php include("header.html"); ?>
 
             </div>
         </div><!-- Fin en-tete de page -->
@@ -40,18 +36,14 @@
 
                 <!-- include sidebar_left -->
 
-                <?php
-                include("sidebar-utilisateur.html");
-                ?>
+                <?php include("sidebar-utilisateur.html"); ?>
             </div>
 
 
             <!-- Contenu -->
             <div class="col-md-8">
 
-                <?php
-                include("boutique.html");
-                ?>
+                <?php include("boutique.html"); ?>
 
             <!-- Bar lateral droite -->
             <div class="col-md-2 border ">
@@ -70,9 +62,10 @@
             <div class="col-md-12 bg-primary">
 
                 <!-- include footer -->
-                <?php
-                include("footer.html");
-                ?>
+                <?php include("footer.html"); ?>
+                
+            </div>
+        </div><!-- Fin pied de page -->
     </div><!-- Fin container -->
   </body>
 </html>
