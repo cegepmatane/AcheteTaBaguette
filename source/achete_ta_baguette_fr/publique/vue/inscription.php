@@ -1,39 +1,38 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <title>Page Type</title>
+<?php
+require_once("../../commun/vue/entete-fragment.php");
+// require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
+require_once("../../commun/vue/pied-de-page-fragment.php");
+require_once("erreur-inscription.php");
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+$page = (object)
+    [
+    "titre" => "Page index",
+    "titrePrincipal" => "Le titre principal H1",
+    "itemMenuActif" => "accueil",
+    "isConnected" => true,
+    "user" => "Pierre"
+    ];
 
-  </head>
-  <body>
 
-    <div class="container-fluid">
 
-        <!-- En-tete de page -->
-        <div class="row">
-            <div class="col-md-12">
+    function afficherPage($page = null){
 
-              <?php
-              include("../../commun/vue/header.html");
-              ?>
-
-            </div>
-        </div><!-- Fin en-tete de page -->
+        // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
+        if(!is_object($page)) $page = (object)[];
+          afficherEntete($page);
+          include('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
+          if(isset($_POST['submit'])){
+            $client = new Client($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['mail'], $_POST['date'], $_POST['motDePasse1'], $_POST['motDePasse2']);
+            if(!$client->validerClient($client)) afficherErreurInscription();
+          }
+          ?>
 
 <!--  jQuery -->
 <div class="content">
     <div class="row justify-content-md-center">
         <div class="col-md-8">
-            <form action="Inscription.php" method="post">
+            <form action="" method="post">
                 <fieldset>
                 <legend>Inscription</legend>
                 <div class="form-group">
@@ -80,16 +79,9 @@
 
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-12 bg-primary">
       <?php
-      include('../../commun/vue/footer.html');
-      include('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
-      if(isset($_POST['submit'])){
-        $client = new Client($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['mail'], $_POST['date'], $_POST['motDePasse1'], $_POST['motDePasse2']);
-      }
+      afficherPiedDePage($page);
 
-      ?>
-    </div><!-- Fin container -->
-  </body>
-</html>
+}
+
+afficherPage($page);
