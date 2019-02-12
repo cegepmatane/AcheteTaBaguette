@@ -25,6 +25,7 @@ $page = (object)
           if(isset($_POST['submit'])){
             $client = new Client($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['mail'], $_POST['date'], $_POST['motDePasse1'], $_POST['motDePasse2']);
             if(!$client->validerClient($client)) afficherErreurInscription();
+            else $client->envoyerClientVersBDD($client);
           }
           ?>
 

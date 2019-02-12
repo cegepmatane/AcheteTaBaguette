@@ -18,3 +18,4 @@ Numéro de l'itération  | Numéro de la semaine | Date du jour  | Nombre d'Heur
 4  |4   |11/02/2019   |40 minutes   |#15 Ajout verification inscription   |   |   |   |   |   |   |   |  
 4  |4   |11/02/2019   |2 Heures 30  |#15 Ajout de vérification mot de passe + mail + date   |   |   |   |   |   |   |   |  
 4  |4   |11/02/2019   |15 minutes   |Importation de la storyBoard de connexion   |   |   |   |   |   |   |   |  
+4  |4   |11/02/2019   |2 heures   |#15 implémentatino de la bdd et premieres tentatives d'insertion   |   |   |   |   |   |   |   |  
