@@ -1,6 +1,3 @@
 RewriteEngine On
 
-RewriteRule ^accueil/?$ ../vue/index.php
-
-
-
+RewriteRule ^/?$ commun/vue/header.html
