@@ -1,7 +1,7 @@
 <?php
 
 require_once("entete-fragment.php");
-// require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
+require_once("sidebar-utilisateur-fragment.php");
 require_once("pied-de-page-fragment.php");
 
 /*
@@ -17,7 +17,16 @@ $page = (object)
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
     "isConnected" => true,
-    "user" => "Pierre"
+
+    "nom" => "Affin",
+    "prenom" => "Jean-Yves",
+    "courriel" => "jean-yves@affin.net",
+    "rue" => "616 Av. St-Redempteur",
+    "ville" => "Matane",
+    "province" => "Québec",
+    "codePostal" => "G4W 0H2",
+    "pays" => "Canada",
+    "id_personne" => 1
     ];
 
 /*
@@ -38,7 +47,7 @@ function afficherPage($page = null){
 
             <!-- Bar lateral gauche | sidebar utilisateur -->
             <div class="col-md-2 border ">
-                <?php //afficherACoteGauche($page); ?>
+                <?php afficherSideBarUtilisateur($page); ?>
             </div><!-- Fin bar lateral gauche -->
 
             <!-- Contenu -->
