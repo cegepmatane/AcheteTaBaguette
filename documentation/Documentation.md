@@ -30,6 +30,8 @@
 
 ![Story Board _ Paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Story%20Board%20_%20Paiement.png)
 
+![StoryBoard - Ajout d'un produit au site](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/StoryBoard%20-%20Ajout%20d'un%20produit%20au%20site.png)
+
 ![Storyboard- choix produit_Page_1](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_1.png)
 
 ![Storyboard- choix produit_Page_2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_2.png)
