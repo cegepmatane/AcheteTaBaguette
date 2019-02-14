@@ -1,4 +1,4 @@
-![Diagramme_de_classes_BD_Achete_Ta_Baguette](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagramme%20de%20classes/Diagramme_de_classes_BD_Achete_Ta_Baguette.png)
+![Diagramme_de_classes_BD_Achete_Ta_Baguette-V2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagramme%20de%20classes/Diagramme_de_classes_BD_Achete_Ta_Baguette-V2.png)
 
 ![Appareil_connecté](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Accueil_connect%C3%A9.png)
 
@@ -29,6 +29,8 @@
 ![Story board - Inscription](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Story%20board%20-%20Inscription.png)
 
 ![Story Board _ Paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Story%20Board%20_%20Paiement.png)
+
+![StoryBoard - Ajout d'un produit au site](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/StoryBoard%20-%20Ajout%20d'un%20produit%20au%20site.png)
 
 ![Storyboard- choix produit_Page_1](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_1.png)
 
