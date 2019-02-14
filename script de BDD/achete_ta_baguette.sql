@@ -7,6 +7,7 @@
 --
 -- Structure de la table `CATEGORIE`
 --
+USE achete_ta_baguette_fr;
 
 CREATE TABLE `CATEGORIE` (
   `idCategorie` int(3) NOT NULL,
