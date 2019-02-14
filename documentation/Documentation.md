@@ -18,7 +18,7 @@
 
 ![page produit](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/page%20produit.png)
 
-![Admin](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Admin.pngg)
+![Admin](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Admin.png)
 
 ![Boutique](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Boutique.png)
 
