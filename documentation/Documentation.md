@@ -2,3 +2,25 @@
 
 ![Appareil_connecté](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Accueil_connect%C3%A9.png)
 
+![Paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Paiement.png)
+
+![Panier](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Panier.png)
+
+![S_inscrire](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/S_inscrire.png)
+
+![Se connecter](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Se%20connecter.png)
+
+![Utilisateur](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Utilisateur.png)
+
+![accueil](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/accueil.png)
+
+![mission](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/mission.png)
+
+![page produit](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/page%20produit.png)
+
+![Admin](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Admin.png)
+
+![Boutique](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Boutique.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
