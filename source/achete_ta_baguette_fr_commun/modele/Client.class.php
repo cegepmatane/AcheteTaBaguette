@@ -58,16 +58,16 @@ class Client
         if (!is_object($attribut)) $attribut = (object)[];
 
         $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
-        $this->setNom($attribut->nom ?? "pierre");
-        $this->setPrenom($attribut->prenom ?? "pauk");
-        $this->setDateDeNaissance($attribut->date_de_naissance ?? "13/02/1999");
-        $this->setEmail($attribut->mail ?? "test@test.test");
-        $this->setMotDePasse($attribut->mot_de_passe ?? "123");
-        $this->setProvince($attribut->province ?? "test");
-        $this->setPays($attribut->pays ?? "un Pays");
-        $this->setVille($attribut->ville ?? "truc");
-        $this->setRue($attribut->rue ?? "ah");
-        $this->setCodePostal($attribut->code_postal ?? "peutetre");
+        $this->setNom($attribut->nom ?? "");
+        $this->setPrenom($attribut->prenom ?? "");
+        $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
+        $this->setEmail($attribut->mail ?? "");
+        $this->setMotDePasse($attribut->mot_de_passe ?? "");
+        $this->setProvince($attribut->province ?? "");
+        $this->setPays($attribut->pays ?? "");
+        $this->setVille($attribut->ville ?? "");
+        $this->setRue($attribut->rue ?? "");
+        $this->setCodePostal($attribut->code_postal ?? "");
         $this->setIdClient($attribut->id_client ?? null);
 
         $this->laBDD = new AccesseurClient();
