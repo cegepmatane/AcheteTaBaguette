@@ -1,13 +1,11 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Client.class.php";
-
 class AccesseurClient
 {
 
-    private static $AJOUTER_UTILISATEUR =
-        "INSERT INTO CLIENT(nomClient, adresse, email) VALUES (?,?,?)";
+    private $AJOUTER_UTILISATEUR =
+        "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
     private static $SUPPRIMER_CLIENT =
         "DELETE FROM CLIENT WHERE idClient = ?";
@@ -28,12 +26,20 @@ class AccesseurClient
         }
     }
 
-    public function ajouterClient($client)
+    public function ajouterClient( object $client)
     {
-        $requete = $connexion->prepare($AJOUTER_UTILISATEUR);
-        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
-        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
+        $requete = self::$connexion->prepare($this->AJOUTER_UTILISATEUR);
+        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
+        $requete->bindValue(2, $client->pays, PDO::PARAM_STR);
+        $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
+        $requete->bindValue(3, $newdate, PDO::PARAM_STR);
+        $requete->bindValue(4, $client->email, PDO::PARAM_STR);
+        $requete->bindValue(5, $client->mot_de_passe, PDO::PARAM_STR);
+        $requete->bindValue(6, $client->rue, PDO::PARAM_STR);
+        $requete->bindValue(7, $client->ville, PDO::PARAM_STR);
+        $requete->bindValue(8, $client->province, PDO::PARAM_STR);
+        $requete->bindValue(9, $client->code_postal, PDO::PARAM_STR);
+        $requete->bindValue(10, $client->pays, PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -47,7 +53,7 @@ class AccesseurClient
 
     public function supprimerClient($client)
     {
-        $requete = $connexion->prepare($SUPPRIMER_CLIENT);
+        $requete = self::$connexion->prepare($this->SUPPRIMER_CLIENT);
         $requete->bindValue(1, $client->getidClient);
 
         $requete->execute();
@@ -59,12 +65,12 @@ class AccesseurClient
         return false;
     }
 
-    public function getIdClient($client)
+    public function getIdClient(object $client)
     {
-        $requete = $connexion->prepare($GET_ID_UTILISATEUR);
-        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
-        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
+        $requete = self::$connexion->prepare($this->GET_ID_UTILISATEUR);
+        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
+        $requete->bindValue(2, $client->adresse, PDO::PARAM_STR);
+        $requete->bindValue(3, $client->email, PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -83,10 +89,10 @@ class AccesseurClient
     // Va mettre à jour dans le base de données le CLIENT correspondant à l'id du CLIENT passé en paramètre
     // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
     {
-        $requete = $connexion->prepare($MISE_A_JOUR_UTILISATEUR);
-        $requete->bindValue(1, $client->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $client->getAdresse(), PDO::PARAM_STR);
-        $requete->bindValue(3, $client->getEmail(), PDO::PARAM_STR);
+        $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
+        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
+        $requete->bindValue(2, $client->adresse, PDO::PARAM_STR);
+        $requete->bindValue(3, $client->email, PDO::PARAM_STR);
         $requete->bindValue(5, getidClient($client), PDO::PARAM_STR);
 
         $requete->execute();

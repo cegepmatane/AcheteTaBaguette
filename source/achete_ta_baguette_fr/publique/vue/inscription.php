@@ -7,7 +7,7 @@ require_once("erreur-inscription.php");
 
 $page = (object)
 [
-    "titre" => "Page index",
+    "titre" => "Page d'inscription",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
     "isConnected" => true,
@@ -23,22 +23,27 @@ function afficherPage($page = null)
     if (!is_object($page)) $page = (object)[];
     afficherEntete($page);
 
-    include('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
+    require_once('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
     if (isset($_POST['submit'])) {
 
         $attribut = new stdClass();
         $attribut->nom = $_POST['nom'];
         $attribut->prenom = $_POST['prenom'];
-        $attribut->region = $_POST['region'];
-        $attribut->codePostale = $_POST['codePostale'];
+        $attribut->pays = $_POST['pays'];
+        $attribut->code_Postale = $_POST['codePostale'];
         $attribut->province = $_POST['province'];
         $attribut->mail = $_POST['mail'];
-        $attribut->date = $_POST['date'];
+        $attribut->date_de_naissance = $_POST['date'];
         $attribut->mot_de_passe = $_POST['mot_de_passe'];
         $attribut->mot_de_passe_verif = $_POST['mot_de_passe_verif'];
+        $attribut->ville = $_POST['ville'];
+        $attribut->rue = $_POST['rue'];
+
+
 
         $client = new Client($attribut);
-        afficherErreurInscription($client->isValide());
+        $client->envoieVersBDD();
+
     }
     ?>
 
@@ -89,8 +94,8 @@ function afficherPage($page = null)
                                            required>
                                 </div>
                                 <div class="col-3">
-                                    <label class="col-form-label">Region </label>
-                                    <input type="text" class="form-control" id="region" name="region"
+                                    <label class="col-form-label">pays </label>
+                                    <input type="text" class="form-control" id="pays" name="pays"
                                            required>
                                 </div>
                             </div>

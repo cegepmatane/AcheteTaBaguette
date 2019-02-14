@@ -1,7 +1,7 @@
 <?php
-
 class Client
 {
+
 
     public const ID_CLIENT = "id_client";
     public const NOM = "nom";
@@ -37,37 +37,40 @@ class Client
 
     private $listeMessageErreurActif = [];
 
-    private $nom;
-    private $prenom;
-    private $email;
-    private $date_de_naissance;
-    private $mot_de_passe;
-    private $mot_de_passe_verif;
-    private $province;
-    private $region;
-    private $ville;
-    private $rue;
-    private $code_postal;
-    private $id_client;
+    public $nom;
+    public $prenom;
+    public $email;
+    public $date_de_naissance;
+    public $mot_de_passe;
+    public $mot_de_passe_verif;
+    public $province;
+    public $pays;
+    public $ville;
+    public $rue;
+    public $code_postal;
+    public $id_client;
+
+    private $laBDD;
 
     function __construct(object $attribut)
     {
-
+        require_once("..\..\..\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
         if (!is_object($attribut)) $attribut = (object)[];
 
         $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
-        $this->setNom($attribut->nom ?? "");
-        $this->setPrenom($attribut->prenom ?? "");
-        $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
-        $this->setEmail($attribut->email ?? "");
-        $this->setMotDePasse($attribut->mot_de_passe ?? "");
-        $this->setProvince($attribut->province ?? "");
-        $this->setRegion($attribut->region ?? "");
-        $this->setVille($attribut->ville ?? "");
-        $this->setRue($attribut->rue ?? "");
-        $this->setCodePostal($attribut->code_postal ?? "");
+        $this->setNom($attribut->nom ?? "pierre");
+        $this->setPrenom($attribut->prenom ?? "pauk");
+        $this->setDateDeNaissance($attribut->date_de_naissance ?? "13/02/1999");
+        $this->setEmail($attribut->mail ?? "test@test.test");
+        $this->setMotDePasse($attribut->mot_de_passe ?? "123");
+        $this->setProvince($attribut->province ?? "test");
+        $this->setPays($attribut->pays ?? "un Pays");
+        $this->setVille($attribut->ville ?? "truc");
+        $this->setRue($attribut->rue ?? "ah");
+        $this->setCodePostal($attribut->code_postal ?? "peutetre");
         $this->setIdClient($attribut->id_client ?? null);
 
+        $this->laBDD = new AccesseurClient();
     }
 
     public function isValide($champ = null)
@@ -82,12 +85,11 @@ class Client
             $this->setEmail($this->email);
             $this->setMotDePasse($this->mot_de_passe);
             $this->setProvince($this->province);
-            $this->setRegion($this->region);
+            $this->setPays($this->pays);
             $this->setVille($this->ville);
             $this->setRue($this->rue);
             $this->setCodePostal($this->code_postal);
-
-            return empty($this->listeMessageErreurActif);
+            return $this->listeMessageErreurActif;
 
         }
 
@@ -417,6 +419,7 @@ class Client
                 self::getListeMessageErreur()['prenom-vide'];
 
             return;
+
         }
 
         if (strlen($prenom) > self::PRENOM_NOMBRE_CARACTERE_MAXIMUM) {
@@ -435,7 +438,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->$prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
+        $this->prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
 
     }
 
@@ -587,47 +590,47 @@ class Client
 
         // Nettoyage en second
 
-        $this->$province = filter_var($province, FILTER_SANITIZE_STRING);
+        $this->province = filter_var($province, FILTER_SANITIZE_STRING);
 
     }
 
-    public function getRegion()
+    public function getPays()
     {
 
-        return $this->region;
+        return $this->pays;
 
     }
 
-    public function setRegion($region)
+    public function setPays($pays)
     {
 
         // Validation en premier
 
-        if (empty($region)) {
+        if (empty($pays)) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-vide'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-vide'];
 
             return;
         }
 
-        if (strlen($region) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
+        if (strlen($pays) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-trop-long'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-trop-long'];
 
         }
 
-        if (!self::validerNomPropre($region)) {
+        if (!self::validerNomPropre($pays)) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-non-alphabetique'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-non-alphabetique'];
 
         }
 
         // Nettoyage en second
 
-        $this->$region = filter_var($region, FILTER_SANITIZE_STRING);
+        $this->pays = filter_var($pays, FILTER_SANITIZE_STRING);
 
     }
 
@@ -667,7 +670,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->$ville = filter_var($ville, FILTER_SANITIZE_STRING);
+        $this->ville = filter_var($ville, FILTER_SANITIZE_STRING);
 
     }
 
@@ -708,7 +711,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->region = filter_var($this->region, FILTER_SANITIZE_STRING);
+        $this->rue = filter_var($rue, FILTER_SANITIZE_STRING);
 
     }
 
@@ -749,8 +752,12 @@ class Client
 
         // Nettoyage en second
 
-        $this->$code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
+        $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
 
+    }
+
+    public function envoieVersBDD(){
+        $this->laBDD->ajouterClient($this);
     }
 
 
