@@ -24,3 +24,20 @@
 
 ![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
 
+![Story Board _ Connexion](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Story%20Board%20_%20Connexion.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
+
+![Confirmer paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Confirmer%20paiement.png)
