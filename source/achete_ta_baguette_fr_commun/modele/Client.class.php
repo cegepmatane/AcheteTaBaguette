@@ -34,223 +34,6 @@ class Client
     private static $LISTE_MESSAGE_ERREUR = [];
     private static $LISTE_INFORMATION_CHAMP = [];
 
-    public static function getInformation($champ){
-
-        if(empty(self::$LISTE_INFORMATION_CHAMP)){
-
-            self::$LISTE_INFORMATION_CHAMP["id_client"] = (object)
-            [
-                "etiquette" => "",
-                "defaut" => "",
-                "indice" => "",
-                "description" => "",
-                "obligatoire" => null
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["nom"] = (object)
-            [
-                "etiquette" => "nom",
-                "defaut" => "",
-                "indice" => "Ex. : Smith (nombre maximum de caractères : " .
-                            self::NOM_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Nom de famille",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["prenom"] = (object)
-            [
-                "etiquette" => "prénom",
-                "defaut" => "",
-                "indice" => "Ex. : Robert (nombre maximum de caractères : " .
-                            self::PRENOM_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Petit nom",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["date_de_naissance"] = (object)
-            [
-                "etiquette" => "date de naissance",
-                "defaut" => "",
-                "indice" => "Ex. : 1998-08-31",
-                "description" => "Jour de votre anniversaire",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["email"] = (object)
-            [
-                "etiquette" => "email",
-                "defaut" => "",
-                "indice" => "Ex. : monnom@email.com " .
-                            "(nombre maximum de caractères : " .
-                            self::EMAIL_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Adresse électronique",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["mot_de_passe"] = (object)
-            [
-                "etiquette" => "mot de passe",
-                "defaut" => "",
-                "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
-                            self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Code secret pour vous connecter",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["mot_de_passe_verif"] = (object)
-            [
-                "etiquette" => "verification mot de passe",
-                "defaut" => "",
-                "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
-                            self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Entrez à nouveau votre mot de passe",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["provine"] = (object)
-            [
-                "etiquette" => "province",
-                "defaut" => "",
-                "indice" => "Ex. : Québec (nombre maximum de caractères : " .
-                            self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Province du Canada",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["region"] = (object)
-            [
-                "etiquette" => "région",
-                "defaut" => "",
-                "indice" => "Ex. : Bas-Saint-Laurent (nombre maximum de caractères : " .
-                            self::REGION_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "région de la province",
-                "obligatoire" => true
-            ];
-            
-            self::$LISTE_INFORMATION_CHAMP["ville"] = (object)
-            [
-                "etiquette" => "ville",
-                "defaut" => "",
-                "indice" => "Ex. : Matane (nombre maximum de caractères : " .
-                self::VILLE_NOMBRE_CARACTERE_MAXIMUM .
-                " )",
-                "description" => "Ville de résidence",
-                "obligatoire" => true
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["rue"] = (object)
-            [
-                "etiquette" => "rue",
-                "defaut" => "",
-                "indice" => "Ex. : 616 Av. St-Rédempteur (nombre maximum de caractères : " .
-                            self::RUE_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Adresse de résidence",
-                "obligatoire" => true
-            ];
-            
-            self::$LISTE_INFORMATION_CHAMP["code_postal"] = (object)
-            [
-                "etiquette" => "code postal",
-                "defaut" => "",
-                "indice" => "Ex. : G4W 0H2 (nombre maximum de caractères : " .
-                            self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM .
-                            " )",
-                "description" => "Code de lettres et chiffres alternés",
-                "obligatoire" => true
-            ];
-
-        }
-
-        $nomClasse = get_called_class();
-        $constante = "$nomClasse::" . strtoupper($champ);
-        if(!defined($constante)) return null;
-
-        return self::$LISTE_INFORMATION_CHAMP[$champ];
-
-    }
-
-    private static function getListeMessageErreur(){
-
-        if(empty(self::$LISTE_MESSAGE_ERREUR)){
-
-            self::$LISTE_MESSAGE_ERREUR =
-            [
-                "id_client-invalide" => true,
-
-                "nom-vide" => "Le nom ne doit pas être vide",
-                "nom-trop-long" => "Le nombre maximum de caractères pour le nom est : " . self::NOM_NOMBRE_CARACTERE_MAXIMUM,
-                "nom-non-alphabetique" => "Le nom doit contenir uniquement des lettres",
-
-
-                "prenom-vide" => "Le prénom ne doit pas être vide",
-                "prenom-trop-long" => "Le nombre maximum de caractères pour le prénom est : " . self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
-                "prenom-non-alphabetique" => "Le prénom doit contenir uniquement des lettres",
-
-                "date_de_naissance-vide" => "La date de naissance ne doit pas être vide",
-                "date_de_naissance-invalide" => "La date de naissance n'est pas valide",
-
-                "email-vide" => "Le email ne doit pas être vide",
-                "email-trop-long" => "Le nombre maximum de caractères pour le email est : " . self::EMAIL_NOMBRE_CARACTERE_MAXIMUM,                     
-                "email-invalide" => "Le email n'est pas valide",
-
-                "mot_de_passe-vide" => "Le mot de passe ne doit pas être vide",
-                "mot_de_passe-trop-long" => "Le nombre maximum de caractères pour le mot de passe est : " . self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM,                     
-                "mot_de_passe-invalide" => "Les mots de passe ne correspondent pas",
-
-                "province-vide" => "La province ne doit pas être vide",
-                "province-trop-long" => "Le nombre maximum de caractères pour la province est : " . self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM,                     
-                "province-non-alphabetique" => "La province doit contenir uniquement des lettres",
-
-                "region-vide" => "La region ne doit pas être vide",
-                "region-trop-long" => "Le nombre maximum de caractères pour la region est : " . self::REGION_NOMBRE_CARACTERE_MAXIMUM,                     
-                "region-non-alphabetique" => "La region doit contenir uniquement des lettres",
-
-                "ville-vide" => "La ville ne doit pas être vide",
-                "ville-trop-long" => "Le nombre maximum de caractères pour la ville est : " . self::VILLE_NOMBRE_CARACTERE_MAXIMUM,                     
-                "ville-non-alphabetique" => "La ville doit contenir uniquement des lettres",
-
-                "rue-vide" => "La rue ne doit pas être vide",
-                "rue-trop-long" => "Le nombre maximum de caractères pour la rue est : " . self::RUE_NOMBRE_CARACTERE_MAXIMUM,                     
-                "rue-invalide" => "La rue n'est pas valide",
-
-                "code_postal-vide" => "Le code postal ne doit pas être vide",
-                "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,                     
-                "code_postal-invalide" => "Le code postal n'est pas valide"
-
-            ];
-
-        }
-
-        return self::$LISTE_MESSAGE_ERREUR;
-
-    }
-
-    private static validerNomPropre($nom){
-        if (preg_match(self::PATERN_NOM_PROPRE, $nom)) return true;
-        return false;
-    }
-
-    private static validerMotDePasse($mot_de_passe){
-        if ($mot_de_passe == $mot_de_passe_verif) return true;
-        return false;
-    }
-
-    private static validerRue($rue){
-        // TODO
-    }
-
-    private static valideCodePostal($code_postal){
-        // TODO
-    }
-
     private $listeMessageErreurActif = [];
 
     private $nom;
@@ -269,6 +52,8 @@ class Client
     function __construct(object $attribut){
 
         if(!is_object($attribut)) $attribut = (object)[];
+
+        $this->mot_de_passe_verif=$attribut->mot_de_passe_verif;
 
         $this->setNom($attribut->nom ?? "");
         $this->setPrenom($attribut->prenom ?? "");
@@ -312,9 +97,227 @@ class Client
 
     }
 
+    public static function getInformation($champ){
+
+        if(empty(self::$LISTE_INFORMATION_CHAMP)){
+
+            self::$LISTE_INFORMATION_CHAMP["id_client"] = (object)
+            [
+                "etiquette" => "",
+                "defaut" => "",
+                "indice" => "",
+                "description" => "",
+                "obligatoire" => null
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["nom"] = (object)
+            [
+                "etiquette" => "nom",
+                "defaut" => "",
+                "indice" => "Ex. : Smith (nombre maximum de caractères : " .
+                    self::NOM_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Nom de famille",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["prenom"] = (object)
+            [
+                "etiquette" => "prénom",
+                "defaut" => "",
+                "indice" => "Ex. : Robert (nombre maximum de caractères : " .
+                    self::PRENOM_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Petit nom",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["date_de_naissance"] = (object)
+            [
+                "etiquette" => "date de naissance",
+                "defaut" => "",
+                "indice" => "Ex. : 1998-08-31",
+                "description" => "Jour de votre anniversaire",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["email"] = (object)
+            [
+                "etiquette" => "email",
+                "defaut" => "",
+                "indice" => "Ex. : monnom@email.com " .
+                    "(nombre maximum de caractères : " .
+                    self::EMAIL_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Adresse électronique",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["mot_de_passe"] = (object)
+            [
+                "etiquette" => "mot de passe",
+                "defaut" => "",
+                "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
+                    self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Code secret pour vous connecter",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["mot_de_passe_verif"] = (object)
+            [
+                "etiquette" => "verification mot de passe",
+                "defaut" => "",
+                "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
+                    self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Entrez à nouveau votre mot de passe",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["provine"] = (object)
+            [
+                "etiquette" => "province",
+                "defaut" => "",
+                "indice" => "Ex. : Québec (nombre maximum de caractères : " .
+                    self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Province du Canada",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["region"] = (object)
+            [
+                "etiquette" => "région",
+                "defaut" => "",
+                "indice" => "Ex. : Bas-Saint-Laurent (nombre maximum de caractères : " .
+                    self::REGION_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "région de la province",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["ville"] = (object)
+            [
+                "etiquette" => "ville",
+                "defaut" => "",
+                "indice" => "Ex. : Matane (nombre maximum de caractères : " .
+                    self::VILLE_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Ville de résidence",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["rue"] = (object)
+            [
+                "etiquette" => "rue",
+                "defaut" => "",
+                "indice" => "Ex. : 616 Av. St-Rédempteur (nombre maximum de caractères : " .
+                    self::RUE_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Adresse de résidence",
+                "obligatoire" => true
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP["code_postal"] = (object)
+            [
+                "etiquette" => "code postal",
+                "defaut" => "",
+                "indice" => "Ex. : G4W 0H2 (nombre maximum de caractères : " .
+                    self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Code de lettres et chiffres alternés",
+                "obligatoire" => true
+            ];
+
+        }
+
+        $nomClasse = get_called_class();
+        $constante = "$nomClasse::" . strtoupper($champ);
+        if(!defined($constante)) return null;
+
+        return self::$LISTE_INFORMATION_CHAMP[$champ];
+
+    }
+
+    private static function getListeMessageErreur(){
+
+        if(empty(self::$LISTE_MESSAGE_ERREUR)){
+
+            self::$LISTE_MESSAGE_ERREUR =
+                [
+                    "id_client-invalide" => true,
+
+                    "nom-vide" => "Le nom ne doit pas être vide",
+                    "nom-trop-long" => "Le nombre maximum de caractères pour le nom est : " . self::NOM_NOMBRE_CARACTERE_MAXIMUM,
+                    "nom-non-alphabetique" => "Le nom doit contenir uniquement des lettres",
+
+
+                    "prenom-vide" => "Le prénom ne doit pas être vide",
+                    "prenom-trop-long" => "Le nombre maximum de caractères pour le prénom est : " . self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
+                    "prenom-non-alphabetique" => "Le prénom doit contenir uniquement des lettres",
+
+                    "date_de_naissance-vide" => "La date de naissance ne doit pas être vide",
+                    "date_de_naissance-invalide" => "La date de naissance n'est pas valide",
+
+                    "email-vide" => "Le email ne doit pas être vide",
+                    "email-trop-long" => "Le nombre maximum de caractères pour le email est : " . self::EMAIL_NOMBRE_CARACTERE_MAXIMUM,
+                    "email-invalide" => "Le email n'est pas valide",
+
+                    "mot_de_passe-vide" => "Le mot de passe ne doit pas être vide",
+                    "mot_de_passe-trop-long" => "Le nombre maximum de caractères pour le mot de passe est : " . self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM,
+                    "mot_de_passe-invalide" => "Les mots de passe ne correspondent pas",
+
+                    "province-vide" => "La province ne doit pas être vide",
+                    "province-trop-long" => "Le nombre maximum de caractères pour la province est : " . self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM,
+                    "province-non-alphabetique" => "La province doit contenir uniquement des lettres",
+
+                    "region-vide" => "La region ne doit pas être vide",
+                    "region-trop-long" => "Le nombre maximum de caractères pour la region est : " . self::REGION_NOMBRE_CARACTERE_MAXIMUM,
+                    "region-non-alphabetique" => "La region doit contenir uniquement des lettres",
+
+                    "ville-vide" => "La ville ne doit pas être vide",
+                    "ville-trop-long" => "Le nombre maximum de caractères pour la ville est : " . self::VILLE_NOMBRE_CARACTERE_MAXIMUM,
+                    "ville-non-alphabetique" => "La ville doit contenir uniquement des lettres",
+
+                    "rue-vide" => "La rue ne doit pas être vide",
+                    "rue-trop-long" => "Le nombre maximum de caractères pour la rue est : " . self::RUE_NOMBRE_CARACTERE_MAXIMUM,
+                    "rue-invalide" => "La rue n'est pas valide",
+
+                    "code_postal-vide" => "Le code postal ne doit pas être vide",
+                    "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
+                    "code_postal-invalide" => "Le code postal n'est pas valide"
+
+                ];
+
+        }
+
+        return self::$LISTE_MESSAGE_ERREUR;
+
+    }
+
+    private static function validerNomPropre($nom){
+        if (preg_match(self::PATERN_NOM_PROPRE, $nom)) return true;
+        return false;
+    }
+
+    private static function validerMotDePasse($mot_de_passe){
+        if ($mot_de_passe == self::mot_de_passe_verif) return true;
+        return false;
+    }
+
+    private static function validerRue($rue){
+        // TODO
+    }
+
+    private static function valideCodePostal($code_postal){
+        // TODO
+    }
+
+
     public function getListeMessageErreurActif($champ){
 
-        return $this->listeMessageErreurActif[$champ]) ?? [];
+        return $this->listeMessageErreurActif[$champ] ?? [];
 
     }
 
@@ -676,7 +679,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->$region = filter_var($region, FILTER_SANITIZE_STRING);
+        $this->region = filter_var($this->region, FILTER_SANITIZE_STRING);
 
     }
 
