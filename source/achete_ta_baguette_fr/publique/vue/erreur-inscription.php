@@ -1,7 +1,15 @@
 <?php
-function afficherErreurInscription(){
- ?>
- <div class="alert alert-primary" role="alert">
-   Une erreur est présente !
- </div>
-<?php }
+function afficherErreurInscription($erreur)
+{
+    ?>
+
+    <?php
+    foreach ($erreur as $uneErreur => $value) {
+        ?>
+        <div class="alert alert-primary" role="alert">
+            <?php $value ?>
+        </div>
+        <?php
+    }
+
+}
