@@ -113,7 +113,7 @@ function afficherSideBarUtilisateur($page = null) {
         </div>
         <div class="row mb-3 text-center">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary">S'inscrire</a>
+                <a href="inscription" class="btn btn-outline-primary">S'inscrire</a>
             </div>
         </div>
     </div>

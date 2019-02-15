@@ -16,7 +16,7 @@ $page = (object)
     "titre" => "Page index",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
-    "isConnected" => true,
+    "isConnected" => false,
 
     "nom" => "Affin",
     "prenom" => "Jean-Yves",
