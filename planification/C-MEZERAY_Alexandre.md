@@ -25,7 +25,7 @@
 | I-1 | S-3 | 04 février | 1 heure | [#017](https://github.com/cegepmatane/AcheteTaBaguette/issues/17) : Création d'une page type, [#020](https://github.com/cegepmatane/AcheteTaBaguette/issues/20) : page boutique | creation page boutique et isolement du code  | [ec1724e](https://github.com/cegepmatane/AcheteTaBaguette/commit/ec1724e1dee381613dd5377fd0766b4433b7046b) |
 | I-1 | S-3 | 04 février | 1 heure |  | mise en place de la structure demandé pour github | [arbre](https://github.com/cegepmatane/AcheteTaBaguette/tree/d1ce8628893fb4bbeb31fd55c77909f8d3aeaf0e/source), [commit](https://github.com/cegepmatane/AcheteTaBaguette/commit/d1ce8628893fb4bbeb31fd55c77909f8d3aeaf0e/source) |
 | I-1 | S-3 | 05 février | 2 heure  |  |  Mise en place de mon environnement de développement sur Windows avec une machine virtuelle Ubuntu Serveur | [article à venir]()  |
-| I-1 | S-3 | 06 février | 4 heures |  | Resolution du partage de dossiers entre Windows et les machines vituelles de VirtualBox | [article]() |
+| I-1 | S-3 | 06 février | 4 heures |  | Resolution du partage de dossiers entre Windows et les machines virtuelles de VirtualBox | [article]() |
 | I-1 | S-3 | 08 février | 1 heure |  | Ménage dans les dossiers du projet | [avant](https://github.com/cegepmatane/AcheteTaBaguette/tree/626abe24cafe6bab24df9201858624f9ac50eb34), [après](https://github.com/cegepmatane/AcheteTaBaguette/tree/4d7db9c8552e43cf1cd2e2371895386304892748) |
 | I-1 | S-3 | 09 février | Toute la journée |  | tentative de trouver un client pour se connecter à la BDD. | [article]()  |
 | I-1 | S-3 | 10 février | 3 heures |  | compréention et configuration du virtualhost avec .htaccess |   |
