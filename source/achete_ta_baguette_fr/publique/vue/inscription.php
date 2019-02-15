@@ -3,7 +3,8 @@ require_once("../../commun/vue/entete-fragment.php");
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("erreur-inscription.php");
-require_once("..\..\..\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 
 
 $page = (object)
@@ -24,7 +25,6 @@ function afficherPage($page = null)
     if (!is_object($page)) $page = (object)[];
     afficherEntete($page);
 
-    require_once('../../../achete_ta_baguette_fr_commun/modele/client.class.php');
     if (isset($_POST['submit'])) {
 
         $attribut = new stdClass();
