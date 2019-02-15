@@ -3,6 +3,7 @@ require_once("../../commun/vue/entete-fragment.php");
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("erreur-inscription.php");
+require_once("..\..\..\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
 
 
 $page = (object)
@@ -42,8 +43,12 @@ function afficherPage($page = null)
 
 
         $client = new Client($attribut);
-        $client->envoieVersBDD();
-
+        if(!empty($client->isValide())){
+            afficherErreurInscription();
+        }else{
+        $laBDD = new AccesseurClient();
+        $laBDD->ajouterClient($client);
+        }
     }
     ?>
 

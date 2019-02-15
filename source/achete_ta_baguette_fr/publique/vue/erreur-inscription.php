@@ -1,15 +1,11 @@
 <?php
-function afficherErreurInscription($erreur)
+function afficherErreurInscription()
 {
-    ?>
-    erreur
-    <?php
-    /*foreach ($erreur as $uneErreur => $value) {
-        ?>
+   ?>
         <div class="alert alert-primary" role="alert">
-            <?php $value ?>
+            Une erreur est survenue.
         </div>
-        <?php
-    }*/
+<?php
+
 
 }

@@ -30,6 +30,7 @@ class Client
     private const VILLE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const RUE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM = 7;
+    private const PAYS_NOMBRE_CARACTERE_MAXIMUM = 7;
 
     private static $LISTE_MESSAGE_ERREUR = [];
 
@@ -54,7 +55,6 @@ class Client
 
     function __construct(object $attribut)
     {
-        require_once("..\..\..\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
         if (!is_object($attribut)) $attribut = (object)[];
 
         $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
@@ -70,7 +70,6 @@ class Client
         $this->setCodePostal($attribut->code_postal ?? "");
         $this->setIdClient($attribut->id_client ?? null);
 
-        $this->laBDD = new AccesseurClient();
     }
 
     public function isValide($champ = null)
@@ -289,6 +288,10 @@ class Client
                     "rue-vide" => "La rue ne doit pas être vide",
                     "rue-trop-long" => "Le nombre maximum de caractères pour la rue est : " . self::RUE_NOMBRE_CARACTERE_MAXIMUM,
                     "rue-invalide" => "La rue n'est pas valide",
+
+                    "pays-vide" => "La ville ne doit pas être vide",
+                    "pays-trop-long" => "Le nombre maximum de caractères pour la ville est : " . self::PAYS_NOMBRE_CARACTERE_MAXIMUM,
+                    "pays-non-alphabetique" => "La ville doit contenir uniquement des lettres",
 
                     "code_postal-vide" => "Le code postal ne doit pas être vide",
                     "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
@@ -755,11 +758,6 @@ class Client
         $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
 
     }
-
-    public function envoieVersBDD(){
-        $this->laBDD->ajouterClient($this);
-    }
-
 
 }
 

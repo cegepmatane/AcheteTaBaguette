@@ -30,24 +30,18 @@ class AccesseurClient
     {
         $requete = self::$connexion->prepare($this->AJOUTER_UTILISATEUR);
         $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
-        $requete->bindValue(2, $client->pays, PDO::PARAM_STR);
+        $requete->bindValue(2, $client->prenom, PDO::PARAM_STR);
         $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
         $requete->bindValue(3, $newdate, PDO::PARAM_STR);
         $requete->bindValue(4, $client->email, PDO::PARAM_STR);
-        $requete->bindValue(5, $client->mot_de_passe, PDO::PARAM_STR);
+        $requete->bindValue(5, sha1($client->mot_de_passe), PDO::PARAM_STR);
         $requete->bindValue(6, $client->rue, PDO::PARAM_STR);
         $requete->bindValue(7, $client->ville, PDO::PARAM_STR);
         $requete->bindValue(8, $client->province, PDO::PARAM_STR);
         $requete->bindValue(9, $client->code_postal, PDO::PARAM_STR);
         $requete->bindValue(10, $client->pays, PDO::PARAM_STR);
 
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            return true;
-        }
-
-        return false;
+        return $requete->execute();
 
     }
 
