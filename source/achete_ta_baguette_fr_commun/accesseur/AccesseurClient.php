@@ -1,6 +1,8 @@
 <?php
 
-require_once "BaseDeDonnee.php";
+require_once (CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+
 class AccesseurClient
 {
 
@@ -13,10 +15,10 @@ class AccesseurClient
     private static $MISE_A_JOUR_UTILISATEUR =
         "UPDATE CLIENT SET nomClient = ?, adresse = ?, email = ?) WHERE idClient = ?;";
 
-    private static $GET_ID_UTILISATEUR =
-        "SELECT idClient FROM CLIENT WHERE nomClient = ?, adresse = ?, email = ?";
+    private static $GET_UTILISATEUR_PAR_ID =
+        "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like ?;";
 
-        
+
     private static $connexion = null;
 
     public function __construct()
@@ -26,7 +28,7 @@ class AccesseurClient
         }
     }
 
-    public function ajouterClient( object $client)
+    public function ajouterClient(object $client)
     {
         $requete = self::$connexion->prepare($this->AJOUTER_UTILISATEUR);
         $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
@@ -59,12 +61,10 @@ class AccesseurClient
         return false;
     }
 
-    public function getIdClient(object $client)
+    public function getClientParId($idClient)
     {
-        $requete = self::$connexion->prepare($this->GET_ID_UTILISATEUR);
-        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
-        $requete->bindValue(2, $client->adresse, PDO::PARAM_STR);
-        $requete->bindValue(3, $client->email, PDO::PARAM_STR);
+        $requete = self::$connexion->prepare($this->GET_UTILISATEUR_PAR_ID);
+        $requete->bindValue(1, $idClient);
 
         $requete->execute();
 
@@ -80,8 +80,6 @@ class AccesseurClient
     }
 
     public function miseAJourClient($client)
-    // Va mettre à jour dans le base de données le CLIENT correspondant à l'id du CLIENT passé en paramètre
-    // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
     {
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
         $requete->bindValue(1, $client->nom, PDO::PARAM_STR);

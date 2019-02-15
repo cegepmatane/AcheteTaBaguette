@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\configuration\configuration.php";
+require_once($_SERVER['CONFIGURATION_COMMUN']);
 
 // https://phpdelusions.net/pdo
 class BaseDeDonnee

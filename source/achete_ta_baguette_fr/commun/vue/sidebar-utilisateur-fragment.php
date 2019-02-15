@@ -1,6 +1,10 @@
 <?php
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+
 function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
+
 ?>
 <div class="sidebarLeft">
 

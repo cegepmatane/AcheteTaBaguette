@@ -20,7 +20,7 @@ $page = (object)
 
     "nom" => "Affin",
     "prenom" => "Jean-Yves",
-    "courriel" => "jean-yves@affin.net",
+    "email" => "jean-yves@affin.net",
     "rue" => "616 Av. St-Redempteur",
     "ville" => "Matane",
     "province" => "Québec",
