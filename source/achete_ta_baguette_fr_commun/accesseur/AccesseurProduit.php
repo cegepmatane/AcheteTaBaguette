@@ -1,7 +1,9 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Produit.class.php";
+require_once "../../../achete_ta_baguette_fr_commun/modele/Produit.class.php";
+
+
 
 class AccesseurProduit
 {
@@ -17,6 +19,9 @@ class AccesseurProduit
 
     private static $GET_ID_PRODUIT =
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
+
+	private static $RECUPERER_LISTE_PRODUITS =
+        "SELECT produit.nom, produit.description, produit.prix, produit.stock, categorie.label, produit.srcImage FROM PRODUIT INNER JOIN categorie ON categorie.idCategorie=PRODUIT.idCategorie";
 
 
     private static $connexion = null;
@@ -60,9 +65,31 @@ class AccesseurProduit
         return false;
     }
 
-    public function getIdProduit($produit)
+    public function recupererListeProduits(){
+
+        $listeProduits = [];
+
+        $requete =
+            $connexion->prepare(self::RECUPERER_LISTE_PRODUITS);
+
+        $requete->execute();
+
+        $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+
+        foreach($listeEnregistrement as $enregistrement) {
+
+            $listeProduits[] = new Produit($enregistrement);
+
+        }
+
+        return $listeProduits;
+		
+
+    }
+
+	 public function getIdProduit($produit)
     {
-        $requete = $connexion->prepare($GET_ID_PRODUIT);
+        $requete = $connexion->prepare($GET_ALL_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
@@ -103,3 +130,6 @@ class AccesseurProduit
     }
 
 }
+
+
+?>

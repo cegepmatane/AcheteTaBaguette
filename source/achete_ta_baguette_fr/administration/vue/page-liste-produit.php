@@ -1,5 +1,6 @@
 <?php
-
+require_once"../../../achete_ta_baguette_fr_commun/accesseur/AccesseurProduit.php";
+var $accesseur = new AccesseurProduit();
 function afficherContenu($page = null) {
     if(!is_object($page)) return;
 ?>
