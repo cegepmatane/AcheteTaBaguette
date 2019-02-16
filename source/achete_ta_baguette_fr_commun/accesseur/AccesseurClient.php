@@ -1,7 +1,7 @@
 <?php
 
-require_once (CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once ("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\accesseur\BaseDeDonnee.php");
+require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\Client.class.php");
 
 class AccesseurClient
 {
@@ -17,6 +17,10 @@ class AccesseurClient
 
     private static $GET_UTILISATEUR_PAR_ID =
         "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like ?;";
+
+    private static $GET_UTILISATEUR_PAR_EMAIL =
+        //Remplacer idClient par id ?
+        "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like ?;";
 
 
     private static $connexion = null;
@@ -71,8 +75,7 @@ class AccesseurClient
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
             return $reponse;
-        }
-        else {
+        } else {
             echo "Aucune données trouvés !";
             return $reponse = ["isConnected" => false];
         }
@@ -81,10 +84,7 @@ class AccesseurClient
     public function miseAJourClient($client)
     {
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
-        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
-        $requete->bindValue(2, $client->adresse, PDO::PARAM_STR);
         $requete->bindValue(3, $client->email, PDO::PARAM_STR);
-        $requete->bindValue(5, getidClient($client), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -96,4 +96,18 @@ class AccesseurClient
 
     }
 
+    public function verifierClient($client)
+    {
+        $requete = "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email = '$client->email' ORDER BY idClient DESC LIMIT 1";
+        $stmt = self::$connexion->query($requete);
+        $resultat = $stmt->fetch();
+        if ($stmt->execute()) {
+            while ($row = $stmt->fetch()) {
+                $resultat->idClient = print_r($row->idClient, true);
+                $resultat->motDePasse = print_r($row->motDePasse, true);
+                $resultat->administrateur = print_r($row->administrateur, true);
+            }
+        }
+        return $resultat;
+    }
 }
