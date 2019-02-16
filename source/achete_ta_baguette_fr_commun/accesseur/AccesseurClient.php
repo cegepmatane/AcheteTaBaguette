@@ -63,19 +63,18 @@ class AccesseurClient
 
     public function getClientParId($idClient)
     {
-        $requete = self::$connexion->prepare($this->GET_UTILISATEUR_PAR_ID);
+        $requete = self::$connexion->prepare(self::$GET_UTILISATEUR_PAR_ID);
         $requete->bindValue(1, $idClient);
 
         $requete->execute();
 
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
-            if (!is_array($reponse)) {
-                echo "Erreur getidClient (AccesseurCLIENT.php) !";
-            }
-            if (is_array($reponse)) {
-                return $reponse["idClient"];
-            }
+            return $reponse;
+        }
+        else {
+            echo "Aucune données trouvés !";
+            return $reponse = ["isConnected" => false];
         }
     }
 
