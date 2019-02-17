@@ -9,25 +9,25 @@ class AccesseurProduit
 {
 
     private static $AJOUT_PRODUIT =
-        "INSERT INTO PRODUIT(nomProduit, prix, nbStock, nomCatégorie) VALUES (?,?,?,?,?)";
+        "INSERT INTO PRODUIT(nomProduit, prix, nbStock, nomCatégorie) VALUES (:nomProduit,?,?,?,?);";
 
     private static $SUPPRIMER_PRODUIT =
-        "DELETE FROM PRODUIT WHERE idProduit = ?";
+        "DELETE FROM PRODUIT WHERE idProduit = ?;";
 
     private static $MISE_A_JOUR_PRODUIT =
         "UPDATE PRODUIT SET nomProduit = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
 
     private static $GET_ID_PRODUIT =
-        "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
+        "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?;";
 
 	private static $RECUPERER_LISTE_PRODUITS =
-        "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT ";
+        "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID = 
-        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
+        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?;";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE ?";
+        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE ?;";
 
     private static $connexion = null;
 
