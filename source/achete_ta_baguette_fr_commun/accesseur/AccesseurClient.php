@@ -1,27 +1,26 @@
 <?php
 
-require_once (CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Client.class.php";
 
 class AccesseurClient
 {
 
     private $AJOUTER_UTILISATEUR =
-        "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (:nom,:prenom,:naissance,:email,:motdepasse,:rue,ville,:province,:codePostal,:pays)";
 
     private static $SUPPRIMER_CLIENT =
         "DELETE FROM CLIENT WHERE idClient = ?";
 
     private static $MISE_A_JOUR_UTILISATEUR =
-        "UPDATE CLIENT SET nomClient = ?, adresse = ?, email = ?) WHERE idClient = ?;";
+        "UPDATE CLIENT SET nomClient = :nomClient, adresse = :adresse, email = :email) WHERE idClient = :idClient;";
 
     private static $GET_UTILISATEUR_PAR_ID =
-        "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like ?;";
+        "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
 
     private static $GET_UTILISATEUR_PAR_EMAIL =
-        //Remplacer idClient par id ?
-        "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like ?;";
-
+    //Remplacer idClient par id ?
+    "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like ?;";
 
     private static $connexion = null;
 
@@ -35,17 +34,17 @@ class AccesseurClient
     public function ajouterClient(object $client)
     {
         $requete = self::$connexion->prepare($this->AJOUTER_UTILISATEUR);
-        $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
-        $requete->bindValue(2, $client->prenom, PDO::PARAM_STR);
+        $requete->bindValue(":nom", $client->nom, PDO::PARAM_STR);
+        $requete->bindValue(":prenom", $client->prenom, PDO::PARAM_STR);
         $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
-        $requete->bindValue(3, $newdate, PDO::PARAM_STR);
-        $requete->bindValue(4, $client->email, PDO::PARAM_STR);
-        $requete->bindValue(5, sha1($client->mot_de_passe), PDO::PARAM_STR);
-        $requete->bindValue(6, $client->rue, PDO::PARAM_STR);
-        $requete->bindValue(7, $client->ville, PDO::PARAM_STR);
-        $requete->bindValue(8, $client->province, PDO::PARAM_STR);
-        $requete->bindValue(9, $client->code_postal, PDO::PARAM_STR);
-        $requete->bindValue(10, $client->pays, PDO::PARAM_STR);
+        $requete->bindValue("naissance", $newdate, PDO::PARAM_STR);
+        $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":motdepasse", sha1($client->mot_de_passe), PDO::PARAM_STR);
+        $requete->bindValue(":rue", $client->rue, PDO::PARAM_STR);
+        $requete->bindValue(":ville", $client->ville, PDO::PARAM_STR);
+        $requete->bindValue(":province", $client->province, PDO::PARAM_STR);
+        $requete->bindValue(":codePostal", $client->code_postal, PDO::PARAM_STR);
+        $requete->bindValue(":pays", $client->pays, PDO::PARAM_STR);
 
         return $requete->execute();
 
@@ -68,7 +67,7 @@ class AccesseurClient
     public function getClientParId($idClient)
     {
         $requete = self::$connexion->prepare(self::$GET_UTILISATEUR_PAR_ID);
-        $requete->bindValue(1, $idClient);
+        $requete->bindValue(":idClient", $idClient);
 
         $requete->execute();
 
@@ -83,8 +82,12 @@ class AccesseurClient
 
     public function miseAJourClient($client)
     {
+
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
-        $requete->bindValue(3, $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":nomClient", $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":adresse", $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":idClient", $client->email, PDO::PARAM_INT);
 
         $requete->execute();
 
@@ -103,11 +106,14 @@ class AccesseurClient
         $resultat = $stmt->fetch();
         if ($stmt->execute()) {
             while ($row = $stmt->fetch()) {
-                if(sha1($client->mot_De_Passe) == print_r($row->motDePasse, true)) {
+                if (sha1($client->mot_De_Passe) == print_r($row->motDePasse, true)) {
                     $resultat->idClient = print_r($row->idClient, true);
                     $resultat->motDePasse = print_r($row->motDePasse, true);
                     $resultat->administrateur = print_r($row->administrateur, true);
-                }else $resultat = false;
+                } else {
+                    $resultat = false;
+                }
+
             }
         }
         return $resultat;
