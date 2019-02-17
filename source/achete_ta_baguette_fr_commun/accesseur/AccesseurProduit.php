@@ -1,7 +1,7 @@
 <?php
 
-require_once "BaseDeDonnee.php";
-require_once "../../../achete_ta_baguette_fr_commun/modele/Produit.class.php";
+require_once("BaseDeDonnee.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php");
 
 
 
@@ -23,6 +23,8 @@ class AccesseurProduit
 	private static $RECUPERER_LISTE_PRODUITS =
         "SELECT produit.nom, produit.description, produit.prix, produit.stock, categorie.label, produit.srcImage FROM PRODUIT INNER JOIN categorie ON categorie.idCategorie=PRODUIT.idCategorie";
 
+    private static $RECUPERER_PRODUIT_PAR_ID = 
+        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
 
     private static $connexion = null;
 
@@ -30,6 +32,23 @@ class AccesseurProduit
     {
         if (!self::$connexion) {
             self::$connexion = BaseDeDonnee::getConnexion();
+        }
+    }
+
+    public function recupererProduitParId($idProduit)
+    {
+        $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_ID);
+        $requete->bindValue(1, $idProduit);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            $reponse = $requete->fetch();
+            return $reponse;
+        }
+        else {
+            echo "Aucune données trouvés !";
+            return $reponse = ["isConnected" => false];
         }
     }
 
