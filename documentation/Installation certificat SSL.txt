@@ -21,3 +21,9 @@ Etape 2 : Lancer le bot et lui fournir les informations nécessaire pour procéd
 		
 Etape 3 : Attendre que le certificat se propage (pas obligatoirement)
 		Attendre
+		
+		
+
+Problème(s) éventuel(s) : 
+Le BOT ne peut pas délivrer le certificat à cause d'un fichier innacessible.
+	Solution : Vérifier les .htaccess du site internet
