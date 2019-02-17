@@ -18,9 +18,10 @@ class AccesseurClient
     private static $GET_UTILISATEUR_PAR_ID =
         "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
 
+    // N'est utilisé nul part
     private static $GET_UTILISATEUR_PAR_EMAIL =
     //Remplacer idClient par id ?
-    "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like ?;";
+    "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like :email;";
 
     private static $connexion = null;
 

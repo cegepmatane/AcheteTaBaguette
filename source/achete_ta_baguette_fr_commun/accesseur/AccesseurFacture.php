@@ -7,19 +7,19 @@ class AccesseurClient
 {
 
     private static $AJOUTER_FACTURE =
-        "INSERT INTO FACTURE(idClient, idFacture, nomFacture, montantFacture) VALUES (?,?,?,?)";
+        "INSERT INTO FACTURE(idClient, idFacture, nomFacture, montantFacture) VALUES (:idClient, :idFacture, :nomFacture, :montantFacture)";
 
     private static $SUPPRIMER_FACTURE =
-        "DELETE FROM FACTURE WHERE idFacture = ?";
+        "DELETE FROM FACTURE WHERE idFacture = :idFacture";
 
     private static $MISE_A_JOUR_FACTURE =
-        "UPDATE FACTURE SET nomFacture = ?, montantFacture = ?) WHERE idFacture = ?;";
+        "UPDATE FACTURE SET nomFacture = :nomFacture, montantFacture = :montantFacture) WHERE idFacture = :idFacture;";
 
     private static $GET_ID_CLIENT =
-        "SELECT idClient FROM FACTURE WHERE idFacture = ?";
+        "SELECT idClient FROM FACTURE WHERE idFacture = :idFacture";
 
     private static $GET_ID_FACTURE =
-        "SELECT idFacture FROM FACTURE WHERE idClient = ? AND nomFacture= ?";
+        "SELECT idFacture FROM FACTURE WHERE idClient = :idClient AND nomFacture= :nomFacture";
 
     private static $connexion = null;
 
@@ -33,10 +33,10 @@ class AccesseurClient
     public function ajouterFacture($facture)
     {
         $requete = $connexion->prepare($AJOUTER_FACTURE);
-        $requete->bindValue(1, $facture->getIdClient(), PDO::PARAM_STR);
-        $requete->bindValue(2, $facture->getIdFacture(), PDO::PARAM_STR);
-        $requete->bindValue(3, $facture->getNomFacture(), PDO::PARAM_STR);
-        $requete->bindValue(4, $facture->getMontantFacture(), PDO::PARAM_STR);
+        $requete->bindValue(":idClient", $facture->getIdClient(), PDO::PARAM_INT);
+        $requete->bindValue(":idFacture", $facture->getIdFacture(), PDO::PARAM_INT);
+        $requete->bindValue(":nomFacture", $facture->getNomFacture(), PDO::PARAM_INT);
+        $requete->bindValue(":montantFacture", $facture->getMontantFacture(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -51,7 +51,7 @@ class AccesseurClient
     public function supprimerFacture($facture)
     {
         $requete = $connexion->prepare($SUPPRIMER_FACTURE);
-        $requete->bindValue(1, $facture->getIdFacture());
+        $requete->bindValue(":idFacture", $facture->getIdFacture());
 
         $requete->execute();
 
@@ -83,7 +83,7 @@ class AccesseurClient
     public function getIdFacture($facture)
     {
         $requete = $connexion->prepare($GET_ID_CLIENT);
-        $requete->bindValue(1, $facture->getIdClient(), PDO::PARAM_STR);
+        $requete->bindValue(":idFacture", $facture->getIdClient(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -103,9 +103,9 @@ class AccesseurClient
     // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
     {
         $requete = $connexion->prepare($MISE_A_JOUR_FACTURE);
-        $requete->bindValue(1, $facture->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $facture->getmontantFacture(), PDO::PARAM_STR);
-        $requete->bindValue(3, $facture->getIdFacture(), PDO::PARAM_STR);
+        $requete->bindValue(":nomFacture", $facture->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(":montantFacture", $facture->getmontantFacture(), PDO::PARAM_STR);
+        $requete->bindValue(":idFacture", $facture->getIdFacture(), PDO::PARAM_STR);
 
         $requete->execute();
 
