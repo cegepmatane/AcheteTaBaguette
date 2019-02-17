@@ -1,3 +1,16 @@
 Procédure d'installation du certificat SSL sur le serveur.
 Nous utiliserons Let's Encrypt.
 
+Notre configuration : Apache sous Ubuntu Server 18.04 (LTS)
+
+Etape 1 : Installer Certbot
+		Pour se faire, taper les commandes suivantes, elles permettent d'ajouter le PPA de l'équipe Certbot aux dépôts locaux.
+		
+		sudo apt-get update
+		sudo apt-get install software-properties-common
+		sudo add-apt-repository universe
+		sudo add-apt-repository ppa:certbot/certbot
+		sudo apt-get update
+		sudo apt-get install certbot python-certbot-apache
+
+Etape 2 : Lancer le bot et lui fournir les informations nécessaire pour procéder à l'installation du certificat
