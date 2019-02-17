@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
+print_r($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 
 function afficherSideBarUtilisateur($page = null) {

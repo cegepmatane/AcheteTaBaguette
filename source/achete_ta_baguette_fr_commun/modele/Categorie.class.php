@@ -1,6 +1,6 @@
 <?php
 
-class Produit
+class Categorie
 {
 
 private $listeMessageErreurActif = [];
@@ -63,7 +63,7 @@ private $listeMessageErreurActif = [];
 
 
 	if(!is_object($attribut)) $attribut = (object)[];
-		$this->setIdCategorie($attribut->idCategorie ?? null)
+		$this->setIdCategorie($attribut->idCategorie ?? null);
         $this->setLabel($attribut->label?? "");
         $this->setDescription($attribut->description ?? "");
         
@@ -114,6 +114,4 @@ private $listeMessageErreurActif = [];
         return $this->description;
     }
 
-	public function recupererCategorieParId($idCategorie)
-
-}
+	}

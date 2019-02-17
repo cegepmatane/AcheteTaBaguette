@@ -5,10 +5,12 @@ class Produit
 
 private $listeMessageErreurActif = [];
 	private $idProduit;
-    private $nomProduit;
+    private $nom;
+    private $description;
     private $prix;
-    private $categorie;
-    private $nbStock;
+    private $idCategorie;
+    private $stock;
+    private $srcImage;
     
 	private static function getListeMessageErreur(){
 
@@ -63,12 +65,16 @@ private $listeMessageErreurActif = [];
 	  
 
 
-	if(!is_object($attribut)) $attribut = (object)[];
+	if(!is_object($attribut)){ 
+        $attribut = (object)[];
+    }
 		$this->setIdProduit($attribut->idProduit ?? "");
         $this->setNom($attribut->nom ?? "");
         $this->setPrix($attribut->prix ?? null);
-        $this->setCategorie($attribut->categorie ?? NULL);
-		$this->setNbStock($attribut->nbStock ?? NULL);
+        $this->setIdCategorie($attribut->idCategorie ?? NULL);
+		$this->setStock($attribut->stock ?? NULL);
+        $this->setSrcImage($attribut->srcImage ?? NULL);
+        $this->setDescription($attribut->description ?? "");
         
     }
 
@@ -98,6 +104,16 @@ private $listeMessageErreurActif = [];
       $this->nom=$nouveauNom;
     }
 
+     public function setDescription($nouvelleDescription)
+    {
+      $this->description=$nouvelleDescription;
+    }
+
+     public function setSrcImage($nouveauSrcImage)
+    {
+      $this->srcImage=$nouveauSrcImage;
+    }
+
     public function setPrix($nouveauPrix)
     {
         if ($nouveauPrix < 0) {
@@ -107,23 +123,32 @@ private $listeMessageErreurActif = [];
         }
     }
 
-    public function setCategorie($nouvelleCategorie)
+    public function setIdCategorie($nouvelleCategorie)
     {
-        $this->categorie = $nouvelleCategorie;
+        $this->idCategorie = $nouvelleCategorie;
     }
 
-    public function setNbStock($nouveauStock)
+    public function setStock($nouveauStock)
     {
         if ($nouveauStock < 0) {
             $this->nbStock = 0;
         } else {
-            $this->nbStock = $nouveauStock;
+            $this->stock = $nouveauStock;
         }
     }
 
     public function getNom()
     {
-        return $this->nomProduit;
+        return $this->nom;
+    }
+
+        public function getDescription()
+    {
+        return $this->description;
+    }
+      public function getSrcImage()
+    {
+        return $this->srcImage;
     }
 	public function getIdProduit()
     {
@@ -133,13 +158,13 @@ private $listeMessageErreurActif = [];
     {
         return $this->prix;
     }
-    public function getCategorie()
+    public function getIdCategorie()
     {
-        return $this->categorie;
+        return $this->idCategorie;
     }
-    public function getNnbStock()
+    public function getStock()
     {
-        return $this->nbStock;
+        return $this->stock;
     }
     public function getId(){
         return $this->idProduit;

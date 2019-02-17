@@ -21,7 +21,7 @@ class AccesseurProduit
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
 
 	private static $RECUPERER_LISTE_PRODUITS =
-        "SELECT produit.nom, produit.description, produit.prix, produit.stock, categorie.label, produit.srcImage FROM PRODUIT INNER JOIN categorie ON categorie.idCategorie=PRODUIT.idCategorie";
+        "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT ";
 
     private static $RECUPERER_PRODUIT_PAR_ID = 
         "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
@@ -88,8 +88,7 @@ class AccesseurProduit
 
         $listeProduits = [];
 
-        $requete =
-            $connexion->prepare(self::RECUPERER_LISTE_PRODUITS);
+        $requete = self::$connexion->prepare(self::$RECUPERER_LISTE_PRODUITS);
 
         $requete->execute();
 
@@ -108,7 +107,7 @@ class AccesseurProduit
 
 	 public function getIdProduit($produit)
     {
-        $requete = $connexion->prepare($GET_ALL_PRODUIT);
+        $requete = $connexion->prepare($GET_ID_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
