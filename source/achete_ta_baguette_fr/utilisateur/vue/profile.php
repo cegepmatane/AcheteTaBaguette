@@ -2,6 +2,7 @@
 require_once("..\\vue\\entete-fragment.php");
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("..\commun\\vue\pied-de-page-fragment.php");
+require_once("..\commun\\vue\\erreur.php");
 require_once(CHEMIN_RACINE_COMMUN . "/configuration/configuration.php");
 
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");

@@ -25,3 +25,4 @@
 1  |4   |16/02/2019   |6 heures   |#15 #22 Permettre à l'utilisateur de se connecter   | https://github.com/cegepmatane/AcheteTaBaguette/commit/c62e1c93e23a9fd64c7c288ac36e08ab78269df4  |   |   |  
 1  |4   |16/02/2019   |1 heures   | Réalisation de la page à propos                     |  https://github.com/cegepmatane/AcheteTaBaguette/commit/d8511f6b395ecda428a735f82af001f6df738bfc |    |   |
 1  |4   |17/02/2019   |2 heures   | #45 Réalisation de la page boutique                    |https://github.com/cegepmatane/AcheteTaBaguette/commit/049fb8c504ddade126d9a3007ebcfc18357b79f4 |    |   |
+1  |4   |17/02/2019   |2 heures   | #48 Réalisation de la page profile                      |https://github.com/cegepmatane/AcheteTaBaguette/issues/48                                      |    |    |
