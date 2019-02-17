@@ -1,7 +1,7 @@
 <?php
 
 require_once("BaseDeDonnee.php");
-require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\produit.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php");
 
 
 
