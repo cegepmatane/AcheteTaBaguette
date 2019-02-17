@@ -16,7 +16,7 @@ $page = (object)
     [
     "titre" => "Page index",
     "titrePrincipal" => "Le titre principal H1",
-    "itemMenuActif" => "accueil",
+    "itemMenuActif" => "baguette",
     "isConnected" => true,
 
     "nom" => "Affin",

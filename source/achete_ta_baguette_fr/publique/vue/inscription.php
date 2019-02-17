@@ -86,7 +86,7 @@ function afficherPage($page = null)
                                            required>
                                 </div>
                                 <div class="col-2">
-                                    <label class="col-form-label">Code Postale </label>
+                                    <label class="col-form-label">Code Postal </label>
                                     <input type="text" class="form-control" id="codePostale" name="codePostale"
                                            required>
                                 </div>

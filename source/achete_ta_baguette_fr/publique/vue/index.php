@@ -3,7 +3,6 @@
 require_once("entete-fragment.php");
 require_once("sidebar-utilisateur-fragment.php");
 require_once("pied-de-page-fragment.php");
-require_once("../../publique/vue/boutique-fragment.php");
 //require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
 
 /*
@@ -17,7 +16,7 @@ $page = (object)
     [
     "titre" => "Page index",
     "titrePrincipal" => "Le titre principal H1",
-    "itemMenuActif" => $_GET['type'],
+    "itemMenuActif" => "accueil",
     "isConnected" => false,
     "idClient" => 1
 
@@ -56,7 +55,7 @@ function afficherPage($page = null){
 
             <!-- Contenu -->
             <div class="col-md-8">
-                <?php afficherContenu($page); ?>
+                <?php //afficherContenu($page); ?>
             </div><!-- Fin du contenu -->
 
             <!-- Bar lateral droite -->
