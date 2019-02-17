@@ -14,3 +14,9 @@ Etape 1 : Installer Certbot
 		sudo apt-get install certbot python-certbot-apache
 
 Etape 2 : Lancer le bot et lui fournir les informations nécessaire pour procéder à l'installation du certificat
+		Pour se faire, taper la commande suivante et répondre aux questions posées.
+		
+		sudo certbot --apache
+		Répondre aux questions du bot.
+		
+Etape 3 : Attendre que le certificat se propage (pas obligatoirement)
