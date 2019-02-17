@@ -12,8 +12,8 @@ class AccesseurClient
     private static $SUPPRIMER_CLIENT =
         "DELETE FROM CLIENT WHERE idClient = ?";
 
-    private static $MISE_A_JOUR_UTILISATEUR =
-        "UPDATE CLIENT SET nomClient = :nomClient, adresse = :adresse, email = :email) WHERE idClient = :idClient;";
+    private $MISE_A_JOUR_UTILISATEUR =
+        "UPDATE CLIENT SET nom = ?, prenom = ?, naissance= ?, email= ?, rue = ?, ville = ?, province = ?, codePostal = ?, pays = ? WHERE idClient = ?;";
 
     private static $GET_UTILISATEUR_PAR_ID =
         "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
@@ -85,10 +85,17 @@ class AccesseurClient
     {
 
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
-        $requete->bindValue(":nomClient", $client->email, PDO::PARAM_STR);
-        $requete->bindValue(":adresse", $client->email, PDO::PARAM_STR);
-        $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
-        $requete->bindValue(":idClient", $client->email, PDO::PARAM_INT);
+            $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
+            $requete->bindValue(2, $client->prenom, PDO::PARAM_STR);
+            $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
+            $requete->bindValue(3, $newdate, PDO::PARAM_STR);
+            $requete->bindValue(4, $client->email, PDO::PARAM_STR);
+            $requete->bindValue(5, $client->rue, PDO::PARAM_STR);
+            $requete->bindValue(6, $client->ville, PDO::PARAM_STR);
+            $requete->bindValue(7, $client->province, PDO::PARAM_STR);
+            $requete->bindValue(8, $client->code_postal, PDO::PARAM_STR);
+            $requete->bindValue(9, $client->pays, PDO::PARAM_STR);
+            $requete->bindValue(10, $client->id, PDO::PARAM_STR);
 
         $requete->execute();
 

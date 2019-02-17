@@ -3,13 +3,13 @@ require_once("../../commun/vue/entete-fragment.php");
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("erreur-inscription.php");
-require_once (CHEMIN_RACINE_COMMUN . "/accesseur/AcesseurClient.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
+require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\Client.class.php");
 
 if(!isset($_POST['page'])) {
     $page = (object)
     [
-        "titre" => "Page d'inscription",
+        "titre" => "Page de connexion",
         "titrePrincipal" => "Le titre principal H1",
         "itemMenuActif" => "accueil",
         "isConnected" => true,
