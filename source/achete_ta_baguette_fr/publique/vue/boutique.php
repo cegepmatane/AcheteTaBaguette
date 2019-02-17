@@ -51,11 +51,14 @@ function afficherProduit(){
         $type = 1;
     }else if($_GET['type'] == 'viennoiserie'){
         $type = 2;
+    }else{
+        $type = false;
     }
 
     if($type != false){
     $produitListe = $BDD->recupererProduitParType($type);
 
+    echo '<div class="row justify-content-md-center">';
     foreach ($produitListe as $produit ) {
         ?>
         <div class="col-md-2 m-2 border">
@@ -88,6 +91,7 @@ function afficherProduit(){
         </div>
         <?php
     }
+    echo '</div>';
     }
 }
 
