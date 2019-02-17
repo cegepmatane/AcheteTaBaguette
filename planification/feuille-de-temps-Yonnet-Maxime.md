@@ -22,3 +22,6 @@
 1  |4   |13/02/2019   |2 heures   |#15 ajout des attributs ville rue région province à l'inscription   | https://github.com/cegepmatane/AcheteTaBaguette/commit/b172e5d817439d44212f0260ffa82783edf7559  |   |   |  
 1  |4   |13/02/2019   |2 heures   |#15 Début d'ajout des messages d'erreur détaillé   | https://github.com/cegepmatane/AcheteTaBaguette/commit/9ded519a022fabf56249d1e929d13888c1c3f150  |   |   |  
 1  |4   |14/02/2019   |3 heures   |#15 #22 Insertion du client dans la base de donnée   | https://github.com/cegepmatane/AcheteTaBaguette/commit/9ded519a022fabf56249d1e929d13888c1c3f150  |   |   |  
+1  |4   |16/02/2019   |6 heures   |#15 #22 Permettre à l'utilisateur de se connecter   | https://github.com/cegepmatane/AcheteTaBaguette/commit/c62e1c93e23a9fd64c7c288ac36e08ab78269df4  |   |   |  
+1  |4   |16/02/2019   |1 heures   | Réalisation de la page à propos                     |  https://github.com/cegepmatane/AcheteTaBaguette/commit/d8511f6b395ecda428a735f82af001f6df738bfc |    |   |
+1  |4   |17/02/2019   |2 heures   | #45 Réalisation de la page boutique                    |https://github.com/cegepmatane/AcheteTaBaguette/commit/049fb8c504ddade126d9a3007ebcfc18357b79f4 |    |   |
