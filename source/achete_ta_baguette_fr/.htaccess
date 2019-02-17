@@ -1,4 +1,7 @@
 RewriteEngine On
 
 RewriteRule ^/?$ /commun/vue/
+RewriteRule ^a-propos/?$ /publique/vue/a-propos.php
+RewriteRule ^connexion/?$ /publique/vue/connexion.php
 RewriteRule ^inscription/?$ /publique/vue/inscription.php
+RewriteRule ^boutique/([a-z]+)/?$ /publique/vue/boutique.php?type=$1

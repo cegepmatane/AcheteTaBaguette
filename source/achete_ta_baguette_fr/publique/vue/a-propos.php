@@ -46,7 +46,7 @@ afficherEntete($page);
     </div><!-- Fin du contenu -->
 
     <!-- Bar lateral droite -->
-    !-- Fin bar lateral droite -->
+    <!-- Fin bar lateral droite -->
 
 </div><!-- Fin centre de page -->
     <?php afficherPiedDePage($page); ?>
