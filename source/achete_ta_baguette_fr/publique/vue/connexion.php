@@ -33,6 +33,8 @@ function afficherPage($page = null)
             session_start();
             //Remplacer idclient par ID ?
             $_SESSION["id"] = $resultat->idClient;
+            $_SESSION["connection"] = true;
+            $_SESSION['admin'] = $resultat->admin == 1 ? true:false;
             header("Location: inscription.php");
         }else{
             afficherErreurInscription();

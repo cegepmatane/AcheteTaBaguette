@@ -103,11 +103,11 @@ class AccesseurClient
         $resultat = $stmt->fetch();
         if ($stmt->execute()) {
             while ($row = $stmt->fetch()) {
-                if(sha1($client->motDePasse) == print_r($row->motDePasse, true)) {
+                if(sha1($client->mot_De_Passe) == print_r($row->motDePasse, true)) {
                     $resultat->idClient = print_r($row->idClient, true);
                     $resultat->motDePasse = print_r($row->motDePasse, true);
                     $resultat->administrateur = print_r($row->administrateur, true);
-                }
+                }else $resultat = false;
             }
         }
         return $resultat;
