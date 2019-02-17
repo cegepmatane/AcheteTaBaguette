@@ -1,7 +1,7 @@
 <?php
 
-require_once ("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\accesseur\BaseDeDonnee.php");
-require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\Client.class.php");
+require_once (CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
 
 class AccesseurClient
 {
@@ -103,9 +103,11 @@ class AccesseurClient
         $resultat = $stmt->fetch();
         if ($stmt->execute()) {
             while ($row = $stmt->fetch()) {
-                $resultat->idClient = print_r($row->idClient, true);
-                $resultat->motDePasse = print_r($row->motDePasse, true);
-                $resultat->administrateur = print_r($row->administrateur, true);
+                if(sha1($client->motDePasse) == print_r($row->motDePasse, true)) {
+                    $resultat->idClient = print_r($row->idClient, true);
+                    $resultat->motDePasse = print_r($row->motDePasse, true);
+                    $resultat->administrateur = print_r($row->administrateur, true);
+                }
             }
         }
         return $resultat;
