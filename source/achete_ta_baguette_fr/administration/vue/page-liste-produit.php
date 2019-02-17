@@ -1,7 +1,13 @@
 <?php
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurCategorie.php");
 
 function afficherContenu($page = null) {
     if(!is_object($page)) return;
+    $laBDD = new AccesseurProduit();
+    $laBDD2 = new AccesseurCategorie();
+    $listeProduits = $laBDD-> recupererListeProduits();
 ?>
         <!-- Centre de page -->
         <div class="row mb-3 text-center">
@@ -15,7 +21,7 @@ function afficherContenu($page = null) {
 				<thead>
 			<tr>
       <th  scope="col">Image</th>
-	  <th  scope="col">Catégorie</th>
+	  <th  scope="col">Cat&eacute;gorie</th>
       <th  scope="col">Produit</th>
       <th  scope="col">Description</th>
       <th  scope="col">Stock</th>
@@ -24,67 +30,21 @@ function afficherContenu($page = null) {
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <?php foreach ($listeProduits as $value) { ?>
+       <tr>
       <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
-
-	    <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
-
-        <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
-
-        <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
-
-        <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
-
-        <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
-      <td >Baguette</td>
-	  <td >Baguette classique</td>
-      <td >rfedfuhdruhurhduhvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaifguhdviudhiuhv</td>
-	  <td>12</td>
-	  <td ><input type="image" src="../illustration/edit.png" /></td>
-	  <td ><input type="image" src="../illustration/trash.png" /></td>
-    </tr>
+      <td> <?php echo $laBDD2->recupererCategorieParId((int)$value->getIdCategorie()); ?> </td>
+      <td> <?php echo $value->getNom();?></td>
+      <td> <?php echo $value->getDescription();?></td>
+      <td> <?php echo "".$value->getStock()."";?></td>
+      <td> <input type="image" src="../illustration/edit.png" /></td>
+      <td> <input type="image" src="../illustration/trash.png" /></td>
+    </tr>;
+    <?php } ?>
     
-  </tbody>
+    
+    
+   </tbody>
 </table>
 
 
@@ -92,7 +52,7 @@ function afficherContenu($page = null) {
 				<thead>
 			<tr>
       <th  scope="col">Image</th>
-	  <th  scope="col">Catégorie</th>
+	  <th  scope="col">Cat&eacute;gorie</th>
       <th  scope="col">Produit</th>
       <th  scope="col">Description</th>
       <th  scope="col">Stock</th>
@@ -110,8 +70,6 @@ function afficherContenu($page = null) {
 	  <td ><input type="image" src="../illustration/add.png" /></td>
 	  
     </tr>
-
-	
     
   </tbody>
 </table>
@@ -122,6 +80,7 @@ function afficherContenu($page = null) {
          
             
         </div><!-- Fin centre de page -->
-        
-<?php
+
+        <?php
 }
+    ?>

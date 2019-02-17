@@ -4,6 +4,7 @@ require_once("entete-fragment-admin.php");
 require_once("page-liste-produit.php");
 require_once("pied-de-page-fragment.php");
 
+
 /*
 Un tableau associatif en clé valeur permet de définir les éléments dynamiques
 de la page qui ne sont pas en lien avec les données du modèle. En le changeant

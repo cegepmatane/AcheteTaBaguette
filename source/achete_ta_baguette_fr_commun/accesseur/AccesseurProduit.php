@@ -1,7 +1,9 @@
 <?php
 
-require_once "BaseDeDonnee.php";
-require_once "../modele/Produit.class.php";
+require_once("BaseDeDonnee.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php");
+
+
 
 class AccesseurProduit
 {
@@ -18,6 +20,11 @@ class AccesseurProduit
     private static $GET_ID_PRODUIT =
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?";
 
+	private static $RECUPERER_LISTE_PRODUITS =
+        "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT ";
+
+    private static $RECUPERER_PRODUIT_PAR_ID = 
+        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
 
     private static $connexion = null;
 
@@ -25,6 +32,23 @@ class AccesseurProduit
     {
         if (!self::$connexion) {
             self::$connexion = BaseDeDonnee::getConnexion();
+        }
+    }
+
+    public function recupererProduitParId($idProduit)
+    {
+        $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_ID);
+        $requete->bindValue(1, $idProduit);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            $reponse = $requete->fetch();
+            return $reponse;
+        }
+        else {
+            echo "Aucune données trouvés !";
+            return $reponse = ["isConnected" => false];
         }
     }
 
@@ -60,7 +84,28 @@ class AccesseurProduit
         return false;
     }
 
-    public function getIdProduit($produit)
+    public function recupererListeProduits(){
+
+        $listeProduits = [];
+
+        $requete = self::$connexion->prepare(self::$RECUPERER_LISTE_PRODUITS);
+
+        $requete->execute();
+
+        $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+
+        foreach($listeEnregistrement as $enregistrement) {
+
+            $listeProduits[] = new Produit($enregistrement);
+
+        }
+
+        return $listeProduits;
+		
+
+    }
+
+	 public function getIdProduit($produit)
     {
         $requete = $connexion->prepare($GET_ID_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
@@ -103,3 +148,6 @@ class AccesseurProduit
     }
 
 }
+
+
+?>

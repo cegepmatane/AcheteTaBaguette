@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 function afficherEntete($page = null) {
     if(!is_object($page)) return;
 ?>

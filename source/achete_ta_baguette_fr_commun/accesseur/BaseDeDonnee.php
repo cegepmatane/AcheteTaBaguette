@@ -1,14 +1,16 @@
 <?php
 
-require_once "./configuration/configuration.php";
+require_once($_SERVER['CONFIGURATION_COMMUN']);
 
 // https://phpdelusions.net/pdo
 class BaseDeDonnee
 {
-    private static $pdo = null;
 
+    private static $pdo = null;
+    private static $isInitialise = false;
     public static function getConnexion()
     {
+
         if (!self::$pdo) {
             $host = BASE_DE_DONNEE_HOST;
             $db = BASE_DE_DONNEE_NOM;
@@ -23,7 +25,7 @@ class BaseDeDonnee
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
             try {
-                $pdo = new PDO($dsn, $user, $pass, $options);
+                    self::$pdo = new PDO($dsn, $user, $pass, $options);
             } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }self::$isInitialise = true;

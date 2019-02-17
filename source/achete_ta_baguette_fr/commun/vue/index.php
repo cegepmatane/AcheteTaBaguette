@@ -3,6 +3,7 @@
 require_once("entete-fragment.php");
 require_once("sidebar-utilisateur-fragment.php");
 require_once("pied-de-page-fragment.php");
+//require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
 
 /*
 Un tableau associatif en clé valeur permet de définir les éléments dynamiques
@@ -16,17 +17,19 @@ $page = (object)
     "titre" => "Page index",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
-    "isConnected" => true,
+    "isConnected" => false,
+    "idClient" => 1
 
-    "nom" => "Affin",
-    "prenom" => "Jean-Yves",
-    "courriel" => "jean-yves@affin.net",
-    "rue" => "616 Av. St-Redempteur",
-    "ville" => "Matane",
-    "province" => "Québec",
-    "codePostal" => "G4W 0H2",
-    "pays" => "Canada",
-    "id_personne" => 1
+    /*"id_personne" => Client::ID_CLIENT,
+    "nom" => Client::NOM,
+    "prenom" => Client::PRENOM,
+    "email" => Client::EMAIL,
+    "province" => Client::PROVINCE,
+    "region" => Client::REGION,
+    "ville" => Client::VILLE,
+    "rue" => Client::RUE,
+    "codePostal" => Client::CODE_POSTAL*/
+    
     ];
 
 /*

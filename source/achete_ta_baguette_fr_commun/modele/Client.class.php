@@ -1,7 +1,7 @@
 <?php
-
 class Client
 {
+
 
     public const ID_CLIENT = "id_client";
     public const NOM = "nom";
@@ -30,6 +30,7 @@ class Client
     private const VILLE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const RUE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM = 7;
+    private const PAYS_NOMBRE_CARACTERE_MAXIMUM = 7;
 
     private static $LISTE_MESSAGE_ERREUR = [];
 
@@ -37,32 +38,33 @@ class Client
 
     private $listeMessageErreurActif = [];
 
-    private $nom;
-    private $prenom;
-    private $email;
-    private $date_de_naissance;
-    private $mot_de_passe;
-    private $mot_de_passe_verif;
-    private $province;
-    private $region;
-    private $ville;
-    private $rue;
-    private $code_postal;
-    private $id_client;
+    public $nom;
+    public $prenom;
+    public $email;
+    public $date_de_naissance;
+    public $mot_de_passe;
+    public $mot_de_passe_verif;
+    public $province;
+    public $pays;
+    public $ville;
+    public $rue;
+    public $code_postal;
+    public $id_client;
+
+    private $laBDD;
 
     function __construct(object $attribut)
     {
-
         if (!is_object($attribut)) $attribut = (object)[];
 
         $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
         $this->setNom($attribut->nom ?? "");
         $this->setPrenom($attribut->prenom ?? "");
         $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
-        $this->setEmail($attribut->email ?? "");
+        $this->setEmail($attribut->mail ?? "");
         $this->setMotDePasse($attribut->mot_de_passe ?? "");
         $this->setProvince($attribut->province ?? "");
-        $this->setRegion($attribut->region ?? "");
+        $this->setPays($attribut->pays ?? "");
         $this->setVille($attribut->ville ?? "");
         $this->setRue($attribut->rue ?? "");
         $this->setCodePostal($attribut->code_postal ?? "");
@@ -82,12 +84,11 @@ class Client
             $this->setEmail($this->email);
             $this->setMotDePasse($this->mot_de_passe);
             $this->setProvince($this->province);
-            $this->setRegion($this->region);
+            $this->setPays($this->pays);
             $this->setVille($this->ville);
             $this->setRue($this->rue);
             $this->setCodePostal($this->code_postal);
-
-            return empty($this->listeMessageErreurActif);
+            return $this->listeMessageErreurActif;
 
         }
 
@@ -288,6 +289,10 @@ class Client
                     "rue-trop-long" => "Le nombre maximum de caractères pour la rue est : " . self::RUE_NOMBRE_CARACTERE_MAXIMUM,
                     "rue-invalide" => "La rue n'est pas valide",
 
+                    "pays-vide" => "La ville ne doit pas être vide",
+                    "pays-trop-long" => "Le nombre maximum de caractères pour la ville est : " . self::PAYS_NOMBRE_CARACTERE_MAXIMUM,
+                    "pays-non-alphabetique" => "La ville doit contenir uniquement des lettres",
+
                     "code_postal-vide" => "Le code postal ne doit pas être vide",
                     "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
                     "code_postal-invalide" => "Le code postal n'est pas valide"
@@ -417,6 +422,7 @@ class Client
                 self::getListeMessageErreur()['prenom-vide'];
 
             return;
+
         }
 
         if (strlen($prenom) > self::PRENOM_NOMBRE_CARACTERE_MAXIMUM) {
@@ -435,7 +441,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->$prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
+        $this->prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
 
     }
 
@@ -587,47 +593,47 @@ class Client
 
         // Nettoyage en second
 
-        $this->$province = filter_var($province, FILTER_SANITIZE_STRING);
+        $this->province = filter_var($province, FILTER_SANITIZE_STRING);
 
     }
 
-    public function getRegion()
+    public function getPays()
     {
 
-        return $this->region;
+        return $this->pays;
 
     }
 
-    public function setRegion($region)
+    public function setPays($pays)
     {
 
         // Validation en premier
 
-        if (empty($region)) {
+        if (empty($pays)) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-vide'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-vide'];
 
             return;
         }
 
-        if (strlen($region) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
+        if (strlen($pays) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-trop-long'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-trop-long'];
 
         }
 
-        if (!self::validerNomPropre($region)) {
+        if (!self::validerNomPropre($pays)) {
 
-            $this->listeMessageErreurActif['region'][] =
-                self::getListeMessageErreur()['region-non-alphabetique'];
+            $this->listeMessageErreurActif['pays'][] =
+                self::getListeMessageErreur()['pays-non-alphabetique'];
 
         }
 
         // Nettoyage en second
 
-        $this->$region = filter_var($region, FILTER_SANITIZE_STRING);
+        $this->pays = filter_var($pays, FILTER_SANITIZE_STRING);
 
     }
 
@@ -667,7 +673,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->$ville = filter_var($ville, FILTER_SANITIZE_STRING);
+        $this->ville = filter_var($ville, FILTER_SANITIZE_STRING);
 
     }
 
@@ -708,7 +714,7 @@ class Client
 
         // Nettoyage en second
 
-        $this->region = filter_var($this->region, FILTER_SANITIZE_STRING);
+        $this->rue = filter_var($rue, FILTER_SANITIZE_STRING);
 
     }
 
@@ -749,10 +755,9 @@ class Client
 
         // Nettoyage en second
 
-        $this->$code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
+        $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
 
     }
-
 
 }
 

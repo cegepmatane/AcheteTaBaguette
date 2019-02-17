@@ -1,6 +1,14 @@
 <?php
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+print_r($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
+
 function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
+
+    $laBDD = new AccesseurClient();
+    $client = $laBDD->getClientParId($page->idClient);
+
 ?>
 <div class="sidebarLeft">
 
@@ -11,7 +19,7 @@ function afficherSideBarUtilisateur($page = null) {
     <div class="connecter">
         <div class="row mb-3">
             <div class="col-md-12">
-                <h3>Bonsoir <?php echo $page->prenom; ?> </h3>
+                <h3>Bonsoir <?php echo $client->prenom; ?> </h3>
             </div>
         </div>
 
@@ -37,31 +45,31 @@ function afficherSideBarUtilisateur($page = null) {
                         <div class="row">
                             <div class="col-md-12">
                                 <span>Rue :</span>
-                                <span><?php echo $page->rue; ?></span>
+                                <span><?php echo $client->rue; ?></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <span>Ville :</span>
-                                <span><?php echo $page->ville; ?></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Province :</span>
-                                <span><?php echo $page->province; ?></span>
+                                <span><?php echo $client->ville; ?></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <span>Code postal :</span>
-                                <span><?php echo $page->codePostal; ?></span>
+                                <span><?php echo $client->codePostal; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Province :</span>
+                                <span><?php echo $client->province; ?></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <span>Pays :</span>
-                                <span><?php echo $page->pays; ?></span>
+                                <span><?php echo $client->pays; ?></span>
                             </div>
                         </div>
                     </div>
@@ -109,7 +117,7 @@ function afficherSideBarUtilisateur($page = null) {
         </div>
         <div class="row mb-3 text-center">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary">S'inscrire</a>
+                <a href="inscription" class="btn btn-outline-primary">S'inscrire</a>
             </div>
         </div>
     </div>

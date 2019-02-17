@@ -19,5 +19,6 @@
 1  |4   |11/02/2019   |2 Heures 30  |#15 Ajout de vérification mot de passe + mail + date   |https://github.com/cegepmatane/AcheteTaBaguette/commit/0453ab96dfb4929573fe2ab77c597fac6a90c6d7   |   |   |
 1  |4   |11/02/2019   |15 minutes   |Importation de la storyBoard de connexion   |   |   |   |
 1  |4   |11/02/2019   |2 heures   |#15 implémentatino de la bdd et premieres tentatives d'insertion   | https://github.com/cegepmatane/AcheteTaBaguette/commit/ebd91720ffbbfce6c5aa25feb2cfe077d417363b  |   |   |
-1  |4   |13/02/2019   |2 heures   |#15 ajout des attributs ville rue région province à l'inscription   | https://github.com/cegepmatane/AcheteTaBaguette/commit/b172e5d817439d44212f0260ffa82783edf57559  |   |   |  
+1  |4   |13/02/2019   |2 heures   |#15 ajout des attributs ville rue région province à l'inscription   | https://github.com/cegepmatane/AcheteTaBaguette/commit/b172e5d817439d44212f0260ffa82783edf7559  |   |   |  
 1  |4   |13/02/2019   |2 heures   |#15 Début d'ajout des messages d'erreur détaillé   | https://github.com/cegepmatane/AcheteTaBaguette/commit/9ded519a022fabf56249d1e929d13888c1c3f150  |   |   |  
+1  |4   |14/02/2019   |3 heures   |#15 #22 Insertion du client dans la base de donnée   | https://github.com/cegepmatane/AcheteTaBaguette/commit/9ded519a022fabf56249d1e929d13888c1c3f150  |   |   |  
