@@ -3,7 +3,7 @@ require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("erreur-inscription.php");
-require_once ("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\accesseur\AccesseurProduit.php");
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 
 
 
@@ -59,11 +59,15 @@ function afficherProduit(){
     foreach ($produitListe as $produit ) {
         ?>
         <div class="col-md-2 m-2 border">
-            <a href="#">
+            <?php
+            echo '<a href="./produit.php?id='.$produit->idProduit.'">';
+            ?>
                 <div class="row">
                     <div class="col-md-12">
                         <img
-                                src="..\illustration\baguette.jpg"
+                                <?php
+                                echo 'src='.$produit->srcImage;
+                                ?>
                                 alt="produit"
                                 class="img-fluid imageProduit"
                         />

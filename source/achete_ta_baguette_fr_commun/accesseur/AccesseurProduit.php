@@ -27,7 +27,7 @@ class AccesseurProduit
         "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idCategorie LIKE ?";
+        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE ?";
 
     private static $connexion = null;
 
