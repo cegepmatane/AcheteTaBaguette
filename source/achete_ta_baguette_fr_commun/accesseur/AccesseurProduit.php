@@ -16,16 +16,16 @@ class AccesseurProduit
         "UPDATE PRODUIT SET nomProduit = :nomProduit, prix = :prix, stock = :stock, idCategorie = :idCategorie) WHERE idProduit = :idProduit;";
 
     private static $GET_ID_PRODUIT =
-        "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, idCategorie = ?;";
+        "SELECT idProduit FROM PRODUIT WHERE nomProduit = :nomProduit, prix = :prix, idCategorie = :idCategorie";
 
     private static $RECUPERER_LISTE_PRODUITS =
         "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
-        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?;";
+        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE :idProduit;";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE ?;";
+        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE :idCategorie;";
 
     private static $connexion = null;
 
@@ -39,7 +39,7 @@ class AccesseurProduit
     public function recupererProduitParId($idProduit)
     {
         $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_ID);
-        $requete->bindValue(1, $idProduit);
+        $requete->bindValue(":idProduit", $idProduit);
 
         $requete->execute();
 
@@ -54,7 +54,7 @@ class AccesseurProduit
     public function recupererProduitParType($idProduit)
     {
         $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_CATEGORIE);
-        $requete->bindValue(1, $idProduit);
+        $requete->bindValue(":idCategorie", $idProduit);
 
         $requete->execute();
 
@@ -131,10 +131,9 @@ class AccesseurProduit
     public function getIdProduit($produit)
     {
         $requete = self::$connexion->prepare($GET_ID_PRODUIT);
-        $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $produit->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_INT);
 
         $requete->execute();
 
