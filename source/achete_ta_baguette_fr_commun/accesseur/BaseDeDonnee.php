@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once $_SERVER['CONFIGURATION_COMMUN'];
 
 // https://phpdelusions.net/pdo
 class BaseDeDonnee
@@ -25,7 +25,7 @@ class BaseDeDonnee
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
             try {
-                    self::$pdo = new PDO($dsn, $user, $pass, $options);
+                self::$pdo = new PDO($dsn, $user, $pass, $options);
             } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }self::$isInitialise = true;
