@@ -1,26 +1,27 @@
 <?php
-require_once("../../commun/vue/entete-fragment.php");
+require_once "../../commun/vue/entete-fragment.php";
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
-require_once("../../commun/vue/pied-de-page-fragment.php");
-require_once("erreur-inscription.php");
-require_once($_SERVER['CONFIGURATION_COMMUN']);
-require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
-
+require_once "../../commun/vue/pied-de-page-fragment.php";
+require_once "erreur-inscription.php";
+require_once $_SERVER['CONFIGURATION_COMMUN'];
+require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php";
 
 $page = (object)
-[
+    [
     "titre" => "Page d'inscription",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
     "isConnected" => false,
 ];
 
-
 function afficherPage($page = null)
 {
     // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
 
-    if (!is_object($page)) $page = (object)[];
+    if (!is_object($page)) {
+        $page = (object) [];
+    }
+
     afficherEntete($page);
 
     if (isset($_POST['submit'])) {
@@ -38,14 +39,12 @@ function afficherPage($page = null)
         $attribut->ville = $_POST['ville'];
         $attribut->rue = $_POST['rue'];
 
-
-
         $client = new Client($attribut);
-        if(!empty($client->isValide())){
+        if (!empty($client->isValide())) {
             afficherErreurInscription();
-        }else{
-        $laBDD = new AccesseurClient();
-        $laBDD->ajouterClient($client);
+        } else {
+            $laBDD = new AccesseurClient();
+            $laBDD->ajouterClient($client);
         }
     }
     ?>
@@ -165,7 +164,7 @@ function afficherPage($page = null)
     </div>
 
     <?php
-    afficherPiedDePage($page);
+afficherPiedDePage($page);
 
 }
 

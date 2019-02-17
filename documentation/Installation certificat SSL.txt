@@ -1,0 +1,3 @@
+Procédure d'installation du certificat SSL sur le serveur.
+Nous utiliserons Let's Encrypt.
+
