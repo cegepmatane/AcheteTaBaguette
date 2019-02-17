@@ -12,14 +12,12 @@ $page = (object)
     "titre" => "Page d'inscription",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "accueil",
-    "isConnected" => true,
-    "user" => "Pierre"
+    "isConnected" => false,
 ];
 
 
 function afficherPage($page = null)
 {
-
     // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
 
     if (!is_object($page)) $page = (object)[];
