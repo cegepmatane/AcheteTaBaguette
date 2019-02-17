@@ -21,7 +21,7 @@ function afficherContenu($page = null) {
 				<thead>
 			<tr>
       <th  scope="col">Image</th>
-	  <th  scope="col">Catégorie</th>
+	  <th  scope="col">Cat&eacute;gorie</th>
       <th  scope="col">Produit</th>
       <th  scope="col">Description</th>
       <th  scope="col">Stock</th>
@@ -52,7 +52,7 @@ function afficherContenu($page = null) {
 				<thead>
 			<tr>
       <th  scope="col">Image</th>
-	  <th  scope="col">Catégorie</th>
+	  <th  scope="col">Cat&eacute;gorie</th>
       <th  scope="col">Produit</th>
       <th  scope="col">Description</th>
       <th  scope="col">Stock</th>
