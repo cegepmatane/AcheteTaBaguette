@@ -4,13 +4,13 @@ class Produit
 {
 
 private $listeMessageErreurActif = [];
-	private $idProduit;
-    private $nom;
-    private $description;
-    private $prix;
-    private $idCategorie;
-    private $stock;
-    private $srcImage;
+	public $idProduit;
+    public $nom;
+    public $description;
+    public $prix;
+    public $idCategorie;
+    public $stock;
+    public $srcImage;
     
 	private static function getListeMessageErreur(){
 
@@ -22,10 +22,10 @@ private $listeMessageErreurActif = [];
                     true,
 
                 "nom-vide" =>
-                    "Le nom ne doit pas être vide",
+                    "Le nom ne doit pas ï¿½tre vide",
 
                 "nom-trop-long" =>
-                    "Le nombre maximum de caractères pour le nom est : " .
+                    "Le nombre maximum de caractï¿½res pour le nom est : " .
                     self::NOM_NOMBRE_CARACTERE_MAXIMUM ,
 
                 "nom-non-alphabetique" =>
@@ -33,24 +33,24 @@ private $listeMessageErreurActif = [];
 
 
                 "prenom-vide" =>
-                    "Le prénom ne doit pas être vide",
+                    "Le prï¿½nom ne doit pas ï¿½tre vide",
 
                 "prenom-trop-long" =>
-                    "Le nombre maximum de caractères pour le prénom est : " .
+                    "Le nombre maximum de caractï¿½res pour le prï¿½nom est : " .
                     self::PRENOM_NOMBRE_CARACTERE_MAXIMUM ,
 
                 "prenom-non-alphabetique" =>
-                    "Le prénom doit contenir uniquement des lettres",
+                    "Le prï¿½nom doit contenir uniquement des lettres",
 
 
                 "courriel-vide" =>
-                    "Le courriel ne doit pas être vide",
+                    "Le courriel ne doit pas ï¿½tre vide",
 
                 "courriel-invalide" =>
                     "Le courriel n'est pas valide",
 
                 "courriel-trop-long" =>
-                    "Le nombre maximum de caractères pour le courriel est : " .
+                    "Le nombre maximum de caractï¿½res pour le courriel est : " .
                     self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM
             ];
 

@@ -1,7 +1,7 @@
 <?php
 
 require_once("BaseDeDonnee.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php");
+require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\produit.class.php");
 
 
 
@@ -26,6 +26,9 @@ class AccesseurProduit
     private static $RECUPERER_PRODUIT_PAR_ID = 
         "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?";
 
+    private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
+        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idCategorie LIKE ?";
+
     private static $connexion = null;
 
     public function __construct()
@@ -48,13 +51,37 @@ class AccesseurProduit
         }
         else {
             echo "Aucune données trouvés !";
+        }
+    }
+
+    public function recupererProduitParType($idProduit)
+    {
+        $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_CATEGORIE);
+        $requete->bindValue(1, $idProduit);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+
+            foreach($listeEnregistrement as $enregistrement) {
+
+                $listeProduits[] = new Produit($enregistrement);
+
+            }
+
+            return $listeProduits;
+
+        }
+        else {
+            echo "Aucune données trouvés !";
             return $reponse = ["isConnected" => false];
         }
     }
 
     public function ajouterProduit($produit)
     {
-        $requete = $connexion->prepare($AJOUT_PRODUIT);
+        $requete = self::$connexion->prepare($AJOUT_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
@@ -72,7 +99,7 @@ class AccesseurProduit
 
     public function supprimerProduit($produit)
     {
-        $requete = $connexion->prepare($SUPPRIMER_PRODUIT);
+        $requete = self::$connexion->prepare($SUPPRIMER_PRODUIT);
         $requete->bindValue(1, $produit->getIdProduit);
 
         $requete->execute();
@@ -107,7 +134,7 @@ class AccesseurProduit
 
 	 public function getIdProduit($produit)
     {
-        $requete = $connexion->prepare($GET_ID_PRODUIT);
+        $requete = self::$connexion->prepare($GET_ID_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
@@ -130,7 +157,7 @@ class AccesseurProduit
     // Va mettre à jour dans le base de données le produit correspondant à l'id du produit passé en paramètre
     // Le produit de la base de données prendra les valeurs des attributs du produit passé en paramètre
     {
-        $requete = $connexion->prepare($MISE_A_JOUR_PRODUIT);
+        $requete = self::$connexion->prepare($MISE_A_JOUR_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
