@@ -1,29 +1,27 @@
 <?php
 
-require_once("BaseDeDonnee.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php");
-
-
+require_once "BaseDeDonnee.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php";
 
 class AccesseurProduit
 {
 
     private static $AJOUT_PRODUIT =
-        "INSERT INTO PRODUIT(nomProduit, prix, nbStock, nomCatégorie) VALUES (:nomProduit,?,?,?,?);";
+        "INSERT INTO PRODUIT(nomProduit, prix, stock, idCategorie) VALUES (:nomProduit,:prix,:stock,:idCategorie);";
 
     private static $SUPPRIMER_PRODUIT =
-        "DELETE FROM PRODUIT WHERE idProduit = ?;";
+        "DELETE FROM PRODUIT WHERE idProduit = :idProduit;";
 
     private static $MISE_A_JOUR_PRODUIT =
-        "UPDATE PRODUIT SET nomProduit = ?, prix = ?, nbStock = ?, nomCatégorie = ?) WHERE idProduit = ?;";
+        "UPDATE PRODUIT SET nomProduit = :nomProduit, prix = :prix, stock = :stock, idCategorie = :idCategorie) WHERE idProduit = :idProduit;";
 
     private static $GET_ID_PRODUIT =
-        "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, nomCatégorie = ?;";
+        "SELECT idProduit FROM PRODUIT WHERE nomProduit = ?, prix = ?, idCategorie = ?;";
 
-	private static $RECUPERER_LISTE_PRODUITS =
+    private static $RECUPERER_LISTE_PRODUITS =
         "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
 
-    private static $RECUPERER_PRODUIT_PAR_ID = 
+    private static $RECUPERER_PRODUIT_PAR_ID =
         "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE ?;";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
@@ -48,8 +46,7 @@ class AccesseurProduit
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
             return $reponse;
-        }
-        else {
+        } else {
             echo "Aucune données trouvés !";
         }
     }
@@ -64,7 +61,7 @@ class AccesseurProduit
         if ($requete->rowCount() > 0) {
             $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
 
-            foreach($listeEnregistrement as $enregistrement) {
+            foreach ($listeEnregistrement as $enregistrement) {
 
                 $listeProduits[] = new Produit($enregistrement);
 
@@ -72,8 +69,7 @@ class AccesseurProduit
 
             return $listeProduits;
 
-        }
-        else {
+        } else {
             echo "Aucune données trouvés !";
             return $reponse = ["isConnected" => false];
         }
@@ -82,10 +78,10 @@ class AccesseurProduit
     public function ajouterProduit($produit)
     {
         $requete = self::$connexion->prepare($AJOUT_PRODUIT);
-        $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $produit->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(":stock", $produit->getNbStock(), PDO::PARAM_INT);
+        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -100,7 +96,7 @@ class AccesseurProduit
     public function supprimerProduit($produit)
     {
         $requete = self::$connexion->prepare($SUPPRIMER_PRODUIT);
-        $requete->bindValue(1, $produit->getIdProduit);
+        $requete->bindValue(":idProduit", $produit->getIdProduit);
 
         $requete->execute();
 
@@ -111,7 +107,8 @@ class AccesseurProduit
         return false;
     }
 
-    public function recupererListeProduits(){
+    public function recupererListeProduits()
+    {
 
         $listeProduits = [];
 
@@ -121,18 +118,17 @@ class AccesseurProduit
 
         $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
 
-        foreach($listeEnregistrement as $enregistrement) {
+        foreach ($listeEnregistrement as $enregistrement) {
 
             $listeProduits[] = new Produit($enregistrement);
 
         }
 
         return $listeProduits;
-		
 
     }
 
-	 public function getIdProduit($produit)
+    public function getIdProduit($produit)
     {
         $requete = self::$connexion->prepare($GET_ID_PRODUIT);
         $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
@@ -158,11 +154,11 @@ class AccesseurProduit
     // Le produit de la base de données prendra les valeurs des attributs du produit passé en paramètre
     {
         $requete = self::$connexion->prepare($MISE_A_JOUR_PRODUIT);
-        $requete->bindValue(1, $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(2, $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(3, $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(4, $produit->getNomCatégorie(), PDO::PARAM_STR);
-        $requete->bindValue(5, getIdProduit($produit), PDO::PARAM_STR);
+        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(":stock", $produit->getNbStock(), PDO::PARAM_INT);
+        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(":idProduit", getIdProduit($produit), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -175,6 +171,3 @@ class AccesseurProduit
     }
 
 }
-
-
-?>
