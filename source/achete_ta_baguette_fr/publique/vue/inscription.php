@@ -17,46 +17,17 @@ $page = (object)
 function afficherPage($page = null)
 {
     afficherEntete($page);
-
-    if (isset($_POST['submit'])) {
-
-        $attribut = new stdClass();
-        $attribut->nom = $_POST['nom'];
-        $attribut->prenom = $_POST['prenom'];
-        $attribut->pays = $_POST['pays'];
-        $attribut->code_postal = $_POST['codePostale'];
-        $attribut->province = $_POST['province'];
-        $attribut->mail = $_POST['mail'];
-        $attribut->date_de_naissance = $_POST['date'];
-        $attribut->mot_de_passe = $_POST['mot_de_passe'];
-        $attribut->mot_de_passe_verif = $_POST['mot_de_passe_verif'];
-        $attribut->ville = $_POST['ville'];
-        $attribut->rue = $_POST['rue'];
-
-        $client = new Client($attribut);
-        if (!empty($client->isValide())) {
-            afficherErreurInscription();
-        } else {
-            $laBDD = new AccesseurClient();
-            $laBDD->ajouterClient($client);
-            $_SESSION['id'] = $laBDD->getClientParEmail($client->email);
-            $_SESSION['isConnected'] = true;
-            $_SESSION['admin'] = false;
-            header("Location: /boutique");
-        }
-
         // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
         if (!is_object($page)) {
             $page = (object) [];
         }
-    }
     ?>
 
     <!--  jQuery -->
     <div class="content">
         <div class="row justify-content-md-center">
             <div class="col-md-8">
-                <form action="" method="post">
+               <?php echo '<form action="'.CHEMIN_RACINE_PUBLIQUE.'" method="post">'; ?>
                     <fieldset>
                         <legend>Inscription</legend>
                         <div class="form-group">

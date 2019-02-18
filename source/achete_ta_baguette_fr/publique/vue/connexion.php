@@ -23,25 +23,6 @@ function afficherPage($page = null)
 {
 
 
-    if (isset($_POST['submit'])) {
-
-        $attribut = new stdClass();
-        $attribut->email = $_POST['mail'];
-        $attribut->mot_De_Passe = $_POST['mot_de_passe'];
-        $laBDD = new AccesseurClient();
-        $resultat = $laBDD->verifierClient($attribut);
-        if($resultat != false){
-            session_start();
-            //Remplacer idclient par ID ?
-            $_SESSION["id"] = $resultat->idClient;
-            $_SESSION["connection"] = true;
-            $_SESSION['admin'] = $resultat->admin == 1 ? true:false;
-            header("Location: /");
-        }else{
-            afficherErreurInscription();
-        }
-    }
-
     // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
 
     if (!is_object($page)) $page = (object)[];
@@ -52,7 +33,7 @@ function afficherPage($page = null)
     <div class="content">
         <div class="row justify-content-md-center">
             <div class="col-md-8">
-                <form action="" method="post">
+                <?php echo '<form action="'.CHEMIN_RACINE_COMMUN.'\action\connexion.php" method="post">';?>
                     <fieldset>
                         <legend>Connexion</legend>
                         <div class="form-group">

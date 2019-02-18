@@ -8,6 +8,6 @@
 
 session_start();
 session_destroy();
-header("Location : boutique.php");
+header("Location : /boutique");
 
 ?>
