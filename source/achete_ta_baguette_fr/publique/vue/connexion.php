@@ -36,7 +36,7 @@ function afficherPage($page = null)
             $_SESSION["id"] = $resultat->idClient;
             $_SESSION["connection"] = true;
             $_SESSION['admin'] = $resultat->admin == 1 ? true:false;
-            header("Location: inscription.php");
+            header("Location: /");
         }else{
             afficherErreurInscription();
         }
