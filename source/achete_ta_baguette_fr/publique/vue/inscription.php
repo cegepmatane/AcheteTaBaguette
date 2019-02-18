@@ -42,7 +42,7 @@ function afficherPage($page = null)
             $_SESSION['id'] = $laBDD->getClientParEmail($client->email);
             $_SESSION['isConnected'] = true;
             $_SESSION['admin'] = false;
-            header("Location: index.php");
+            header("Location: /boutique");
         }
 
         // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
