@@ -81,6 +81,23 @@ class AccesseurClient
         }
     }
 
+
+    public function getClientParEmail($emailClient)
+    {
+        $requete = self::$connexion->prepare(self::$GET_UTILISATEUR_PAR_EMAIL);
+        $requete->bindValue(":email", $emailClient);
+
+        $requete->execute();
+
+        if ($requete->rowCount() > 0) {
+            $reponse = $requete->fetch();
+            return $reponse;
+        } else {
+            echo "Aucune données trouvés !";
+            return false;
+        }
+    }
+
     public function miseAJourClient($client)
     {
 

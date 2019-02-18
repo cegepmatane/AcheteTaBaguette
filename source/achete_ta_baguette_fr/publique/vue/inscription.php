@@ -16,14 +16,6 @@ $page = (object)
 
 function afficherPage($page = null)
 {
-    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
-
-    if (!is_object($page)) {
-        $page = (object) [];
-    }
-
-    afficherEntete($page);
-
     if (isset($_POST['submit'])) {
 
         $attribut = new stdClass();
@@ -45,7 +37,18 @@ function afficherPage($page = null)
         } else {
             $laBDD = new AccesseurClient();
             $laBDD->ajouterClient($client);
+            $_SESSION['id'] = $laBDD->getClientParEmail($client->email);
+            $_SESSION['isConnected'] = true;
+            $_SESSION['admin'] = false;
+            header("Location: index.php");
         }
+    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
+
+    if (!is_object($page)) {
+        $page = (object) [];
+    }
+
+    afficherEntete($page);
     }
     ?>
 
