@@ -11,7 +11,7 @@ $page = (object)
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "A propos",
     "isConnected" => isset($_SESSION['connection']),
-    "id" => $_SESSION['id']
+    "idClient" => $_SESSION['id']
 ];
 
 
