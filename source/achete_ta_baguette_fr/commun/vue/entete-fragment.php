@@ -59,21 +59,21 @@ function afficherEntete($page = null) {
     
                     <!-- menu -->
                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                        <a class="navbar-brand" href="/commun/vue/index.php?type=accueil">Accueil</a>
+                        <a class="navbar-brand" href="/">Accueil</a>
                         
                         <div class="collapse navbar-collapse" id="navbarColor01">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/commun/vue/index.php?type=baguette">Baguette</a>
+                                    <a class="nav-link" href="/boutique/baguette">Baguette</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/commun/vue/index.php?type=viennoiserie">Viennoiseries</a>
+                                    <a class="nav-link" href="/boutique/viennoiserie">Viennoiseries</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/commun/vue/index.php?type=autre">Autres</a>
+                                    <a class="nav-link" href="/boutique/autre">Autres</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/publique/vue/a-propos.php">À propos</a>
+                                    <a class="nav-link" href="/a-propos">À propos</a>
                                 </li>
                             </ul>
                             <form class="form-inline my-2 my-lg-0">

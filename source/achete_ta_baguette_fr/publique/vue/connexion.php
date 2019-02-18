@@ -3,8 +3,9 @@ require_once("../../commun/vue/entete-fragment.php");
 // require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("erreur-inscription.php");
-require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\accesseur\AccesseurClient.php");
-require_once("C:\wamp64\www\AcheteTaBaguette\AcheteTaBaguette\source\achete_ta_baguette_fr_commun\modele\Client.class.php");
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
 
 if(!isset($_POST['page'])) {
     $page = (object)
@@ -53,7 +54,7 @@ function afficherPage($page = null)
             <div class="col-md-8">
                 <form action="" method="post">
                     <fieldset>
-                        <legend>Inscription</legend>
+                        <legend>Connexion</legend>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">

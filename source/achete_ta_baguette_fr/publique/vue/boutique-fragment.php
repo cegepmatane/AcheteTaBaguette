@@ -36,7 +36,7 @@ function afficherContenu($page = null) {
                 <div class="row">
                     <div class="col-md-12">
                         <img
-                        src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
+                        src="<?php echo $value->getSrcImage(); ?>"
                         alt="produit"
                         class="img-fluid imageProduit"
                         />

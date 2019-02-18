@@ -1,13 +1,12 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
-print_r($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 
 function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
 
-    $laBDD = new AccesseurClient();
-    $client = $laBDD->getClientParId($page->idClient);
+    $accesseurClient = new AccesseurClient();
+    $client = $accesseurClient->getClientParId($page->idClient);
 
 ?>
 <div class="sidebarLeft">
@@ -112,12 +111,12 @@ function afficherSideBarUtilisateur($page = null) {
     <div class="deconnecter">
         <div class="row mb-2 text-center">
             <div class="col-md-12">
-                <a href="#" class="btn btn-outline-primary">Se connecter</a>
+                <a href="/connexion" class="btn btn-outline-primary">Se connecter</a>
             </div>
         </div>
         <div class="row mb-3 text-center">
             <div class="col-md-12">
-                <a href="inscription" class="btn btn-outline-primary">S'inscrire</a>
+                <a href="/inscription" class="btn btn-outline-primary">S'inscrire</a>
             </div>
         </div>
     </div>
