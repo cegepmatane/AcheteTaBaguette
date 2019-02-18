@@ -93,7 +93,7 @@ function afficherSideBarUtilisateur($page = null) {
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="#" class="btn btn-outline-primary">Se déconnecter</a>
+                        <?php echo '<a href="'. CHEMIN_RACINE_COMMUN . '\action\deconnexion.php" class="btn btn-outline-primary">Se déconnecter</a>' ?>
                     </div>
                 </div>
             </div>
