@@ -9,19 +9,19 @@ function afficherContenu($page = null) {
     $laBDD2 = new AccesseurCategorie();
     //print_r($page->itemMenuActif);
     switch ($page->itemMenuActif) {
-    case 'accueil':
-        $listeProduits = $laBDD-> recupererListeProduits();
-        break;
-    case 'baguette':
-        $listeProduits = $laBDD-> recupererProduitParType(1);
-        break;
-    case 'viennoiserie':
-         $listeProduits = $laBDD-> recupererProduitParType(2);
-        break;
-    case 'autre':
-         $listeProduits = $laBDD-> recupererProduitParType(3);
-        break;
-}
+        case 'baguette':
+            $listeProduits = $laBDD-> recupererProduitParType(1);
+            break;
+        case 'viennoiserie':
+             $listeProduits = $laBDD-> recupererProduitParType(2);
+            break;
+        case 'autre':
+             $listeProduits = $laBDD-> recupererProduitParType(3);
+            break;
+        default:
+            $listeProduits = $laBDD-> recupererListeProduits();
+            break;
+    }
     
 ?>
        
@@ -32,7 +32,7 @@ function afficherContenu($page = null) {
 
      <?php foreach ($listeProduits as $value) { ?>
         <div class="col-md-2 m-2 border">
-            <a href="#">
+            <a href="/boutique/produit/<?php echo $value->getIdProduit(); ?>">
                 <div class="row">
                     <div class="col-md-12">
                         <img

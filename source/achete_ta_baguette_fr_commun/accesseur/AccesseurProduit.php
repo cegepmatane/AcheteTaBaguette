@@ -19,7 +19,7 @@ class AccesseurProduit
         "SELECT idProduit FROM PRODUIT WHERE nomProduit = :nomProduit, prix = :prix, idCategorie = :idCategorie";
 
     private static $RECUPERER_LISTE_PRODUITS =
-        "SELECT PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
+        "SELECT PRODUIT.idProduit, PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
         "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE :idProduit;";

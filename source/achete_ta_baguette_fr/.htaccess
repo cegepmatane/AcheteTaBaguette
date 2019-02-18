@@ -1,8 +1,8 @@
 RewriteEngine On
 
-RewriteRule ^/?$ /commun/vue/index.php?type=accueil
+RewriteRule ^/?$ /commun/vue/index.php
 RewriteRule ^a-propos/?$ /publique/vue/a-propos.php
 RewriteRule ^connexion/?$ /publique/vue/connexion.php
 RewriteRule ^inscription/?$ /publique/vue/inscription.php
-RewriteRule ^boutique/([a-z]+)/?$ /commun/vue/index.php?type=$1
-RewriteRule ^boutique/?$ /commun/vue/index.php?type=accueil
+RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
+RewriteRule ^boutique/produit/([0-9]+)/?$ /publique/vue/produit.php?idProduit=$1
