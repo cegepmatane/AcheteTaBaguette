@@ -10,10 +10,10 @@ class AccesseurClient
         "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (:nom,:prenom,:naissance,:email,:motdepasse,:rue,:ville,:province,:codePostal,:pays)";
 
     private static $SUPPRIMER_CLIENT =
-        "DELETE FROM CLIENT WHERE idClient = ?";
+        "DELETE FROM CLIENT WHERE idClient = :idClient";
 
     private $MISE_A_JOUR_UTILISATEUR =
-        "UPDATE CLIENT SET nom = ?, prenom = ?, naissance= ?, email= ?, rue = ?, ville = ?, province = ?, codePostal = ?, pays = ? WHERE idClient = ?;";
+        "UPDATE CLIENT SET nom = :nom, prenom = :prenom, naissance= :naissance, email= :email, rue = :rue, ville = :ville, province = :province, codePostal = :codePostal, pays = :pays WHERE idClient = :idClient;";
 
     private static $GET_UTILISATEUR_PAR_ID =
         "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
@@ -102,17 +102,17 @@ class AccesseurClient
     {
 
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
-            $requete->bindValue(1, $client->nom, PDO::PARAM_STR);
-            $requete->bindValue(2, $client->prenom, PDO::PARAM_STR);
+            $requete->bindValue(":nom", $client->nom, PDO::PARAM_STR);
+            $requete->bindValue(":prenom", $client->prenom, PDO::PARAM_STR);
             $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
-            $requete->bindValue(3, $newdate, PDO::PARAM_STR);
-            $requete->bindValue(4, $client->email, PDO::PARAM_STR);
-            $requete->bindValue(5, $client->rue, PDO::PARAM_STR);
-            $requete->bindValue(6, $client->ville, PDO::PARAM_STR);
-            $requete->bindValue(7, $client->province, PDO::PARAM_STR);
-            $requete->bindValue(8, $client->code_postal, PDO::PARAM_STR);
-            $requete->bindValue(9, $client->pays, PDO::PARAM_STR);
-            $requete->bindValue(10, $client->id, PDO::PARAM_STR);
+            $requete->bindValue(":naissance", $newdate, PDO::PARAM_STR);
+            $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
+            $requete->bindValue(":rue", $client->rue, PDO::PARAM_STR);
+            $requete->bindValue(":ville", $client->ville, PDO::PARAM_STR);
+            $requete->bindValue(":province", $client->province, PDO::PARAM_STR);
+            $requete->bindValue(":codePostal", $client->code_postal, PDO::PARAM_STR);
+            $requete->bindValue(":pays", $client->pays, PDO::PARAM_STR);
+            $requete->bindValue(":id", $client->id, PDO::PARAM_STR);
 
         $requete->execute();
 
