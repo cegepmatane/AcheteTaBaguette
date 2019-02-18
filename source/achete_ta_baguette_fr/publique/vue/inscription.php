@@ -1,6 +1,6 @@
 <?php
 require_once "../../commun/vue/entete-fragment.php";
-// require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
+require_once("../../commun/vue/sidebar-utilisateur-fragment.php");
 require_once "../../commun/vue/pied-de-page-fragment.php";
 require_once "erreur-inscription.php";
 require_once $_SERVER['CONFIGURATION_COMMUN'];
@@ -16,6 +16,8 @@ $page = (object)
 
 function afficherPage($page = null)
 {
+    afficherEntete($page);
+
     if (isset($_POST['submit'])) {
 
         $attribut = new stdClass();
@@ -42,13 +44,11 @@ function afficherPage($page = null)
             $_SESSION['admin'] = false;
             header("Location: index.php");
         }
-    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
 
-    if (!is_object($page)) {
-        $page = (object) [];
-    }
-
-    afficherEntete($page);
+        // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
+        if (!is_object($page)) {
+            $page = (object) [];
+        }
     }
     ?>
 
