@@ -35,18 +35,19 @@ function afficherEntete($page = null) {
 
                         <!-- logo -->
                         <div class="col-md-2">
-                            <img
-                            src="/commun/illustration/logo.jpg"
-                            alt="achete_ta_baguette_logo"
-                            class="img-fluid imageProduit"
-                            />
+                            
                         </div>
     
                         <!-- Titre et slogan-->
                         <div class="col-md-8 text-center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1><strong>Achète Ta Baguette</strong></h1>
+                                    <h1> <img 
+                                alt="Achete ta baguette" 
+                                src="/commun/illustration/acheteBaguette.png"
+                                class="img-fluid"
+                                href="https://www.w3schools.com/html/"
+                                /></h1>
                                 </div>
                             </div>
                             <div class="row">
