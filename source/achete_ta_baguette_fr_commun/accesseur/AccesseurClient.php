@@ -81,7 +81,6 @@ class AccesseurClient
         }
     }
 
-
     public function getClientParEmail($emailClient)
     {
         $requete = self::$connexion->prepare(self::$GET_UTILISATEUR_PAR_EMAIL);
@@ -102,17 +101,17 @@ class AccesseurClient
     {
 
         $requete = self::$connexion->prepare($this->MISE_A_JOUR_UTILISATEUR);
-            $requete->bindValue(":nom", $client->nom, PDO::PARAM_STR);
-            $requete->bindValue(":prenom", $client->prenom, PDO::PARAM_STR);
-            $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
-            $requete->bindValue(":naissance", $newdate, PDO::PARAM_STR);
-            $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
-            $requete->bindValue(":rue", $client->rue, PDO::PARAM_STR);
-            $requete->bindValue(":ville", $client->ville, PDO::PARAM_STR);
-            $requete->bindValue(":province", $client->province, PDO::PARAM_STR);
-            $requete->bindValue(":codePostal", $client->code_postal, PDO::PARAM_STR);
-            $requete->bindValue(":pays", $client->pays, PDO::PARAM_STR);
-            $requete->bindValue(":id", $client->id, PDO::PARAM_STR);
+        $requete->bindValue(":nom", $client->nom, PDO::PARAM_STR);
+        $requete->bindValue(":prenom", $client->prenom, PDO::PARAM_STR);
+        $newdate = date('Y-m-d', strtotime($client->date_de_naissance));
+        $requete->bindValue(":naissance", $newdate, PDO::PARAM_STR);
+        $requete->bindValue(":email", $client->email, PDO::PARAM_STR);
+        $requete->bindValue(":rue", $client->rue, PDO::PARAM_STR);
+        $requete->bindValue(":ville", $client->ville, PDO::PARAM_STR);
+        $requete->bindValue(":province", $client->province, PDO::PARAM_STR);
+        $requete->bindValue(":codePostal", $client->code_postal, PDO::PARAM_STR);
+        $requete->bindValue(":pays", $client->pays, PDO::PARAM_STR);
+        $requete->bindValue(":id", $client->id, PDO::PARAM_STR);
 
         $requete->execute();
 

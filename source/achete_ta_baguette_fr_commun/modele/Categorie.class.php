@@ -3,52 +3,50 @@
 class Categorie
 {
 
-private $listeMessageErreurActif = [];
-	private $idCategorie;
+    private $listeMessageErreurActif = [];
+    private $idCategorie;
     private $label;
     private $description;
-    
 
-	private static function getListeMessageErreur(){
+    private static function getListeMessageErreur()
+    {
 
-        if(empty(self::$LISTE_MESSAGE_ERREUR)){
+        if (empty(self::$LISTE_MESSAGE_ERREUR)) {
 
             self::$LISTE_MESSAGE_ERREUR =
-            [
+                [
                 "id_categorie-invalide" =>
-                    true,
+                true,
 
                 "nom-vide" =>
-                    "Le nom ne doit pas être vide",
+                "Le nom ne doit pas ï¿½tre vide",
 
                 "nom-trop-long" =>
-                    "Le nombre maximum de caractères pour le nom est : " .
-                    self::NOM_NOMBRE_CARACTERE_MAXIMUM ,
+                "Le nombre maximum de caractï¿½res pour le nom est : " .
+                self::NOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "nom-non-alphabetique" =>
-                    "Le nom doit contenir uniquement des lettres",
-
+                "Le nom doit contenir uniquement des lettres",
 
                 "prenom-vide" =>
-                    "Le prénom ne doit pas être vide",
+                "Le prï¿½nom ne doit pas ï¿½tre vide",
 
                 "prenom-trop-long" =>
-                    "Le nombre maximum de caractères pour le prénom est : " .
-                    self::PRENOM_NOMBRE_CARACTERE_MAXIMUM ,
+                "Le nombre maximum de caractï¿½res pour le prï¿½nom est : " .
+                self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "prenom-non-alphabetique" =>
-                    "Le prénom doit contenir uniquement des lettres",
-
+                "Le prï¿½nom doit contenir uniquement des lettres",
 
                 "courriel-vide" =>
-                    "Le courriel ne doit pas être vide",
+                "Le courriel ne doit pas ï¿½tre vide",
 
                 "courriel-invalide" =>
-                    "Le courriel n'est pas valide",
+                "Le courriel n'est pas valide",
 
                 "courriel-trop-long" =>
-                    "Le nombre maximum de caractères pour le courriel est : " .
-                    self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM
+                "Le nombre maximum de caractï¿½res pour le courriel est : " .
+                self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM,
             ];
 
         }
@@ -59,27 +57,29 @@ private $listeMessageErreurActif = [];
 
     public function __construct($attribut)
     {
-	  
 
+        if (!is_object($attribut)) {
+            $attribut = (object) [];
+        }
 
-	if(!is_object($attribut)) $attribut = (object)[];
-		$this->setIdCategorie($attribut->idCategorie ?? null);
-        $this->setLabel($attribut->label?? "");
+        $this->setIdCategorie($attribut->idCategorie ?? null);
+        $this->setLabel($attribut->label ?? "");
         $this->setDescription($attribut->description ?? "");
-        
-        
+
     }
 
-	public function setIdCategorie($idCategorie)
+    public function setIdCategorie($idCategorie)
     {
         // Validation en premier
 
-        if(null == $idCategorie) return;
+        if (null == $idCategorie) {
+            return;
+        }
 
-        if(!is_int(filter_var($idCategorie, FILTER_VALIDATE_INT))){
+        if (!is_int(filter_var($idCategorie, FILTER_VALIDATE_INT))) {
 
             $this->listeMessageErreurActif['idCategorie'][] =
-                self::getListeMessageErreur()['id_categorie-invalide'];
+            self::getListeMessageErreur()['id_categorie-invalide'];
 
             $this->idCategorie = null;
 
@@ -91,17 +91,16 @@ private $listeMessageErreurActif = [];
 
     }
 
-	 public function setLabel($nouveauLabel)
+    public function setLabel($nouveauLabel)
     {
-      $this->label=$nouveauLabel;
+        $this->label = $nouveauLabel;
     }
 
     public function setDescription($nouvelleDescription)
     {
-       $this->description = $nouvelleDescription;
+        $this->description = $nouvelleDescription;
     }
 
-    
     public function getIdCategorie()
     {
         return $this->idCategorie;
@@ -110,8 +109,9 @@ private $listeMessageErreurActif = [];
     {
         return $this->label;
     }
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-	}
+}

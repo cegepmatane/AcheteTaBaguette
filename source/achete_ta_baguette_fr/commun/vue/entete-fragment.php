@@ -1,15 +1,19 @@
 <?php
 
 session_start();
-function afficherEntete($page = null) {
-    if(!is_object($page)) return;
-?>
+function afficherEntete($page = null)
+{
+    if (!is_object($page)) {
+        return;
+    }
+
+    ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title> <?= $page->titre ?? ""; ?> </title>
-    
+    <title> <?=$page->titre ?? "";?> </title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,11 +27,11 @@ function afficherEntete($page = null) {
 </head>
 <body>
 <div class="container-fluid">
-        
+
         <!-- En-tete de page -->
         <div class="row">
             <div class="col-md-12">
-                
+
                 <!-- inclue header -->
                 <header>
                     <!-- Banderole du site avec logo, titre, slogan -->
@@ -35,15 +39,15 @@ function afficherEntete($page = null) {
 
                         <!-- logo -->
                         <div class="col-md-2">
-                            
+
                         </div>
-    
+
                         <!-- Titre et slogan-->
                         <div class="col-md-8 text-center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1> <img 
-                                alt="Achete ta baguette" 
+                                    <h1> <img
+                                alt="Achete ta baguette"
                                 src="/commun/illustration/acheteBaguette.png"
                                 class="img-fluid"
                                 href="https://www.w3schools.com/html/"
@@ -57,11 +61,11 @@ function afficherEntete($page = null) {
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- menu -->
                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                         <a class="navbar-brand" href="/">Accueil</a>
-                        
+
                         <div class="collapse navbar-collapse" id="navbarColor01">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
@@ -83,7 +87,7 @@ function afficherEntete($page = null) {
                             </form>
                         </div>
                     </nav>
-                     
+
                     <!-- Fil d'Ariane -->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active">Accueil</li>
@@ -92,6 +96,6 @@ function afficherEntete($page = null) {
 
             </div>
         </div><!-- Fin en-tete de page -->
-        
+
 <?php
 }
