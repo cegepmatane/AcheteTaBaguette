@@ -54,11 +54,7 @@ function afficherEntete($page = null)
                                 /></h1>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>50cm de pure plaisir</h4>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
