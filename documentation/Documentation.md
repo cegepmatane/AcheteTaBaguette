@@ -1,4 +1,4 @@
-![Diagramme_de_classes_BD_Achete_Ta_Baguette-V2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagramme%20de%20classes/Diagramme_de_classes_BD_Achete_Ta_Baguette-V2.png)
+![Diagramme_de_classes_BD_Achete_Ta_Baguette-V2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagrammes/Diagramme_de_classes_BD_Achete_Ta_Baguette-V2.png)
 
 ![Diagramme_de_navigation](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagrammes/Diagramme_de_navigation.png)
 
