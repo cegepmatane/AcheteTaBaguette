@@ -27,6 +27,8 @@ class AccesseurProduit
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
         "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE :idCategorie;";
 
+    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(nom, 'NEAR(:nomProduit)';");
+
     private static $connexion = null;
 
     public function __construct()
