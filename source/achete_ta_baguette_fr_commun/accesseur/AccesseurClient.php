@@ -5,7 +5,6 @@ require_once CHEMIN_RACINE_COMMUN . "/modele/Client.class.php";
 
 class AccesseurClient
 {
-
     private $AJOUTER_UTILISATEUR =
         "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (:nom,:prenom,:naissance,:email,:motdepasse,:rue,:ville,:province,:codePostal,:pays)";
 
@@ -75,10 +74,8 @@ class AccesseurClient
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
             return $reponse;
-        } else {
-            echo "Aucune données trouvés !";
-            return $reponse = ["isConnected" => false];
         }
+        return false;
     }
 
     public function getClientParEmail($emailClient)
@@ -91,10 +88,8 @@ class AccesseurClient
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
             return $reponse;
-        } else {
-            echo "Aucune données trouvés !";
-            return false;
         }
+        return false;
     }
 
     public function miseAJourClient($client)

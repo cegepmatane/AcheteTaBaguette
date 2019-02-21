@@ -1,7 +1,6 @@
 <?php
 class Client
 {
-
     public const ID_CLIENT = "id_client";
     public const NOM = "nom";
     public const PRENOM = "prenom";
@@ -49,8 +48,6 @@ class Client
     public $rue;
     public $code_postal;
     public $id_client;
-
-    private $laBDD;
 
     public function __construct(object $attribut)
     {
@@ -119,7 +116,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["nom"] = (object)
                 [
-                "etiquette" => "nom",
+                "etiquette" => "Nom",
                 "defaut" => "",
                 "indice" => "Ex. : Smith (nombre maximum de caractères : " .
                 self::NOM_NOMBRE_CARACTERE_MAXIMUM .
@@ -130,7 +127,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["prenom"] = (object)
                 [
-                "etiquette" => "prénom",
+                "etiquette" => "Prénom",
                 "defaut" => "",
                 "indice" => "Ex. : Robert (nombre maximum de caractères : " .
                 self::PRENOM_NOMBRE_CARACTERE_MAXIMUM .
@@ -141,7 +138,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["date_de_naissance"] = (object)
                 [
-                "etiquette" => "date de naissance",
+                "etiquette" => "Date de naissance",
                 "defaut" => "",
                 "indice" => "Ex. : 1998-08-31",
                 "description" => "Jour de votre anniversaire",
@@ -150,9 +147,9 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["email"] = (object)
                 [
-                "etiquette" => "email",
+                "etiquette" => "Adresse email",
                 "defaut" => "",
-                "indice" => "Ex. : monnom@email.com " .
+                "indice" => "Ex. : votre.nom@email.com " .
                 "(nombre maximum de caractères : " .
                 self::EMAIL_NOMBRE_CARACTERE_MAXIMUM .
                 " )",
@@ -162,7 +159,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["mot_de_passe"] = (object)
                 [
-                "etiquette" => "mot de passe",
+                "etiquette" => "Mot de passe",
                 "defaut" => "",
                 "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
                 self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
@@ -173,7 +170,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["mot_de_passe_verif"] = (object)
                 [
-                "etiquette" => "verification mot de passe",
+                "etiquette" => "Confirmer mot de passe",
                 "defaut" => "",
                 "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
                 self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
@@ -184,7 +181,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["provine"] = (object)
                 [
-                "etiquette" => "province",
+                "etiquette" => "Province",
                 "defaut" => "",
                 "indice" => "Ex. : Québec (nombre maximum de caractères : " .
                 self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM .
@@ -195,7 +192,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["region"] = (object)
                 [
-                "etiquette" => "région",
+                "etiquette" => "Région",
                 "defaut" => "",
                 "indice" => "Ex. : Bas-Saint-Laurent (nombre maximum de caractères : " .
                 self::REGION_NOMBRE_CARACTERE_MAXIMUM .
@@ -206,7 +203,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["ville"] = (object)
                 [
-                "etiquette" => "ville",
+                "etiquette" => "Ville",
                 "defaut" => "",
                 "indice" => "Ex. : Matane (nombre maximum de caractères : " .
                 self::VILLE_NOMBRE_CARACTERE_MAXIMUM .
@@ -217,7 +214,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["rue"] = (object)
                 [
-                "etiquette" => "rue",
+                "etiquette" => "Rue",
                 "defaut" => "",
                 "indice" => "Ex. : 616 Av. St-Rédempteur (nombre maximum de caractères : " .
                 self::RUE_NOMBRE_CARACTERE_MAXIMUM .
@@ -228,7 +225,7 @@ class Client
 
             self::$LISTE_INFORMATION_CHAMP["code_postal"] = (object)
                 [
-                "etiquette" => "code postal",
+                "etiquette" => "Code postal",
                 "defaut" => "",
                 "indice" => "Ex. : G4W 0H2 (nombre maximum de caractères : " .
                 self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM .
