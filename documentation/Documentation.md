@@ -1,5 +1,7 @@
 ![Diagramme_de_classes_BD_Achete_Ta_Baguette-V2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagramme%20de%20classes/Diagramme_de_classes_BD_Achete_Ta_Baguette-V2.png)
 
+![Diagramme_de_navigation](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagrammes/Diagramme_de_navigation.png)
+
 ![Appareil_connecté](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Accueil_connect%C3%A9.png)
 
 ![Paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Paiement.png)
