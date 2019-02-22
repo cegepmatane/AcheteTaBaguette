@@ -49,26 +49,6 @@ class Client
     public $code_postal;
     public $id_client;
 
-    public function __construct(object $attribut)
-    {
-        if (!is_object($attribut)) {
-            $attribut = (object) [];
-        }
-
-        $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
-        $this->setNom($attribut->nom ?? "");
-        $this->setPrenom($attribut->prenom ?? "");
-        $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
-        $this->setEmail($attribut->mail ?? "");
-        $this->setMotDePasse($attribut->mot_de_passe ?? "");
-        $this->setProvince($attribut->province ?? "");
-        $this->setPays($attribut->pays ?? "");
-        $this->setVille($attribut->ville ?? "");
-        $this->setRue($attribut->rue ?? "");
-        $this->setCodePostal($attribut->code_postal ?? "");
-        $this->setIdClient($attribut->id_client ?? null);
-
-    }
 
     public function isValide($champ = null)
     {
@@ -389,7 +369,7 @@ class Client
             $this->listeMessageErreurActif['nom'][] =
             self::getListeMessageErreur()['nom-vide'];
 
-            return;
+            return false;
         }
 
         if (strlen($nom) > self::NOM_NOMBRE_CARACTERE_MAXIMUM) {
@@ -397,6 +377,7 @@ class Client
             $this->listeMessageErreurActif['nom'][] =
             self::getListeMessageErreur()['nom-trop-long'];
 
+            return false;
         }
 
         if (!self::validerNomPropre($nom)) {
@@ -404,11 +385,14 @@ class Client
             $this->listeMessageErreurActif['nom'][] =
             self::getListeMessageErreur()['nom-non-alphabetique'];
 
+            return false;
+
         }
 
         // Nettoyage en second
 
         $this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
+        return true;
 
     }
 
@@ -429,7 +413,8 @@ class Client
             $this->listeMessageErreurActif['prenom'][] =
             self::getListeMessageErreur()['prenom-vide'];
 
-            return;
+
+            return false;
 
         }
 
@@ -438,6 +423,7 @@ class Client
             $this->listeMessageErreurActif['prenom'][] =
             self::getListeMessageErreur()['prenom-trop-long'];
 
+            return false;
         }
 
         if (!self::validerNomPropre($prenom)) {
@@ -445,11 +431,14 @@ class Client
             $this->listeMessageErreurActif['prenom'][] =
             self::getListeMessageErreur()['prenom-non-alphabetique'];
 
+            return false;
         }
 
         // Nettoyage en second
 
         $this->prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
+
+        return true;
 
     }
 
@@ -470,7 +459,8 @@ class Client
             $this->listeMessageErreurActif['date_de_naissance'][] =
             self::getListeMessageErreur()['date_de_naissance-vide'];
 
-            return;
+
+            return false;
         }
 
         // TODO validerDateDeNaissance
@@ -482,7 +472,7 @@ class Client
         }*/
 
         $this->date_de_naissance = $date_de_naissance;
-
+        return true;
     }
 
     public function getEmail()
@@ -502,7 +492,8 @@ class Client
             $this->listeMessageErreurActif['email'][] =
             self::getListeMessageErreur()['email-vide'];
 
-            return;
+
+            return false;
         }
 
         if (strlen($email) > self::EMAIL_NOMBRE_CARACTERE_MAXIMUM) {
@@ -510,6 +501,7 @@ class Client
             $this->listeMessageErreurActif['email'][] =
             self::getListeMessageErreur()['email-trop-long'];
 
+            return false;
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -517,6 +509,7 @@ class Client
             $this->listeMessageErreurActif['email'][] =
             self::getListeMessageErreur()['email-invalide'];
 
+            return false;
         }
 
         // Il est imposible de valider un email sans le tester pour de vrai.
@@ -524,6 +517,7 @@ class Client
         // devrait pas être bloquant.
 
         $this->email = $email;
+        return true;
 
     }
 
@@ -544,7 +538,8 @@ class Client
             $this->listeMessageErreurActif['mot_de_passe'][] =
             self::getListeMessageErreur()['mot_de_passe-vide'];
 
-            return;
+
+            return false;
         }
 
         if (strlen($mot_de_passe) > self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM) {
@@ -552,6 +547,7 @@ class Client
             $this->listeMessageErreurActif['mot_de_passe'][] =
             self::getListeMessageErreur()['mot_de_passe-trop-long'];
 
+            return false;
         }
 
         if (!self::validerMotDePasse($mot_de_passe, $this->mot_de_passe_verif)) {
@@ -559,10 +555,12 @@ class Client
             $this->listeMessageErreurActif['mot_de_passe'][] =
             self::getListeMessageErreur()['mot_de_passe-invalide'];
 
+            return false;
         }
 
         $this->mot_de_passe = $mot_de_passe;
 
+        return true;
     }
 
     public function getProvince()
@@ -582,7 +580,8 @@ class Client
             $this->listeMessageErreurActif['province'][] =
             self::getListeMessageErreur()['province-vide'];
 
-            return;
+
+            return false;
         }
 
         if (strlen($province) > self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM) {
@@ -590,6 +589,7 @@ class Client
             $this->listeMessageErreurActif['province'][] =
             self::getListeMessageErreur()['province-trop-long'];
 
+            return false;
         }
 
         if (!self::validerNomPropre($province)) {
@@ -597,11 +597,13 @@ class Client
             $this->listeMessageErreurActif['province'][] =
             self::getListeMessageErreur()['province-non-alphabetique'];
 
+            return false;
         }
 
         // Nettoyage en second
 
         $this->province = filter_var($province, FILTER_SANITIZE_STRING);
+        return true;
 
     }
 
@@ -622,7 +624,8 @@ class Client
             $this->listeMessageErreurActif['pays'][] =
             self::getListeMessageErreur()['pays-vide'];
 
-            return;
+
+            return false;
         }
 
         if (strlen($pays) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
@@ -630,6 +633,7 @@ class Client
             $this->listeMessageErreurActif['pays'][] =
             self::getListeMessageErreur()['pays-trop-long'];
 
+            return false;
         }
 
         if (!self::validerNomPropre($pays)) {
@@ -637,12 +641,14 @@ class Client
             $this->listeMessageErreurActif['pays'][] =
             self::getListeMessageErreur()['pays-non-alphabetique'];
 
+            return false;
         }
 
         // Nettoyage en second
 
         $this->pays = filter_var($pays, FILTER_SANITIZE_STRING);
 
+        return true;
     }
 
     public function getVille()
@@ -662,7 +668,8 @@ class Client
             $this->listeMessageErreurActif['ville'][] =
             self::getListeMessageErreur()['ville-vide'];
 
-            return;
+
+            return false;
         }
 
         if (strlen($ville) > self::VILLE_NOMBRE_CARACTERE_MAXIMUM) {
@@ -670,6 +677,7 @@ class Client
             $this->listeMessageErreurActif['ville'][] =
             self::getListeMessageErreur()['ville-trop-long'];
 
+            return false;
         }
 
         if (!self::validerNomPropre($ville)) {
@@ -677,11 +685,13 @@ class Client
             $this->listeMessageErreurActif['ville'][] =
             self::getListeMessageErreur()['ville-non-alphabetique'];
 
+            return false;
         }
 
         // Nettoyage en second
 
         $this->ville = filter_var($ville, FILTER_SANITIZE_STRING);
+        return true;
 
     }
 
@@ -702,7 +712,7 @@ class Client
             $this->listeMessageErreurActif['rue'][] =
             self::getListeMessageErreur()['rue-vide'];
 
-            return;
+            return false;
         }
 
         if (strlen($rue) > self::RUE_NOMBRE_CARACTERE_MAXIMUM) {
@@ -710,6 +720,7 @@ class Client
             $this->listeMessageErreurActif['rue'][] =
             self::getListeMessageErreur()['rue-trop-long'];
 
+            return false;
         }
 
         // TODO validerRue
@@ -724,6 +735,7 @@ class Client
 
         $this->rue = filter_var($rue, FILTER_SANITIZE_STRING);
 
+        return true;
     }
 
     public function getCodePostal()
@@ -743,7 +755,7 @@ class Client
             $this->listeMessageErreurActif['code_postal'][] =
             self::getListeMessageErreur()['code_postal-vide'];
 
-            return;
+            return false;
         }
 
         if (strlen($code_postal) > self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM) {
@@ -751,6 +763,7 @@ class Client
             $this->listeMessageErreurActif['code_postal'][] =
             self::getListeMessageErreur()['code_postal-trop-long'];
 
+            return false;
         }
 
         // TODO validerCodePostal
@@ -764,7 +777,7 @@ class Client
         // Nettoyage en second
 
         $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
-
+        return true;
     }
 
 }
