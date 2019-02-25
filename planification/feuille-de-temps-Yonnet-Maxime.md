@@ -2,12 +2,12 @@
 
 |Numéro de l'itération  | Numéro de la semaine | Date du jour  | Nombre d'Heure |  Numéro et description de l'issue |  Lien de l'issue | Liste des commentaires |  Lien vers la page en ligne ou le document|
 |---------------------  |--------------------|--------------|--------------|----------------------------------|---------------- | --------------------  |-------------------------------------------|
-|1                      | 1                    |  30/01/2019   | 4              |  Mise en place du projet, découverte du sujet et de l'équipe de travail  | f   |f | f|
+|1                      | 1                    |  30/01/2019   | 4              |  Mise en place du projet, découverte du sujet et de l'équipe de travail  |    | | |
 |1             | 1              |  30/01/2019    | 0.3|  #8 Faire la maquette de la page d'utilisateur  |https://github.com/cegepmatane/AcheteTaBaguette/issues/8   |   |  |
 1             | 1              |  30/01/2019   |0.3   | #7 Réalisation de la story board de connexion d'un utilisateur   |https://github.com/cegepmatane/AcheteTaBaguette/issues/7   |   |   |
-1 | 1   |31/01/2019   |2 heures  | Comprégension du fonctionnement de bootstrap   |   |   |   | 
+1 | 1   |31/01/2019   |2 heures  | application de bootstrap   |   |   |   | 
 1| 1  |31/01/2019   | 1 heures  |Reservation du nom de domaine    |   |   |   | 
-1| 2   | 01/02/2019  | 1 heures   |Lecture du cookbook   |   |   |   |   
+1| 2   | 01/02/2019  | 1 heures   |Application du CookBook   |   |   |   |   
 1 |2 |03/02/2019   |30 minutes    |  #19 Creation de la sidebar left | https://github.com/cegepmatane/AcheteTaBaguette/issues/19   |   |   | 
 1|3   | 04/02/2019  |1 heure 30   | Conversion de la page type en php avec les includes  |   |   |   |    
 1  |3   |04/02/2019   |1 heure 30   |Création de prototype des differents fragments   |   |   |   |  
