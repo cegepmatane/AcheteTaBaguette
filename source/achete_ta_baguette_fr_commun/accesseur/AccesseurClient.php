@@ -5,13 +5,13 @@ require_once CHEMIN_RACINE_COMMUN . "/modele/Client.class.php";
 
 class AccesseurClient
 {
-    private $AJOUTER_UTILISATEUR =
+    private static $AJOUTER_UTILISATEUR =
         "INSERT INTO CLIENT(nom, prenom,naissance,email,motDePasse,rue,ville,province,codePostal,pays) VALUES (:nom,:prenom,:naissance,:email,:motdepasse,:rue,:ville,:province,:codePostal,:pays)";
 
     private static $SUPPRIMER_CLIENT =
         "DELETE FROM CLIENT WHERE idClient = :idClient";
 
-    private $MISE_A_JOUR_UTILISATEUR =
+    private static $MISE_A_JOUR_UTILISATEUR =
         "UPDATE CLIENT SET nom = :nom, prenom = :prenom, naissance= :naissance, email= :email, rue = :rue, ville = :ville, province = :province, codePostal = :codePostal, pays = :pays WHERE idClient = :idClient;";
 
     private static $GET_UTILISATEUR_PAR_ID =
