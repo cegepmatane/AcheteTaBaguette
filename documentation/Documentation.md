@@ -86,4 +86,4 @@
 
 <h1>Plan des URLs</h1>
 
-![Plan des URLs](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Plan%20des%20URLs.md)
+![Plan des URLs](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Plan_des_URLs.png)
