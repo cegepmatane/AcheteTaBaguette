@@ -93,12 +93,13 @@ function afficherSideBarUtilisateur($page = null) {
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <?php echo '<a href="'. CHEMIN_RACINE_COMMUN . '\action\deconnexion.php" class="btn btn-outline-primary">Se déconnecter</a>' ?>
+                        <form method="post">
+                            <button type="submit" class="btn btn-primary" name="action-deconnexion"> Se déconnecter </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 <?php
     }
@@ -122,7 +123,8 @@ function afficherSideBarUtilisateur($page = null) {
     </div>
 <?php
    }
-?>
+include_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
+   ?>
 </div>
 
 <?php

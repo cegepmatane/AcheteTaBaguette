@@ -19,8 +19,8 @@ class AccesseurClient
 
     // N'est utilisé nul part
     private static $GET_UTILISATEUR_PAR_EMAIL =
-    //Remplacer idClient par id ?
-    "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like :email;";
+        //Remplacer idClient par id ?
+        "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like :email;";
 
     private static $connexion = null;
 

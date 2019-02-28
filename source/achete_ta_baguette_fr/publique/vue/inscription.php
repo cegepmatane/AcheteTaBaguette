@@ -16,7 +16,7 @@ $page = (object)
     "isEtapeUn" => true,
     "isEtapeDeux" => false,
     "erreur" => "",
-    "personne" => null,
+    "client" => null,
     "isRetourEnArriere" => false
 ];
 
@@ -33,7 +33,7 @@ function afficherPremiereEtape($page)
                             <div class="row">
                                 <div class="col-12">
                                     <label class="col-form-label">Nom</label>
-                                    <input type="text" value="<?php echo $page->personne->nom ?>" class="form-control"
+                                    <input type="text" value="<?php echo $page->client->nom ?>" class="form-control"
                                            id="nom" name="nom" required>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ function afficherPremiereEtape($page)
                                 <div class="col-12">
                                     <label class="col-form-label">Prénom </label>
                                     <input type="text" class="form-control"
-                                           value="<?php echo $page->personne->getPrenom() ?>" id="prenom" name="prenom"
+                                           value="<?php echo $page->client->getPrenom() ?>" id="prenom" name="prenom"
                                            required>
                                 </div>
                             </div>
@@ -53,31 +53,31 @@ function afficherPremiereEtape($page)
                                 <div class="col-2">
                                     <label class="col-form-label">Rue </label>
                                     <input type="text" class="form-control" id="rue"
-                                           value="<?php echo $page->personne->getRue() ?>" name="rue"
+                                           value="<?php echo $page->client->getRue() ?>" name="rue"
                                            required>
                                 </div>
                                 <div class="col-2">
                                     <label class="col-form-label">Ville </label>
                                     <input type="text" class="form-control" id="ville"
-                                           value="<?php echo $page->personne->getVille() ?> " name="ville"
+                                           value="<?php echo $page->client->getVille() ?> " name="ville"
                                            required>
                                 </div>
                                 <div class="col-2">
                                     <label class="col-form-label">Code Postal </label>
                                     <input type="text" class="form-control" id="codePostale"
-                                           value="<?php echo $page->personne->getCodePostal() ?> " name="codePostale"
+                                           value="<?php echo $page->client->getCodePostal() ?> " name="codePostale"
                                            required>
                                 </div>
                                 <div class="col-3">
                                     <label class="col-form-label">Province </label>
                                     <input type="text" class="form-control" id="province" name="province"
-                                           value="<?php echo $page->personne->getProvince() ?> "
+                                           value="<?php echo $page->client->getProvince() ?> "
                                            required>
                                 </div>
                                 <div class="col-3">
                                     <label class="col-form-label">pays </label>
                                     <input type="text" class="form-control" id="pays" name="pays"
-                                           value="<?php echo $page->personne->getPays() ?> "
+                                           value="<?php echo $page->client->getPays() ?> "
                                            required>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <input type="hidden" value="<?php echo $page->personne->getNom() ?>" class="form-control" id="nom"
+                    <input type="hidden" value="<?php echo $page->client->getNom() ?>" class="form-control" id="nom"
                            name="nom" required>
                 </div>
             </div>
@@ -112,7 +112,7 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <input type="hidden" class="form-control" value="<?php echo $page->personne->getPrenom() ?>"
+                    <input type="hidden" class="form-control" value="<?php echo $page->client->getPrenom() ?>"
                            id="prenom" name="prenom" required>
                 </div>
             </div>
@@ -120,27 +120,27 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <input type="hidden" class="form-control" id="rue" value="<?php echo $page->personne->getRue() ?>"
+                    <input type="hidden" class="form-control" id="rue" value="<?php echo $page->client->getRue() ?>"
                            name="rue"
                            required>
                 </div>
                 <div class="col-2">
                     <input type="hidden" class="form-control" id="ville"
-                           value="<?php echo $page->personne->getVille() ?> " name="ville"
+                           value="<?php echo $page->client->getVille() ?> " name="ville"
                            required>
                 </div>
                 <div class="col-2">
                     <input type="hidden" class="form-control" id="codePostale"
-                           value="<?php echo $page->personne->getCodePostal() ?> " name="codePostale" required>
+                           value="<?php echo $page->client->getCodePostal() ?> " name="codePostale" required>
                 </div>
                 <div class="col-3">
                     <input type="hidden" class="form-control" id="province" name="province"
-                           value="<?php echo $page->personne->getProvince() ?> "
+                           value="<?php echo $page->client->getProvince() ?> "
                            required>
                 </div>
                 <div class="col-3">
                     <input type="hidden" class="form-control" id="pays" name="pays"
-                           value="<?php echo $page->personne->getPays() ?> "
+                           value="<?php echo $page->client->getPays() ?> "
                            required>
                 </div>
             </div>
@@ -214,11 +214,6 @@ function afficherPage($page = null)
         afficherSecondeEtape($page);
     }
 
-    ?>
-
-    <!--  jQuery -->
-
-    <?php
     afficherPiedDePage($page);
 
 }
