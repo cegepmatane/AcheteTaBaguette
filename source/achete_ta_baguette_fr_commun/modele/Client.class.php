@@ -4,7 +4,6 @@ class Client
     public const ID_CLIENT = "id_client";
     public const NOM = "nom";
     public const PRENOM = "prenom";
-    public const DATE_DE_NAISSANCE = "date_de_naissance";
     public const EMAIL = "email";
     public const MOT_DE_PASSE = "mot_de_passe";
     public const MOT_DE_PASSE_VERIF = "mot_de_passe_verif";
@@ -39,7 +38,6 @@ class Client
     public $nom;
     public $prenom;
     public $email;
-    public $date_de_naissance;
     public $mot_de_passe;
     public $mot_de_passe_verif;
     public $province;
@@ -58,7 +56,6 @@ class Client
             $this->setIdClient($this->id_client);
             $this->setNom($this->nom);
             $this->setPrenom($this->prenom);
-            $this->setDateDeNaissance($this->date_de_naissance);
             $this->setEmail($this->email);
             $this->setMotDePasse($this->mot_de_passe);
             $this->setProvince($this->province);
@@ -113,15 +110,6 @@ class Client
                 self::PRENOM_NOMBRE_CARACTERE_MAXIMUM .
                 " )",
                 "description" => "Petit nom",
-                "obligatoire" => true,
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP["date_de_naissance"] = (object)
-                [
-                "etiquette" => "Date de naissance",
-                "defaut" => "",
-                "indice" => "Ex. : 1998-08-31",
-                "description" => "Jour de votre anniversaire",
                 "obligatoire" => true,
             ];
 
@@ -242,9 +230,6 @@ class Client
                 "prenom-vide" => "Le prénom ne doit pas être vide",
                 "prenom-trop-long" => "Le nombre maximum de caractères pour le prénom est : " . self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
                 "prenom-non-alphabetique" => "Le prénom doit contenir uniquement des lettres",
-
-                "date_de_naissance-vide" => "La date de naissance ne doit pas être vide",
-                "date_de_naissance-invalide" => "La date de naissance n'est pas valide",
 
                 "email-vide" => "Le email ne doit pas être vide",
                 "email-trop-long" => "Le nombre maximum de caractères pour le email est : " . self::EMAIL_NOMBRE_CARACTERE_MAXIMUM,
@@ -442,38 +427,7 @@ class Client
 
     }
 
-    public function getDateDeNaissance()
-    {
 
-        $this->date_de_naissance;
-
-    }
-
-    public function setDateDeNaissance($date_de_naissance)
-    {
-
-        // Validation en premier
-
-        if (empty($date_de_naissance)) {
-
-            $this->listeMessageErreurActif['date_de_naissance'][] =
-            self::getListeMessageErreur()['date_de_naissance-vide'];
-
-
-            return false;
-        }
-
-        // TODO validerDateDeNaissance
-        /*if ( !self::validerDateDeNaissance($date_de_naissance) ){
-
-        $this->listeMessageErreurActif['date_de_naissance'][] =
-        self::getListeMessageErreur()['date_de_naissance-invalide'];
-
-        }*/
-
-        $this->date_de_naissance = $date_de_naissance;
-        return true;
-    }
 
     public function getEmail()
     {

@@ -10,7 +10,7 @@ $page = (object)
     "titre" => "Notre mission",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => "A propos",
-    "isConnected" => isset($_SESSION['connection']),
+    "isConnected" => isset($_SESSION['isConnected']),
     "idClient" => $_SESSION['id']
 ];
 
