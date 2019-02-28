@@ -6,27 +6,27 @@
 
 ![Diagramme_de_navigation](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Diagrammes/Diagramme_de_navigation.png)
 
-<h1>Connexion effectuée</h1>
+<h1>Page d'accueil - Connexion effectuée</h1>
 
 ![Appareil_connecté](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Accueil_connect%C3%A9.png)
 
-<h1>Paiement</h1>
+<h1>Page Paiement</h1>
 
 ![Paiement](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Paiement.png)
 
-<h1>Panier</h1>
+<h1>Page Panier</h1>
 
 ![Panier](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Panier.png)
 
-<h1>Inscription</h1>
+<h1>Page Inscription</h1>
 
 ![S_inscrire](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/S_inscrire.png)
 
-<h1>Connexion</h1>
+<h1>Page Connexion</h1>
 
 ![Se connecter](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Se%20connecter.png)
 
-<h1>Utilisateur</h1>
+<h1>Page Utilisateur</h1>
 
 ![Utilisateur](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Utilisateur.png)
 
