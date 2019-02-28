@@ -1,4 +1,21 @@
-Répertoire contenant le code source invisible en Wordpress
+Répertoire contenant tout le code source 
+
+Partie visible par le serveur : 
+
+- achete_ta_baguette_fr
+
+Partie invisible : 
+
+- achete_ta_baguette_fr_administrateur
+- achete_ta_baguette_fr_commun
+- achete_ta_baguette_fr_publique 
+- achete_ta_baguette_fr_utilisateur 
+
+
+
+
+
+
 
 
 
