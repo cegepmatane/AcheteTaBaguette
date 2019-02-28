@@ -11,6 +11,16 @@ function afficherEntete($page = null)
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135374910-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135374910-1');
+</script>
+
     <meta charset="utf-8">
     <title> <?=$page->titre ?? "";?> </title>
 
@@ -54,7 +64,7 @@ function afficherEntete($page = null)
                                 /></h1>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
