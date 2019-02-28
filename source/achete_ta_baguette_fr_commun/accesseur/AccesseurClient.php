@@ -15,7 +15,7 @@ class AccesseurClient
         "UPDATE CLIENT SET nom = :nom, prenom = :prenom, email= :email, rue = :rue, ville = :ville, province = :province, codePostal = :codePostal, pays = :pays WHERE idClient = :idClient;";
 
     private static $GET_UTILISATEUR_PAR_ID =
-        "SELECT nom, prenom, naissance, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
+        "SELECT nom, prenom, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
 
     // N'est utilisé nul part
     private static $GET_UTILISATEUR_PAR_EMAIL =
