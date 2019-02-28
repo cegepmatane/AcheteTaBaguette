@@ -20,7 +20,7 @@ $page = (object)
     "isRetourEnArriere" => false
 ];
 
-function afficherPremiereEtape($page = null)
+function afficherPremiereEtape($page)
 {
     ?>
     <div class="content">
@@ -38,7 +38,6 @@ function afficherPremiereEtape($page = null)
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
@@ -83,17 +82,6 @@ function afficherPremiereEtape($page = null)
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-12">
-                                    <label class="col-form-label">Date de Naissance </label>
-                                    <input type="date" class="form-control" placeholder="DD/MM/YYY" id="date"
-                                           name="date" value="<?php echo $page->personne->getDateDeNaissance() ?> "
-                                           required/>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row justify-content-md-center">
                             <button type="submit" class="btn btn-primary" name="action-aller-seconde-etape">Suivant
                             </button>
@@ -106,7 +94,7 @@ function afficherPremiereEtape($page = null)
     <?php
 }
 
-function afficherSecondeEtape($page = null)
+function afficherSecondeEtape($page)
 {
     ?>
     <form method="post">
@@ -158,15 +146,6 @@ function afficherSecondeEtape($page = null)
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-12">
-                    <input type="hidden" class="form-control" placeholder="DD/MM/YYY" id="date" name="date"
-                           value="<?php print_r($page->personne->getDateDeNaissance()) ?> "
-                           required/>
-                </div>
-            </div>
-        </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
@@ -222,11 +201,11 @@ function afficherSecondeEtape($page = null)
 
 function afficherPage($page = null)
 {
-    afficherEntete($page);
-    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
+    // En cas d'erreur avec le paramètre $page, un objet $page vide est crée
     if (!is_object($page)) {
         $page = (object)[];
     }
+    afficherEntete($page);
 
     if ($page->isEtapeUn == true && $page->isEtapeDeux == false) {
         afficherPremiereEtape($page);

@@ -18,7 +18,7 @@ $page = (object)
     "titre" => "Page index",
     "titrePrincipal" => "Le titre principal H1",
     "itemMenuActif" => $_GET['type'],
-    "isConnected" => $_SESSION["connection"],
+    "isConnected" => $_SESSION["isConnected"],
     "idClient" => $_SESSION["id"],
 
     /*"id_personne" => Client::ID_CLIENT,
