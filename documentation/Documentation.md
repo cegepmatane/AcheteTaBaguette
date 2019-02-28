@@ -38,7 +38,7 @@
 
 ![mission](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/mission.png)
 
-<h1>Page produit</h1>
+<h1>Page Produit</h1>
 
 ![page produit](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/page%20produit.png)
 
@@ -83,3 +83,7 @@
 ![Storyboard- choix produit_Page_5](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_5.png)
 
 ![Storyboard- choix produit_Page_6](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_6.png)
+
+<h1>Plan des URLs</h1>
+
+![Plan des URLs](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Plan%20des%20URLs.md)
