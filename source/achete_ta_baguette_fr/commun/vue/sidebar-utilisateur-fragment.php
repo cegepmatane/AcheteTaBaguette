@@ -6,7 +6,7 @@ function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
 
     $accesseurClient = new AccesseurClient();
-    $client = $accesseurClient->getClientParId($page->idClient->idClient);
+    $client = $accesseurClient->getClientParId($page->idClient);
 
 ?>
 <div class="sidebarLeft">

@@ -17,9 +17,7 @@ class AccesseurClient
     private static $GET_UTILISATEUR_PAR_ID =
         "SELECT nom, prenom, email, motDePasse, rue, ville, province, codePostal, pays, administrateur FROM CLIENT WHERE idClient like :idClient;";
 
-    // N'est utilisé nul part
-    private static $GET_UTILISATEUR_PAR_EMAIL =
-        //Remplacer idClient par id ?
+    private static $RECUPERER_CLIENT_PAR_EMAIL =
         "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email like :email;";
 
     private static $connexion = null;
@@ -76,20 +74,6 @@ class AccesseurClient
         return false;
     }
 
-    public function getClientParEmail($emailClient)
-    {
-        $requete = self::$connexion->prepare(self::$GET_UTILISATEUR_PAR_EMAIL);
-        $requete->bindValue(":email", $emailClient);
-
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            $reponse = $requete->fetch();
-            return $reponse;
-        }
-        return false;
-    }
-
     public function miseAJourClient($client)
     {
 
@@ -114,23 +98,18 @@ class AccesseurClient
 
     }
 
-    public function verifierClient($client)
+    public function recupererClientParEmail($emailClient)
     {
-        $requete = "SELECT idClient, motDePasse, administrateur FROM CLIENT WHERE email = '$client->email' ORDER BY idClient DESC LIMIT 1";
-        $stmt = self::$connexion->query($requete);
-        $resultat = $stmt->fetch();
-        if ($stmt->execute()) {
-            while ($row = $stmt->fetch()) {
-                if (sha1($client->mot_De_Passe) == print_r($row->motDePasse, true)) {
-                    $resultat->idClient = print_r($row->idClient, true);
-                    $resultat->motDePasse = print_r($row->motDePasse, true);
-                    $resultat->administrateur = print_r($row->administrateur, true);
-                } else {
-                    $resultat = false;
-                }
+        $requete = self::$connexion->prepare(self::$RECUPERER_CLIENT_PAR_EMAIL);
+        $requete->bindValue(":email", $emailClient, PDO::PARAM_STR);
+        $requete->execute();
 
-            }
+        if ($requete->rowCount() > 0) {
+            $reponse = $requete->fetch();
+            return $reponse;
         }
-        return $resultat;
+        return false;
+
+        //return new Client($requete->fetchObject());
     }
 }
