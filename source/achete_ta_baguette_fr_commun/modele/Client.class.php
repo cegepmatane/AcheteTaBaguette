@@ -12,6 +12,7 @@ class Client
     public const VILLE = "ville";
     public const RUE = "rue";
     public const CODE_POSTAL = "code_postal";
+    public const ADMINISTRATION = "administration";
 
     private const PATERN_NOM_PROPRE =
         "/^[A-Za-z\x{00C0}-\x{00FF}]" .
@@ -45,8 +46,28 @@ class Client
     public $ville;
     public $rue;
     public $code_postal;
+    public $administration;
     public $id_client;
 
+    public function __construct(object $attribut)
+    {
+        if (!is_object($attribut)) {
+            $attribut = (object) [];
+        }
+        $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
+        $this->setNom($attribut->nom ?? "");
+        $this->setPrenom($attribut->prenom ?? "");
+        $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
+        $this->setEmail($attribut->mail ?? "");
+        $this->setMotDePasse($attribut->mot_de_passe ?? "");
+        $this->setProvince($attribut->province ?? "");
+        $this->setPays($attribut->pays ?? "");
+        $this->setVille($attribut->ville ?? "");
+        $this->setRue($attribut->rue ?? "");
+        $this->setCodePostal($attribut->code_postal ?? "");
+        $this->setAdministration($attribut->administration ?? false);
+        $this->setIdClient($attribut->id_client ?? null);
+    }
 
     public function isValide($champ = null)
     {
@@ -63,6 +84,7 @@ class Client
             $this->setVille($this->ville);
             $this->setRue($this->rue);
             $this->setCodePostal($this->code_postal);
+            $this->setAdministration($this->administration);
             return $this->listeMessageErreurActif;
 
         }
@@ -263,6 +285,8 @@ class Client
                 "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
                 "code_postal-invalide" => "Le code postal n'est pas valide",
 
+                "administration-non-invalide" => "Format invalide",
+
             ];
 
         }
@@ -286,6 +310,12 @@ class Client
             return true;
         }
 
+        return false;
+    }
+
+    private static function validerAdministration($administration)
+    {
+        if ($administration == true || $administration == false) return true;
         return false;
     }
 
@@ -731,6 +761,31 @@ class Client
         // Nettoyage en second
 
         $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
+        return true;
+    }
+
+    public function getAdministration()
+    {
+
+        return $this->administration;
+
+    }
+
+    public function setAdministration($administration)
+    {
+
+        // Validation en premier
+
+        if ( !self::validerAdministration($administration) ){
+
+            $this->listeMessageErreurActif['administration'][] =
+            self::getListeMessageErreur()['administration-non-invalide'];
+
+        }
+
+        // Nettoyage en second
+
+        $this->administration = filter_var($administration, FILTER_SANITIZE_STRING);
         return true;
     }
 
