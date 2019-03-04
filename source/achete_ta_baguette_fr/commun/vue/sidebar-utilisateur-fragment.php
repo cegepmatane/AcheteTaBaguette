@@ -2,6 +2,8 @@
 require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 
+include_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
+
 function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
 
@@ -123,8 +125,7 @@ function afficherSideBarUtilisateur($page = null) {
     </div>
 <?php
    }
-include_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
-   ?>
+?>
 </div>
 
 <?php

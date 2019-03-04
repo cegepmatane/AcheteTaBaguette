@@ -7,7 +7,7 @@
  */
 if(isset($_POST["action-deconnexion"])) {
     session_destroy();
-    $page->isconnected = false;
+    header("Location: /boutique");
 }
 
 ?>
