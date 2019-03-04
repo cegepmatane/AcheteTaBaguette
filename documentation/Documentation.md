@@ -20,8 +20,8 @@
 
 <h1>Page Inscription</h1>
 
-![S_inscrire](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_1.png)
-(https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_2.png)
+![S_inscrire_1](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_1.png)
+![S_inscrire_2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_2.png)
 
 <h1>Page Connexion</h1>
 
