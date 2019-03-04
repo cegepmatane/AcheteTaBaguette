@@ -1,18 +1,19 @@
 <?php
 class Client
 {
-    public const ID_CLIENT = "id_client";
+    public const ID_CLIENT = "idClient";
     public const NOM = "nom";
     public const PRENOM = "prenom";
     public const EMAIL = "email";
-    public const MOT_DE_PASSE = "mot_de_passe";
-    public const MOT_DE_PASSE_VERIF = "mot_de_passe_verif";
+    public const MOT_DE_PASSE = "motDePasse";
+    public const MOT_DE_PASSE_VERIF = "motDePasseVerif";
     public const PROVINCE = "province";
+    public const PAYS = "pays";
     public const REGION = "region";
     public const VILLE = "ville";
     public const RUE = "rue";
-    public const CODE_POSTAL = "code_postal";
-    public const ADMINISTRATION = "administration";
+    public const CODE_POSTAL = "codePostal";
+    public const ADMINISTRATION = "administrateur";
 
     private const PATERN_NOM_PROPRE =
         "/^[A-Za-z\x{00C0}-\x{00FF}]" .
@@ -39,34 +40,34 @@ class Client
     public $nom;
     public $prenom;
     public $email;
-    public $mot_de_passe;
-    public $mot_de_passe_verif;
+    public $motDePasse;
+    public $motDePasseVerif;
     public $province;
     public $pays;
     public $ville;
     public $rue;
-    public $code_postal;
-    public $administration;
-    public $id_client;
+    public $codePostal;
+    public $administrateur;
+    public $idClient;
 
     public function __construct(object $attribut)
     {
         if (!is_object($attribut)) {
             $attribut = (object) [];
         }
-        $this->mot_de_passe_verif = $attribut->mot_de_passe_verif;
+        $this->motDePasseVerif = $attribut->motDePasseVerif;
         $this->setNom($attribut->nom ?? "");
         $this->setPrenom($attribut->prenom ?? "");
         $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
         $this->setEmail($attribut->mail ?? "");
-        $this->setMotDePasse($attribut->mot_de_passe ?? "");
+        $this->setMotDePasse($attribut->motDePasse ?? "");
         $this->setProvince($attribut->province ?? "");
         $this->setPays($attribut->pays ?? "");
         $this->setVille($attribut->ville ?? "");
         $this->setRue($attribut->rue ?? "");
-        $this->setCodePostal($attribut->code_postal ?? "");
-        $this->setAdministration($attribut->administration ?? false);
-        $this->setIdClient($attribut->id_client ?? null);
+        $this->setCodePostal($attribut->codePostal ?? "");
+        $this->setAdministration($attribut->administrateur ?? false);
+        $this->setIdClient($attribut->idClient ?? null);
     }
 
     public function isValide($champ = null)
@@ -74,17 +75,17 @@ class Client
 
         if (null == $champ) {
 
-            $this->setIdClient($this->id_client);
+            $this->setIdClient($this->idClient);
             $this->setNom($this->nom);
             $this->setPrenom($this->prenom);
             $this->setEmail($this->email);
-            $this->setMotDePasse($this->mot_de_passe);
+            $this->setMotDePasse($this->motDePasse);
             $this->setProvince($this->province);
             $this->setPays($this->pays);
             $this->setVille($this->ville);
             $this->setRue($this->rue);
-            $this->setCodePostal($this->code_postal);
-            $this->setAdministration($this->administration);
+            $this->setCodePostal($this->codePostal);
+            $this->setAdministration($this->administrateur);
             return $this->listeMessageErreurActif;
 
         }
@@ -104,7 +105,7 @@ class Client
 
         if (empty(self::$LISTE_INFORMATION_CHAMP)) {
 
-            self::$LISTE_INFORMATION_CHAMP["id_client"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::ID_CLIENT] = (object)
                 [
                 "etiquette" => "",
                 "defaut" => "",
@@ -113,7 +114,7 @@ class Client
                 "obligatoire" => null,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["nom"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::NOM] = (object)
                 [
                 "etiquette" => "Nom",
                 "defaut" => "",
@@ -124,7 +125,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["prenom"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::PRENOM] = (object)
                 [
                 "etiquette" => "Prénom",
                 "defaut" => "",
@@ -135,7 +136,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["email"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::EMAIL] = (object)
                 [
                 "etiquette" => "Adresse email",
                 "defaut" => "",
@@ -147,7 +148,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["mot_de_passe"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::MOT_DE_PASSE] = (object)
                 [
                 "etiquette" => "Mot de passe",
                 "defaut" => "",
@@ -158,7 +159,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["mot_de_passe_verif"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::MOT_DE_PASSE_VERIF] = (object)
                 [
                 "etiquette" => "Confirmer mot de passe",
                 "defaut" => "",
@@ -169,7 +170,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["provine"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::PROVINCE] = (object)
                 [
                 "etiquette" => "Province",
                 "defaut" => "",
@@ -180,7 +181,18 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["region"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::PAYS] = (object)
+            [
+                "etiquette" => "Pays",
+                "defaut" => "",
+                "indice" => "Ex. : CANADA (nombre maximum de caractères : " .
+                    self::PAYS_NOMBRE_CARACTERE_MAXIMUM .
+                    " )",
+                "description" => "Pays de résidence",
+                "obligatoire" => true,
+            ];
+
+            self::$LISTE_INFORMATION_CHAMP[self::REGION] = (object)
                 [
                 "etiquette" => "Région",
                 "defaut" => "",
@@ -191,7 +203,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["ville"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::VILLE] = (object)
                 [
                 "etiquette" => "Ville",
                 "defaut" => "",
@@ -202,7 +214,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["rue"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::RUE] = (object)
                 [
                 "etiquette" => "Rue",
                 "defaut" => "",
@@ -213,7 +225,7 @@ class Client
                 "obligatoire" => true,
             ];
 
-            self::$LISTE_INFORMATION_CHAMP["code_postal"] = (object)
+            self::$LISTE_INFORMATION_CHAMP[self::CODE_POSTAL] = (object)
                 [
                 "etiquette" => "Code postal",
                 "defaut" => "",
@@ -243,7 +255,7 @@ class Client
 
             self::$LISTE_MESSAGE_ERREUR =
                 [
-                "id_client-invalide" => true,
+                "idClient-invalide" => true,
 
                 "nom-vide" => "Le nom ne doit pas être vide",
                 "nom-trop-long" => "Le nombre maximum de caractères pour le nom est : " . self::NOM_NOMBRE_CARACTERE_MAXIMUM,
@@ -257,9 +269,9 @@ class Client
                 "email-trop-long" => "Le nombre maximum de caractères pour le email est : " . self::EMAIL_NOMBRE_CARACTERE_MAXIMUM,
                 "email-invalide" => "Le email n'est pas valide",
 
-                "mot_de_passe-vide" => "Le mot de passe ne doit pas être vide",
-                "mot_de_passe-trop-long" => "Le nombre maximum de caractères pour le mot de passe est : " . self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM,
-                "mot_de_passe-invalide" => "Les mots de passe ne correspondent pas",
+                "motDePasse-vide" => "Le mot de passe ne doit pas être vide",
+                "motDePasse-trop-long" => "Le nombre maximum de caractères pour le mot de passe est : " . self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM,
+                "motDePasse-invalide" => "Les mots de passe ne correspondent pas",
 
                 "province-vide" => "La province ne doit pas être vide",
                 "province-trop-long" => "Le nombre maximum de caractères pour la province est : " . self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM,
@@ -281,11 +293,11 @@ class Client
                 "pays-trop-long" => "Le nombre maximum de caractères pour la ville est : " . self::PAYS_NOMBRE_CARACTERE_MAXIMUM,
                 "pays-non-alphabetique" => "La ville doit contenir uniquement des lettres",
 
-                "code_postal-vide" => "Le code postal ne doit pas être vide",
-                "code_postal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
-                "code_postal-invalide" => "Le code postal n'est pas valide",
+                "codePostal-vide" => "Le code postal ne doit pas être vide",
+                "codePostal-trop-long" => "Le nombre maximum de caractères pour le code postal est : " . self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM,
+                "codePostal-invalide" => "Le code postal n'est pas valide",
 
-                "administration-non-invalide" => "Format invalide",
+                "administrateur-non-invalide" => "Format invalide",
 
             ];
 
@@ -304,18 +316,18 @@ class Client
         return false;
     }
 
-    private static function validerMotDePasse($mot_de_passe, $mot_de_passe_verif)
+    private static function validerMotDePasse($motDePasse, $motDePasseVerif)
     {
-        if ($mot_de_passe == $mot_de_passe_verif) {
+        if ($motDePasse == $motDePasseVerif) {
             return true;
         }
 
         return false;
     }
 
-    private static function validerAdministration($administration)
+    private static function validerAdministration($administrateur)
     {
-        if ($administration == true || $administration == false) return true;
+        if ($administrateur == true || $administrateur == false) return true;
         return false;
     }
 
@@ -324,7 +336,7 @@ class Client
         // TODO
     }
 
-    private static function valideCodePostal($code_postal)
+    private static function valideCodePostal($codePostal)
     {
         // TODO
     }
@@ -339,31 +351,31 @@ class Client
     public function getIdClient()
     {
 
-        return $this->id_client;
+        return $this->idClient;
 
     }
 
-    public function setIdClient($id_client)
+    public function setIdClient($idClient)
     {
 
         // Validation en premier
 
-        if (null == $id_client) {
+        if (null == $idClient) {
             return;
         }
 
-        if (!is_int(filter_var($id_client, FILTER_VALIDATE_INT))) {
+        if (!is_int(filter_var($idClient, FILTER_VALIDATE_INT))) {
 
-            $this->listeMessageErreurActif['id_client'][] =
-            self::getListeMessageErreur()['id_client-invalide'];
+            $this->listeMessageErreurActif[self::ID_CLIENT][] =
+            self::getListeMessageErreur()['idClient-invalide'];
 
-            $this->id_client = null;
+            $this->idClient = null;
 
             return;
 
         }
 
-        $this->id_client = $id_client;
+        $this->idClient = $idClient;
 
     }
 
@@ -381,7 +393,7 @@ class Client
 
         if (empty($nom)) {
 
-            $this->listeMessageErreurActif['nom'][] =
+            $this->listeMessageErreurActif[self::NOM][] =
             self::getListeMessageErreur()['nom-vide'];
 
             return false;
@@ -389,7 +401,7 @@ class Client
 
         if (strlen($nom) > self::NOM_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['nom'][] =
+            $this->listeMessageErreurActif[self::NOM][] =
             self::getListeMessageErreur()['nom-trop-long'];
 
             return false;
@@ -397,7 +409,7 @@ class Client
 
         if (!self::validerNomPropre($nom)) {
 
-            $this->listeMessageErreurActif['nom'][] =
+            $this->listeMessageErreurActif[self::NOM][] =
             self::getListeMessageErreur()['nom-non-alphabetique'];
 
             return false;
@@ -425,7 +437,7 @@ class Client
 
         if (empty($prenom)) {
 
-            $this->listeMessageErreurActif['prenom'][] =
+            $this->listeMessageErreurActif[self::PRENOM][] =
             self::getListeMessageErreur()['prenom-vide'];
 
 
@@ -435,7 +447,7 @@ class Client
 
         if (strlen($prenom) > self::PRENOM_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['prenom'][] =
+            $this->listeMessageErreurActif[self::PRENOM][] =
             self::getListeMessageErreur()['prenom-trop-long'];
 
             return false;
@@ -443,7 +455,7 @@ class Client
 
         if (!self::validerNomPropre($prenom)) {
 
-            $this->listeMessageErreurActif['prenom'][] =
+            $this->listeMessageErreurActif[self::PRENOM][] =
             self::getListeMessageErreur()['prenom-non-alphabetique'];
 
             return false;
@@ -473,7 +485,7 @@ class Client
 
         if (empty($email)) {
 
-            $this->listeMessageErreurActif['email'][] =
+            $this->listeMessageErreurActif[self::EMAIL][] =
             self::getListeMessageErreur()['email-vide'];
 
 
@@ -482,7 +494,7 @@ class Client
 
         if (strlen($email) > self::EMAIL_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['email'][] =
+            $this->listeMessageErreurActif[self::EMAIL][] =
             self::getListeMessageErreur()['email-trop-long'];
 
             return false;
@@ -490,7 +502,7 @@ class Client
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            $this->listeMessageErreurActif['email'][] =
+            $this->listeMessageErreurActif[self::EMAIL][] =
             self::getListeMessageErreur()['email-invalide'];
 
             return false;
@@ -508,41 +520,41 @@ class Client
     public function getMotDePasse()
     {
 
-        $this->mot_de_passe;
+        $this->motDePasse;
 
     }
 
-    public function setMotDePasse($mot_de_passe)
+    public function setMotDePasse($motDePasse)
     {
 
         // Validation en premier
 
-        if (empty($mot_de_passe)) {
+        if (empty($motDePasse)) {
 
-            $this->listeMessageErreurActif['mot_de_passe'][] =
-            self::getListeMessageErreur()['mot_de_passe-vide'];
+            $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
+            self::getListeMessageErreur()['motDePasse-vide'];
 
-
-            return false;
-        }
-
-        if (strlen($mot_de_passe) > self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM) {
-
-            $this->listeMessageErreurActif['mot_de_passe'][] =
-            self::getListeMessageErreur()['mot_de_passe-trop-long'];
 
             return false;
         }
 
-        if (!self::validerMotDePasse($mot_de_passe, $this->mot_de_passe_verif)) {
+        if (strlen($motDePasse) > self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['mot_de_passe'][] =
-            self::getListeMessageErreur()['mot_de_passe-invalide'];
+            $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
+            self::getListeMessageErreur()['motDePasse-trop-long'];
 
             return false;
         }
 
-        $this->mot_de_passe = $mot_de_passe;
+        if (!self::validerMotDePasse($motDePasse, $this->motDePasseVerif)) {
+
+            $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
+            self::getListeMessageErreur()['motDePasse-invalide'];
+
+            return false;
+        }
+
+        $this->motDePasse = $motDePasse;
 
         return true;
     }
@@ -561,7 +573,7 @@ class Client
 
         if (empty($province)) {
 
-            $this->listeMessageErreurActif['province'][] =
+            $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-vide'];
 
 
@@ -570,7 +582,7 @@ class Client
 
         if (strlen($province) > self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['province'][] =
+            $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-trop-long'];
 
             return false;
@@ -578,7 +590,7 @@ class Client
 
         if (!self::validerNomPropre($province)) {
 
-            $this->listeMessageErreurActif['province'][] =
+            $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-non-alphabetique'];
 
             return false;
@@ -605,7 +617,7 @@ class Client
 
         if (empty($pays)) {
 
-            $this->listeMessageErreurActif['pays'][] =
+            $this->listeMessageErreurActif[self::PAYS][] =
             self::getListeMessageErreur()['pays-vide'];
 
 
@@ -614,7 +626,7 @@ class Client
 
         if (strlen($pays) > self::REGION_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['pays'][] =
+            $this->listeMessageErreurActif[self::PAYS][] =
             self::getListeMessageErreur()['pays-trop-long'];
 
             return false;
@@ -622,7 +634,7 @@ class Client
 
         if (!self::validerNomPropre($pays)) {
 
-            $this->listeMessageErreurActif['pays'][] =
+            $this->listeMessageErreurActif[self::PAYS][] =
             self::getListeMessageErreur()['pays-non-alphabetique'];
 
             return false;
@@ -649,7 +661,7 @@ class Client
 
         if (empty($ville)) {
 
-            $this->listeMessageErreurActif['ville'][] =
+            $this->listeMessageErreurActif[self::VILLE][] =
             self::getListeMessageErreur()['ville-vide'];
 
 
@@ -658,7 +670,7 @@ class Client
 
         if (strlen($ville) > self::VILLE_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['ville'][] =
+            $this->listeMessageErreurActif[self::VILLE][] =
             self::getListeMessageErreur()['ville-trop-long'];
 
             return false;
@@ -666,7 +678,7 @@ class Client
 
         if (!self::validerNomPropre($ville)) {
 
-            $this->listeMessageErreurActif['ville'][] =
+            $this->listeMessageErreurActif[self::VILLE][] =
             self::getListeMessageErreur()['ville-non-alphabetique'];
 
             return false;
@@ -693,7 +705,7 @@ class Client
 
         if (empty($rue)) {
 
-            $this->listeMessageErreurActif['rue'][] =
+            $this->listeMessageErreurActif[self::RUE][] =
             self::getListeMessageErreur()['rue-vide'];
 
             return false;
@@ -701,7 +713,7 @@ class Client
 
         if (strlen($rue) > self::RUE_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['rue'][] =
+            $this->listeMessageErreurActif[self::RUE][] =
             self::getListeMessageErreur()['rue-trop-long'];
 
             return false;
@@ -710,8 +722,8 @@ class Client
         // TODO validerRue
         /*if ( !self::validerRue($rue) ){
 
-        $this->listeMessageErreurActif['region'][] =
-        self::getListeMessageErreur()['region-non-invalide'];
+        $this->listeMessageErreurActif[self::RUE][] =
+        self::getListeMessageErreur()['rue-non-invalide'];
 
         }*/
 
@@ -725,67 +737,67 @@ class Client
     public function getCodePostal()
     {
 
-        return $this->code_postal;
+        return $this->codePostal;
 
     }
 
-    public function setCodePostal($code_postal)
+    public function setCodePostal($codePostal)
     {
 
         // Validation en premier
 
-        if (empty($code_postal)) {
+        if (empty($codePostal)) {
 
-            $this->listeMessageErreurActif['code_postal'][] =
-            self::getListeMessageErreur()['code_postal-vide'];
+            $this->listeMessageErreurActif[self::CODE_POSTAL][] =
+            self::getListeMessageErreur()['codePostal-vide'];
 
             return false;
         }
 
-        if (strlen($code_postal) > self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM) {
+        if (strlen($codePostal) > self::CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM) {
 
-            $this->listeMessageErreurActif['code_postal'][] =
-            self::getListeMessageErreur()['code_postal-trop-long'];
+            $this->listeMessageErreurActif[self::CODE_POSTAL][] =
+            self::getListeMessageErreur()['codePostal-trop-long'];
 
             return false;
         }
 
         // TODO validerCodePostal
-        /*if ( !self::validerCodePostal($code_postal) ){
+        /*if ( !self::validerCodePostal($codePostal) ){
 
-        $this->listeMessageErreurActif['code_postal'][] =
-        self::getListeMessageErreur()['code_postal-non-invalide'];
+        $this->listeMessageErreurActif[self::CODE_POSTAL][] =
+        self::getListeMessageErreur()['codePostal-non-invalide'];
 
         }*/
 
         // Nettoyage en second
 
-        $this->code_postal = filter_var($code_postal, FILTER_SANITIZE_STRING);
+        $this->codePostal = filter_var($codePostal, FILTER_SANITIZE_STRING);
         return true;
     }
 
     public function getAdministration()
     {
 
-        return $this->administration;
+        return $this->administrateur;
 
     }
 
-    public function setAdministration($administration)
+    public function setAdministration($administrateur)
     {
 
         // Validation en premier
 
-        if ( !self::validerAdministration($administration) ){
+        if ( !self::validerAdministration($administrateur) ){
 
-            $this->listeMessageErreurActif['administration'][] =
-            self::getListeMessageErreur()['administration-non-invalide'];
+            $this->listeMessageErreurActif[self::ADMINISTRATION][] =
+            self::getListeMessageErreur()['administrateur-non-invalide'];
 
         }
 
         // Nettoyage en second
 
-        $this->administration = filter_var($administration, FILTER_SANITIZE_STRING);
+        $this->administrateur = filter_var($administrateur, FILTER_SANITIZE_STRING);
         return true;
     }
 
