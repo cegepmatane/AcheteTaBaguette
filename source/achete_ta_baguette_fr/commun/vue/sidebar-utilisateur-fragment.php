@@ -90,7 +90,7 @@ function afficherSideBarUtilisateur($page = null) {
             <div class="col-md-12 align-self-end">
                 <div class="row mb-2">
                     <div class="col-md-12">
-                        <a href="#" class="btn btn-outline-primary">Modifier mes informations</a>
+                        <a href="/mesinformations" class="btn btn-outline-primary">Modifier mes informations</a>
                     </div>
                 </div>
                 <div class="row">
