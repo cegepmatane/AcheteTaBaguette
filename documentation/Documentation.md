@@ -21,6 +21,7 @@
 <h1>Page Inscription</h1>
 
 ![S_inscrire_1](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_1.png)
+
 ![S_inscrire_2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/Maquettes/Inscription_2.png)
 
 <h1>Page Connexion</h1>
@@ -73,17 +74,7 @@
 
 <h1>StoryBoard - Choix produit</h1>
 
-![Storyboard- choix produit_Page_1](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_1.png)
-
-![Storyboard- choix produit_Page_2](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_2.png)
-
-![Storyboard- choix produit_Page_3](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_3.png)
-
-![Storyboard- choix produit_Page_4](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_4.png)
-
-![Storyboard- choix produit_Page_5](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_5.png)
-
-![Storyboard- choix produit_Page_6](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/StoryBoard/Storyboard-%20choix%20produit_Page_6.png)
+![Storyboard - Choix produit](https://github.com/cegepmatane/AcheteTaBaguette/blob/be8e9401ba650e803dfbff5709752a0379daebf6/documentation/StoryBoard/Storyboard-%20Choix%20produit.png)
 
 <h1>Plan des URLs</h1>
 
