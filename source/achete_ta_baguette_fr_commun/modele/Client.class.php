@@ -6,14 +6,13 @@ class Client
     public const PRENOM = "prenom";
     public const EMAIL = "email";
     public const MOT_DE_PASSE = "motDePasse";
-    public const MOT_DE_PASSE_VERIF = "motDePasseVerif";
     public const PROVINCE = "province";
     public const PAYS = "pays";
     public const REGION = "region";
     public const VILLE = "ville";
     public const RUE = "rue";
     public const CODE_POSTAL = "codePostal";
-    public const ADMINISTRATION = "administrateur";
+    public const ADMINISTRATEUR = "administrateur";
 
     private const PATERN_NOM_PROPRE =
         "/^[A-Za-z\x{00C0}-\x{00FF}]" .
@@ -41,7 +40,6 @@ class Client
     public $prenom;
     public $email;
     public $motDePasse;
-    public $motDePasseVerif;
     public $province;
     public $pays;
     public $ville;
@@ -55,10 +53,8 @@ class Client
         if (!is_object($attribut)) {
             $attribut = (object) [];
         }
-        $this->motDePasseVerif = $attribut->motDePasseVerif;
         $this->setNom($attribut->nom ?? "");
         $this->setPrenom($attribut->prenom ?? "");
-        $this->setDateDeNaissance($attribut->date_de_naissance ?? "");
         $this->setEmail($attribut->mail ?? "");
         $this->setMotDePasse($attribut->motDePasse ?? "");
         $this->setProvince($attribut->province ?? "");
@@ -66,7 +62,7 @@ class Client
         $this->setVille($attribut->ville ?? "");
         $this->setRue($attribut->rue ?? "");
         $this->setCodePostal($attribut->codePostal ?? "");
-        $this->setAdministration($attribut->administrateur ?? false);
+        $this->setAdministrateur($attribut->administrateur ?? false);
         $this->setIdClient($attribut->idClient ?? null);
     }
 
@@ -85,7 +81,7 @@ class Client
             $this->setVille($this->ville);
             $this->setRue($this->rue);
             $this->setCodePostal($this->codePostal);
-            $this->setAdministration($this->administrateur);
+            $this->setAdministrateur($this->administrateur);
             return $this->listeMessageErreurActif;
 
         }
@@ -156,17 +152,6 @@ class Client
                 self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
                 " )",
                 "description" => "Code secret pour vous connecter",
-                "obligatoire" => true,
-            ];
-
-            self::$LISTE_INFORMATION_CHAMP[self::MOT_DE_PASSE_VERIF] = (object)
-                [
-                "etiquette" => "Confirmer mot de passe",
-                "defaut" => "",
-                "indice" => "Ex. : M0t2p@6 (nombre maximum de caractères : " .
-                self::MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM .
-                " )",
-                "description" => "Entrez à nouveau votre mot de passe",
                 "obligatoire" => true,
             ];
 
@@ -316,16 +301,7 @@ class Client
         return false;
     }
 
-    private static function validerMotDePasse($motDePasse, $motDePasseVerif)
-    {
-        if ($motDePasse == $motDePasseVerif) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private static function validerAdministration($administrateur)
+    private static function validerAdministrateur($administrateur)
     {
         if ($administrateur == true || $administrateur == false) return true;
         return false;
@@ -542,14 +518,6 @@ class Client
 
             $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
             self::getListeMessageErreur()['motDePasse-trop-long'];
-
-            return false;
-        }
-
-        if (!self::validerMotDePasse($motDePasse, $this->motDePasseVerif)) {
-
-            $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
-            self::getListeMessageErreur()['motDePasse-invalide'];
 
             return false;
         }
@@ -776,21 +744,21 @@ class Client
         return true;
     }
 
-    public function getAdministration()
+    public function getAdministrateur()
     {
 
         return $this->administrateur;
 
     }
 
-    public function setAdministration($administrateur)
+    public function setAdministrateur($administrateur)
     {
 
         // Validation en premier
 
-        if ( !self::validerAdministration($administrateur) ){
+        if ( !self::validerAdministrateur($administrateur) ){
 
-            $this->listeMessageErreurActif[self::ADMINISTRATION][] =
+            $this->listeMessageErreurActif[self::ADMINISTRATEUR][] =
             self::getListeMessageErreur()['administrateur-non-invalide'];
 
         }
