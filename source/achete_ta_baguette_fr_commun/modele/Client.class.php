@@ -22,7 +22,7 @@ class Client
     private const NOM_NOMBRE_CARACTERE_MAXIMUM = 24;
     private const PRENOM_NOMBRE_CARACTERE_MAXIMUM = 24;
     private const EMAIL_NOMBRE_CARACTERE_MAXIMUM = 30;
-    private const MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM = 30;
+    private const MOT_DE_PASSE_NOMBRE_CARACTERE_MAXIMUM = 64;
     private const PROVINCE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const REGION_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const VILLE_NOMBRE_CARACTERE_MAXIMUM = 30;
@@ -55,7 +55,7 @@ class Client
         }
         $this->setNom($attribut->nom ?? "");
         $this->setPrenom($attribut->prenom ?? "");
-        $this->setEmail($attribut->mail ?? "");
+        $this->setEmail($attribut->email ?? "");
         $this->setMotDePasse($attribut->motDePasse ?? "");
         $this->setProvince($attribut->province ?? "");
         $this->setPays($attribut->pays ?? "");
