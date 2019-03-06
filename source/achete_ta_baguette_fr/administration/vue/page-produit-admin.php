@@ -51,16 +51,12 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
   <div class="col">
 
   <form action="action.php" method="post">
-    <p>Votre nom : <input type="text" name="nom" value="eee" /></p>
-    <p>Votre prénom : <input type="text" name="prenom" value="eee" /></p>
-    <p>Votre date de naissance : <input type="text" name="naissance" value="eee" /></p>
-    <p>Votre email : <input type="text" name="email" value="eee" /></p>
-    <p>Votre mot de passe : <input type="text" name="motDePasse" value="eee" /></p>
-    <p>Votre rue : <input type="text" name="rue" value="eee" /></p>
-    <p>Votre ville : <input type="text" name="ville" value="eee" /></p>
-    <p>Votre province : <input type="text" name="province" value="eee" /></p>
-    <p>Votre code postal : <input type="text" name="codePostal" value="eee" /></p>
-    <p>Votre pays : <input type="text" name="pays" value="eee" /></p>
+    <p>Nom : <input type="text" name="nom" value="eee" /></p>
+    <p>Description : <input type="text" name="description" value="eee" /></p>
+    <p>Prix : <input type="float" name="prix" value="eee" /></p>
+    <p>Stock : <input type="int" name="stock" value="eee" /></p>
+    <p>Numéro de la catégorie associée : <input type="int" name="idCategorie" value="eee" /></p>
+    <p>Chemin de l'image associée : <input type="text" name="srcImage" value="eee" /></p>
     <p><input type="submit" value="OK"></p>
   </form>
 
