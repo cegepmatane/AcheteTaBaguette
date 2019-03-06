@@ -2,6 +2,12 @@
 
 class Facture
 {
+
+    public const ID_CLIENT = "idClient";
+    public const ID_FACTURE = "idFacture";
+    public const NOM_FACTURE = "nomFacture";
+    public const MONTANT_FACTURE = "montantFacture";
+
     private $idClient;
     private $idFacture;
     private $nomFacture;

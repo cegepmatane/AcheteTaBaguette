@@ -2,24 +2,25 @@
 
 require_once "BaseDeDonnee.php";
 require_once "../modele/Client.php";
+require_once "../modele/Facture.php";
 
 class AccesseurClient
 {
 
     private static $AJOUTER_FACTURE =
-        "INSERT INTO FACTURE(idClient, idFacture, nomFacture, montantFacture) VALUES (:idClient, :idFacture, :nomFacture, :montantFacture)";
+    "INSERT INTO FACTURE(" . Facture::ID_CLIENT . ", " . Facture::ID_FACTURE . ", " . Facture::NOM_FACTURE . ", " . Facture::MONTANT_FACTURE . ") VALUES (:idClient, :idFacture, :nomFacture, :montantFacture)";
 
     private static $SUPPRIMER_FACTURE =
-        "DELETE FROM FACTURE WHERE idFacture = :idFacture";
+    "DELETE FROM FACTURE WHERE " . Facture::ID_FACTURE . " = :idFacture";
 
     private static $MISE_A_JOUR_FACTURE =
-        "UPDATE FACTURE SET nomFacture = :nomFacture, montantFacture = :montantFacture) WHERE idFacture = :idFacture;";
+    "UPDATE FACTURE SET " . Facture::NOM_FACTURE . " = :nomFacture, " . Facture::MONTANT_FACTURE . " = :montantFacture) WHERE " . Facture::ID_FACTURE . " = :idFacture;";
 
     private static $GET_ID_CLIENT =
-        "SELECT idClient FROM FACTURE WHERE idFacture = :idFacture";
+    "SELECT idClient FROM FACTURE WHERE " . Facture::ID_FACTURE . " = :idFacture";
 
     private static $GET_ID_FACTURE =
-        "SELECT idFacture FROM FACTURE WHERE idClient = :idClient AND nomFacture= :nomFacture";
+    "SELECT idFacture FROM FACTURE WHERE " . Facture::ID_CLIENT . " = :idClient AND nomFacture= :nomFacture";
 
     private static $connexion = null;
 
