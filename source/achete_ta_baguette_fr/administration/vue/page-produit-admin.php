@@ -3,7 +3,7 @@
 require_once "entete-fragment-admin.php";
 require_once "page-liste-produit.php";
 require_once "pied-de-page-fragment.php";
-require_once CHEMIN_RACINE_ADMINISTRATION . "/action/action-page-liste-produit.php";
+require_once CHEMIN_RACINE_ADMINISTRATION . "/action/action-produit.php";
 
 /*
 Un tableau associatif en clé valeur permet de définir les éléments dynamiques
