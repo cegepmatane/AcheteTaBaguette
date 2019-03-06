@@ -26,7 +26,7 @@ function afficherSideBarUtilisateur($page = null) {
                 <!-- bouton panier -->
                 <div class="row mb-3">
                     <div class="col-md-auto">
-                        <a href="#" class="btn btn-danger">Panier</a>
+                        <a href="/panier" class="btn btn-danger">Panier</a>
                     </div>
                 </div>
 

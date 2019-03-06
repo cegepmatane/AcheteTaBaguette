@@ -17,7 +17,7 @@ function afficherPanier($page = null){
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <table class="table">
                 <tr>
                     <th>#</th>
@@ -36,6 +36,18 @@ function afficherPanier($page = null){
                 <?php } ?>
 
             </table>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-danger">Commander</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-primary">Vider le panier</a>
+                </div>
+            </div>
         </div>
 
     </div>
