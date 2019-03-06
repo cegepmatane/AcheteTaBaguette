@@ -23,10 +23,10 @@ class Categorie
                 true,
 
                 "nom-vide" =>
-                "Le nom ne doit pas �tre vide",
+                "Le nom ne doit pas être vide",
 
                 "nom-trop-long" =>
-                "Le nombre maximum de caract�res pour le nom est : " .
+                "Le nombre maximum de caractères pour le nom est : " .
                 self::NOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "nom-non-alphabetique" =>
@@ -36,20 +36,20 @@ class Categorie
                 "Le prénom ne doit pas êttre vide",
 
                 "prenom-trop-long" =>
-                "Le nombre maximum de caract�res pour le pr�nom est : " .
+                "Le nombre maximum de caractères pour le prénom est : " .
                 self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "prenom-non-alphabetique" =>
-                "Le pr�nom doit contenir uniquement des lettres",
+                "Le prénom doit contenir uniquement des lettres",
 
                 "courriel-vide" =>
-                "Le courriel ne doit pas �tre vide",
+                "Le courriel ne doit pas être vide",
 
                 "courriel-invalide" =>
                 "Le courriel n'est pas valide",
 
                 "courriel-trop-long" =>
-                "Le nombre maximum de caract�res pour le courriel est : " .
+                "Le nombre maximum de caractères pour le courriel est : " .
                 self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM,
             ];
 

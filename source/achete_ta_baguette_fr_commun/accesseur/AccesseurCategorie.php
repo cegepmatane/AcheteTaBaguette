@@ -10,7 +10,7 @@ class AccesseurCategorie
         "SELECT * " .
         "FROM CATEGORIE " .
         "WHERE " .
-        "idCategorie" . "= :idCategorie"
+        Categorie::ID_CATEGORIE . "= :idCategorie"
     ;
 
   private static $RECUPERER_LISTE_CATEGORIE =
