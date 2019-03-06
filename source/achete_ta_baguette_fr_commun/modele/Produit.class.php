@@ -9,6 +9,7 @@ private $listeMessageErreurActif = [];
     public $description;
     public $prix;
     public $idCategorie;
+    public $label;
     public $stock;
     public $srcImage;
     
@@ -75,6 +76,7 @@ private $listeMessageErreurActif = [];
 		$this->setStock($attribut->stock ?? NULL);
         $this->setSrcImage($attribut->srcImage ?? NULL);
         $this->setDescription($attribut->description ?? "");
+        
         
     }
 

@@ -1,4 +1,4 @@
-Répertoire contenant la configuration d'utilisateurs 
+Répertoire contenant la configuration d'utilisateur
 
 
 

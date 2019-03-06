@@ -29,7 +29,7 @@ class Categorie
                 "Le nom doit contenir uniquement des lettres",
 
                 "prenom-vide" =>
-                "Le pr�nom ne doit pas �tre vide",
+                "Le prénom ne doit pas êttre vide",
 
                 "prenom-trop-long" =>
                 "Le nombre maximum de caract�res pour le pr�nom est : " .

@@ -13,6 +13,11 @@ class AccesseurCategorie
         "idCategorie" . "= :idCategorie"
     ;
 
+  private static $RECUPERER_LISTE_CATEGORIE =
+        "SELECT * " .
+        "FROM CATEGORIE " ;
+    
+
     private static $connexion = null;
 
     public function __construct()
@@ -43,5 +48,24 @@ class AccesseurCategorie
         }
 
     }
+
+       public function recupererListeCategorie()
+    {
+           $listeCategorie = [];
+
+        $requete = self::$connexion->prepare(self::$RECUPERER_LISTE_CATEGORIE);
+
+        $requete->execute();
+
+        $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+
+        foreach ($listeEnregistrement as $enregistrement) {
+
+            $listeCategorie[] = new Categorie($enregistrement);
+
+        }
+
+        return $listeCategorie;
+}
 
 }

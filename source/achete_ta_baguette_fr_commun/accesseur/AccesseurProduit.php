@@ -7,7 +7,7 @@ class AccesseurProduit
 {
 
     private static $AJOUT_PRODUIT =
-        "INSERT INTO PRODUIT(nomProduit, prix, stock, idCategorie) VALUES (:nomProduit,:prix,:stock,:idCategorie);";
+        "INSERT INTO PRODUIT(nom, prix, stock, idCategorie, srcImage, description) VALUES (:nom,:prix,:stock,:idCategorie, :srcImage, :description);";
 
     private static $SUPPRIMER_PRODUIT =
         "DELETE FROM PRODUIT WHERE idProduit = :idProduit;";
@@ -79,16 +79,19 @@ class AccesseurProduit
 
     public function ajouterProduit($produit)
     {
-        $requete = self::$connexion->prepare($AJOUT_PRODUIT);
-        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
+        $requete = self::$connexion->prepare(self::$AJOUT_PRODUIT);
+        $requete->bindValue(":nom", $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(":stock", $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(":stock", $produit->getStock(), PDO::PARAM_INT);
+         $requete->bindValue(":description", $produit->getDescription(), PDO::PARAM_STR);
+        $requete->bindValue(":idCategorie", $produit->getIdCategorie(), PDO::PARAM_STR);
+         $requete->bindValue(":srcImage", $produit->getSrcImage(), PDO::PARAM_STR);
 
         $requete->execute();
 
         if ($requete->rowCount() > 0) {
             return true;
+            
         }
 
         return false;
