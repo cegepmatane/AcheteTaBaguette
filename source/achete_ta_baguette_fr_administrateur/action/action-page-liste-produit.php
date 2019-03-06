@@ -29,6 +29,9 @@ $laBDD2 = new AccesseurCategorie();
 $page->listeProduits = $laBDD->recupererListeProduits();
 $page->listeCategorie = $laBDD2->recupererlisteCategorie();
 
+function supprimerProduit ($produit){
+	$laBDD->supprimerProduit($produit);
+}
 function recupererLabelCategorieParProduit($page, $produit){
 	
 		foreach ($page->listeCategorie as $categorie) {

@@ -12,37 +12,13 @@ de type en (object), il est plus facilement utilisable par l'IDE et permet les
 suggestions automatiques des attributs de l'objet.
  */
 
-
 /*
 La fonction afficherPage produit le code HTML de la page d'accueil.
 Le paramètre $page permet aux fragments de page inclus d'utiliser les
 éléments dynamiques propres à la page d'accueil.
  */
-
-      
-
-
-
-
-
-
-
-    // En cas d'erreur avec le paramètre $page, un objet $page vide est créé.
-    // if (!is_object($page)) {
-    //     $page = (object) [];
-    // }
-
-      
-
     afficherEntete($page);
 
-
-    //            if (!is_object($page)) {
-    //     return;
-    // }
-    
-   
-    
     ?>
         <!-- Centre de page -->
 
@@ -73,13 +49,10 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
       <td> <?=  $produit->getDescription(); ?></td>
       <td> <?=  $produit->getPrix(); ?></td>
       <td> <?=  "" .$produit->getStock() . ""; ?></td>
-      <td> <input type="image" src="../illustration/edit.png" /></td>
-      <td> <input type="image" src="../illustration/trash.png" /></td>
+      <td> <input type="image" src="../illustration/edit.png"  /></td>
+      <td> <input type="image" src="../illustration/trash.png" onclick="insert()" /></td>
     </tr>
     <?php }?>
-
-
-
    </tbody>
 </table>
 
@@ -114,14 +87,5 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
  </form>
 </div><!-- Fin du contenu -->
 </div><!-- Fin centre de page -->
-
-
-
-
-
         <?php afficherPiedDePage($page);
-
-
-
-
 // EOF
