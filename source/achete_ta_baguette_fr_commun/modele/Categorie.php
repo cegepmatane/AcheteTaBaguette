@@ -3,6 +3,10 @@
 class Categorie
 {
 
+    public const ID_CATEGORIE = "idCategorie";
+    public const LABEL = "label";
+    public const DESCRIPTION = "description";
+
     private $listeMessageErreurActif = [];
     private $idCategorie;
     private $label;
