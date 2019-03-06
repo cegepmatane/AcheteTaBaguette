@@ -1,6 +1,6 @@
 <?php
 require_once "../../commun/vue/entete-fragment.php";
-require_once("../../commun/vue/sidebar-utilisateur-fragment.php");
+require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once "../../commun/vue/pied-de-page-fragment.php";
 require_once "erreur-inscription.php";
 require_once $_SERVER['CONFIGURATION_COMMUN'];

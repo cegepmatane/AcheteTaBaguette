@@ -1,7 +1,7 @@
 <?php
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
-require_once("../../commun/vue/sidebar-utilisateur-fragment.php");
+require_once("../../commun/vue/sidebar-client-fragment.php");
 
 $page = (object)
 [

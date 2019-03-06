@@ -14,7 +14,7 @@ msgstr ""
 "achetetabaguette_fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: sidebar-utilisateur-fragment.php\n"
+"X-Poedit-SearchPath-1: sidebar-client-fragment.php\n"
 
 msgid "Se connecter"
 msgstr "Login"

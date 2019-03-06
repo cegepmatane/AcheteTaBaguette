@@ -1,6 +1,6 @@
 <?php
 require_once("../../commun/vue/entete-fragment.php");
-// require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
+// require_once("./utilisateur/vue/sidebar-client-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("../../commun/vue/erreur.php");
 

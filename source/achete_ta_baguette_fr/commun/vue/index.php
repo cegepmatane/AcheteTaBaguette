@@ -1,6 +1,6 @@
 <?php
 require_once("entete-fragment.php");
-require_once("sidebar-utilisateur-fragment.php");
+require_once("sidebar-client-fragment.php");
 require_once("pied-de-page-fragment.php");
 require_once("../../publique/vue/boutique-fragment.php");
 
