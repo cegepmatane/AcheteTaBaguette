@@ -1,11 +1,8 @@
 <?php
-require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 require_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
 
 function afficherSideBarUtilisateur($page = null) {
-    if(!is_object($page)) $page = (object)[];
 ?>
 <div class="sidebarLeft">
 
@@ -16,9 +13,9 @@ function afficherSideBarUtilisateur($page = null) {
         $client = $accesseurClient->recupererClientParEmail($_SESSION[Client::EMAIL]);
 ?>
     <div class="connecter">
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-12">
-                <h3>Bonsoir <?php echo $client->prenom; ?> </h3>
+                <h3 class="text-center font-weight-bold">Bonsoir <?php echo $client->prenom; ?> </h3>
             </div>
         </div>
 
@@ -28,7 +25,7 @@ function afficherSideBarUtilisateur($page = null) {
 
                 <!-- bouton panier -->
                 <div class="row mb-3">
-                    <div class="col-md-12">
+                    <div class="col-md-auto">
                         <a href="#" class="btn btn-danger">Panier</a>
                     </div>
                 </div>
@@ -100,6 +97,7 @@ function afficherSideBarUtilisateur($page = null) {
                 </div>
             </div>
         </div>
+
     </div>
 <?php
     }

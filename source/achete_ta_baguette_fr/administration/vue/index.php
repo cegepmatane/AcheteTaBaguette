@@ -1,8 +1,8 @@
 <?php
 
 require_once("../../commun/vue/entete-fragment.php");
-require_once("page-liste-produit.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
+require_once("page-liste-produit.php");
 require_once(CHEMIN_RACINE_ADMINISTRATION . "/action/action-page-liste-produit.php");
 
 /*

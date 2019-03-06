@@ -1,13 +1,11 @@
 <?php
-require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurCategorie.php");
 
 function afficherContenu($page = null) {
     if(!is_object($page)) return;
+
     $laBDD = new AccesseurProduit();
-    $laBDD2 = new AccesseurCategorie();
-    //print_r($page->itemMenuActif);
     switch ($page->itemMenuActif) {
         case 'baguette':
             $listeProduits = $laBDD-> recupererProduitParType(1);
@@ -24,10 +22,6 @@ function afficherContenu($page = null) {
     }
     
 ?>
-       
-
-            <div class="content">
-
     <div class="row justify-content-md-center">
 
      <?php foreach ($listeProduits as $value) { ?>
@@ -55,10 +49,9 @@ function afficherContenu($page = null) {
                 </div>
             </a>
         </div>
-         <?php } ?>
+     <?php } ?>
     
      </div>
-       </div>
 
         <?php
 }

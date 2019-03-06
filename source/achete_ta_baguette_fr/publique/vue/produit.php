@@ -10,18 +10,13 @@ function afficherUnProduit($page = null) {
 
     $page = (object)
     [
-        "titre" => "produit",
-        "titrePrincipal" => "Le titre principal H1",
-        "itemMenuActif" => $_GET['type'],
-        "isConnected" => $_SESSION["connection"],
-        "idClient" => $_SESSION["id"]
-
+        "titre" => "Produit",
     ];
 
     afficherEntete($page);
 
-    $BDD = new AccesseurProduit();
-    $produit = $BDD->recupererProduitParId($_GET['idProduit']);
+    $accesseurProduit = new AccesseurProduit();
+    $produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
 
     ?>
 
@@ -29,12 +24,12 @@ function afficherUnProduit($page = null) {
     <div class="row mb-3">
 
         <!-- Bar lateral gauche | sidebar utilisateur -->
-        <div class="col-md-2 border ">
+        <div class="col-md-2">
             <?php afficherSideBarUtilisateur($page); ?>
         </div><!-- Fin bar lateral gauche -->
 
         <!-- Contenu -->
-        <div class="col-md-8">
+        <div class="col-md-9">
         
             <!-- Ligne image et produit description -->
             <div class="row">
@@ -42,9 +37,9 @@ function afficherUnProduit($page = null) {
                 <!-- colonne imageProduit -->
                 <div class="col-md-6">
                     <img
-                            src="<?php echo $produit->srcImage ?>"
-                            alt="produit"
-                            class="img-fluid imageProduit"
+                    src="<?php echo $produit->srcImage ?>"
+                    alt="produit"
+                    class="img-fluid imageProduit"
                     />
                 </div>
 
@@ -281,18 +276,10 @@ function afficherUnProduit($page = null) {
             </div><!-- Fin ligne produit similaire -->
 
         </div><!-- Fin du contenu -->
-
-        <!-- Bar lateral droite -->
-        <div class="col-md-2 border ">
-            <?php //afficherACoteDroite($page); ?>
-        </div><!-- Fin bar lateral droite -->
         
     </div><!-- Fin centre de page -->   
 
     <?php
     afficherPiedDePage($page);
-
 }
-
 afficherUnProduit($page);
-

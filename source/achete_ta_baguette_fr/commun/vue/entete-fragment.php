@@ -41,7 +41,7 @@ function afficherEntete($page = null)
 
         <!-- En-tete de page -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-2">
 
                 <!-- inclue header -->
                 <header>
@@ -104,10 +104,6 @@ function afficherEntete($page = null)
                         </div>
                     </nav>
 
-                    <!-- Fil d'Ariane -->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Accueil</li>
-                    </ol>
                 </header>
 
             </div>
