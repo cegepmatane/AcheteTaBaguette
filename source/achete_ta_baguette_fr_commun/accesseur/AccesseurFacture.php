@@ -2,7 +2,7 @@
 
 require_once "BaseDeDonnee.php";
 require_once "../modele/Client.php";
-require_once "../modele/Facture.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Facture.php";
 
 class AccesseurClient
 {

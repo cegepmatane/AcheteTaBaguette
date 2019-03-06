@@ -3,8 +3,17 @@
 class Produit
 {
 
-private $listeMessageErreurActif = [];
-	public $idProduit;
+    public const ID_PRODUIT = "idProduit";
+    public const NOM = "nom";
+    public const DESCRIPTION = "description";
+    public const PRIX = "prix";
+    public const ID_CATEGORIE = "idCategorie";
+    public const LABEL = "label";
+    public const STOCK = "stock";
+    public const SRC_IMAGE = "srcImage";
+
+    private $listeMessageErreurActif = [];
+    public $idProduit;
     public $nom;
     public $description;
     public $prix;
@@ -12,47 +21,46 @@ private $listeMessageErreurActif = [];
     public $label;
     public $stock;
     public $srcImage;
-    
-	private static function getListeMessageErreur(){
 
-        if(empty(self::$LISTE_MESSAGE_ERREUR)){
+    private static function getListeMessageErreur()
+    {
+
+        if (empty(self::$LISTE_MESSAGE_ERREUR)) {
 
             self::$LISTE_MESSAGE_ERREUR =
-            [
+                [
                 "id_produit-invalide" =>
-                    true,
+                true,
 
                 "nom-vide" =>
-                    "Le nom ne doit pas �tre vide",
+                "Le nom ne doit pas �tre vide",
 
                 "nom-trop-long" =>
-                    "Le nombre maximum de caract�res pour le nom est : " .
-                    self::NOM_NOMBRE_CARACTERE_MAXIMUM ,
+                "Le nombre maximum de caract�res pour le nom est : " .
+                self::NOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "nom-non-alphabetique" =>
-                    "Le nom doit contenir uniquement des lettres",
-
+                "Le nom doit contenir uniquement des lettres",
 
                 "prenom-vide" =>
-                    "Le pr�nom ne doit pas �tre vide",
+                "Le pr�nom ne doit pas �tre vide",
 
                 "prenom-trop-long" =>
-                    "Le nombre maximum de caract�res pour le pr�nom est : " .
-                    self::PRENOM_NOMBRE_CARACTERE_MAXIMUM ,
+                "Le nombre maximum de caract�res pour le pr�nom est : " .
+                self::PRENOM_NOMBRE_CARACTERE_MAXIMUM,
 
                 "prenom-non-alphabetique" =>
-                    "Le pr�nom doit contenir uniquement des lettres",
-
+                "Le pr�nom doit contenir uniquement des lettres",
 
                 "courriel-vide" =>
-                    "Le courriel ne doit pas �tre vide",
+                "Le courriel ne doit pas �tre vide",
 
                 "courriel-invalide" =>
-                    "Le courriel n'est pas valide",
+                "Le courriel n'est pas valide",
 
                 "courriel-trop-long" =>
-                    "Le nombre maximum de caract�res pour le courriel est : " .
-                    self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM
+                "Le nombre maximum de caract�res pour le courriel est : " .
+                self::COURRIEL_NOMBRE_CARACTERE_MAXIMUM,
             ];
 
         }
@@ -63,35 +71,34 @@ private $listeMessageErreurActif = [];
 
     public function __construct($attribut)
     {
-	  
 
-
-	if(!is_object($attribut)){ 
-        $attribut = (object)[];
-    }
-		$this->setIdProduit($attribut->idProduit ?? "");
+        if (!is_object($attribut)) {
+            $attribut = (object) [];
+        }
+        $this->setIdProduit($attribut->idProduit ?? "");
         $this->setNom($attribut->nom ?? "");
         $this->setPrix($attribut->prix ?? null);
-        $this->setIdCategorie($attribut->idCategorie ?? NULL);
-		$this->setStock($attribut->stock ?? NULL);
-        $this->setSrcImage($attribut->srcImage ?? NULL);
+        $this->setIdCategorie($attribut->idCategorie ?? null);
+        $this->setStock($attribut->stock ?? null);
+        $this->setSrcImage($attribut->srcImage ?? null);
         $this->setDescription($attribut->description ?? "");
-        
-        
+
     }
 
-	public function setIdProduit($idProduit)
+    public function setIdProduit($idProduit)
     {
         // Validation en premier
 
-        if(null == $idProduit) return;
+        if (null == $idProduit) {
+            return;
+        }
 
-        if(!is_int(filter_var($idProduit, FILTER_VALIDATE_INT))){
+        if (!is_int(filter_var($idProduit, FILTER_VALIDATE_INT))) {
 
             $this->listeMessageErreurActif['idProduit'][] =
-                self::getListeMessageErreur()['id_produit-invalide'];
+            self::getListeMessageErreur()['id_produit-invalide'];
 
-            $this->idProduit= null;
+            $this->idProduit = null;
 
             return;
 
@@ -101,19 +108,19 @@ private $listeMessageErreurActif = [];
 
     }
 
-	 public function setNom($nouveauNom)
+    public function setNom($nouveauNom)
     {
-      $this->nom=$nouveauNom;
+        $this->nom = $nouveauNom;
     }
 
-     public function setDescription($nouvelleDescription)
+    public function setDescription($nouvelleDescription)
     {
-      $this->description=$nouvelleDescription;
+        $this->description = $nouvelleDescription;
     }
 
-     public function setSrcImage($nouveauSrcImage)
+    public function setSrcImage($nouveauSrcImage)
     {
-      $this->srcImage=$nouveauSrcImage;
+        $this->srcImage = $nouveauSrcImage;
     }
 
     public function setPrix($nouveauPrix)
@@ -144,15 +151,15 @@ private $listeMessageErreurActif = [];
         return $this->nom;
     }
 
-        public function getDescription()
+    public function getDescription()
     {
         return $this->description;
     }
-      public function getSrcImage()
+    public function getSrcImage()
     {
         return $this->srcImage;
     }
-	public function getIdProduit()
+    public function getIdProduit()
     {
         return $this->idProduit;
     }
@@ -168,7 +175,8 @@ private $listeMessageErreurActif = [];
     {
         return $this->stock;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->idProduit;
     }
 

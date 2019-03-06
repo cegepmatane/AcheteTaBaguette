@@ -7,27 +7,27 @@ class AccesseurProduit
 {
 
     private static $AJOUT_PRODUIT =
-        "INSERT INTO PRODUIT(nom, prix, stock, idCategorie, srcImage, description) VALUES (:nom,:prix,:stock,:idCategorie, :srcImage, :description);";
+    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (:nom,:prix,:stock,:idCategorie, :srcImage, :description);";
 
     private static $SUPPRIMER_PRODUIT =
-        "DELETE FROM PRODUIT WHERE idProduit = :idProduit;";
+    "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " = :idProduit;";
 
     private static $MISE_A_JOUR_PRODUIT =
-        "UPDATE PRODUIT SET nomProduit = :nomProduit, prix = :prix, stock = :stock, idCategorie = :idCategorie) WHERE idProduit = :idProduit;";
+    "UPDATE PRODUIT SET " . Produit::NOM . " = :nomProduit, " . Produit::PRIX . " = :prix, " . Produit::STOCK . " = :stock, " . Produit::ID_CATEGORIE . " = :idCategorie) WHERE " . Produit::ID_PRODUIT . " = :idProduit;";
 
     private static $GET_ID_PRODUIT =
-        "SELECT idProduit FROM PRODUIT WHERE nomProduit = :nomProduit, prix = :prix, idCategorie = :idCategorie";
+    "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " = :nomProduit, " . Produit::PRIX . " = :prix, " . Produit::ID_CATEGORIE . " = :idCategorie";
 
     private static $RECUPERER_LISTE_PRODUITS =
-        "SELECT PRODUIT.idProduit, PRODUIT.nom, PRODUIT.description, PRODUIT.prix, PRODUIT.stock, PRODUIT.idCategorie, PRODUIT.srcImage FROM PRODUIT; ";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
-        "SELECT nom, description, prix, stock, idCategorie, srcImage FROM PRODUIT WHERE idProduit LIKE :idProduit;";
+    "SELECT " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE :idProduit;";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-        "SELECT idProduit, nom, description, prix, srcImage FROM PRODUIT WHERE idCategorie LIKE :idCategorie;";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_CATEGORIE . " LIKE :idCategorie;";
 
-    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(nom, 'NEAR(:nomProduit)';";
+    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(" . Produit::NOM . ", 'NEAR(:nomProduit)';";
 
     private static $connexion = null;
 
@@ -83,15 +83,15 @@ class AccesseurProduit
         $requete->bindValue(":nom", $produit->getNom(), PDO::PARAM_STR);
         $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(":stock", $produit->getStock(), PDO::PARAM_INT);
-         $requete->bindValue(":description", $produit->getDescription(), PDO::PARAM_STR);
+        $requete->bindValue(":description", $produit->getDescription(), PDO::PARAM_STR);
         $requete->bindValue(":idCategorie", $produit->getIdCategorie(), PDO::PARAM_STR);
-         $requete->bindValue(":srcImage", $produit->getSrcImage(), PDO::PARAM_STR);
+        $requete->bindValue(":srcImage", $produit->getSrcImage(), PDO::PARAM_STR);
 
         $requete->execute();
 
         if ($requete->rowCount() > 0) {
             return true;
-            
+
         }
 
         return false;
