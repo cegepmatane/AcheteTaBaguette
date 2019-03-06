@@ -57,6 +57,7 @@ if(!$page->isNavigationRetour){
 
         if ($client->getMotDePasse() == sha1($_POST[Client::MOT_DE_PASSE])) {
             $_SESSION[Client::EMAIL] = $client->getEmail();
+            if ($client->getAdministrateur()) $_SESSION[Client::ADMINISTRATEUR] = true;
 
             header("Location: /");
             exit;

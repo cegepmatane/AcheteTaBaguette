@@ -1,5 +1,6 @@
 <?php
-
+require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once CHEMIN_RACINE_COMMUN . "/modele/Client.php";
 session_start();
 function afficherEntete($page = null)
 {
@@ -86,6 +87,15 @@ function afficherEntete($page = null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/a-propos">À propos</a>
                                 </li>
+                                <?php
+                                if (isset($_SESSION[Client::ADMINISTRATEUR])){
+                                    ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/administration">Adminisatration</a>
+                                </li>
+                                    <?php
+                                }
+                                ?>
                             </ul>
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="text" placeholder="Search">

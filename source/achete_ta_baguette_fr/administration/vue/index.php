@@ -1,9 +1,9 @@
 <?php
 
-require_once "entete-fragment-admin.php";
-require_once "page-liste-produit.php";
-require_once "pied-de-page-fragment.php";
-require_once CHEMIN_RACINE_ADMINISTRATION . "/action/action-page-liste-produit.php";
+require_once("../../commun/vue/entete-fragment.php");
+require_once("page-liste-produit.php");
+require_once("../../commun/vue/pied-de-page-fragment.php");
+require_once(CHEMIN_RACINE_ADMINISTRATION . "/action/action-page-liste-produit.php");
 
 /*
 Un tableau associatif en clé valeur permet de définir les éléments dynamiques
@@ -43,14 +43,14 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
   <tbody>
     <?php foreach ($page->listeProduits as $produit) {?>
     <tr>
-      <td><input type="image" src="../illustration/add-image.png" /></td>
+      <td><input type="image" src="illustration/add-image.png" /></td>
       <td> <?=  recupererLabelCategorieParProduit($page, $produit); ?> </td>
       <td> <?= $produit->getNom(); ?></td>
       <td> <?=  $produit->getDescription(); ?></td>
       <td> <?=  $produit->getPrix(); ?></td>
       <td> <?=  "" .$produit->getStock() . ""; ?></td>
-      <td> <input type="image" src="../illustration/edit.png"  /></td>
-      <td> <input type="image" src="../illustration/trash.png" onclick="insert()" /></td>
+      <td> <input type="image" src="illustration/edit.png"  /></td>
+      <td> <input type="image" src="illustration/trash.png" onclick="insert()" /></td>
     </tr>
     <?php }?>
    </tbody>
@@ -72,13 +72,13 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
   </thead>
   <tbody>
     <tr>
-      <td><input type="image" src="../illustration/add-image.png" name="image" /></td>
+      <td><input type="image" src="illustration/add-image.png" name="image" /></td>
       <td ><input type="text" class="form-control"  name="categorie"></td>
       <td ><input type="text" class="form-control"  name="produit"></td>
       <td><input type="text" class="form-control"  name="description"></td>
            <td><input type="text" class="form-control"  name="prix"></td>
       <td><input type="text" class="form-control" name="stock"></td>
-      <td ><input type="submit" src="../illustration/add.png" name="envoi"/></td>
+      <td ><input type="submit" src="illustration/add.png" name="envoi"/></td>
 
     </tr>
 

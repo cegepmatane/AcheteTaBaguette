@@ -7,3 +7,5 @@ RewriteRule ^inscription/?$ /publique/vue/inscription.php
 RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
 RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
 RewriteRule ^boutique/produit/([0-9]+)/?$ /publique/vue/produit.php?idProduit=$1
+
+RewriteRule ^administration/?$ /administration/vue/
