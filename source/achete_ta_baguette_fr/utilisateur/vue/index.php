@@ -1,12 +1,12 @@
 <?php
-require_once("entete-fragment.php");
-require_once("sidebar-client-fragment.php");
-require_once("pied-de-page-fragment.php");
+require_once("../../commun/vue/entete-fragment.php");
+require_once("../../commun/vue/pied-de-page-fragment.php");
+require_once("../../commun/vue/sidebar-client-fragment.php");
+require_once("panier-fragment.php");
 
 $page = (object)
 [
     "titre" => "Page index",
-    "titrePrincipal" => "Le titre principal H1",
 ];
 
 function afficherPage($page = null){
@@ -24,8 +24,8 @@ function afficherPage($page = null){
             </div><!-- Fin bar lateral gauche -->
 
             <!-- Contenu -->
-            <div class="col-md-8">
-                <?php //afficherContenu($page); ?>
+            <div class="col-md-10">
+                <?php afficherPanier($page); ?>
             </div><!-- Fin du contenu -->
             
         </div><!-- Fin centre de page -->
