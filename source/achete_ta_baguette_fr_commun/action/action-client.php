@@ -1,6 +1,6 @@
 <?php
 
-require_once CHEMIN_RACINE_COMMUN . "/modele/Client.class.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Client.php";
 require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php";
 
 static::$accesseurClient = new AccesseurClient();

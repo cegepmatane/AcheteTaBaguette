@@ -1,7 +1,7 @@
 <?php
 
 require_once CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php";
-require_once CHEMIN_RACINE_COMMUN . "/modele/Categorie.class.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Categorie.php";
 
 class AccesseurCategorie
 {

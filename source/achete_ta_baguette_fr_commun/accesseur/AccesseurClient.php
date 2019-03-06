@@ -1,7 +1,7 @@
 <?php
 
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 
 class AccesseurClient
 {

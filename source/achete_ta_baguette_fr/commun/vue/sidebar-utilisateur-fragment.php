@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 require_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
 
 function afficherSideBarUtilisateur($page = null) {

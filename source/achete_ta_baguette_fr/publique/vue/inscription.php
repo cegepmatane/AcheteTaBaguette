@@ -5,7 +5,7 @@ require_once "../../commun/vue/pied-de-page-fragment.php";
 require_once "erreur-inscription.php";
 require_once $_SERVER['CONFIGURATION_COMMUN'];
 require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php";
-require_once CHEMIN_RACINE_COMMUN . "/modele/Client.class.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Client.php";
 
 $page = (object)
 [

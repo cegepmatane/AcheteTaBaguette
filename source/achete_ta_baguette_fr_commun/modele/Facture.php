@@ -1,6 +1,6 @@
 <?php
 
-class Facturer
+class Facture
 {
     private $idClient;
     private $idFacture;

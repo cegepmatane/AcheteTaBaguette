@@ -4,7 +4,7 @@ require_once "entete-fragment.php";
 require_once "sidebar-utilisateur-fragment.php";
 require_once "pied-de-page-fragment.php";
 require_once "../../publique/vue/boutique-fragment.php";
-//require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+//require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 
 /*
 Un tableau associatif en clé valeur permet de définir les éléments dynamiques

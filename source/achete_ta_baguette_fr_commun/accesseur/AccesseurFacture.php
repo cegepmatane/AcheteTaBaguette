@@ -1,7 +1,7 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once "../modele/Client.class.php";
+require_once "../modele/Client.php";
 
 class AccesseurClient
 {

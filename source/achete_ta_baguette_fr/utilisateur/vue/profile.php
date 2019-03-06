@@ -6,7 +6,7 @@ require_once("../../commun/vue/erreur.php");
 
 require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/configuration/configuration.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 
 

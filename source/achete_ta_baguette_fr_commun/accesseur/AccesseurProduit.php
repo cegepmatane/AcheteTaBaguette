@@ -1,7 +1,7 @@
 <?php
 
 require_once "BaseDeDonnee.php";
-require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.class.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.php";
 
 class AccesseurProduit
 {

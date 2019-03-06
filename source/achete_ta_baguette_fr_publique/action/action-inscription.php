@@ -1,5 +1,5 @@
 <?php
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 
 if($page->client == null) $page->client = new Client();
 if(isset($_POST['action-aller-seconde-etape'])&& $page->isEtapeDeux == false && $page->isEtapeUn == true){
