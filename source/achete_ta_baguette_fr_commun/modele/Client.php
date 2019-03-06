@@ -167,12 +167,12 @@ class Client
             ];
 
             self::$LISTE_INFORMATION_CHAMP[self::PAYS] = (object)
-            [
+                [
                 "etiquette" => "Pays",
                 "defaut" => "",
                 "indice" => "Ex. : CANADA (nombre maximum de caractères : " .
-                    self::PAYS_NOMBRE_CARACTERE_MAXIMUM .
-                    " )",
+                self::PAYS_NOMBRE_CARACTERE_MAXIMUM .
+                " )",
                 "description" => "Pays de résidence",
                 "obligatoire" => true,
             ];
@@ -303,7 +303,10 @@ class Client
 
     private static function validerAdministrateur($administrateur)
     {
-        if ($administrateur == true || $administrateur == false) return true;
+        if ($administrateur == true || $administrateur == false) {
+            return true;
+        }
+
         return false;
     }
 
@@ -416,7 +419,6 @@ class Client
             $this->listeMessageErreurActif[self::PRENOM][] =
             self::getListeMessageErreur()['prenom-vide'];
 
-
             return false;
 
         }
@@ -445,8 +447,6 @@ class Client
 
     }
 
-
-
     public function getEmail()
     {
 
@@ -463,7 +463,6 @@ class Client
 
             $this->listeMessageErreurActif[self::EMAIL][] =
             self::getListeMessageErreur()['email-vide'];
-
 
             return false;
         }
@@ -510,7 +509,6 @@ class Client
             $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
             self::getListeMessageErreur()['motDePasse-vide'];
 
-
             return false;
         }
 
@@ -543,7 +541,6 @@ class Client
 
             $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-vide'];
-
 
             return false;
         }
@@ -588,7 +585,6 @@ class Client
             $this->listeMessageErreurActif[self::PAYS][] =
             self::getListeMessageErreur()['pays-vide'];
 
-
             return false;
         }
 
@@ -631,7 +627,6 @@ class Client
 
             $this->listeMessageErreurActif[self::VILLE][] =
             self::getListeMessageErreur()['ville-vide'];
-
 
             return false;
         }
@@ -756,7 +751,7 @@ class Client
 
         // Validation en premier
 
-        if ( !self::validerAdministrateur($administrateur) ){
+        if (!self::validerAdministrateur($administrateur)) {
 
             $this->listeMessageErreurActif[self::ADMINISTRATEUR][] =
             self::getListeMessageErreur()['administrateur-non-invalide'];
