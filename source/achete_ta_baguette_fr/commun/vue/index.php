@@ -20,6 +20,7 @@ $page = (object)
     "itemMenuActif" => $_GET['type'],
     "isConnected" => $_SESSION["isConnected"],
     "idClient" => $_SESSION["id"],
+    "client" => null,
 
     /*"id_personne" => Client::ID_CLIENT,
 "nom" => Client::NOM,

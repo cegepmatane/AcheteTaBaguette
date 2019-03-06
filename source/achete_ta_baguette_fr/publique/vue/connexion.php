@@ -7,54 +7,11 @@ require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
 
-if(!isset($_POST['page'])) {
-    $page = (object)
-    [
-        "titre" => "Connexion",
-//        "navigationRetourURL" => "/",
-//        "navigationRetourTitre" => "Accueil",
-//        "messageNavigationRetour" => "",
-//        "isNavigationRetour" => false,
-//        "isConnecterClient" => false,
-        "messageAction" => "",
-        "resultat" => null,
+require_once(CHEMIN_RACINE_COMMUN . "/action/action-connexion.php");
 
-        "client" => null,
-        "idClient" => null,
-        "isConnected" => false,
-        "admin" => false,
-
-        "email" => Client::EMAIL,
-        "descriptionEmail" => Client::getInformation(Client::EMAIL)->description,
-        "etiquetteEmail" => Client::getInformation(Client::EMAIL)->etiquette,
-        "indiceEmail" => Client::getInformation(Client::EMAIL)->indice,
-        "isEmailObligatoire" => Client::getInformation(Client::EMAIL)->obligatoire,
-
-        "motDePasse" => Client::MOT_DE_PASSE,
-        "descriptionMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->description,
-        "etiquetteMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->etiquette,
-        "indiceMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->indice,
-        "isMotDePasseObligatoire" => Client::getInformation(Client::MOT_DE_PASSE)->obligatoire,
-    ];
-}
-
-function afficherPageConnexion($page = null)
-{
-    if (!is_object($page)) $page = (object)[];
-
-    //Redirection vers la page de retour avec un message de réussite.
-    if($page->isNavigationRetour ?? false && $page->navigationRetourURL ?? false){
-
-        $location = $page->navigationRetourURL;
-        header("Location: " . $location);
-        exit;
-    }
-
-    afficherEntete($page);
+afficherEntete($page);
 ?>
-
     <?= $page->messageAction; ?>
-    <?= $page->resultat; ?>
     <div class="content">
         <div class="row justify-content-md-center">
             <div class="col-md-8">
@@ -148,16 +105,6 @@ function afficherPageConnexion($page = null)
                            name="navigation-retour-titre"
                            value="<?= $page->navigationRetourTitre ?? ""; ?>">
 
-                    <?php
-                    if($page->isAjouterPersonne ?? false){ ?>
-
-                    <input type="submit"
-                           name="action-ajouter-personne"
-                           value="Ajouter la personne">
-
-                    <?php
-                    } ?>
-
                 </form>
 
             </div>
@@ -165,6 +112,4 @@ function afficherPageConnexion($page = null)
     </div>
 
 <?php
-    afficherPiedDePage($page);
-}
-require_once(CHEMIN_RACINE_COMMUN . "/action/action-connexion.php");
+afficherPiedDePage($page);

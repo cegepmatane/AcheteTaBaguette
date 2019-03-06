@@ -450,7 +450,7 @@ class Client
     public function getEmail()
     {
 
-        $this->email;
+        return $this->email;
 
     }
 
@@ -496,7 +496,7 @@ class Client
     public function getMotDePasse()
     {
 
-        $this->motDePasse;
+        return $this->motDePasse;
 
     }
 

@@ -1,21 +1,19 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
-
-include_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.class.php");
+require_once(CHEMIN_RACINE_COMMUN . "/action/action-deconnexion.php");
 
 function afficherSideBarUtilisateur($page = null) {
     if(!is_object($page)) $page = (object)[];
-
-    $accesseurClient = new AccesseurClient();
-    $client = $accesseurClient->getClientParId($page->idClient);
-
 ?>
 <div class="sidebarLeft">
 
     <!-- Si connecte -->
 <?php
-    if($page->isConnected == true) {
+    if(isset($_SESSION[Client::EMAIL])) {
+        $accesseurClient = new AccesseurClient();
+        $client = $accesseurClient->recupererClientParEmail($_SESSION[Client::EMAIL]);
 ?>
     <div class="connecter">
         <div class="row mb-3">
@@ -108,7 +106,7 @@ function afficherSideBarUtilisateur($page = null) {
 ?>
 
 <?php
-   if($page->isConnected == false) {
+   if(!isset($_SESSION[Client::EMAIL])) {
 ?>
     <!-- Si deconnecte -->
     <div class="deconnecter">

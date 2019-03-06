@@ -5,6 +5,38 @@
  * Date: 18/02/2019
  * Time: 16:52
  */
+
+$page = (object)
+[
+    "titre" => "Connexion",
+    "messageAction" => "",
+
+    "client" => null,
+    "idClient" => null,
+    "isConnected" => false,
+    "admin" => false,
+
+    "email" => Client::EMAIL,
+    "descriptionEmail" => Client::getInformation(Client::EMAIL)->description,
+    "etiquetteEmail" => Client::getInformation(Client::EMAIL)->etiquette,
+    "indiceEmail" => Client::getInformation(Client::EMAIL)->indice,
+    "isEmailObligatoire" => Client::getInformation(Client::EMAIL)->obligatoire,
+
+    "motDePasse" => Client::MOT_DE_PASSE,
+    "descriptionMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->description,
+    "etiquetteMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->etiquette,
+    "indiceMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->indice,
+    "isMotDePasseObligatoire" => Client::getInformation(Client::MOT_DE_PASSE)->obligatoire,
+];
+
+//Redirection vers la page de retour avec un message de réussite.
+/*if($page->isNavigationRetour ?? false && $page->navigationRetourURL ?? false){
+
+    $location = $page->navigationRetourURL;
+    header("Location: " . $location);
+    exit;
+}*/
+
 if($_GET["navigation-retour-url"] ?? false && $_GET["navigation-retour-titre"] ?? false){
 
     $page->navigationRetourURL = $_GET["navigation-retour-url"];
@@ -16,19 +48,19 @@ if($_GET["navigation-retour-url"] ?? false && $_GET["navigation-retour-titre"] ?
     $page->navigationRetourTitre = $_POST["navigation-retour-titre"];
 }
 
-print_r($page->isNavigationRetour);
 if(!$page->isNavigationRetour){
 
     if(isset($_POST["action-connecter-client"])){
 
         $accesseurClient = new AccesseurClient();
-        $resultat = $accesseurClient->recupererClientParEmail($_POST[Client::EMAIL]);
+        $client = $accesseurClient->recupererClientParEmail($_POST[Client::EMAIL]);
 
-        if ($resultat && $resultat->motDePasse == sha1($_POST['mot_de_passe'])) {
-            $_SESSION['id'] = $resultat->idClient;
-            $_SESSION['isConnected'] = true;
-            $_SESSION['admin'] = false;
-            header("Location: /boutique");
+        if ($client->getMotDePasse() == sha1($_POST[Client::MOT_DE_PASSE])) {
+            $_SESSION[Client::EMAIL] = $client->getEmail();
+
+            header("Location: /");
+            exit;
+
         } else {
             $page->messageAction = "Echec autentification";
         }
@@ -36,4 +68,3 @@ if(!$page->isNavigationRetour){
     }
 
 }
-afficherPageConnexion($page);
