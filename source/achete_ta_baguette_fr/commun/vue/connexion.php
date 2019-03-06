@@ -1,12 +1,7 @@
 <?php
 require_once("../../commun/vue/entete-fragment.php");
-// require_once("./utilisateur/vue/sidebar-utilisateur-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
-require_once("erreur-inscription.php");
-require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php");
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
-
 require_once(CHEMIN_RACINE_COMMUN . "/action/action-connexion.php");
 
 afficherEntete($page);
@@ -49,7 +44,6 @@ afficherEntete($page);
                                     <span><?= $page->indiceEmail; ?></span>
                                 </div>
                             </div>
-                            <?php //afficherErreurFormulaire($page->client->getListeMessageErreurActif($page->mail)); ?>
 
                         </div>
 
@@ -83,7 +77,6 @@ afficherEntete($page);
                                     <span><?= $page->indiceMotDePasse; ?></span>
                                 </div>
                             </div>
-                            <?php //afficherErreurFormulaire($page->client->getListeMessageErreurActif($page->motDePasse)); ?>
 
                         </div>
 

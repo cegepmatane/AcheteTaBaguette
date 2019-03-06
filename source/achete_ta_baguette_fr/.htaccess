@@ -2,7 +2,7 @@ RewriteEngine On
 
 RewriteRule ^/?$ /commun/vue/index.php
 RewriteRule ^a-propos/?$ /publique/vue/a-propos.php
-RewriteRule ^connexion/?$ /publique/vue/connexion.php
+RewriteRule ^connexion/?$ /commun/vue/connexion.php
 RewriteRule ^inscription/?$ /publique/vue/inscription.php
 RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
 RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
