@@ -48,20 +48,20 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
 
   <div class="row mb-3 text-center">
             <!-- Contenu -->
-  <div class="col">
+    <div class="col">
 
-  <form action="action.php" method="post">
-    <p>Nom : <input type="text" name="nom" value="eee" /></p>
-    <p>Description : <input type="text" name="description" value="eee" /></p>
-    <p>Prix : <input type="float" name="prix" value="eee" /></p>
-    <p>Stock : <input type="int" name="stock" value="eee" /></p>
-    <p>Numéro de la catégorie associée : <input type="int" name="idCategorie" value="eee" /></p>
-    <p>Chemin de l'image associée : <input type="text" name="srcImage" value="eee" /></p>
-    <p><input type="submit" value="OK"></p>
-  </form>
+      <form action="action-produit.php" method="post">
+        <p>Nom : <input type="text" name="nom" value="eee" /></p>
+        <p>Description : <input type="text" name="description" value="eee" /></p>
+        <p>Prix : <input type="float" name="prix" value="eee" /></p>
+        <p>Stock : <input type="int" name="stock" value="eee" /></p>
+        <p>Numéro de la catégorie associée : <input type="int" name="idCategorie" value="eee" /></p>
+        <p>Chemin de l'image associée : <input type="text" name="srcImage" value="eee" /></p>
+        <p><input type="submit" value="OK"></p>
+      </form>
 
-</div><!-- Fin du contenu -->
-</div><!-- Fin centre de page -->
+    </div><!-- Fin du contenu -->
+  </div><!-- Fin centre de page -->
 
 
 

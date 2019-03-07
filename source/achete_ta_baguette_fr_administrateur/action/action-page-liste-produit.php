@@ -80,7 +80,7 @@ if(isset($_POST['action-ajouter-produit'])){
 		
 	}
 $page->listeProduits = $laBDD->recupererListeProduits();
-$page->listeCategorie = $laBDD2->recupererlisteCategorie();
+$page->listeCategorie = $laBDD2->recupererListeCategorie();
 
 
 

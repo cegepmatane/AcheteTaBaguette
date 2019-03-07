@@ -44,7 +44,7 @@ function recupererLabelCategorieParProduit($page, $produit){
 
 	$laRedirection = new Redirection("/administration/vue/index.php");
 
-	if(isset($_POST['envoi'])){ 
+	if(isset($_POST['action-modifier-produit'])){ 
 
 		$attribut = (object)
 		[
@@ -71,4 +71,7 @@ function recupererLabelCategorieParProduit($page, $produit){
 		}
 
 	}
+
+	$page->listeProduits = $laBDD->recupererListeProduits();
+	$page->listeCategorie = $laBDD2->recupererlisteCategorie();
 	?>
