@@ -6,28 +6,37 @@ require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.php";
 class AccesseurProduit
 {
 
+    private const SUBSTITUT_ID_PRODUIT = ":" . Produit::ID_PRODUIT;
+    private const SUBSTITUT_NOM = ":" . Produit::NOM;
+    private const SUBSTITUT_DESCRIPTION = ":" . Produit::DESCRIPTION;
+    private const SUBSTITUT_PRIX = ":" . Produit::PRIX;
+    private const SUBSTITUT_ID_CATEGORIE = ":" . Produit::ID_CATEGORIE;
+    private const SUBSTITUT_LABEL = ":" . Produit::LABEL;
+    private const SUBSTITUT_STOCK = ":" . Produit::STOCK;
+    private const SUBSTITUT_SRC_IMAGE = ":" . Produit::SRC_IMAGE;
+
     private static $AJOUT_PRODUIT =
-    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (:nom,:prix,:stock,:idCategorie, :srcImage, :description);";
+    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (" . self::SUBSTITUT_NOM+"," . self::SUBSTITUT_PRIX . "," . self::SUBSTITUT_STOCK . "," . self::SUBSTITUT_ID_CATEGORIE . "," . self::SUBSTITUT_SRC_IMAGE . ", " . self::SUBSTITUT_DESCRIPTION . ");";
 
     private static $SUPPRIMER_PRODUIT =
-    "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " = :idProduit;";
+    "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $MISE_A_JOUR_PRODUIT =
-    "UPDATE PRODUIT SET " . Produit::NOM . " = :nomProduit, " . Produit::PRIX . " = :prix, " . Produit::STOCK . " = :stock, " . Produit::ID_CATEGORIE . " = :idCategorie) WHERE " . Produit::ID_PRODUIT . " = :idProduit;";
+    "UPDATE PRODUIT SET " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::STOCK . " =" . self::SUBSTITUT_STOCK . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_ID_CATEGORIE . ") WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $GET_ID_PRODUIT =
-    "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " = :nomProduit, " . Produit::PRIX . " = :prix, " . Produit::ID_CATEGORIE . " = :idCategorie";
+    "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_ID_CATEGORIE . ";";
 
     private static $RECUPERER_LISTE_PRODUITS =
     "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
-    "SELECT " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE :idProduit;";
+    "SELECT " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE " . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_CATEGORIE . " LIKE :idCategorie;";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_CATEGORIE . " LIKE " . self::SUBSTITUT_ID_CATEGORIE . ";";
 
-    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(" . Produit::NOM . ", 'NEAR(:nomProduit)';";
+    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(" . Produit::NOM . ", 'NEAR(" . self::SUBSTITUT_NOM . ")';";
 
     private static $connexion = null;
 
@@ -80,12 +89,12 @@ class AccesseurProduit
     public function ajouterProduit($produit)
     {
         $requete = self::$connexion->prepare(self::$AJOUT_PRODUIT);
-        $requete->bindValue(":nom", $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(":stock", $produit->getStock(), PDO::PARAM_INT);
-        $requete->bindValue(":description", $produit->getDescription(), PDO::PARAM_STR);
-        $requete->bindValue(":idCategorie", $produit->getIdCategorie(), PDO::PARAM_STR);
-        $requete->bindValue(":srcImage", $produit->getSrcImage(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_NOM, $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_STOCK, $produit->getStock(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBSTITUT_DESCRIPTION, $produit->getDescription(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_ID_CATEGORIE, $produit->getIdCategorie(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_SRC_IMAGE, $produit->getSrcImage(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -101,7 +110,7 @@ class AccesseurProduit
     public function supprimerProduit($produit)
     {
         $requete = self::$connexion->prepare(self::$SUPPRIMER_PRODUIT);
-        $requete->bindValue(":idProduit", $produit->getIdProduit());
+        $requete->bindValue(self::SUBSTITUT_ID_PRODUIT, $produit->getIdProduit());
 
         $requete->execute();
 
@@ -136,9 +145,9 @@ class AccesseurProduit
     public function getIdProduit($produit)
     {
         $requete = self::$connexion->prepare($GET_ID_PRODUIT);
-        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBSTITUT_NOM, $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_ID_CATEGORIE, $produit->getNomCatégorie(), PDO::PARAM_INT);
 
         $requete->execute();
 
@@ -158,11 +167,11 @@ class AccesseurProduit
     // Le produit de la base de données prendra les valeurs des attributs du produit passé en paramètre
     {
         $requete = self::$connexion->prepare($MISE_A_JOUR_PRODUIT);
-        $requete->bindValue(":nomProduit", $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(":prix", $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(":stock", $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(":idCategorie", $produit->getNomCatégorie(), PDO::PARAM_STR);
-        $requete->bindValue(":idProduit", getIdProduit($produit), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_NOM, $produit->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_STOCK, $produit->getNbStock(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBSTITUT_ID_CATEGORIE, $produit->getNomCatégorie(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_ID_PRODUIT, getIdProduit($produit), PDO::PARAM_STR);
 
         $requete->execute();
 
