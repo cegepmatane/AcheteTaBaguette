@@ -16,7 +16,7 @@ class AccesseurProduit
     private const SUBSTITUT_SRC_IMAGE = ":" . Produit::SRC_IMAGE;
 
     private static $AJOUT_PRODUIT =
-    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (" . self::SUBSTITUT_NOM+"," . self::SUBSTITUT_PRIX . "," . self::SUBSTITUT_STOCK . "," . self::SUBSTITUT_ID_CATEGORIE . "," . self::SUBSTITUT_SRC_IMAGE . ", " . self::SUBSTITUT_DESCRIPTION . ");";
+    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (" . self::SUBSTITUT_NOM."," . self::SUBSTITUT_PRIX . "," . self::SUBSTITUT_STOCK . "," . self::SUBSTITUT_ID_CATEGORIE . "," . self::SUBSTITUT_SRC_IMAGE . ", " . self::SUBSTITUT_DESCRIPTION . ");";
 
     private static $SUPPRIMER_PRODUIT =
     "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
