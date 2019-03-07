@@ -100,8 +100,8 @@ class AccesseurProduit
 
     public function supprimerProduit($produit)
     {
-        $requete = self::$connexion->prepare($SUPPRIMER_PRODUIT);
-        $requete->bindValue(":idProduit", $produit->getIdProduit);
+        $requete = self::$connexion->prepare(self::$SUPPRIMER_PRODUIT);
+        $requete->bindValue(":idProduit", $produit->getIdProduit());
 
         $requete->execute();
 
