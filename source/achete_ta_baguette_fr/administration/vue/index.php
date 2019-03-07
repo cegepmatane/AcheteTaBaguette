@@ -49,8 +49,14 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
       <td> <?=  $produit->getDescription(); ?></td>
       <td> <?=  $produit->getPrix(); ?></td>
       <td> <?=  "" .$produit->getStock() . ""; ?></td>
+<<<<<<< Updated upstream
       <td> <input type="image" src="illustration/edit.png"  /></td>
       <td> <input type="image" src="illustration/trash.png" onclick="insert()" /></td>
+=======
+      <td> <a href="page-produit-admin.php?idProduit=<?= $produit->getIdProduit(); ?>">Modifier</a></td>
+      <td> <form method="post" action="index.php"><input type="submit" src="../illustration/trash.png"   name="action-supprimer-produit" id="button" value="bar"></input>
+        <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input></form ></td>
+>>>>>>> Stashed changes
     </tr>
     <?php }?>
    </tbody>
@@ -78,7 +84,11 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
       <td><input type="text" class="form-control"  name="description"></td>
            <td><input type="text" class="form-control"  name="prix"></td>
       <td><input type="text" class="form-control" name="stock"></td>
+<<<<<<< Updated upstream
       <td ><input type="submit" src="illustration/add.png" name="envoi"/></td>
+=======
+      <td ><input type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
+>>>>>>> Stashed changes
 
     </tr>
 
