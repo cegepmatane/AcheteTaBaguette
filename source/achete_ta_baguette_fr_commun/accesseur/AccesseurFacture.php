@@ -6,6 +6,10 @@ require_once CHEMIN_RACINE_COMMUN . "/modele/Facture.php";
 
 class AccesseurClient
 {
+    private const SUBTITUT_ID_CLIENT = ":" . Facture::ID_CLIENT;
+    private const SUBTITUT_ID_FACTURE = ":" . Facture::ID_FACTURE;
+    private const SUBTITUT_NOM_FACTURE = ":" . Facture::NOM_FACTURE;
+    private const SUBTITUT_MONTANT_FACTURE = ":" . Facture::MONTANT_FACTURE;
 
     private static $AJOUTER_FACTURE =
     "INSERT INTO FACTURE(" . Facture::ID_CLIENT . ", " . Facture::ID_FACTURE . ", " . Facture::NOM_FACTURE . ", " . Facture::MONTANT_FACTURE . ") VALUES (:idClient, :idFacture, :nomFacture, :montantFacture)";
@@ -34,10 +38,10 @@ class AccesseurClient
     public function ajouterFacture($facture)
     {
         $requete = $connexion->prepare($AJOUTER_FACTURE);
-        $requete->bindValue(":idClient", $facture->getIdClient(), PDO::PARAM_INT);
-        $requete->bindValue(":idFacture", $facture->getIdFacture(), PDO::PARAM_INT);
-        $requete->bindValue(":nomFacture", $facture->getNomFacture(), PDO::PARAM_INT);
-        $requete->bindValue(":montantFacture", $facture->getMontantFacture(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_ID_CLIENT, $facture->getIdClient(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBTITUT_NOM_FACTURE, $facture->getNomFacture(), PDO::PARAM_INT);
+        $requete->bindValue(self::SUBTITUT_MONTANT_FACTURE, $facture->getMontantFacture(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -52,7 +56,7 @@ class AccesseurClient
     public function supprimerFacture($facture)
     {
         $requete = $connexion->prepare($SUPPRIMER_FACTURE);
-        $requete->bindValue(":idFacture", $facture->getIdFacture());
+        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture());
 
         $requete->execute();
 
@@ -84,7 +88,7 @@ class AccesseurClient
     public function getIdFacture($facture)
     {
         $requete = $connexion->prepare($GET_ID_CLIENT);
-        $requete->bindValue(":idFacture", $facture->getIdClient(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdClient(), PDO::PARAM_STR);
 
         $requete->execute();
 
@@ -104,9 +108,9 @@ class AccesseurClient
     // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
     {
         $requete = $connexion->prepare($MISE_A_JOUR_FACTURE);
-        $requete->bindValue(":nomFacture", $facture->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(":montantFacture", $facture->getmontantFacture(), PDO::PARAM_STR);
-        $requete->bindValue(":idFacture", $facture->getIdFacture(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_NOM_FACTURE, $facture->getNom(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_MONTANT_FACTURE, $facture->getmontantFacture(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture(), PDO::PARAM_STR);
 
         $requete->execute();
 
