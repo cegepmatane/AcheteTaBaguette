@@ -26,6 +26,8 @@ $page = (object)
 $laBDD = new AccesseurProduit();
 $laBDD2 = new AccesseurCategorie();
 
+$idProduit = $_GET['idProduit'];
+$produit = $laBDD-> recupererProduitParId($idProduit);
 
 function modifierProduit ($produit){
 	echo 'test';

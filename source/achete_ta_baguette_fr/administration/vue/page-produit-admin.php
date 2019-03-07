@@ -30,28 +30,26 @@ afficherEntete($page);
 
     <table class="table "> 
       <form action="action-produit.php" method="post">
-        <thead>
-          <tr>
-            <th  scope="col">Image</th>
-            <th  scope="col">Cat&eacute;gorie</th>
-            <th  scope="col">Produit</th>
-            <th  scope="col">Description</th>
-            <th  scope="col">Prix</th>
-            <th  scope="col">Stock</th>
-            <th  scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="text" name="nom" value="eee" /></td>
-            <td><input type="text" name="description" value="eee" /></td>
-            <td><input type="float" name="prix" value="eee" /></td>
-            <td><input type="int" name="stock" value="eee" /></td>
-            <td><input type="int" name="idCategorie" value="eee" /></td>
-            <td><input type="text" name="srcImage" value="eee" /></td>
-            <td><input type="submit" value="OK"></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th  scope="col">Image</th>
+          <th  scope="col">Cat&eacute;gorie</th>
+          <th  scope="col">Produit</th>
+          <th  scope="col">Description</th>
+          <th  scope="col">Prix</th>
+          <th  scope="col">Stock</th>
+          <th  scope="col"></th>
+        </tr>
+        <tr>
+
+
+          <td><input type="image" src="illustration/add-image.png" /></td>
+          <td>  <?= $produit->getNom(); ?></td>
+          <td> <?= $produit->getNom(); ?></td>
+          <td> <?= $produit->getDescription(); ?></td>
+          <td> <?= $produit->getPrix(); ?></td>
+          <td> <?= "" .$produit->getStock() . ""; ?></td>
+
+        </tr>
       </form>
     </table>
 

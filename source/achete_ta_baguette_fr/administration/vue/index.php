@@ -49,7 +49,7 @@ afficherEntete($page);
               <td> <?=  $produit->getDescription(); ?></td>
               <td> <?=  $produit->getPrix(); ?></td>
               <td> <?=  "" .$produit->getStock() . ""; ?></td>
-              <td> <a href="page-produit-admin.php?idProduit=<?= $produit->getIdProduit(); ?>">Modifier</a></td>
+              <td> <a href="page-produit-admin.php?idProduit=<?= $produit->getIdproduit(); ?>">Modifier</a></td>
               <td> <form method="post" action="index.php">
                 <input type="submit" src="../illustration/trash.png"  name="action-supprimer-produit" id="button" value="bar"></input>
                 <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input>
