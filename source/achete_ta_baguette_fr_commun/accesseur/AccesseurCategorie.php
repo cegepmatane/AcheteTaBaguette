@@ -5,18 +5,20 @@ require_once CHEMIN_RACINE_COMMUN . "/modele/Categorie.php";
 
 class AccesseurCategorie
 {
+    private const SUBSTITUT_ID_CATEGORIE = ":" . Categorie::ID_CATEGORIE;
+    private const SUBSTITUT_LABEL = ":" . Categorie::LABEL;
+    private const SUBSTITUT_DESCRIPTION = ":" . Categorie::DESCRIPTION;
 
     private static $RECUPERER_CATEGORIE_PAR_ID =
-        "SELECT * " .
-        "FROM CATEGORIE " .
-        "WHERE " .
-        Categorie::ID_CATEGORIE . "= :idCategorie"
+    "SELECT * " .
+    "FROM CATEGORIE " .
+    "WHERE " .
+    Categorie::ID_CATEGORIE . "=" . self::SUBSTITUT_ID_CATEGORIE+";"
     ;
 
-  private static $RECUPERER_LISTE_CATEGORIE =
+    private static $RECUPERER_LISTE_CATEGORIE =
         "SELECT * " .
-        "FROM CATEGORIE " ;
-    
+        "FROM CATEGORIE;";
 
     private static $connexion = null;
 
@@ -33,7 +35,7 @@ class AccesseurCategorie
         $requete = self::$connexion->prepare(self::$RECUPERER_CATEGORIE_PAR_ID);
 
         $requete->bindValue(
-            ':idCategorie',
+            self::SUBSTITUT_ID_CATEGORIE,
             $idCategorie,
             PDO::PARAM_INT);
 
@@ -49,9 +51,9 @@ class AccesseurCategorie
 
     }
 
-       public function recupererListeCategorie()
+    public function recupererListeCategorie()
     {
-           $listeCategorie = [];
+        $listeCategorie = [];
 
         $requete = self::$connexion->prepare(self::$RECUPERER_LISTE_CATEGORIE);
 
@@ -66,6 +68,6 @@ class AccesseurCategorie
         }
 
         return $listeCategorie;
-}
+    }
 
 }
