@@ -1,7 +1,7 @@
 <?php
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 
-if($page->client == null) $page->client = new Client();
+//if($page->client == null) $page->client = new Client();
 if(isset($_POST['action-aller-seconde-etape'])&& $page->isEtapeDeux == false && $page->isEtapeUn == true){
     if($page->client->setNom($_POST['nom']) && $page->client->setPrenom($_POST['prenom']) && $page->client->setRue($_POST['rue'])&& $page->client->setVille($_POST['ville'])&& $page->client->setCodePostal($_POST['codePostale'])&& $page->client->setProvince($_POST['province'])&& $page->client->setPays($_POST['pays'])){
         $page->isEtapeDeux = true;
