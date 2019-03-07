@@ -65,39 +65,41 @@ function afficherUnProduit($page = null) {
                     </div>
 
                     <!-- Ajout au panier -->
-                    <div class="row align-items-center add-to-cart">
+                    <form action="post">
+                        <div class="row align-items-center add-to-cart">
 
-                        <!-- choix quantite et stock -->
-                        <div class="col-md-5 product-qty quantite">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-outline-secondary btn-number"  data-type="minus" data-field="quant[1]">-</button>
-                                        <input type="text" name="quant[1]" class="form-control input-number text-center" value="1" min="1" max="10">
-                                        <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" data-field="quant[1]">+</button>
+                            <!-- choix quantite et stock -->
+                            <div class="col-md-5 product-qty quantite">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-7 mb-1">
+                                        <input class="form-control" type="number" value="1" min="1" id="example-number-input">
                                     </div>
                                 </div>
+
+                                <!-- stock -->
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <?php if($produit->stock > 0) { ?>
+                                            <span class="badge badge-success stockProduit">En stock</span>
+                                            <?php if($produit->stock < 5) { ?>
+                                                <span class="">Il n'en reste plus que <?= $produit->stock ?></span>
+                                            <?php }
+                                        }
+                                        else { ?>
+                                            <span class="badge badge-danger stockProduit">Pas de stock</span>
+                                        <?php } ?>
+                                    </div>
+                                </div><!-- fin stock -->
+                            </div><!-- fin choix quantite et stock -->
+
+                            <input type="hidden" id="idProduit" name="idProduit" value="<?= $_GET['idProduit'] ?>">
+                            <!-- bouton ajout panier -->
+                            <div class="col-md-7">
+                                <!-- <a href="#" class="btn btn-lg btn-primary">Ajouter au panier</a> -->
+                                <button type="submit" name="ajout-au-panier" class="btn btn-lg btn-primary boutonAjouterPanier">Ajouter au panier</button>
                             </div>
-
-                            <!-- stock -->
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <?php if($produit->stock > 0) { ?>
-                                        <span class="badge badge-success stockProduit">En stock</span>
-                                    <?php } 
-                                    else { ?>
-                                        <span class="badge badge-danger stockProduit">Pas de stock</span>
-                                    <?php } ?>
-                                </div>
-                            </div><!-- fin stock -->
-                        </div><!-- fin choix quantite et stock -->
-
-                        <!-- bouton ajout panier -->
-                        <div class="col-md-7">
-                            <!-- <a href="#" class="btn btn-lg btn-primary">Ajouter au panier</a> -->
-                            <button class="btn btn-lg btn-primary boutonAjouterPanier">Ajouter au panier</button>
                         </div>
-                    </div> <!-- fin Ajout au panier -->
+                    </form><!-- fin Ajout au panier -->
 
                 </div><!-- colonne information produit -->
 
