@@ -81,7 +81,6 @@ afficherEntete($page);
           <td><input type="text" class="form-control"  name="description"></td>
           <td><input type="text" class="form-control"  name="prix"></td>
           <td><input type="text" class="form-control" name="stock"></td>
-          <td ><input type="submit" src="illustration/add.png" name="envoi"/></td>
           <td ><input type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
          </tr>
 
