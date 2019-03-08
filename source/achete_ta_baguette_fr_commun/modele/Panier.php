@@ -8,11 +8,11 @@
 
 class Panier
 {
-    public const ID_CLIENT = "idClient";
+    public const EMAIL_CLIENT = "emailClient";
     public const ID_PRODUIT = "idProduit";
     public const NB_PRODUIT = "nbProduit";
 
-    private $idClient;
+    private $emailClient;
     private $idProduit;
     private $nbProduit;
 
@@ -26,7 +26,7 @@ class Panier
             $attribut = (object) [];
         }
 
-        $this->setIdClient($attribut->idClient ?? null);
+        $this->setEmailClient($attribut->emailClient ?? null);
         $this->setIdProduit($attribut->idProduit ?? null);
         $this->setNbProduit($attribut->nbProduit ?? null);
     }
@@ -36,7 +36,7 @@ class Panier
 
         if (null == $champ) {
 
-            $this->setIdClient($this->idClient);
+            $this->setEmailClient($this->emailClient);
             $this->setIdProduit($this->idProduit);
             $this->setNbProduit($this->nbProduit);
 
@@ -60,7 +60,7 @@ class Panier
         {
             self::$LISTE_MESSAGE_ERREUR =
                 [
-                    "idClient-vide" => "Le idClient ne doit pas être vide",
+                    "emailClient-vide" => "Le emailClient ne doit pas être vide",
                     "idProduit-vide" => "Le idProduit ne doit pas être vide",
                     "nbProduit-vide" => "Le nbProduit ne doit pas être vide",
                 ];
@@ -74,22 +74,22 @@ class Panier
         return $this->listeMessageErreurActif[$champ] ?? [];
     }
 
-    public function getIdClient()
+    public function getEmailClient()
     {
-        return $this->idClient;
+        return $this->emailClient;
     }
 
-    public function setIdClient($idClient)
+    public function setEmailClient($emailClient)
     {
         // Validation en premier
-        if (empty($idClient))
+        if (empty($emailClient))
         {
-            $this->listeMessageErreurActif[self::ID_CLIENT][] = self::getListeMessageErreur()['idClient-vide'];
+            $this->listeMessageErreurActif[self::EMAIL_CLIENT][] = self::getListeMessageErreur()['emailClient-vide'];
             return false;
         }
 
         // Nettoyage en second
-        $this->idClient = filter_var($idClient, FILTER_SANITIZE_STRING);
+        $this->emailClient = filter_var($emailClient, FILTER_SANITIZE_STRING);
         return true;
     }
 
