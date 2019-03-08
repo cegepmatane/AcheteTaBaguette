@@ -23,17 +23,22 @@ class AccesseurPanier
         if (!self::$connexion) self::$connexion = BaseDeDonnee::getConnexion();
     }
 
-    public function ajouterClient(Panier $panier)
+    public function ajouterPanier(Panier $panier)
     {
-        $requete = self::$connexion->prepare(self::$AJOUTER_PANIER);
-        $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $panier->getIdProduit(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBTITUT_NB_PRODUIT, $panier->getNbProduit(), PDO::PARAM_STR);
+        try {
 
-        return $requete->execute();
+            $requete = self::$connexion->prepare(self::$AJOUTER_PANIER);
+            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $panier->getIdProduit(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_NB_PRODUIT, $panier->getNbProduit(), PDO::PARAM_STR);
 
-        if($requete->rowCount() > 0)return $panier;
+            $requete->execute();
+            return $panier;
 
-        return false;
+        } catch (PDOException $e) {
+
+            return false;
+
+        }
     }
 }

@@ -1,22 +1,17 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-ajouter-panier.php");
 
-if (!is_object($page)) $page = (object)[];
-
-$page = (object)
-[
-    "titre" => "Produit",
-];
-
 afficherEntete($page);
 
 $accesseurProduit = new AccesseurProduit();
-$produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
+$produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
 
 ?>
 
@@ -72,7 +67,7 @@ $produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
                         <div class="col-md-5 product-qty quantite">
                             <div class="row justify-content-center">
                                 <div class="col-md-7 mb-1">
-                                    <input class="form-control" type="number" value="1" min="1" id="example-number-input">
+                                    <input class="form-control" type="number" value="<?= $page->nbProduitDefaut ?>" min="1" name="<?= $page->nbProduit ?>">
                                 </div>
                             </div>
 
@@ -81,7 +76,7 @@ $produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
                                 <div class="col-md-12 text-center">
                                     <?php if($produit->stock > 0) { ?>
                                     <span class="badge badge-success stockProduit">En stock</span>
-                                        <?php if($produit->stock < 5) { ?>
+                                        <?php if($produit->stock < $page->indicePetitStock) { ?>
                                     <span class="">Il n'en reste plus que <?= $produit->stock ?></span>
                                         <?php }
                                     }
@@ -92,7 +87,8 @@ $produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
                             </div><!-- fin stock -->
                         </div><!-- fin choix quantite et stock -->
 
-                        <input type="hidden" id="idProduit" name="idProduit" value="<?= $_GET['idProduit'] ?>">
+                        <input type="hidden" name="<?= $page->idProduit ?>" value="<?= $_GET[Panier::ID_PRODUIT] ?>">
+                        <input type="hidden" name="<?= $page->emailClient ?>" value="<?= $_SESSION[Client::EMAIL] ?>">
                         <!-- bouton ajout panier -->
                         <div class="col-md-7">
                             <!-- <a href="#" class="btn btn-lg btn-primary">Ajouter au panier</a> -->
@@ -101,6 +97,9 @@ $produit = $accesseurProduit->recupererProduitParId($_GET['idProduit']);
                     </div>
                 </form>
                 <!-- fin Ajout au panier -->
+                <div class="row">
+                    <div class="col-md-12"><?= $page->messageAction ?></div>
+                </div>
 
             </div><!-- colonne information produit -->
 
