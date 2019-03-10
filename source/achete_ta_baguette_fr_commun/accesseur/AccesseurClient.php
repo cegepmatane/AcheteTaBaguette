@@ -90,10 +90,14 @@ class AccesseurClient
 //        $email = $client->email;
 //        if(!$client->isValide(Client::EMAIL)) return false;
 
-        $requete = self::$connexion->prepare(self::$RECUPERER_CLIENT_PAR_EMAIL);
-        $requete->bindValue(self::SUBTITUT_EMAIL, $email, PDO::PARAM_STR);
-        $requete->execute();
+        try {
+            $requete = self::$connexion->prepare(self::$RECUPERER_CLIENT_PAR_EMAIL);
+            $requete->bindValue(self::SUBTITUT_EMAIL, $email, PDO::PARAM_STR);
+            $requete->execute();
 
-        return new Client($requete->fetchObject());
+            return new Client((object) $requete->fetchObject());
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

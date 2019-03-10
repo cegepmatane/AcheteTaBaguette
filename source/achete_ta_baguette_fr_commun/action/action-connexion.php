@@ -55,7 +55,7 @@ if(!$page->isNavigationRetour){
         $accesseurClient = new AccesseurClient();
         $client = $accesseurClient->recupererClientParEmail($_POST[Client::EMAIL]);
 
-        if ($client->getMotDePasse() == sha1($_POST[Client::MOT_DE_PASSE])) {
+        if ($client && $client->getMotDePasse() == sha1($_POST[Client::MOT_DE_PASSE])) {
             $_SESSION[Client::EMAIL] = $client->getEmail();
             if ($client->getAdministrateur()) $_SESSION[Client::ADMINISTRATEUR] = true;
 
