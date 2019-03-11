@@ -30,6 +30,8 @@ class AccesseurClient
 
     public function ajouterClient(Client $client)
     {
+        if($client->administrateur != 0 || $client->administrateur != 1) $client->administrateur = 0;
+
         $requete = self::$connexion->prepare(self::$AJOUTER_CLIENT);
         $requete->bindValue(self::SUBTITUT_NOM, $client->getNom(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBTITUT_PRENOM, $client->getPrenom(), PDO::PARAM_STR);
@@ -40,7 +42,7 @@ class AccesseurClient
         $requete->bindValue(self::SUBTITUT_PROVINCE, $client->getProvince(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBTITUT_CODE_POSTAL, $client->getCodePostal(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBTITUT_PAYS, $client->getPays(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBTITUT_ADMINISTRATEUR, $client->getAdministrateur(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBTITUT_ADMINISTRATEUR, $client->getAdministrateur(), PDO::PARAM_INT);
 
         return $requete->execute();
 

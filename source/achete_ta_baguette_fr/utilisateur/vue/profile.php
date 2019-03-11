@@ -91,18 +91,7 @@ function afficherPage($page = null)
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
-                                    <label for="mail"><?php Client::EMAIL ?></label>
-                                    <?php
-                                    echo '<input type="email" class="form-control" id="mail"
-                                           aria-describedby="emailHelp" name="'.Client::EMAIL.'" value="' . $page->client->email . '" required>'
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="mot_de_passe">Vérifier Mot de passe</label>
+                                    <label for="mot_de_passe">Confirmer en rentrant votre mot de passe</label>
                                     <input type="password" class="form-control" id=" <?php echo Client::MOT_DE_PASSE ?>"
                                            name="<?php echo Client::MOT_DE_PASSE ?>" required>
                                 </div>
