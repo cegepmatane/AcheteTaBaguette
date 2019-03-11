@@ -1,7 +1,7 @@
 <?php
 require 'fpdf.php';
 
-class genererFacture extends FPDF
+class PDF extends FPDF
 {
     public $facture;
 
@@ -11,6 +11,14 @@ class genererFacture extends FPDF
 
     //     parent::construct();
     // }
+
+    public function Header()
+    {
+        $this->SetFont('Arial', 'B', 15);
+        $this->Cell(80);
+        $this->Cell(30, 10, 'Facture AcheteTaBaguette', 1, 0, 'C');
+        $this->Ln(20);
+    }
 
     public function LoadData($file)
     {
@@ -23,7 +31,6 @@ class genererFacture extends FPDF
 
         return $data;
     }
-    
 
 // Tableau amélioré
     public function ImprovedTable($header, $data)
@@ -38,16 +45,15 @@ class genererFacture extends FPDF
         $this->Ln();
         // Données
         foreach ($data as $row) {
-            $this->Cell($w[0], 6, $row[0], 'LR');
-            $this->Cell($w[1], 6, $row[1], 'LR');
+            $this->Cell($w[0], 6, $row[0], 'LR', 0, 'R');
+            $this->Cell($w[1], 6, $row[1], 'LR', 0, 'R');
             $this->Cell($w[2], 6, number_format($row[2], 0, ',', ' '), 'LR', 0, 'R');
-            $this->Cell($w[3], 6, number_format($row[3], 0, ',', ' '), 'LR', 0, 'R');
+            $this->Cell($w[3], 6, $row[3], 'LR', 0, 'R');
             $this->Ln();
         }
         // Trait de terminaison
         $this->Cell(array_sum($w), 0, '', 'T');
     }
-
 
 }
 
