@@ -15,8 +15,8 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', 15);
-        $this->Cell(80);
-        $this->Cell(30, 10, 'Facture AcheteTaBaguette', 1, 0, 'C');
+        //$this->Cell(80);
+        $this->Cell(0, 10, 'Facture AcheteTaBaguette', 1, 0, 'C');
         $this->Ln(20);
     }
 
@@ -45,10 +45,10 @@ class PDF extends FPDF
         $this->Ln();
         // Données
         foreach ($data as $row) {
-            $this->Cell($w[0], 6, $row[0], 'LR', 0, 'R');
-            $this->Cell($w[1], 6, $row[1], 'LR', 0, 'R');
+            $this->Cell($w[0], 6, utf8_decode($row[0]), 'LR', 0, 'R');
+            $this->Cell($w[1], 6, $row[1]." ".chr(128), 'LR', 0, 'R');
             $this->Cell($w[2], 6, number_format($row[2], 0, ',', ' '), 'LR', 0, 'R');
-            $this->Cell($w[3], 6, $row[3], 'LR', 0, 'R');
+            $this->Cell($w[3], 6, $row[1]*$row[2]." ".chr(128), 'LR', 0, 'R');
             $this->Ln();
         }
         // Trait de terminaison
@@ -59,10 +59,10 @@ class PDF extends FPDF
 
 $pdf = new PDF();
 // Titres des colonnes
-$header = array('Item', 'Prix Unitaire', 'Quantité', 'Prix Total');
+$header = array('Item', 'Prix Unitaire', utf8_decode(Quantité), 'Prix Total');
 // Chargement des données
-$data = $pdf->LoadData('pays.txt');
+$data = $pdf->LoadData('data.txt');
 $pdf->SetFont('Arial', '', 14);
 $pdf->AddPage();
 $pdf->ImprovedTable($header, $data);
-$pdf->Output();
+$pdf->Output('I', "Facture", true);
