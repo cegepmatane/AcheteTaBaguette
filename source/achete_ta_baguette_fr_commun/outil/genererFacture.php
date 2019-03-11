@@ -3,14 +3,6 @@ require 'fpdf.php';
 
 class PDF extends FPDF
 {
-    public $facture;
-
-    // function __construct()
-    // {
-    //     //$this->facture= $facture;
-
-    //     parent::construct();
-    // }
 
     public function Header()
     {
@@ -35,6 +27,8 @@ class PDF extends FPDF
 // Tableau amélioré
     public function ImprovedTable($header, $data)
     {
+        $prixTotal = 0;
+
         // Largeurs des colonnes
         $w = array(40, 35, 45, 40);
         // En-tête
@@ -46,13 +40,38 @@ class PDF extends FPDF
         // Données
         foreach ($data as $row) {
             $this->Cell($w[0], 6, utf8_decode($row[0]), 'LR', 0, 'R');
-            $this->Cell($w[1], 6, $row[1]." ".chr(128), 'LR', 0, 'R');
+            $this->Cell($w[1], 6, $row[1] . " " . chr(128), 'LR', 0, 'R');
             $this->Cell($w[2], 6, number_format($row[2], 0, ',', ' '), 'LR', 0, 'R');
-            $this->Cell($w[3], 6, $row[1]*$row[2]." ".chr(128), 'LR', 0, 'R');
+            $this->Cell($w[3], 6, $row[1] * $row[2] . " " . chr(128), 'LR', 0, 'R');
+            $prixTotal += $row[1] * $row[2];
             $this->Ln();
         }
+        $this->Cell($w[0], 6, "", "LRB", 0, 'R');
+        $this->Cell($w[1], 6, "", "LRB", 'R');
+        $this->Cell($w[2], 6, "", 'LR', 0, 'R');
+        $this->Cell($w[3], 6, "", 'LR', 0, 'R');
+        $this->Ln();
+
+        $this->Cell($w[0], 6, "", '', 0, 'R');
+        $this->Cell($w[1], 6, "", '', 0, 'R');
+        $this->Cell($w[2], 6, "Prix total HT", 1, 0, 'R');
+        $this->Cell($w[3], 6, $prixTotal . " " . chr(128), 1, 0, 'R');
+        $this->Ln();
+
+        $this->Cell($w[0], 6, "", '', 0, 'R');
+        $this->Cell($w[1], 6, "", '', 0, 'R');
+        $this->Cell($w[2], 6, "Taxes (20%)", 1, 0, 'R');
+        $this->Cell($w[3], 6, $prixTotal * 0.2 . " " . chr(128), 1, 0, 'R');
+        $this->Ln();
+
+        $this->Cell($w[0], 6, "", '', 0, 'R');
+        $this->Cell($w[1], 6, "", '', 0, 'R');
+        $this->Cell($w[2], 6, "Prix total", 1, 0, 'R');
+        $this->Cell($w[3], 6, $prixTotal * 1.2 . " " . chr(128), 1, 0, 'R');
+        $this->Ln();
+
         // Trait de terminaison
-        $this->Cell(array_sum($w), 0, '', 'T');
+        $this->Cell(array_sum($w), 0, '', '');
     }
 
 }
