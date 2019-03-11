@@ -49,4 +49,8 @@ class Facture
         return $this->idFacture;
     }
 
+    public function genererFactureCSV(){
+        
+    }
+
 }
