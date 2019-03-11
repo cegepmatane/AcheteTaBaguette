@@ -16,7 +16,7 @@ $page = (object)
     "isEtapeUn" => true,
     "isEtapeDeux" => false,
     "erreur" => "",
-    "client" => null,
+    "client" => new Client((object) null),
     "isRetourEnArriere" => false
 ];
 
@@ -43,7 +43,7 @@ function afficherPremiereEtape($page)
                                 <div class="col-12">
                                     <label class="col-form-label">Prénom </label>
                                     <input type="text" class="form-control"
-                                           value="<?php echo $page->client->getPrenom() ?>" id="prenom" name="prenom"
+                                           value="<?php echo $page->client->prenom ?>" id="prenom" name="prenom"
                                            required>
                                 </div>
                             </div>
@@ -174,18 +174,6 @@ function afficherSecondeEtape($page)
                 </div>
             </div>
         </div>
-
-        <div class="row justify-content-md-center">
-            <div class="row">
-                <div class="col-12">
-                    <label class="form-check-label" for="defaultCheck1">
-                        J'ai lu, compris et accepté les termes d'utilisation
-                    </label>
-                    <input type="checkbox" name="condition" value="agreed">
-                </div>
-            </div>
-        </div>
-
         <div class="row justify-content-md-center">
             <button type="submit" class="btn btn-primary" name="retour-premiere-etape">Retour</button>
             <button type="submit" class="btn btn-primary" name="submit">Envoyer</button>

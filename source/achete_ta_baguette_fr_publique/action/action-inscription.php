@@ -40,9 +40,9 @@ if(isset($_POST['submit'])){
     if($page->client->setEmail($_POST['mail']) && $page->client->setMotDePasse($_POST['mot_de_passe'])){
         $laBDD = new AccesseurClient();
         $laBDD->ajouterClient($page->client);
-        $_SESSION['id'] = $laBDD->getClientParEmail($page->client->email);
-        $_SESSION['isConnected'] = true;
-        $_SESSION['admin'] = false;
+        $_SESSION[Client::EMAIL] = $page->client->getEmail();
+        if ($page->client->getAdministrateur()) $_SESSION[Client::ADMINISTRATEUR] = true;
+
         header("Location: /boutique");
     }
 }

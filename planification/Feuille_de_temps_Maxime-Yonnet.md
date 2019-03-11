@@ -29,4 +29,4 @@
 1  |4   |21/02/2019   |2 heures   | #15 Passage page en multiPage                     |https://github.com/cegepmatane/AcheteTaBaguette/commit/05d38e62a02e721c15f26676b986f1418bcdefa0                                      |    |    |
 1  |4   |22/02/2019   |4 heures   | #15 Ajout du bouton retour en arriere et envoie en BDD|https://github.com/cegepmatane/AcheteTaBaguette/commit/05d38e62a02e721c15f26676b986f1418bcdefa0                                      |    |    |
 2  |5   |04/03/2019   |1 heure    [ #15 finalisation deconnexion |   |    |    |
-2  |5   |07/03/2019   |6 heure    [ #15 finalisation deconnexion |   |    |    |
+2  |5   |07/03/2019   |6 heure    [ #48 Finalisation de la modification de page |   |    |    |
