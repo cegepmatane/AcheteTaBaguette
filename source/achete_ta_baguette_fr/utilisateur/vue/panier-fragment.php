@@ -14,7 +14,7 @@ function afficherPanier($page = null){
     $page->titre = "Panier";
 
     $accesseurPanier = new AccesseurPanier();
-    $listePanier = $accesseurPanier->reupererPanier($_SESSION[Client::EMAIL]);
+    $listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
     $accesseurProduit = new AccesseurProduit();
     $totalPrix = null;
 

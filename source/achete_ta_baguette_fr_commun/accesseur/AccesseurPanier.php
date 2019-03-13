@@ -43,7 +43,7 @@ class AccesseurPanier
         }
     }
 
-    public function reupererPanier($emailClient)
+    public function recupererPanier($emailClient)
     {
         try {
             $panier = [];
