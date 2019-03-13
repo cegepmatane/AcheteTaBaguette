@@ -11,7 +11,6 @@ class AccesseurProduit
     private const SUBSTITUT_DESCRIPTION = ":" . Produit::DESCRIPTION;
     private const SUBSTITUT_PRIX = ":" . Produit::PRIX;
     private const SUBSTITUT_ID_CATEGORIE = ":" . Produit::ID_CATEGORIE;
-    private const SUBSTITUT_LABEL = ":" . Produit::LABEL;
     private const SUBSTITUT_STOCK = ":" . Produit::STOCK;
     private const SUBSTITUT_SRC_IMAGE = ":" . Produit::SRC_IMAGE;
 
@@ -56,7 +55,7 @@ class AccesseurProduit
 
         if ($requete->rowCount() > 0) {
             $reponse = $requete->fetch();
-            return $reponse;
+            return new Produit($reponse);
         } else {
             echo "Aucune données trouvés !";
         }

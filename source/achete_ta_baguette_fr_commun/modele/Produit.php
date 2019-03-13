@@ -8,7 +8,6 @@ class Produit
     public const DESCRIPTION = "description";
     public const PRIX = "prix";
     public const ID_CATEGORIE = "idCategorie";
-    public const LABEL = "label";
     public const STOCK = "stock";
     public const SRC_IMAGE = "srcImage";
 
@@ -18,7 +17,6 @@ class Produit
     public $description;
     public $prix;
     public $idCategorie;
-    public $label;
     public $stock;
     public $srcImage;
 
