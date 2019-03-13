@@ -1,6 +1,11 @@
 <?php
 require 'genererFacture.php';
 
+$test = "
+Baguette simple;2.00; 4;6\n\rCroissant;1;2;2\n\rPain au chocolat;1.50;2;3";
+
+$pdf = new PDF();
+$pdf->genererFacture($test);
 // print_r('test');
 // //header('genererFacture.php');
 // $pdf = new PDF();

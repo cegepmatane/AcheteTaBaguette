@@ -17,13 +17,24 @@ class PDF extends FPDF
         $this->Ln(20);
     }
 
-    public function chargerData($file)
+    public function chargerDataDepuisFichier($file)
     {
         // Lecture des lignes du fichier
-        $lines = file($file);
+        $lignes = file($file);
         $data = array();
-        foreach ($lines as $line) {
-            $data[] = explode(';', trim($line));
+        foreach ($lignes as $ligne) {
+            $data[] = explode(';', trim($ligne));
+        }
+
+        return $data;
+    }
+
+    public function chargerDataDepuisString($lignes)
+    {
+        $lignes = explode("\n\r", $lignes);
+        $data = array();
+        foreach ($lignes as $ligne) {
+            $data[] = explode(';', trim($ligne));
         }
 
         return $data;
@@ -98,26 +109,17 @@ class PDF extends FPDF
         // Trait de terminaison
         $this->Cell(array_sum($w), 0, '', '');
     }
-    public function generer()
+
+    public static function genererFacture($data)
     {
         $pdf = new PDF();
         // Titres des colonnes
         $header = array('Item', 'Prix Unitaire', utf8_decode(Quantité), 'Prix Total');
         // Chargement des données
-        $data = $pdf->chargerData('data.txt');
+        $data = $pdf->chargerDataDepuisString($data);
         $pdf->SetFont('Arial', '', 14);
         $pdf->AddPage();
         $pdf->genererTableau($header, $data);
         $pdf->Output('I', "Facture", true);
     }
 }
-
-$pdf = new PDF();
-// Titres des colonnes
-$header = array('Item', 'Prix Unitaire', utf8_decode(Quantité), 'Prix Total');
-// Chargement des données
-$data = $pdf->chargerData('data.txt');
-$pdf->SetFont('Arial', '', 14);
-$pdf->AddPage();
-$pdf->genererTableau($header, $data);
-$pdf->Output('I', "Facture", true);
