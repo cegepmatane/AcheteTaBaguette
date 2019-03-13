@@ -12,9 +12,7 @@ afficherEntete($page);
             <div class="col-md-8">
                 <form method="post">
                     <fieldset>
-
                         <legend><?= $page->titre ?? "" ?></legend>
-
                         <!-- Champ email -->
                         <div class="form-group">
                             <div class="row">
@@ -54,7 +52,7 @@ afficherEntete($page);
                                 <div class="col-md-12">
                                     <label for="<?= $page->motDePasse; ?>"
                                            title="<?= $page->descriptionMotDePasse; ?>">
-                                        <?= $page->etiquetteMotDePasse; ?>
+                                        <?php echo $page->etiquetteMotDePasse; ?>
                                     </label>
                                 </div>
                             </div>
