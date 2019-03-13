@@ -20,12 +20,10 @@ $page = (object)
 
 if (isset($_POST['ajout-au-panier']))
 {
-    if (!isset($_SESSION[Client::EMAIL])) header("location: /connexion");
+    if (isset($_SESSION[Client::EMAIL])) header("location: /connexion");
 
     $panier = new Panier((object) $_POST);
     $accesseurPanier = new AccesseurPanier();
     if ($accesseurPanier->ajouterPanier($panier)) $page->messageAction = "Produit ajouté au panier";
     else $page->messageAction = "Produit déjà présent dans le panier";
-
-//    header('location: /boutique/produit/'.$panier->getIdProduit());
 }

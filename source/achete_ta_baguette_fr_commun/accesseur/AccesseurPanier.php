@@ -16,7 +16,8 @@ class AccesseurPanier
     private const SUBTITUT_NB_PRODUIT = ":" .Panier::NB_PRODUIT;
 
     private static $AJOUTER_PANIER = "INSERT INTO PANIER(".Panier::EMAIL_CLIENT.", ".Panier::ID_PRODUIT.", ".Panier::NB_PRODUIT.") VALUES (".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_NB_PRODUIT.");";
-    private static $RECUPERER_PANIER_CLIENT_PAR_EMAIL = "SELECT ".Panier::ID_PRODUIT.", ".Panier::NB_PRODUIT." FROM PANIER WHERE emailClient LIKE ".self::SUBTITUT_EMAIL_CLIENT.";";
+    private static $RECUPERER_PANIER_CLIENT_PAR_EMAIL = "SELECT ".Panier::EMAIL_CLIENT.", ".Panier::ID_PRODUIT.", ".Panier::NB_PRODUIT." FROM PANIER WHERE ".Panier::EMAIL_CLIENT." LIKE ".self::SUBTITUT_EMAIL_CLIENT.";";
+    private static $SUPPRIMER_PRODUIT_PANIER = "DELETE FROM PANIER WHERE ".Panier::EMAIL_CLIENT." LIKE ".self::SUBTITUT_EMAIL_CLIENT." AND ".Panier::ID_PRODUIT." = ".self::SUBTITUT_ID_PRODUIT.";";
 
     private static $connexion = null;
     public function __construct()
@@ -59,6 +60,24 @@ class AccesseurPanier
 
         } catch (PDOException $e) {
             return false;
+        }
+    }
+
+    public function supprimerProduitPanier(Panier $panier)
+    {
+        try {
+
+            $requete = self::$connexion->prepare(self::$SUPPRIMER_PRODUIT_PANIER);
+            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $panier->getIdProduit(), PDO::PARAM_STR);
+
+            $requete->execute();
+            return true;
+
+        } catch (PDOException $e) {
+
+            return false;
+
         }
     }
 }

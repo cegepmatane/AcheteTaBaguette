@@ -1,2 +1,2 @@
-INSERT INTO CATEGORIE(idCategorie, label, description) VALUES ('Autre',null);
-INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Sachet de bonbons','Ne vous inquiétez pas pour les carries',2,30,3,'/publique/illustration/bonbon.png');
+INSERT INTO CATEGORIE(label, description) VALUES ('Autre',null);
+INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Sachet de bonbons','Ne vous inquiÃ©tez pas pour les carries',2,30,3,'/publique/illustration/bonbon.png');

@@ -12,6 +12,8 @@ if(isset($_POST['action-aller-seconde-etape'])&& $page->isEtapeDeux == false && 
         $page->isEtapeDeux = false;
         $page->erreur = "Erreur à la première étape";
         $page->titre = "Etape 1";
+        $page->client = new Client((Object) $_POST);
+        print_r($page->client);
     }
 
 }

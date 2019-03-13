@@ -24,9 +24,9 @@ $page = (object)
 
     "motDePasse" => Client::MOT_DE_PASSE,
     "descriptionMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->description,
-    "etiquetteMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->etiquette,
+    "etiquetteMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->etiquette ?? "Mot de passe",
     "indiceMotDePasse" => Client::getInformation(Client::MOT_DE_PASSE)->indice,
-    "isMotDePasseObligatoire" => Client::getInformation(Client::MOT_DE_PASSE)->obligatoire,
+    "isMotDePasseObligatoire" => Client::getInformation(Client::MOT_DE_PASSE)->obligatoire ?? "Obligatoire",
 ];
 
 //Redirection vers la page de retour avec un message de réussite.

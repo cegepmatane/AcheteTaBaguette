@@ -2,7 +2,7 @@
 require_once "../../commun/vue/entete-fragment.php";
 require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once "../../commun/vue/pied-de-page-fragment.php";
-require_once "erreur-inscription.php";
+require_once  "../../commun/vue/erreur.php";
 require_once $_SERVER['CONFIGURATION_COMMUN'];
 require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurClient.php";
 require_once CHEMIN_RACINE_COMMUN . "/modele/Client.php";
@@ -15,7 +15,6 @@ $page = (object)
     "isConnected" => false,
     "isEtapeUn" => true,
     "isEtapeDeux" => false,
-    "erreur" => "",
     "client" => new Client((object) null),
     "isRetourEnArriere" => false
 ];
@@ -195,6 +194,9 @@ function afficherPage($page = null)
     }
     afficherEntete($page);
 
+    if(isset($page->erreur)){
+        afficherErreurInscription($page->client->getListeMessageErreur());
+    }
     if ($page->isEtapeUn == true && $page->isEtapeDeux == false) {
         afficherPremiereEtape($page);
     }

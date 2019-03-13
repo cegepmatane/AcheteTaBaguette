@@ -17,6 +17,7 @@ $page = (object)
 include_once(CHEMIN_RACINE_COMMUN . "/action/action-edition-profile.php");
 
 
+
 function afficherPage($page = null)
 {
 
@@ -24,7 +25,13 @@ function afficherPage($page = null)
 
     if (!is_object($page)) $page = (object)[];
     afficherEntete($page);
+
+    if(isset($_POST["ErreurMotDePasse"])){
+        afficherErreurMotDePasse();
+    }
     ?>
+
+
 
     <!--  jQuery -->
     <div class="content">
@@ -110,5 +117,6 @@ function afficherPage($page = null)
     afficherPiedDePage($page);
 
 }
-
-afficherPage($page);
+if(isset($_SESSION[CLIENT::EMAIL])) {
+    afficherPage($page);
+}else header('Location: /');
