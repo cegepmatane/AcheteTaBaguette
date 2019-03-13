@@ -1,12 +1,15 @@
 <?php
 require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
+require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-ajouter-panier.php");
+
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
-require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-ajouter-panier.php");
 
 afficherEntete($page);
 
@@ -89,6 +92,7 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
 
                         <input type="hidden" name="<?= $page->idProduit ?>" value="<?= $_GET[Panier::ID_PRODUIT] ?>">
                         <input type="hidden" name="<?= $page->emailClient ?>" value="<?= $_SESSION[Client::EMAIL] ?>">
+
                         <!-- bouton ajout panier -->
                         <div class="col-md-7">
                             <!-- <a href="#" class="btn btn-lg btn-primary">Ajouter au panier</a> -->
