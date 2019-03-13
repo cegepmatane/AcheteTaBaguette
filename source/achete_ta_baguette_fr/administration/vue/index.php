@@ -53,13 +53,13 @@ afficherEntete($page);
               <td> <form method="post" action="index.php">
                 <input type="submit" src="../illustration/trash.png"  name="action-supprimer-produit" id="button" value="bar"></input>
                 <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input>
-             </form ></td>
-             </tr>
-        <?php }?>
-     </tbody>
- </table>
+            </form ></td>
+        </tr>
+    <?php }?>
+</tbody>
+</table>
 
- <form method="post">
+<form method="post">
     <table class="table ">
         <thead>
             <tr>
@@ -75,23 +75,42 @@ afficherEntete($page);
       </thead>
       <tbody>
         <tr>
-          <td><input type="image" src="illustration/add-image.png" name="image" /></td>
-         <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
-       <td>  <select name="categorie">
-  <option value="" selected disabled hidden>Choisir catégorie</option>
-   <?php foreach ($page->listeCategorie as $categorie) {?>
-           <option value= "<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
-        <?php }?>
-  
-</select></td>
-          <td ><input type="text" class="form-control"  name="produit"></td>
-          <td><input type="text" class="form-control"  name="description"></td>
-          <td><input type="text" class="form-control"  name="prix"></td>
-          <td><input type="text" class="form-control" name="stock"></td>
-          <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
-         </tr>
+          <td>
+            <div class="container">
+<div class="col-md-6">
+    <div class="form-group">
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload'/>
+    </div>
+</div>
+</div>
+</div>
 
-  </tbody>
+           <!--  <input type="image" src="illustration/add-image.png" name="image" /></td> -->
+          <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
+          <td>  <select class="custom-select" name="categorie"  >
+              <option value="" selected disabled hidden>Choisir catégorie</option>
+              <?php foreach ($page->listeCategorie as $categorie) {?>
+                 <option value= "<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
+             <?php }?>
+
+         </select></td>
+         <td ><input type="text" class="form-control"  name="produit"></td>
+         <td><input type="text" class="form-control"  name="description"></td>
+         <td><input type="text" class="form-control"  name="prix"></td>
+         <td><input type="text" class="form-control" name="stock"></td>
+         <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
+     </tr>
+
+ </tbody>
 </table>
 </form>
 </div><!-- Fin du contenu -->
