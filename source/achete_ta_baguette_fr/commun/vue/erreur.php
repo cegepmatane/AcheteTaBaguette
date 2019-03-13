@@ -8,3 +8,12 @@ function afficherErreurInscription()
 <?php
 
 }
+
+function afficherErreurMotDePasse(){
+    ?>
+    <div class="alert alert-primary" role="alert">
+        Le mot de passe est incorrect.
+    </div>
+
+<?
+}
