@@ -4,6 +4,11 @@ require 'fpdf.php';
 class PDF extends FPDF
 {
 
+    public function __constructor()
+    {
+        parent::__construct();
+    }
+
     public function Header()
     {
         $this->SetFont('Arial', 'B', 15);
@@ -93,7 +98,18 @@ class PDF extends FPDF
         // Trait de terminaison
         $this->Cell(array_sum($w), 0, '', '');
     }
-
+    public function generer()
+    {
+        $pdf = new PDF();
+        // Titres des colonnes
+        $header = array('Item', 'Prix Unitaire', utf8_decode(Quantité), 'Prix Total');
+        // Chargement des données
+        $data = $pdf->chargerData('data.txt');
+        $pdf->SetFont('Arial', '', 14);
+        $pdf->AddPage();
+        $pdf->genererTableau($header, $data);
+        $pdf->Output('I', "Facture", true);
+    }
 }
 
 $pdf = new PDF();
