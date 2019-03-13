@@ -15,14 +15,12 @@ require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 
-
 $page = (object)
 [
     "titre" => "Panier",
     "listeProduit" => [],
     "totalHT" => null,
     "totalTTC" => null,
-
 ];
 
 $accesseurPanier = new AccesseurPanier();
@@ -36,12 +34,11 @@ foreach($listePanier as $panier) {
     $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());
     $monProduit = (object)
     [
-        "idProduit" => $produit->getIdProduit(),
+        "idProduit" => $panier->getIdProduit(),
         "nom" => $produit->getNom(),
         "prix" => $produit->getPrix(),
         "nombre" => $panier->getNbProduit(),
         "totalUnitaire" => $produit->getPrix()*$panier->getNbProduit(),
-
     ];
     $page->listeProduit[] = $monProduit;
 
