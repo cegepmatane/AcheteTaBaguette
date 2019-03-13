@@ -76,12 +76,19 @@ afficherEntete($page);
       <tbody>
         <tr>
           <td><input type="image" src="illustration/add-image.png" name="image" /></td>
-          <td ><input type="text" class="form-control"  name="categorie"></td>
+         <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
+       <td>  <select name="categorie">
+  <option value="" selected disabled hidden>Choisir catégorie</option>
+   <?php foreach ($page->listeCategorie as $categorie) {?>
+           <option value= "<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
+        <?php }?>
+  
+</select></td>
           <td ><input type="text" class="form-control"  name="produit"></td>
           <td><input type="text" class="form-control"  name="description"></td>
           <td><input type="text" class="form-control"  name="prix"></td>
           <td><input type="text" class="form-control" name="stock"></td>
-          <td ><input type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
+          <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
          </tr>
 
   </tbody>

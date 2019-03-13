@@ -1,0 +1,10 @@
+.add {
+
+ background : url("../illustration/add.png");
+ font-size:0;
+  width : 32px;
+  height: 32px;
+  background-repeat :no-repeat;
+  background-size : contain;
+  border: none;
+}
