@@ -14,10 +14,15 @@ function afficherPanier($page = null){
     $page->titre = "Panier";
 
     $accesseurPanier = new AccesseurPanier();
-    $listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
     $accesseurProduit = new AccesseurProduit();
     $totalPrix = null;
 
+    if(isset($_POST['supprimer-produit-panier']))
+    {
+        $accesseurPanier->supprimerProduitPanier(new Panier((object) $_POST));
+    }
+
+    $listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
 ?>
     <div class="row mb-3">
         <div class="col-md-12">
@@ -39,7 +44,13 @@ function afficherPanier($page = null){
                     $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());
                     $totalPrix += $produit->prix*$panier->getNbProduit(); ?>
                 <tr>
-                    <td></td>
+                    <td>
+                        <form method="post">
+                            <input type="submit" name="supprimer-produit-panier" value="Supprimer" />
+                            <input type="hidden" name="<?= Panier::ID_PRODUIT ?>" value="<?= $panier->getIdProduit() ?>">
+                            <input type="hidden" name="<?= Panier::EMAIL_CLIENT ?>" value="<?= $panier->getEmailClient() ?>">
+                        </form >
+                    </td>
                     <td><p><span class="font-weight-bold"><?= $panier->getNbProduit() ?></span> x <?= $produit->nom ?></p></td>
                     <td><p><?= $produit->prix ?> CND$</p></td>
                     <td><p><?= $produit->prix*$panier->getNbProduit() ?> CND$</p></td>
