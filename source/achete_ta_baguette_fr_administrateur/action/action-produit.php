@@ -44,43 +44,6 @@ function recupererLabelCategorieParProduit($page, $produit){
 
 }
 
-$laRedirection = new Redirection("/administration/vue/index.php");
-
-if(isset($_POST['action-ajouter-produit'])){ 
-
-	$attribut = (object)
-	[
-		"nom" => "",
-		"categorie" => "",
-		"description" => "",
-		"stock" => null,
-		"prix" => "12",
-		"srcImage" => "test.png", 
-	];
-	$produit = new Produit($attribut);
-	$produit->setNom($_POST['produit']);
-	$produit->setIdCategorie($_POST['categorie']);
-	$produit->setDescription($_POST['description']);
-	$produit->setStock($_POST['stock']);
-	$produit->setPrix($_POST['prix']);
-	$laBDD->ajouterProduit($produit);
-	$page->addProduit = true;
-
-		/*if($page->addProduit ?? false){
-			header("Location: " . "/administration/vue/index.php");
-			exit;
-			$page->addProduit = false;
-		}*/
-
-}
-
-if(isset($_POST['action-supprimer-produit'])){ 
-	
-	$produit = new Produit((object)$_POST);
-	$laBDD->supprimerProduit($produit);	
-
-}
-
 if(isset($_POST['action-modifier-produit'])){
 
 	$produit = new Produit((object)$_POST);
