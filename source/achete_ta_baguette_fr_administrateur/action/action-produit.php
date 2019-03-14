@@ -41,7 +41,6 @@ function recupererLabelCategorieParProduit($page, $produit){
 
 	}
 
-
 }
 
 if(isset($_POST['action-modifier-produit'])){

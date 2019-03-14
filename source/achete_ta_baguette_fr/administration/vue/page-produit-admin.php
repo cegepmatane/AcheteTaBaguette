@@ -43,11 +43,11 @@ afficherEntete($page);
 
 
           <td><input type="image" src="illustration/add-image.png" /></td>
-          <td>  <?= $produit->getNom(); ?></td>
-          <td> <?= $produit->getNom(); ?></td>
-          <td> <?= $produit->getDescription(); ?></td>
-          <td> <?= $produit->getPrix(); ?></td>
-          <td> <?= "" .$produit->getStock() . ""; ?></td>
+          <td><input type="text" class="form-control" name="categorie" value=""></td>
+          <td><input type="text" class="form-control" name="produit" value=""></td>
+          <td><input type="text" class="form-control" name="description" value=""></td>
+          <td><input type="text" class="form-control" name="prix" value=""></td>
+          <td><input type="text" class="form-control" name="stock" value=""></td>
 
         </tr>
       </form>
