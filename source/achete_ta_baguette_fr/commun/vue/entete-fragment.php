@@ -88,11 +88,14 @@ function afficherEntete($page = null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/a-propos">À propos</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog">Blog</a>
+                                </li>
                                 <?php
                                 if (isset($_SESSION[Client::ADMINISTRATEUR])){
                                     ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/administration">Adminisatration</a>
+                                    <a class="nav-link" href="/administration">Administration</a>
                                 </li>
                                     <?php
                                 }
