@@ -64,18 +64,18 @@ class PDF extends FPDF
 
         $this->Ln();
         // Données
-        $i = 0;
-        for ($i = 0; i < $items->count; $i++) {
+        for ($i = 0; $i < count($items); $i++) {
             $this->isColored($i);
-            $i++;
 
-            $this->Cell($w[0], 6, utf8_decode($items[0]), 'LR', 0, 'R', true);
-            $this->Cell($w[1], 6, $prixUnitaire[i] . " $", 'LR', 0, 'R', true);
-            $this->Cell($w[2], 6, $quantite[i], 0, ',', ' ', 'LR', 0, 'R', true);
-            $this->Cell($w[3], 6, floatval($prixUnitaire[i]) * floatval($quantite[i]) . " $", 'LR', 0, 'R', true);
-            $prixTotal += floatval($prixUnitaire[i]) * floatval($quantite[i]);
+            $this->Cell($w[0], 6, utf8_decode($items[$i]), 'LR', 0, 'R', true);
+            $this->Cell($w[1], 6, $prixUnitaire[$i] . " $", 'LR', 0, 'R', true);
+            $this->Cell($w[2], 6, $quantite[$i], 0, ',', 'R', 'LR', 0, 'R', true);
+            $this->Cell($w[3], 6, floatval($prixUnitaire[$i]) * floatval($quantite[$i]) . " $", 'LR', 0, 'R', true);
+            $prixTotal += floatval($prixUnitaire[$i]) * floatval($quantite[$i]);
             $this->Ln();
         }
+        $this->isColored($i);
+        $i++;
 
         $this->Cell($w[0], 6, "", "LRB", 0, 'R');
         $this->Cell($w[1], 6, "", "LRB", 'R');

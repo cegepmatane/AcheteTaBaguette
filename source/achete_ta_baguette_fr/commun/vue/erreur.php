@@ -22,5 +22,5 @@ function afficherErreurMotDePasse(){
         Le mot de passe est incorrect.
     </div>
 
-<?
+<?php
 }
