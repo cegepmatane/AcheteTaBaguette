@@ -6,3 +6,5 @@ source/achetetabaguette_fr/\.vscode/settings\.json
 source/achete_ta_baguette_fr/info\.php
 
 configuration/configuration\.php
+
+source/achete_ta_baguette_fr/commun/vue/entete-fragment\.php

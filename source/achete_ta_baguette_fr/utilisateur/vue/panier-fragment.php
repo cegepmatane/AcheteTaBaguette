@@ -76,6 +76,11 @@ function afficherPanier($page = null){
                     <a href="#" class="btn btn-primary">Vider le panier</a>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#" class="btn btn-primary">Génerer facture</a>
+                </div>
+            </div>
         </div>
 
     </div>
