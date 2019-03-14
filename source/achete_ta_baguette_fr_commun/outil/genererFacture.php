@@ -29,8 +29,9 @@ class PDF extends FPDF
         return $data;
     }
 
-    public function chargerDataDepuisString($lignes)
+    public function chargerDataDepuisArray($lignes)
     {
+
         $lignes = explode("\n\r", $lignes);
         $data = array();
         foreach ($lignes as $ligne) {
@@ -50,7 +51,7 @@ class PDF extends FPDF
     }
 
 // Tableau amélioré
-    public function genererTableau($header, $data)
+    public function genererTableau($header, $items, $prixUnitaire, $quantite)
     {
         $prixTotal = 0;
 
@@ -64,15 +65,15 @@ class PDF extends FPDF
         $this->Ln();
         // Données
         $i = 0;
-        foreach ($data as $row) {
+        for ($i = 0; i < $items->count; $i++) {
             $this->isColored($i);
             $i++;
 
-            $this->Cell($w[0], 6, utf8_decode($row[0]), 'LR', 0, 'R', true);
-            $this->Cell($w[1], 6, $row[1] . " $", 'LR', 0, 'R', true);
-            $this->Cell($w[2], 6, $row[2], 0, ',', ' ', 'LR', 0, 'R', true);
-            $this->Cell($w[3], 6, floatval($row[1]) * floatval($row[2]) . " $", 'LR', 0, 'R', true);
-            $prixTotal += floatval($row[1]) * floatval($row[2]);
+            $this->Cell($w[0], 6, utf8_decode($items[0]), 'LR', 0, 'R', true);
+            $this->Cell($w[1], 6, $prixUnitaire[i] . " $", 'LR', 0, 'R', true);
+            $this->Cell($w[2], 6, $quantite[i], 0, ',', ' ', 'LR', 0, 'R', true);
+            $this->Cell($w[3], 6, floatval($prixUnitaire[i]) * floatval($quantite[i]) . " $", 'LR', 0, 'R', true);
+            $prixTotal += floatval($prixUnitaire[i]) * floatval($quantite[i]);
             $this->Ln();
         }
 
@@ -110,16 +111,16 @@ class PDF extends FPDF
         $this->Cell(array_sum($w), 0, '', '');
     }
 
-    public static function genererFacture($data)
+    public static function genererFacture($items, $prixUnitaire, $quantite)
     {
         $pdf = new PDF();
         // Titres des colonnes
         $header = array('Item', 'Prix Unitaire', utf8_decode(Quantité), 'Prix Total');
         // Chargement des données
-        $data = $pdf->chargerDataDepuisString($data);
+        //$pdf->chargerDataDepuisArray($data);
         $pdf->SetFont('Arial', '', 14);
         $pdf->AddPage();
-        $pdf->genererTableau($header, $data);
+        $pdf->genererTableau($header, $items, $prixUnitaire, $quantite);
         $pdf->Output('I', "Facture.pdf", true);
     }
 }
