@@ -10,7 +10,7 @@ require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 
-require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-pannier.php");
+require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier.php");
 require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier-facture.php");
 if(!is_object($page)) $page = (object)[];
 
