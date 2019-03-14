@@ -46,7 +46,7 @@ function recupererLabelCategorieParProduit($page, $produit){
 if(isset($_POST['action-modifier-produit'])){
 
 	$produit = new Produit((object)$_POST);
-	$laBDD->modifierProduit($produit);
+	$laBDD->miseAJourProduit($produit);
 
 }
 
