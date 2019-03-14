@@ -34,8 +34,6 @@ if (isset($_GET['facture'])) {
     }
 
 //$test = "Baguette simple;2.00; 4;6\n\rCroissant;1;2;2\n\rPain au chocolat;1.50;2;3";
-    ob_start();
     $pdf = new PDF();
     $pdf->genererFacture($infoPDF);
-    ob_end_flush();
 }
