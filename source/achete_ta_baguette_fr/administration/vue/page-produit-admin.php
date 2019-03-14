@@ -27,7 +27,6 @@ afficherEntete($page);
 <div class="row mb-3 text-center">
   <!-- Contenu -->
   <div class="col">
-
     <table class="table "> 
       <form action="action-produit.php" method="post">
         <tr>
@@ -46,7 +45,7 @@ afficherEntete($page);
           <td><input type="text" class="form-control" name="description" value="<?= $produit->description ?>"></td>
           <td><input type="text" class="form-control" name="prix" value="<?= $produit->prix ?>"></td>
           <td><input type="text" class="form-control" name="stock" value="<?= $produit->stock ?>"></td>
-          <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-modifier-produit"/></td>
+          <td><input class="add" type="submit" src="../illustration/add.png" name="action-modifier-produit"/></td>
         </tr>
       </form>
     </table>
