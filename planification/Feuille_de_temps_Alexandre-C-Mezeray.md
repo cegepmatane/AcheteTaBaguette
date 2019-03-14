@@ -56,3 +56,11 @@
 | I-2 | S-7 | 06 mars | 15 minutes | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) : page panier | Demarrage de la page panier | [panier](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/source/achete_ta_baguette_fr/utilisateur/vue/panier-fragment.php) |
 | I-2 | S-7 | 07 mars | 1 heure | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) : page panier  | creation de la class Panier | [modele Panier](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/source/achete_ta_baguette_fr_commun/modele/Panier.php)  |
 | I-2 | S-7 | 07 mars | 1 heure | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) : page panier  | controlleur action-ajouter-panier + preparation de la page produit a envoyer les bonnes informations | [action-ajouter-panier](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/source/achete_ta_baguette_fr_publique/action/action-ajouter-panier.php) et [page produit](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/source/achete_ta_baguette_fr/publique/vue/produit.php) |
+| I-2 | S-7 | 07 mars | 30 minutes | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | modification de la table PANIER |   |
+| I-2 | S-7 | 07 mars | 30 minutes  | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | Création accesseur panier |   |
+| I-2 | S-7 | 07 mars | 1 heure  | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | Ajout d'un produit au panier |   |
+| I-2 | S-7 | 09 mars | 15 minutes |   | gestion messege erreur si email introuvable dans BDD |   |
+| I-2 | S-8 | 12 mars | 1 heure | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | Affichage des données sur la page panier |   |
+| I-2 | S-8 | 13 mars | 1 heure | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | Suppression d'un produit du panier |   |
+| I-2 | S-8 | 13 mars | 2 heures | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | separation vue / controlleur de la page panier + allegement de la vue  |   |
+| I-2 | S-8 | 13 mars | 1 heure | [#077](https://github.com/cegepmatane/AcheteTaBaguette/issues/77) | implémentation produits similaire sur la page produit  |   |

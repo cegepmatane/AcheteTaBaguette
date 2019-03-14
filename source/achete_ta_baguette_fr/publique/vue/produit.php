@@ -5,12 +5,11 @@ require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
-require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-ajouter-panier.php");
-require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-produit.php");
 
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
+require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-produit.php");
 
 afficherEntete($page);
 
