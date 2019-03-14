@@ -59,34 +59,34 @@ afficherEntete($page);
 </tbody>
 </table>
 
-<form method="post">
-    <table class="table ">
-        <thead>
-            <tr>
-              <th  scope="col">Image</th>
-              <th  scope="col">Cat&eacute;gorie</th>
-              <th  scope="col">Produit</th>
-              <th  scope="col">Description</th>
-              <th  scope="col">Prix</th>
-              <th  scope="col">Stock</th>
-              <th  scope="col"></th>
+            <form method="post" enctype="multipart/form-data">
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Cat&eacute;gorie</th>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col"></th>
 
-          </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="container">
-<div class="col-md-6">
-    <div class="form-group">
-        <label>Upload Image</label>
-        <div class="input-group">
-            <span class="input-group-btn">
-                <span class="btn btn-default btn-file">
-                    Browse… <input name="<?= PRODUIT::SRC_IMAGE ?>" type="file" id="imgInp">
-                </span>
-            </span>
-            <input type="text" class="form-control" readonly>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="container">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                                <input type="file" name="image"/>
+                                        </div>
+                                        <img id='img-upload'/>
+                                    </div>
+                                </div>
+                            </div>
+            </form>
         </div>
         <img id='img-upload'/>
     </div>
