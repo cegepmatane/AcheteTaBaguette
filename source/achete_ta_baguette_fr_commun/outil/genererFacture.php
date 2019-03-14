@@ -120,6 +120,6 @@ class PDF extends FPDF
         $pdf->SetFont('Arial', '', 14);
         $pdf->AddPage();
         $pdf->genererTableau($header, $data);
-        $pdf->Output('D', "Facture.pdf", true);
+        $pdf->Output('F', "Facture.pdf", true);
     }
 }
