@@ -26,13 +26,6 @@ if (isset($_GET['facture'])) {
 
     foreach ($listePanier as $panier) {
         $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());
-        $monProduit = (object)
-            [
-            "nom" => $produit->getNom(),
-            "prix" => $produit->getPrix(),
-            "nombre" => $panier->getNbProduit(),
-        ];
-        $page->listeProduit[] = $monProduit;
 
         $items[] = $produit->getNom();
         $prixUnitaire[] = $produit->getPrix();
