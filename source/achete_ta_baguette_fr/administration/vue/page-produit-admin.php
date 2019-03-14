@@ -41,8 +41,8 @@ afficherEntete($page);
         </tr>
         <tr>
           <td><input type="image" src="illustration/add-image.png" /></td>
-          <td><input type="text" class="form-control" name="categorie" value="<?= $produit->categorie ?>"></td>
-          <td><input type="text" class="form-control" name="produit" value="<?= $produit->produit ?>"></td>
+          <td><input type="text" class="form-control" name="categorie" value="<?= $produit->idCategorie ?>"></td>
+          <td><input type="text" class="form-control" name="produit" value="<?= $produit->nom ?>"></td>
           <td><input type="text" class="form-control" name="description" value="<?= $produit->description ?>"></td>
           <td><input type="text" class="form-control" name="prix" value="<?= $produit->prix ?>"></td>
           <td><input type="text" class="form-control" name="stock" value="<?= $produit->stock ?>"></td>
