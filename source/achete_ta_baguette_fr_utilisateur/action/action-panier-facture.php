@@ -1,0 +1,42 @@
+<?php
+
+require '../../achete_ta_baguette_fr_commun/outil/genererFacture.php';
+
+require_once "../../commun/vue/entete-fragment.php";
+require_once "../../commun/vue/pied-de-page-fragment.php";
+require_once "../../commun/vue/sidebar-client-fragment.php";
+
+require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.php";
+require_once CHEMIN_RACINE_COMMUN . "/modele/Panier.php";
+require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php";
+require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php";
+
+$page = (object)
+    [
+    "titre" => "Panier",
+    "listeProduit" => [],
+    "totalHT" => null,
+    "totalTTC" => null,
+];
+
+$infoPDF = "";
+
+$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+
+foreach ($listePanier as $panier) {
+    $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());
+    $monProduit = (object)
+        [
+        "nom" => $produit->getNom(),
+        "prix" => $produit->getPrix(),
+        "nombre" => $panier->getNbProduit(),
+    ];
+    $page->listeProduit[] = $monProduit;
+
+    $infoPDF = $infoPDF . $produit->getNom() . ";" . $produit->getPrix() . ";" . $panier->getNbProduit() . "\n\r";
+}
+
+//$test = "Baguette simple;2.00; 4;6\n\rCroissant;1;2;2\n\rPain au chocolat;1.50;2;3";
+
+$pdf = new PDF();
+$pdf->genererFacture($infoPDF);
