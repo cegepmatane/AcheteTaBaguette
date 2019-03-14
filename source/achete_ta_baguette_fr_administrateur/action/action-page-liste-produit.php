@@ -43,6 +43,7 @@ function recupererLabelCategorieParProduit($page, $produit)
     }
 
 
+
 }
 
 $laRedirection = new Redirection("/administration/vue/index.php");
