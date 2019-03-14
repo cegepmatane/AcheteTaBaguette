@@ -75,77 +75,39 @@ afficherEntete($page);
                         <th scope="col">Stock</th>
                         <th scope="col"></th>
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="container">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-
-                                            <?php
-                                            if(isset($_FILES['image'])){
-                                                $errors= array();
-                                                $file_name = $_FILES['image']['name'];
-                                                $file_size =$_FILES['image']['size'];
-                                                $file_tmp =$_FILES['image']['tmp_name'];
-                                                $file_type=$_FILES['image']['type'];
-                                                $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-
-                                                $extensions= array("jpeg","jpg","png");
-
-                                                if(in_array($file_ext,$extensions)=== false){
-                                                    $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-                                                }
-
-                                                if($file_size > 2097152){
-                                                    $errors[]='File size must be excately 2 MB';
-                                                }
-
-                                                if(empty($errors)==true){
-                                                    move_uploaded_file($file_tmp,"images/".$file_name);
-                                                    echo "Success";
-                                                }else{
-                                                    print_r($errors);
-                                                }
-                                            }
-                                            ?>
-                                            <html>
-                                            <body>
-
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                <input type="file" name="image" />
-                                                <input type="submit"/>
-                                            </form>
-
-                                            </body>
-                                            </html>
-
-                                        </div>
-                                        <img id='img-upload'/>
-                                    </div>
-                                </div>
-                            </div>
-                            </form>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="container">
+<div class="col-md-6">
+    <div class="form-group">
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input name="<?= PRODUIT::SRC_IMAGE ?>" type="file" id="imgInp">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
         </div>
 
-        <!--  <input type="image" src="illustration/add-image.png" name="image" /></td> -->
-        <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
-        <td><select class="custom-select" name="categorie">
-                <option value="" selected disabled hidden>Choisir catégorie</option>
-                <?php foreach ($page->listeCategorie as $categorie) { ?>
-                    <option value="<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
-                <?php } ?>
+           <!--  <input type="image" src="illustration/add-image.png" name="image" /></td> -->
+          <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
+          <td>  <select class="custom-select" name="<?= PRODUIT::ID_CATEGORIE ?>"  >
+              <option value="" selected disabled hidden>Choisir catégorie</option>
+              <?php foreach ($page->listeCategorie as $categorie) {?>
+                 <option value= "<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
+             <?php }?>
 
-            </select></td>
-        <td><input type="text" class="form-control" name="produit"></td>
-        <td><input type="text" class="form-control" name="description"></td>
-        <td><input type="text" class="form-control" name="prix"></td>
-        <td><input type="text" class="form-control" name="stock"></td>
-        <td><input class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
-        </tr>
+         </select></td>
+         <td ><input type="text" class="form-control"  name=" <?= PRODUIT::NOM ?>"></td>
+         <td><input type="text" class="form-control"  name=" <?= PRODUIT::DESCRIPTION ?>"></td>
+         <td><input type="text" class="form-control"  name=" <?= PRODUIT::PRIX ?>"></td>
+         <td><input type="text" class="form-control" name="  <?=PRODUIT::STOCK ?>"></td>
+         <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
+     </tr>
 
         </tbody>
         </table>

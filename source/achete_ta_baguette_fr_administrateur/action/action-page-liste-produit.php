@@ -47,23 +47,26 @@ $laRedirection = new Redirection("/administration/vue/index.php");
 
 if(isset($_POST['action-ajouter-produit'])){ 
 
-	$attribut = (object)
-	[
-		"nom" => "",
-		"categorie" => "",
-		"description" => "",
-		"stock" => null,
-		"prix" => "12",
-		"srcImage" => "test.png", 
-	];
-	$produit = new Produit($attribut);
-	$produit->setNom($_POST['produit']);
-	$produit->setIdCategorie($_POST['categorie']);
-	$produit->setDescription($_POST['description']);
-	$produit->setStock($_POST['stock']);
-	$produit->setPrix($_POST['prix']);
+	// $attribut = (object)
+	// [
+	// 	"nom" => "",
+	// 	"categorie" => "",
+	// 	"description" => "",
+	// 	"stock" => null,
+	// 	"prix" => "12",
+	// 	"srcImage" => "test.png", 
+	// ];
+	// $produit = new Produit($attribut);
+	// $produit->setNom($_POST['PRODUIT::NOM']);
+	// $produit->setIdCategorie($_POST['PRODUIT::CATEGORIE']);
+	// $produit->setDescription($_POST['PRODUIT::DESCRIPTION']);
+	// $produit->setStock($_POST[PRODUIT::STOCK]);
+	// $produit->setPrix($_POST[PRODUIT::PRIX]);
+	$produit = new Produit((object) $_POST);
 	$laBDD->ajouterProduit($produit);
 	$page->addProduit = true;
+
+	
 
 		/*if($page->addProduit ?? false){
 			header("Location: " . "/administration/vue/index.php");
