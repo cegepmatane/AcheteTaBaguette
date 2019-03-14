@@ -6,15 +6,13 @@ require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-ajouter-panier.php");
+require_once(CHEMIN_RACINE_PUBLIQUE . "/action/action-produit.php");
 
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 
 afficherEntete($page);
-
-$accesseurProduit = new AccesseurProduit();
-$produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
 
 ?>
 
@@ -35,7 +33,7 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
             <!-- colonne imageProduit -->
             <div class="col-md-6">
                 <img
-                src="<?php echo $produit->srcImage ?>"
+                src="<?php echo $produit->getSrcImage() ?>"
                 alt="produit"
                 class="img-fluid imageProduit"
                 />
@@ -47,16 +45,16 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
                 <!-- Ligne Titre produit -->
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="nomProduit"><?php echo $produit->nom ?></h1>
+                        <h1 class="nomProduit"><?php echo $produit->getNom() ?></h1>
                     </div>
                 </div>
 
                 <!-- Prix du produit -->
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="product-price">
+                        <h2>
                             <span class="unitePrixProduit">CDN$</span>
-                            <span class="prixProduit label-primary"><?php echo $produit->prix ?></span>
+                            <span class="prixProduit label-primary"><?php echo $produit->getPrix() ?></span>
                         </h2>
                         <hr>
                     </div>
@@ -64,7 +62,7 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
 
                 <!-- Ajout au panier -->
                 <form method="post">
-                    <div class="row align-items-center add-to-cart">
+                    <div class="row">
 
                         <!-- choix quantite et stock -->
                         <div class="col-md-5 product-qty quantite">
@@ -77,10 +75,10 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
                             <!-- stock -->
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <?php if($produit->stock > 0) { ?>
+                                    <?php if($produit->getStock() > 0) { ?>
                                     <span class="badge badge-success stockProduit">En stock</span>
-                                        <?php if($produit->stock < $page->indicePetitStock) { ?>
-                                    <span class="">Il n'en reste plus que <?= $produit->stock ?></span>
+                                        <?php if($produit->getStock() < $page->indicePetitStock) { ?>
+                                    <span class="">Il n'en reste plus que <?= $produit->getStock() ?></span>
                                         <?php }
                                     }
                                     else { ?>
@@ -105,6 +103,12 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
                     <div class="col-md-12"><?= $page->messageAction ?></div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><?php echo $produit->getDescription() ?></h5>
+                    </div>
+                </div>
+
             </div><!-- colonne information produit -->
 
         </div><!-- fin ligne image produit et description -->
@@ -123,158 +127,37 @@ $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
                 <!-- liste produit similaire -->
                 <div class="row">
 
-                    <!-- TODO boucle de 6 articles -->
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.50</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.50</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.50</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.50</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.5</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Image et titre d'un produit similaire -->
-                    <div class="col-md-2 border">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img
-                                            class="img-fluid imageProduit"
-                                            src="..\achetetabaguette_fr - publique\illustration\baguette.jpg"
-                                            alt="produit"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="nomProduit"><strong>Du pain griller au feu de bois</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <span class="unitePrixProduit">CDN$</span>
-                                    <span class="prixProduit label-primary">2.50</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    <?php foreach ($produitSimilaire as $unProduit) {
+                        $unProduit = new Produit($unProduit);
+                        ?>
 
+                        <!-- Image et titre d'un produit similaire -->
+                        <div class="col-md-2 border">
+                            <a href="/boutique/produit/<?= $unProduit->getIdProduit() ?>">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img
+                                        class="img-fluid imageProduit"
+                                        src="<?= $unProduit->getSrcImage() ?>"
+                                        alt="produit"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="nomProduit"><strong><?= $unProduit->getNom() ?></strong></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <span class="unitePrixProduit">CDN$</span>
+                                        <span class="prixProduit label-primary"><?= $unProduit->getPrix() ?></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    <?php } ?>
 
                 </div><!-- Fin liste produit similaire -->
 

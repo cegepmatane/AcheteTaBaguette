@@ -30,12 +30,10 @@ class AccesseurProduit
     "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
-    "SELECT " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE " . self::SUBSTITUT_ID_PRODUIT . ";";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE " . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
     "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_CATEGORIE . " LIKE " . self::SUBSTITUT_ID_CATEGORIE . ";";
-
-    private static $RECUPERER_PRODUIT_NOM_SIMILAIRE = "SELECT * FROM PRODUIT WHERE CONTAINS(" . Produit::NOM . ", 'NEAR(" . self::SUBSTITUT_NOM . ")';";
 
     private static $connexion = null;
 
