@@ -11,7 +11,7 @@ require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 
 require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-pannier.php");
-
+require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier-facture.php");
 if(!is_object($page)) $page = (object)[];
 
 afficherEntete($page); ?>
@@ -75,6 +75,11 @@ afficherEntete($page); ?>
                 <div class="row">
                     <div class="col-md-12">
 <!--                        <a href="#" class="btn btn-primary">Vider le panier</a>-->
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <a href="?facture=true" class="btn btn-danger">Generer facture</a>
                     </div>
                 </div>
             </div>
