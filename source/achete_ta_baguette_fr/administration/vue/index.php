@@ -20,60 +20,56 @@ Le paramètre $page permet aux fragments de page inclus d'utiliser les
 afficherEntete($page);
 
 ?>
-    <!-- Centre de page -->
+<!-- Centre de page -->
 
-    <div class="row mb-3 text-center">
-        <!-- Contenu -->
-        <div class="col">
+<div class="row mb-3 text-center">
+    <!-- Contenu -->
+    <div class="col">
 
-            <table class="table ">
+      <table class="table ">
 
-                <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Cat&eacute;gorie</th>
-                    <th scope="col">Produit</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Modifier</th>
-                    <th scope="col">Supprimer</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($page->listeProduits as $produit) { ?>
-                    <tr>
-                        <td><input type="image" src="illustration/add-image.png"/></td>
-                        <td> <?= recupererLabelCategorieParProduit($page, $produit); ?> </td>
-                        <td> <?= $produit->getNom(); ?></td>
-                        <td> <?= $produit->getDescription(); ?></td>
-                        <td> <?= $produit->getPrix(); ?></td>
-                        <td> <?= "" . $produit->getStock() . ""; ?></td>
-                        <td><a href="page-produit-admin.php?idProduit=<?= $produit->getIdproduit(); ?>">Modifier</a>
-                        </td>
-                        <td>
-                            <form method="post" action="index.php">
-                                <input type="submit" src="../illustration/trash.png" name="action-supprimer-produit"
-                                       id="button" value="bar"></input>
-                                <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input>
-                            </form>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
+        <thead>
+            <tr>
+              <th  scope="col">Image</th>
+              <th  scope="col">Cat&eacute;gorie</th>
+              <th  scope="col">Produit</th>
+              <th  scope="col">Description</th>
+              <th  scope="col">Prix</th>
+              <th  scope="col">Stock</th>
+              <th  scope="col">Modifier</th>
+              <th  scope="col">Supprimer</th>
+          </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($page->listeProduits as $produit) {?>
+            <tr>
+              <td><input type="image" src="illustration/add-image.png" /></td>
+              <td> <?=  recupererLabelCategorieParProduit($page, $produit); ?> </td>
+              <td> <?= $produit->getNom(); ?></td>
+              <td> <?=  $produit->getDescription(); ?></td>
+              <td> <?=  $produit->getPrix(); ?></td>
+              <td> <?=  "" .$produit->getStock() . ""; ?></td>
+              <td> <a href="page-produit-admin.php?idProduit=<?= $produit->getIdproduit(); ?>">Modifier</a></td>
+              <td> <form method="post" action="index.php">
+                <input type="submit" src="../illustration/trash.png"  name="action-supprimer-produit" id="button" value="bar"></input>
+                <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input>
+            </form ></td>
+        </tr>
+    <?php }?>
+</tbody>
+</table>
 
-            <form method="post">
-                <table class="table ">
-                    <thead>
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Cat&eacute;gorie</th>
-                        <th scope="col">Produit</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col"></th>
+<form method="post">
+    <table class="table ">
+        <thead>
+            <tr>
+              <th  scope="col">Image</th>
+              <th  scope="col">Cat&eacute;gorie</th>
+              <th  scope="col">Produit</th>
+              <th  scope="col">Description</th>
+              <th  scope="col">Prix</th>
+              <th  scope="col">Stock</th>
+              <th  scope="col"></th>
 
           </tr>
       </thead>
@@ -92,6 +88,11 @@ afficherEntete($page);
             </span>
             <input type="text" class="form-control" readonly>
         </div>
+        <img id='img-upload'/>
+    </div>
+</div>
+</div>
+</div>
 
            <!--  <input type="image" src="illustration/add-image.png" name="image" /></td> -->
           <!--  <td ><input type="text" class="form-control"  name="categorie"></td> -->
@@ -109,10 +110,10 @@ afficherEntete($page);
          <td ><input  class="add" type="submit" src="../illustration/add.png" name="action-ajouter-produit"/></td>
      </tr>
 
-        </tbody>
-        </table>
-        </form>
-    </div><!-- Fin du contenu -->
-    </div><!-- Fin centre de page -->
+ </tbody>
+</table>
+</form>
+</div><!-- Fin du contenu -->
+</div><!-- Fin centre de page -->
 <?php afficherPiedDePage($page);
 // EOF
