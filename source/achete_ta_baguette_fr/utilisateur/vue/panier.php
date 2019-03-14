@@ -79,7 +79,7 @@ afficherEntete($page); ?>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <a href="?facture=true" class="btn btn-danger">Generer facture</a>
+                        <a href="?facture=true" target="_blank" class="btn btn-danger">Generer facture</a>
                     </div>
                 </div>
             </div>

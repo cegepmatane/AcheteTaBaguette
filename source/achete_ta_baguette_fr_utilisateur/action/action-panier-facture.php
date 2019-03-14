@@ -30,7 +30,7 @@ if (isset($_GET['facture'])) {
         ];
         $page->listeProduit[] = $monProduit;
 
-        $infoPDF = $infoPDF . $produit->getNom() . ";" . $produit->getPrix() . ";" . $panier->getNbProduit() . "\n\r";
+        $infoPDF = $infoPDF . $produit->getNom() . ";" . $produit->getPrix() . ";" . $panier->getNbProduit() ."\n";
     }
 
 //$test = "Baguette simple;2.00; 4;6\n\rCroissant;1;2;2\n\rPain au chocolat;1.50;2;3";

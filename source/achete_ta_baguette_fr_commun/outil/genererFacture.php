@@ -70,9 +70,9 @@ class PDF extends FPDF
 
             $this->Cell($w[0], 6, utf8_decode($row[0]), 'LR', 0, 'R', true);
             $this->Cell($w[1], 6, $row[1] . " $", 'LR', 0, 'R', true);
-            $this->Cell($w[2], 6, number_format($row[2], 0, ',', ' '), 'LR', 0, 'R', true);
-            $this->Cell($w[3], 6, $row[1] * $row[2] . " $", 'LR', 0, 'R', true);
-            $prixTotal += $row[1] * $row[2];
+            $this->Cell($w[2], 6, $row[2], 0, ',', ' ', 'LR', 0, 'R', true);
+            $this->Cell($w[3], 6, floatval($row[1]) * floatval($row[2]) . " $", 'LR', 0, 'R', true);
+            $prixTotal += floatval($row[1]) * floatval($row[2]);
             $this->Ln();
         }
 
@@ -120,6 +120,6 @@ class PDF extends FPDF
         $pdf->SetFont('Arial', '', 14);
         $pdf->AddPage();
         $pdf->genererTableau($header, $data);
-        $pdf->Output('F', "Facture.pdf", true);
+        $pdf->Output('I', "Facture.pdf", true);
     }
 }
