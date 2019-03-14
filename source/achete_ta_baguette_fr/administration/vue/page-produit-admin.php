@@ -40,15 +40,12 @@ afficherEntete($page);
           <th  scope="col"></th>
         </tr>
         <tr>
-
-
           <td><input type="image" src="illustration/add-image.png" /></td>
-          <td><input type="text" class="form-control" name="categorie" value=""></td>
-          <td><input type="text" class="form-control" name="produit" value=""></td>
-          <td><input type="text" class="form-control" name="description" value=""></td>
-          <td><input type="text" class="form-control" name="prix" value=""></td>
-          <td><input type="text" class="form-control" name="stock" value=""></td>
-
+          <td><input type="text" class="form-control" name="categorie" value="<?= $produit->categorie ?>"></td>
+          <td><input type="text" class="form-control" name="produit" value="<?= $produit->produit ?>"></td>
+          <td><input type="text" class="form-control" name="description" value="<?= $produit->description ?>"></td>
+          <td><input type="text" class="form-control" name="prix" value="<?= $produit->prix ?>"></td>
+          <td><input type="text" class="form-control" name="stock" value="<?= $produit->stock ?>"></td>
         </tr>
       </form>
     </table>
