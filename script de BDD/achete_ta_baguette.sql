@@ -49,7 +49,8 @@ CREATE TABLE `CLIENT` (
 --
 
 INSERT INTO `CLIENT` (`idClient`, `nom`, `prenom`, `naissance`, `email`, `motDePasse`, `rue`, `ville`, `province`, `codePostal`, `pays`, `administrateur`) VALUES
-(1, 'AFFIN', 'Jean-Yves', '1967-12-31', 'jean-yves.affin@gmail.com', 'jean', '616 St-Rédempteur', 'Matane', 'Québec', 'G4W 0H2', 'Canada', 0);
+(1, 'AFFIN', 'Jean-Yves', '1967-12-31', 'jean-yves.affin@gmail.com', '51f8b1fa9b424745378826727452997ee2a7c3d7', '616 St-Rédempteur', 'Matane', 'Québec', 'G4W 0H2', 'Canada', 0);
+(1, 'Admin', 'Admin', '1967-12-31', 'admin@admin.com', 'bc95717e3a659df9ad16fb2727a1adb9cc49f033', '616 St-Rédempteur', 'Matane', 'Québec', 'G4W 0H2', 'Canada', 1);
 
 -- --------------------------------------------------------
 
