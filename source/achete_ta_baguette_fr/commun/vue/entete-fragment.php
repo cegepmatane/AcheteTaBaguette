@@ -89,7 +89,7 @@ function afficherEntete($page = null)
                                     <a class="nav-link" href="/a-propos">À propos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/blog">Blog</a>
+                                    <a class="nav-link" href="/wordpress">Blog</a>
                                 </li>
                                 <?php
                                 if (isset($_SESSION[Client::ADMINISTRATEUR])){

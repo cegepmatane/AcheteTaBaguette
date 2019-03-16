@@ -8,6 +8,6 @@ RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
 RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
 RewriteRule ^boutique/produit/([0-9]+)/?$ /publique/vue/produit.php?idProduit=$1
 RewriteRule ^panier/?$ /utilisateur/vue/panier.php
-RewriteRule ^blog/?$ /wordpress/
 
 RewriteRule ^administration/?$ /administration/vue/
+RewriteRule ^administration/modifier/([0-9]+)/?$ /administration/vue/page-produit-admin.php?idProduit=$1
