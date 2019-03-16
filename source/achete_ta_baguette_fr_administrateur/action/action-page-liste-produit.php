@@ -80,7 +80,7 @@ if (isset($_POST['action-ajouter-produit'])) {
 	// $produit->setStock($_POST[PRODUIT::STOCK]);
 	// $produit->setPrix($_POST[PRODUIT::PRIX]);
 	$produit = new Produit((object) $_POST);
-    $produit->setSrcImage($file_name);
+    $produit->setSrcImage("/publique/illustration/".$file_name);
     $laBDD->ajouterProduit($produit);
 	$page->addProduit = true;
     $errors = array();

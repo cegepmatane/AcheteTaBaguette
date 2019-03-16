@@ -32,7 +32,7 @@ afficherEntete($page);
             <!-- colonne imageProduit -->
             <div class="col-md-6">
                 <img
-                src="/publique/illustration/<?php echo $produit->getSrcImage() ?>"
+                src="<?php echo $produit->getSrcImage() ?>"
                 alt="produit"
                 class="img-fluid imageProduit"
                 />
@@ -137,7 +137,7 @@ afficherEntete($page);
                                     <div class="col-md-12">
                                         <img
                                         class="img-fluid imageProduit"
-                                        src="/publique/illustration/<?= $unProduit->getSrcImage() ?>"
+                                        src="<?= $unProduit->getSrcImage() ?>"
                                         alt="produit"
                                         />
                                     </div>
