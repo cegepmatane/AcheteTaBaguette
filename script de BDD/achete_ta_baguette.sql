@@ -15,14 +15,6 @@ CREATE TABLE `CATEGORIE` (
   `description` varchar(250) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Contenu de la table `CATEGORIE`
---
-
-INSERT INTO `CATEGORIE` (`idCategorie`, `label`, `description`) VALUES
-(1, 'pain', NULL),
-(2, 'viennoiserie', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -44,14 +36,6 @@ CREATE TABLE `CLIENT` (
   `administrateur` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Contenu de la table `CLIENT`
---
-
-INSERT INTO `CLIENT` (`idClient`, `nom`, `prenom`, `naissance`, `email`, `motDePasse`, `rue`, `ville`, `province`, `codePostal`, `pays`, `administrateur`) VALUES
-(1, 'AFFIN', 'Jean-Yves', '1967-12-31', 'jean-yves.affin@gmail.com', '51f8b1fa9b424745378826727452997ee2a7c3d7', '616 St-Rédempteur', 'Matane', 'Québec', 'G4W 0H2', 'Canada', 0);
-(1, 'Admin', 'Admin', '1967-12-31', 'admin@admin.com', 'bc95717e3a659df9ad16fb2727a1adb9cc49f033', '616 St-Rédempteur', 'Matane', 'Québec', 'G4W 0H2', 'Canada', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -64,14 +48,6 @@ CREATE TABLE `FACTURER` (
   `nbProduit` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Contenu de la table `FACTURER`
---
-
-INSERT INTO `FACTURER` (`idClient`, `idProduit`, `nbProduit`, `date`) VALUES
-(1, 1, 0, '0000-00-00 00:00:00'),
-(1, 3, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -100,16 +76,6 @@ CREATE TABLE `PRODUIT` (
   `idCategorie` int(3) NOT NULL,
   `srcImage` varchar(100) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Contenu de la table `PRODUIT`
---
-
-INSERT INTO `PRODUIT` (`idProduit`, `nom`, `description`, `prix`, `stock`, `idCategorie`, `srcImage`) VALUES
-(1, 'Pain De France', '', 3, 25, 1, '/img'),
-(2, 'Tradition', '', 3.5, 19, 1, '/img'),
-(3, 'Pain au chocolat', '', 2.4, 12, 2, '/img'),
-(4, 'Croissant', '', 2.2, 16, 2, '/img');
 
 --
 -- Index pour les tables exportées
@@ -156,17 +122,17 @@ ALTER TABLE `PRODUIT`
 -- AUTO_INCREMENT pour la table `CATEGORIE`
 --
 ALTER TABLE `CATEGORIE`
-  MODIFY `idCategorie` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCategorie` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `CLIENT`
 --
 ALTER TABLE `CLIENT`
-  MODIFY `idClient` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idClient` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `PRODUIT`
 --
 ALTER TABLE `PRODUIT`
-  MODIFY `idProduit` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idProduit` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
