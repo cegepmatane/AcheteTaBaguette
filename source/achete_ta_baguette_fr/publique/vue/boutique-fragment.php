@@ -30,7 +30,7 @@ function afficherContenu($page = null) {
                 <div class="row">
                     <div class="col-md-12">
                         <img
-                        src="<?php echo $value->getSrcImage(); ?>"
+                        src="/publique/illustration/<?php echo $value->getSrcImage(); ?>"
                         alt="produit"
                         class="img-fluid imageProduit"
                         />
