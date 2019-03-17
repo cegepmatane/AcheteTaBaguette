@@ -63,7 +63,7 @@ if(!$page->isNavigationRetour){
             exit;
 
         } else {
-            $page->messageAction = "Echec autentification";
+            $page->messageAction = "Echec authentification";
         }
 
     }

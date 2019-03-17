@@ -91,5 +91,3 @@ afficherEntete($page); ?>
 </div><!-- Fin centre de page -->
 
 <?php afficherPiedDePage($page); ?>
-
-// EOF
