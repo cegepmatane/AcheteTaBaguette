@@ -102,8 +102,8 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <input type="hidden" value="<?php echo $page->client->getNom() ?>" class="form-control" id="nom"
-                           name="nom" required>
+                    <input type="hidden" value="<?php echo $page->client->getNom() ?>" class="form-control" id=" <?php echo CLIENT::NOM ?>"
+                           name="<?php echo CLIENT::NOM ?>" required>
                 </div>
             </div>
         </div>
@@ -148,16 +148,16 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <label for="mail">Mail</label>
-                    <input type="email" class="form-control" id="<?php echo CLIENT::EMAIL?>"
-                           aria-describedby="emailHelp" name="<?php echo CLIENT::EMAIL?>">
+                    <label class="col-form-label">Mail</label>
+                    <input type="text" class="form-control" id="<?php echo CLIENT::EMAIL?>"
+                           name="<?php echo CLIENT::EMAIL?>">
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <label for="mot_de_passe">Mot de passe</label>
+                    <label class="col-form-label">Mot de passe</label>
                     <input type="password" class="form-control" id="<?php echo CLIENT::MOT_DE_PASSE?>"
                            name="<?php echo CLIENT::MOT_DE_PASSE?>">
                 </div>
@@ -167,7 +167,7 @@ function afficherSecondeEtape($page)
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <label for="mot_de_passe_verif">Confirmer mot de passe</label>
+                    <label class="col-form-label">Confirmer mot de passe</label>
                     <input type="password" class="form-control" id="mot_de_passe_verif"
                            name="mot_de_passe_verif">
                 </div>
@@ -195,7 +195,8 @@ function afficherPage($page = null)
     afficherEntete($page);
 
     if(isset($page->erreur)){
-        afficherErreurInscription($page->client->getListeMessageErreur());
+        if($page->isEtapeUn == true) afficherErreurInscriptionEtapeUne($page->client);
+        else afficherErreurInscriptionEtapeDeux($page->client);
     }
     if ($page->isEtapeUn == true && $page->isEtapeDeux == false) {
         afficherPremiereEtape($page);

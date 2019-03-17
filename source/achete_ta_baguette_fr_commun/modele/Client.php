@@ -27,8 +27,8 @@ class Client
     private const REGION_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const VILLE_NOMBRE_CARACTERE_MAXIMUM = 30;
     private const RUE_NOMBRE_CARACTERE_MAXIMUM = 30;
-    private const CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM = 7;
-    private const PAYS_NOMBRE_CARACTERE_MAXIMUM = 7;
+    private const CODE_POSTAL_NOMBRE_CARACTERE_MAXIMUM = 30;
+    private const PAYS_NOMBRE_CARACTERE_MAXIMUM = 30;
 
     private static $LISTE_MESSAGE_ERREUR = [];
 
@@ -538,7 +538,7 @@ class Client
         // Validation en premier
 
         if (empty($province)) {
-
+        echo "coucou1";
             $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-vide'];
 
@@ -546,6 +546,7 @@ class Client
         }
 
         if (strlen($province) > self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM) {
+            echo "coucou2";
 
             $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-trop-long'];
@@ -553,13 +554,6 @@ class Client
             return false;
         }
 
-        if (!self::validerNomPropre($province)) {
-
-            $this->listeMessageErreurActif[self::PROVINCE][] =
-            self::getListeMessageErreur()['province-non-alphabetique'];
-
-            return false;
-        }
 
         // Nettoyage en second
 
@@ -596,13 +590,13 @@ class Client
             return false;
         }
 
-        if (!self::validerNomPropre($pays)) {
+        /*if (!self::validerNomPropre($pays)) {
 
             $this->listeMessageErreurActif[self::PAYS][] =
             self::getListeMessageErreur()['pays-non-alphabetique'];
 
             return false;
-        }
+        }*/
 
         // Nettoyage en second
 
@@ -639,13 +633,13 @@ class Client
             return false;
         }
 
-        if (!self::validerNomPropre($ville)) {
+        /*if (!self::validerNomPropre($ville)) {
 
             $this->listeMessageErreurActif[self::VILLE][] =
             self::getListeMessageErreur()['ville-non-alphabetique'];
 
             return false;
-        }
+        }*/
 
         // Nettoyage en second
 
