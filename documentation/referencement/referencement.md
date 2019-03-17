@@ -1,7 +1,7 @@
-# Référencement par AlexandreCM
+# Référencement
 
-### Référencement Facebook
+### Référencement Facebook par AlexandreCM
 ![Référencement Facebook](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/referencement/image/referencement%20-AlexandreCM-fb.PNG)
 
-### Référencement Facebook
+### Référencement Portfolio par AlexandreCM
 ![Référencement Portfolio](https://github.com/cegepmatane/AcheteTaBaguette/blob/master/documentation/referencement/image/referencement%20-AlexandreCM-portfolio.PNG)
