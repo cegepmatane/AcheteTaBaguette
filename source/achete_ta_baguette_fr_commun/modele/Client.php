@@ -15,9 +15,7 @@ class Client
     public const ADMINISTRATEUR = "administrateur";
 
     private const PATERN_NOM_PROPRE =
-        "/^[A-Za-z\x{00C0}-\x{00FF}]" .
-        "[A-Za-z\x{00C0}-\x{00FF}\'\-]+([\ A-Za-z\x{00C0}-\x{00FF}]" .
-        "[A-Za-z\x{00C0}-\x{00FF}\'\-]+)*/u";
+        "/^[a-zA-Z'-]+$/";
 
     private const NOM_NOMBRE_CARACTERE_MAXIMUM = 24;
     private const PRENOM_NOMBRE_CARACTERE_MAXIMUM = 24;
@@ -387,7 +385,6 @@ class Client
         }
 
         if (!self::validerNomPropre($nom)) {
-
             $this->listeMessageErreurActif[self::NOM][] =
             self::getListeMessageErreur()['nom-non-alphabetique'];
 

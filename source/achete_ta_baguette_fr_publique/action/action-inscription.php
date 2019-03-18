@@ -29,7 +29,6 @@ if(isset($_POST['action-aller-seconde-etape'])&& $page->isEtapeDeux == false && 
      $page->titre = "Etape 1";
 
     }else if(isset($_POST['submit'])){
-    print_r("Mais du coup quand ?");
     $page->client->setNom($_POST[CLIENT::NOM]);
     $page->client->setPrenom($_POST[CLIENT::PRENOM]);
     $page->client->setRue($_POST[CLIENT::RUE]);
@@ -43,7 +42,6 @@ if(isset($_POST['action-aller-seconde-etape'])&& $page->isEtapeDeux == false && 
         $laBDD->ajouterClient($page->client);
         $_SESSION[Client::EMAIL] = $page->client->getEmail();
         if ($page->client->getAdministrateur()) $_SESSION[Client::ADMINISTRATEUR] = true;
-
         header("Location: /boutique");
     }else{
         $page->isEtapeUn = false;
