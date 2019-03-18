@@ -5,19 +5,6 @@ require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once "page-liste-produit.php";
 require_once CHEMIN_RACINE_ADMINISTRATION . "/action/action-produit.php";
 
-/*
-Un tableau associatif en clé valeur permet de définir les éléments dynamiques
-de la page qui ne sont pas en lien avec les données du modèle. En le changeant
-de type en (object), il est plus facilement utilisable par l'IDE et permet les
-suggestions automatiques des attributs de l'objet.
- */
-
-
-/*
-La fonction afficherPage produit le code HTML de la page d'accueil.
-Le paramètre $page permet aux fragments de page inclus d'utiliser les
-éléments dynamiques propres à la page d'accueil.
- */
 
 afficherEntete($page);
 
