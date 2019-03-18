@@ -14,6 +14,7 @@ require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 
 require_once(CHEMIN_RACINE_UTILISATEUR .'/vendor/autoload.php');
 
+
 // Mise en forme du panier pour paypal
 $accesseurPanier = new AccesseurPanier();
 $accesseurProduit = new AccesseurProduit();
@@ -44,9 +45,7 @@ $panier['prix'] = $prixPanier;
 // Fin Mise en forme du panier pour paypal
 
 
-
-// -------- Paypal --------
-
+// -------- Config Paypal --------
 $ids = require(CHEMIN_RACINE_UTILISATEUR .'/configuration/configuration-paypal.php');
 $apiContext = new \PayPal\Rest\ApiContext(
     new \PayPal\Auth\OAuthTokenCredential(
@@ -90,8 +89,8 @@ $payment->addTransaction($transaction);
 $payment->setIntent('sale');
 
 $redirectUrls = (new \PayPal\Api\RedirectUrls())
-    ->setReturnUrl('https://achetetabaguete.fr/merci')
-    ->setCancelUrl('https://achetetabaguete.fr/panier');
+    ->setReturnUrl('http://localhost:1200/utilisateur/vue/confirmation-payment.php')
+    ->setCancelUrl('http://localhost:1200/panier');
 
 $payment->setRedirectUrls($redirectUrls);
 $payment->setPayer((new \PayPal\Api\Payer())->setPaymentMethod('paypal'));
