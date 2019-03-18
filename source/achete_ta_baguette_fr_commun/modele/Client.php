@@ -476,7 +476,6 @@ class Client
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
             $this->listeMessageErreurActif[self::EMAIL][] =
             self::getListeMessageErreur()['email-invalide'];
 
@@ -503,9 +502,7 @@ class Client
     {
 
         // Validation en premier
-
         if (empty($motDePasse)) {
-
             $this->listeMessageErreurActif[self::MOT_DE_PASSE][] =
             self::getListeMessageErreur()['motDePasse-vide'];
 
@@ -538,7 +535,6 @@ class Client
         // Validation en premier
 
         if (empty($province)) {
-        echo "coucou1";
             $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-vide'];
 
@@ -546,7 +542,6 @@ class Client
         }
 
         if (strlen($province) > self::PROVINCE_NOMBRE_CARACTERE_MAXIMUM) {
-            echo "coucou2";
 
             $this->listeMessageErreurActif[self::PROVINCE][] =
             self::getListeMessageErreur()['province-trop-long'];
