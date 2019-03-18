@@ -64,37 +64,13 @@ if (isset($_POST['action-ajouter-produit'])) {
         print_r($errors);
     }
 
-	// $attribut = (object)
-	// [
-	// 	"nom" => "",
-	// 	"categorie" => "",
-	// 	"description" => "",
-	// 	"stock" => null,
-	// 	"prix" => "12",
-	// 	"srcImage" => "test.png", 
-	// ];
-	// $produit = new Produit($attribut);
-	// $produit->setNom($_POST['PRODUIT::NOM']);
-	// $produit->setIdCategorie($_POST['PRODUIT::CATEGORIE']);
-	// $produit->setDescription($_POST['PRODUIT::DESCRIPTION']);
-	// $produit->setStock($_POST[PRODUIT::STOCK]);
-	// $produit->setPrix($_POST[PRODUIT::PRIX]);
-	$produit = new Produit((object) $_POST);
+    
+    $produit = new Produit((object) $_POST);
     $produit->setSrcImage($file_name);
     $laBDD->ajouterProduit($produit);
-	$page->addProduit = true;
+    $page->addProduit = true;
     $errors = array();
-		/*if($page->addProduit ?? false){
-			header("Location: " . "/administration/vue/index.php");
-			exit;
-			$page->addProduit = false;
-		}*/
-
-    /*if($page->addProduit ?? false){
-        header("Location: " . "/administration/vue/index.php");
-        exit;
-        $page->addProduit = false;
-    }*/
+    
 }
 if (isset($_POST['action-supprimer-produit'])) {
     $produit = new Produit((object)$_POST);
