@@ -3,9 +3,9 @@
 class Facture
 {
 
-    public const ID_CLIENT = "idClient";
-    public const ID_FACTURE = "idFacture";
-    public const NOM_FACTURE = "nomFacture";
+    public const EMAIL_CLIENT = "emailClient";
+    public const ID_PRODUIT = "idProduit";
+    public const NB_PRODUIT = "nbProduit";
     public const MONTANT_FACTURE = "montantFacture";
 
     private $idClient;

@@ -82,20 +82,18 @@ class AccesseurPanier
         }
     }
 
-    public function supprimerPanier($emailClient)
+    public function supprimerPanier(Panier $panier)
     {
         try {
 
             $requete = self::$connexion->prepare(self::$SUPPRIMER_PANIER);
-            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $emailClient, PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
 
             $requete->execute();
             return true;
 
         } catch (PDOException $e) {
-
             return false;
-
         }
     }
 }

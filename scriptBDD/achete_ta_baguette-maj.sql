@@ -5,7 +5,6 @@ INSERT INTO CLIENT (nom, prenom, naissance, email, motDePasse, rue, ville, provi
 INSERT INTO CATEGORIE(label, description) VALUES ('pain',null);
 INSERT INTO CATEGORIE(label, description) VALUES ('viennoiserie',null);
 INSERT INTO CATEGORIE(label, description) VALUES ('Autre',null);
-INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Sachet de bonbons','Ne vous inquiétez pas pour les carries',2,30,3,'bonbons.jpg');
 
 -- maj 2
 INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Baguette classique','L\'originale et l\'unique',2,30,1,'baguette_classique.jpg');
@@ -24,6 +23,7 @@ INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES
 INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Flan','Le fameux et l\'unique flan, à la vanille.',2,30,3,'flan.png');
 INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Tarte aux pommes','Tarte aux pommes pour les amateurs de pommes',2,30,3,'tarte_aux_pommes.jpg');
 INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Tarte aux fraises','Tarte aux fraises pour les amateurs de fraises et les gourmands',2,30,3,'tarte_aux_fraises.png');
+INSERT INTO PRODUIT(nom, description, prix, stock, idCategorie, srcImage) VALUES ('Sachet de bonbons','Ne vous inquiétez pas pour les carries',2,30,3,'bonbons.jpg');
 
 -- maj 3
 ALTER TABLE CLIENT DROP naissance;
@@ -37,3 +37,9 @@ ALTER TABLE PANIER CHANGE idClient emailClient varchar(100);
 ALTER TABLE PANIER ADD INDEX(emailClient);
 ALTER TABLE CLIENT ADD INDEX(email);
 ALTER TABLE PANIER ADD FOREIGN KEY (emailClient) REFERENCES CLIENT(email);
+
+-- maj 6
+ALTER TABLE FACTURER DROP FOREIGN KEY FACTURER_fk0;
+ALTER TABLE FACTURER CHANGE idClient emailClient varchar(100);
+ALTER TABLE FACTURER ADD INDEX(emailClient);
+ALTER TABLE FACTURER ADD FOREIGN KEY (emailClient) REFERENCES CLIENT(email);

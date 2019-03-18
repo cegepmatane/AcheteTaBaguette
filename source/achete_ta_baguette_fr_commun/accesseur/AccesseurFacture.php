@@ -1,125 +1,43 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: 1834112
+ * Date: 2019-03-18
+ * Time: 00:50
+ */
 
-require_once "BaseDeDonnee.php";
-require_once "../modele/Client.php";
-require_once CHEMIN_RACINE_COMMUN . "/modele/Facture.php";
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/BaseDeDonnee.php");
+require_once(CHEMIN_RACINE_COMMUN . "/modele/Facture.php");
 
-class AccesseurClient
+class AccesseurFacture
 {
-    private const SUBTITUT_ID_CLIENT = ":" . Facture::ID_CLIENT;
-    private const SUBTITUT_ID_FACTURE = ":" . Facture::ID_FACTURE;
-    private const SUBTITUT_NOM_FACTURE = ":" . Facture::NOM_FACTURE;
-    private const SUBTITUT_MONTANT_FACTURE = ":" . Facture::MONTANT_FACTURE;
+    private const SUBTITUT_EMAIL_CLIENT = ":" . Facture::EMAIL_CLIENT;
+    private const SUBTITUT_ID_PRODUIT = ":" . Facture::ID_PRODUIT;
+    private const SUBTITUT_NB_PRODUIT = ":" . Facture::NB_PRODUIT;
 
-    private static $AJOUTER_FACTURE =
-    "INSERT INTO FACTURE(" . Facture::ID_CLIENT . ", " . Facture::ID_FACTURE . ", " . Facture::NOM_FACTURE . ", " . Facture::MONTANT_FACTURE . ") VALUES (:idClient, :idFacture, :nomFacture, :montantFacture)";
-
-    private static $SUPPRIMER_FACTURE =
-    "DELETE FROM FACTURE WHERE " . Facture::ID_FACTURE . " = :idFacture";
-
-    private static $MISE_A_JOUR_FACTURE =
-    "UPDATE FACTURE SET " . Facture::NOM_FACTURE . " = :nomFacture, " . Facture::MONTANT_FACTURE . " = :montantFacture) WHERE " . Facture::ID_FACTURE . " = :idFacture;";
-
-    private static $GET_ID_CLIENT =
-    "SELECT idClient FROM FACTURE WHERE " . Facture::ID_FACTURE . " = :idFacture";
-
-    private static $GET_ID_FACTURE =
-    "SELECT idFacture FROM FACTURE WHERE " . Facture::ID_CLIENT . " = :idClient AND nomFacture= :nomFacture";
+    private static $AJOUTER_FACTURE = "INSERT INTO FACTURER(".Facture::EMAIL_CLIENT.", ".Facture::ID_PRODUIT.", ".Facture::NB_PRODUIT.") VALUES (".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_NB_PRODUIT.");";
 
     private static $connexion = null;
-
     public function __construct()
     {
-        if (!self::$connexion) {
-            self::$connexion = BaseDeDonnee::getConnexion();
-        }
+        if (!self::$connexion) self::$connexion = BaseDeDonnee::getConnexion();
     }
 
-    public function ajouterFacture($facture)
+    public function ajouterFacture(Panier $panier)
     {
-        $requete = $connexion->prepare($AJOUTER_FACTURE);
-        $requete->bindValue(self::SUBTITUT_ID_CLIENT, $facture->getIdClient(), PDO::PARAM_INT);
-        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture(), PDO::PARAM_INT);
-        $requete->bindValue(self::SUBTITUT_NOM_FACTURE, $facture->getNomFacture(), PDO::PARAM_INT);
-        $requete->bindValue(self::SUBTITUT_MONTANT_FACTURE, $facture->getMontantFacture(), PDO::PARAM_STR);
+        try {
 
-        $requete->execute();
+            $requete = self::$connexion->prepare(self::$AJOUTER_FACTURE);
+            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $panier->getIdProduit(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBTITUT_NB_PRODUIT, $panier->getNbProduit(), PDO::PARAM_STR);
 
-        if ($requete->rowCount() > 0) {
-            return true;
+            $requete->execute();
+            return self::$AJOUTER_FACTURE;
+
+        } catch (PDOException $e) {
+            return self::$AJOUTER_FACTURE;
         }
 
-        return false;
-
     }
-
-    public function supprimerFacture($facture)
-    {
-        $requete = $connexion->prepare($SUPPRIMER_FACTURE);
-        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture());
-
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function getIdClient($facture)
-    {
-        $requete = $connexion->prepare($GET_ID_CLIENT);
-        $requete->bindValue(1, $facture->getIdFacture(), PDO::PARAM_STR);
-
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            $reponse = $requete->fetch();
-            if (!is_array($reponse)) {
-                echo "Erreur getIdclient (AccesseurFacture.php) !";
-            }
-            if (is_array($reponse)) {
-                return $reponse["idClient"];
-            }
-        }
-    }
-
-    public function getIdFacture($facture)
-    {
-        $requete = $connexion->prepare($GET_ID_CLIENT);
-        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdClient(), PDO::PARAM_STR);
-
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            $reponse = $requete->fetch();
-            if (!is_array($reponse)) {
-                echo "Erreur getIdFacture (AccesseurFacture.php) !";
-            }
-            if (is_array($reponse)) {
-                return $reponse["idClient"];
-            }
-        }
-    }
-
-    public function miseAJourFacture($facture)
-    // Va mettre à jour dans le base de données le CLIENT correspondant à l'id du CLIENT passé en paramètre
-    // Le CLIENT de la base de données prendra les valeurs des attributs du CLIENT passé en paramètre
-    {
-        $requete = $connexion->prepare($MISE_A_JOUR_FACTURE);
-        $requete->bindValue(self::SUBTITUT_NOM_FACTURE, $facture->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBTITUT_MONTANT_FACTURE, $facture->getmontantFacture(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBTITUT_ID_FACTURE, $facture->getIdFacture(), PDO::PARAM_STR);
-
-        $requete->execute();
-
-        if ($requete->rowCount() > 0) {
-            return true;
-        }
-
-        return false;
-
-    }
-
 }
