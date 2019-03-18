@@ -6,5 +6,5 @@
  * Time: 15:50
  */
 
-require_once($_SERVER['CONFIGURATION_COMMUN']);
+require_once("../../commun/vue/entete-fragment.php");
 require_once (CHEMIN_RACINE_UTILISATEUR . "/action/action-payment.php");

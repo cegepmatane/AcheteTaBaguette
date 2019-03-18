@@ -1,13 +1,23 @@
 RewriteEngine On
 
+# Menu
 RewriteRule ^/?$ /commun/vue/index.php
 RewriteRule ^a-propos/?$ /publique/vue/a-propos.php
+RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
+
+# Produit
+RewriteRule ^boutique/produit/([0-9]+)/?$ /publique/vue/produit.php?idProduit=$1
+
+# Connexion / inscription
 RewriteRule ^connexion/?$ /commun/vue/connexion.php
 RewriteRule ^inscription/?$ /publique/vue/inscription.php
-RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
-RewriteRule ^boutique(/([a-z]+))?/?$ /commun/vue/index.php?type=$2
-RewriteRule ^boutique/produit/([0-9]+)/?$ /publique/vue/produit.php?idProduit=$1
-RewriteRule ^panier/?$ /utilisateur/vue/panier.php
 
+# Utilisateur
+RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
+RewriteRule ^panier/?$ /utilisateur/vue/panier.php
+RewriteRule ^payment/?$ /utilisateur/vue/payment.php
+RewriteRule ^merci/?$ /utilisateur/vue/confirmation-payment.php
+
+# Administration
 RewriteRule ^administration/?$ /administration/vue/
 RewriteRule ^administration/modifier/([0-9]+)/?$ /administration/vue/page-produit-admin.php?idProduit=$1

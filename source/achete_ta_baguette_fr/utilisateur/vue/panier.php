@@ -69,7 +69,7 @@ afficherEntete($page); ?>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <a href="#" class="btn btn-danger">Commander</a>
+                        <a href="/payment" class="btn btn-danger">Commander</a>
                     </div>
                 </div>
                 <div class="row">

@@ -6,7 +6,6 @@
  * Time: 15:28
  */
 
-require_once(CHEMIN_RACINE_COMMUN . "/modele/Client.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
@@ -20,10 +19,9 @@ $accesseurPanier = new AccesseurPanier();
 $accesseurProduit = new AccesseurProduit();
 
 $panier = [];
-$TVA = 0.2;
+$TVA = 0.14975;
 $prixPanier = 0;
-
-$listePanier = $accesseurPanier->recupererPanier('jean-yves.affin@gmail.com');
+$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
 
 foreach ($listePanier as $panierClient) {
     $produit = $accesseurProduit->recupererProduitParId($panierClient->getIdProduit());
@@ -67,12 +65,12 @@ foreach ($panier['item'] as $produit) {
 //print_r($list);
 
 $details = (new \PayPal\Api\Details())
-    ->setTax($panier['TVA'])
+    ->setTax($panier['prix'] * $panier['TVA'])
     ->setSubtotal($panier['prix']);
 //print_r($details);
 
 $amount = (new \PayPal\Api\Amount())
-    ->setTotal($panier['prix'] + $panier['TVA'])
+    ->setTotal($panier['prix'] + ($panier['prix'] * $panier['TVA']))
     ->setCurrency("CAD")
     ->setDetails($details);
 //print_r($amount);
@@ -89,7 +87,7 @@ $payment->addTransaction($transaction);
 $payment->setIntent('sale');
 
 $redirectUrls = (new \PayPal\Api\RedirectUrls())
-    ->setReturnUrl('http://localhost:1200/utilisateur/vue/confirmation-payment.php')
+    ->setReturnUrl('http://localhost:1200/merci')
     ->setCancelUrl('http://localhost:1200/panier');
 
 $payment->setRedirectUrls($redirectUrls);
