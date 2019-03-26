@@ -1,0 +1,6 @@
+-- Installation composer pour paypal
+	sudo apt install composer
+	cd /var/www/html/achete_ta_baguette_fr/utilisateur
+
+	// si le vendor n'est plus la ou doit etre mis a jour
+	composer update
