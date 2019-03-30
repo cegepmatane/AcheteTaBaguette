@@ -21,7 +21,7 @@ $page = (object)
 $accesseurProduit = new AccesseurProduit();
 $produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
 
-$produitSimilaireBase = $accesseurProduit->recupererProduitParType($produit->getIdCategorie());
+$produitSimilaireBase = $accesseurProduit->recupererProduitParType($produit->getCategorie());
 $produitSimilaire = [];
 $nb = 0;
 
