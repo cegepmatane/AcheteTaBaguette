@@ -18,6 +18,7 @@ class AccesseurClient
     private const SUBTITUT_ADMINISTRATEUR = ":" .Client::ADMINISTRATEUR;
 
     private static $AJOUTER_CLIENT = "INSERT INTO CLIENT(".Client::NOM.", ".Client::PRENOM.", ".Client::EMAIL.", ".Client::MOT_DE_PASSE.", ".Client::RUE.", ".Client::VILLE.", ".Client::PROVINCE.", ".Client::CODE_POSTAL.", ".Client::PAYS.", ".Client::ADMINISTRATEUR.") VALUES (".self::SUBTITUT_NOM.", ".self::SUBTITUT_PRENOM.", ".self::SUBTITUT_EMAIL.", ".self::SUBTITUT_MOT_DE_PASSE.", ".self::SUBTITUT_RUE.", ".self::SUBTITUT_VILLE.", ".self::SUBTITUT_PROVINCE.", ".self::SUBTITUT_CODE_POSTAL.", ".self::SUBTITUT_PAYS.", ".self::SUBTITUT_ADMINISTRATEUR.");";
+    private static $CREER_PANIER_CLIENT = "INSERT INTO PANIER (idPanier) VALUES (".self::SUBTITUT_EMAIL.");";
     private static $SUPPRIMER_CLIENT = "DELETE FROM CLIENT WHERE ".Client::ID_CLIENT." LIKE ".self::SUBTITUT_ID_CLIENT.";";
     private static $MISE_A_JOUR_CLIENT = "UPDATE CLIENT SET ".Client::NOM." = ".self::SUBTITUT_NOM.", ".Client::PRENOM." = ".self::SUBTITUT_PRENOM.", ".Client::EMAIL."= ".self::SUBTITUT_EMAIL.", ".Client::RUE." = ".self::SUBTITUT_RUE.", ".Client::VILLE." = ".self::SUBTITUT_VILLE.", ".Client::PROVINCE." = ".self::SUBTITUT_PROVINCE.", ".Client::CODE_POSTAL." = ".self::SUBTITUT_CODE_POSTAL.", ".Client::PAYS." = ".self::SUBTITUT_PAYS.", ".Client::ADMINISTRATEUR." = ".self::SUBTITUT_ADMINISTRATEUR." WHERE ".Client::EMAIL." LIKE ".self::SUBTITUT_ID_CLIENT.";";
     private static $RECUPERER_CLIENT_PAR_EMAIL = "SELECT ".Client::NOM.", ".Client::PRENOM.", ".Client::EMAIL.", ".Client::MOT_DE_PASSE.", ".Client::RUE.", ".Client::VILLE.", ".Client::PROVINCE.", ".Client::CODE_POSTAL.", ".Client::PAYS.", ".Client::ADMINISTRATEUR." FROM CLIENT WHERE ".Client::EMAIL." LIKE ".self::SUBTITUT_EMAIL.";";
@@ -44,10 +45,15 @@ class AccesseurClient
         $requete->bindValue(self::SUBTITUT_PAYS, $client->getPays(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBTITUT_ADMINISTRATEUR, $client->getAdministrateur(), PDO::PARAM_INT);
 
-        return $requete->execute();
+        $requete->execute();
 
         if($requete->rowCount() > 0){
             $client->setIdClient(self::$connexion->lastInsertId());
+
+            $requete = self::$connexion->prepare(self::$CREER_PANIER_CLIENT);
+            $requete->bindValue(self::SUBTITUT_EMAIL, $client->getEmail(), PDO::PARAM_STR);
+            $requete->execute();
+            
             return $client;
         }
         return false;
