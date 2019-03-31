@@ -3,7 +3,6 @@
 class Facture
 {
 
-    public const FACTURER = "facture";
     public const EMAIL_CLIENT = "emailClient";
     public const ID_FACTURE = "idFacture";
     public const DATE_ACHAT = "dateAchat";
@@ -15,17 +14,19 @@ class Facture
     private $dateAchat;
     private $prixHT;
     private $prixTTC;
+    private $listeProduit;
 
     public function __construct(object $attribut)
     {
         if (!is_object($attribut)) {
             $attribut = (object) [];
         }
+        $this->setIdFacture($attribut->idFacture ?? null);
         $this->setEmailClient($attribut->emailClient ?? "");
         $this->setDateAchat($attribut->dateAchat ?? "NOW()");
         $this->setPrixHT($attribut->prixHT ?? 0);
         $this->setPrixTTC($attribut->prixTTC ?? 0);
-        $this->setIdFacture($attribut->idFacture ?? null);
+        $this->setListeProduit($attribut->listeProduit ?? null);
     }
 
     public function getEmailClient()
@@ -80,6 +81,17 @@ class Facture
     public function setPrixTTC($prixTTC)
     {
         $this->prixTTC = filter_var($prixTTC, FILTER_SANITIZE_STRING);
+        return true;
+    }
+
+    public function getListeProduit()
+    {
+        return $this->listeProduit;
+    }
+
+    public function setListeProduit(ListeProduitFacture $listeProduit)
+    {
+        $this->listeProduit = filter_var($listeProduit, FILTER_SANITIZE_STRING);
         return true;
     }
 
