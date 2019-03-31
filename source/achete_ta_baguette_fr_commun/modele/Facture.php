@@ -3,45 +3,25 @@
 class Facture
 {
 
-    public const EMAIL_CLIENT = "emailClient";
-    public const ID_PRODUIT = "idProduit";
-    public const NB_PRODUIT = "nbProduit";
-    public const MONTANT_FACTURE = "montantFacture";
+    public const ID_FACTURE = "idFacture";
+    public const DATE_ACHAT = "dateAchat";
+    public const PRIX_HT = "prixHT";
+    public const PRIX_TTC = "prixTTC";
 
-    private $idClient;
     private $idFacture;
-    private $nomFacture;
-    private $montantFacture;
+    private $dateAchat;
+    private $prixHT;
+    private $prixTTC;
 
-    public function __construct($idClient, $nomFacture, $montantFacture)
+    public function __construct(object $attribut)
     {
-        $this->idClient = $idClient;
-        $this->nomFacture = $nomFacture;
-        $this->montantFacture = $montantFacture;
-    }
-
-    public function setNomFacture($nomFacture)
-    {
-        $this->nomFacture = $nomFacture;
-    }
-
-    public function setMontantFacture($montantFacture)
-    {
-        $this->montantFacture = $montantFacture;
-    }
-
-    public function getNomFacture()
-    {
-        return $this->nomFacture;
-    }
-    public function getMontantFacture()
-    {
-        return $this->montantFacture;
-    }
-
-    public function getIdClient()
-    {
-        return $this->idClient;
+        if (!is_object($attribut)) {
+            $attribut = (object) [];
+        }
+        $this->setDateAchat($attribut->dateAchat ?? "");
+        $this->setPrixHT($attribut->prixHT ?? 0);
+        $this->setPrixTTC($attribut->prixTTC ?? 0);
+        $this->setIdFacture($attribut->idFacture ?? null);
     }
 
     public function getIdFacture()
@@ -49,8 +29,43 @@ class Facture
         return $this->idFacture;
     }
 
-    public function genererFactureCSV(){
-        
+    public function setIdFacture($idFacture)
+    {
+        $this->idFacture = filter_var($idFacture, FILTER_SANITIZE_STRING);
+        return true;
+    }
+
+    public function getDateAchat()
+    {
+        return $this->dateAchat;
+    }
+
+    public function setDateAchat($dateAchat)
+    {
+        $this->dateAchat = filter_var($dateAchat, FILTER_SANITIZE_STRING);
+        return true;
+    }
+
+    public function getPrixHT()
+    {
+        return $this->prixHT;
+    }
+
+    public function setPrixHT($prixHT)
+    {
+        $this->prixHT = filter_var($prixHT, FILTER_SANITIZE_STRING);
+        return true;
+    }
+
+    public function getPrixTTC()
+    {
+        return $this->prixTTC;
+    }
+
+    public function setPrixTTC($prixTTC)
+    {
+        $this->prixTTC = filter_var($prixTTC, FILTER_SANITIZE_STRING);
+        return true;
     }
 
 }
