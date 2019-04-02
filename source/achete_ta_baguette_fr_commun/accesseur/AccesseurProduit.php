@@ -10,30 +10,30 @@ class AccesseurProduit
     private const SUBSTITUT_NOM = ":" . Produit::NOM;
     private const SUBSTITUT_DESCRIPTION = ":" . Produit::DESCRIPTION;
     private const SUBSTITUT_PRIX = ":" . Produit::PRIX;
-    private const SUBSTITUT_CATEGORIE = ":" . Produit::CATEGORIE;
+    private const SUBSTITUT_CATEGORIE = ":" . Produit::ID_CATEGORIE;
     private const SUBSTITUT_STOCK = ":" . Produit::STOCK;
     private const SUBSTITUT_SRC_IMAGE = ":" . Produit::SRC_IMAGE;
 
     private static $AJOUT_PRODUIT =
-    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (" . self::SUBSTITUT_NOM."," . self::SUBSTITUT_PRIX . "," . self::SUBSTITUT_STOCK . "," . self::SUBSTITUT_CATEGORIE . "," . self::SUBSTITUT_SRC_IMAGE . ", " . self::SUBSTITUT_DESCRIPTION . ");";
+    "INSERT INTO PRODUIT(" . Produit::NOM . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . ", " . Produit::DESCRIPTION . ") VALUES (" . self::SUBSTITUT_NOM."," . self::SUBSTITUT_PRIX . "," . self::SUBSTITUT_STOCK . "," . self::SUBSTITUT_CATEGORIE . "," . self::SUBSTITUT_SRC_IMAGE . ", " . self::SUBSTITUT_DESCRIPTION . ");";
 
     private static $SUPPRIMER_PRODUIT =
     "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $MISE_A_JOUR_PRODUIT =
-    "UPDATE PRODUIT SET " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::STOCK . " =" . self::SUBSTITUT_STOCK . ", " . Produit::CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ") WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
+    "UPDATE PRODUIT SET " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::STOCK . " =" . self::SUBSTITUT_STOCK . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ") WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $GET_ID_PRODUIT =
-    "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ";";
+    "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ";";
 
     private static $RECUPERER_LISTE_PRODUITS =
-    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT; ";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT; ";
 
     private static $RECUPERER_PRODUIT_PAR_ID =
-    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE " . self::SUBSTITUT_ID_PRODUIT . ";";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::STOCK . ", " . Produit::ID_CATEGORIE . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " LIKE " . self::SUBSTITUT_ID_PRODUIT . ";";
 
     private static $RECUPERER_PRODUIT_PAR_CATEGORIE =
-    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::CATEGORIE . " LIKE " . self::SUBSTITUT_CATEGORIE . ";";
+    "SELECT " . Produit::ID_PRODUIT . ", " . Produit::NOM . ", " . Produit::DESCRIPTION . ", " . Produit::PRIX . ", " . Produit::SRC_IMAGE . " FROM PRODUIT WHERE " . Produit::ID_CATEGORIE . " LIKE " . self::SUBSTITUT_CATEGORIE . ";";
 
     private static $connexion = null;
 

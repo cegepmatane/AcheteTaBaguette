@@ -27,7 +27,7 @@ afficherEntete($page);
         </tr>
         <tr>
           <td><img src="/publique/illustration/<?= $produit->getSrcImage() ?>" alt="produit" height="50"></td>
-          <td><input type="text" class="form-control" name="categorie" value="<?= $produit->getCategorie() ?>"></td>
+          <td><input type="text" class="form-control" name="categorie" value="<?= $produit->getIdCategorie() ?>"></td>
           <td><input type="text" class="form-control" name="produit" value="<?= $produit->getNom() ?>"></td>
           <td><input type="text" class="form-control" name="description" value="<?= $produit->getDescription() ?>"></td>
           <td><input type="text" class="form-control" name="prix" value="<?= $produit->getPrix() ?>"></td>

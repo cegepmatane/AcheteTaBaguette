@@ -7,7 +7,7 @@ class Produit
     public const NOM = "nom";
     public const DESCRIPTION = "description";
     public const PRIX = "prix";
-    public const CATEGORIE = "categorie";
+    public const ID_CATEGORIE = "idCategorie";
     public const STOCK = "stock";
     public const SRC_IMAGE = "srcImage";
 
@@ -16,7 +16,7 @@ class Produit
     public $nom;
     public $description;
     public $prix;
-    public $categorie;
+    public $idCategorie;
     public $stock;
     public $srcImage;
 
@@ -76,7 +76,7 @@ class Produit
         $this->setIdProduit($attribut->idProduit ?? "");
         $this->setNom($attribut->nom ?? "");
         $this->setPrix($attribut->prix ?? null);
-        $this->setCategorie($attribut->categorie ?? null);
+        $this->setIdCategorie($attribut->categorie ?? null);
         $this->setStock($attribut->stock ?? null);
         $this->setSrcImage($attribut->srcImage ?? null);
         $this->setDescription($attribut->description ?? "");
@@ -130,9 +130,9 @@ class Produit
         }
     }
 
-    public function setCategorie($nouvelleCategorie)
+    public function setIdCategorie($nouvelleCategorie)
     {
-        $this->categorie = $nouvelleCategorie;
+        $this->idCategorie = $nouvelleCategorie;
     }
 
     public function setStock($nouveauStock)
@@ -165,9 +165,9 @@ class Produit
     {
         return $this->prix;
     }
-    public function getCategorie()
+    public function getIdCategorie()
     {
-        return $this->categorie;
+        return $this->idCategorie;
     }
     public function getStock()
     {

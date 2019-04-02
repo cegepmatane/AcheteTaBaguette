@@ -89,7 +89,7 @@
 
 
   <td>  
-    <select class="custom-select" name="<?= PRODUIT::CATEGORIE ?>"  >
+    <select class="custom-select" name="<?= PRODUIT::ID_CATEGORIE ?>"  >
       <option value="" selected disabled hidden>Choisir catégorie</option>
       <?php foreach ($page->listeCategorie as $categorie) {?>
        <option value= "<?= $categorie->getIdCategorie() ?>"> <?= $categorie->getLabel() ?></option>
