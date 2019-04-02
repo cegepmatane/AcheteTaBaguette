@@ -4,12 +4,12 @@
 class ListeProduitFacture
 {
 
-    public const FACTURE = "facture";
-    public const PRODUIT = "produit";
+    public const ID_FACTURE = "idFacture";
+    public const ID_PRODUIT = "idProduit";
     public const QUANTITE = "quantite";
 
-    private $facture;
-    private $produit;
+    private $idFacture;
+    private $idProduit;
     private $quantite;
 
     public function __construct(object $attribut)
@@ -17,29 +17,29 @@ class ListeProduitFacture
         if (!is_object($attribut)) {
             $attribut = (object) [];
         }
-        $this->setFacture($attribut->facture ?? null);
-        $this->setProduit($attribut->produit ?? null);
+        $this->setIdFacture($attribut->facture ?? null);
+        $this->setIdProduit($attribut->idProduit ?? null);
         $this->setQuantite($attribut->quantite ?? null);
     }
 
-    public function getFacture()
+    public function getIdFacture()
     {
-        return $this->facture;
+        return $this->idFacture;
     }
-    public function setFacture($facture)
+    public function setIdFacture($idFacture)
     {
-        $this->facture = filter_var($facture, FILTER_SANITIZE_STRING);
+        $this->idFacture = filter_var($idFacture, FILTER_SANITIZE_STRING);
         return true;
     }
 
-    public function getProduit()
+    public function getIdProduit()
     {
-        return $this->Produit;
+        return $this->idProduit;
     }
 
-    public function setProduit($Produit)
+    public function setIdProduit($idProduit)
     {
-        $this->Produit = filter_var($Produit, FILTER_SANITIZE_STRING);
+        $this->idProduit = filter_var($idProduit, FILTER_SANITIZE_STRING);
         return true;
     }
 

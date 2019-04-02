@@ -18,12 +18,12 @@ class AccesseurFacture
     private const SUBTITUT_PRIX_HT = ":" . Facture::PRIX_HT;
     private const SUBTITUT_PRIX_TTC = ":" . Facture::PRIX_TTC;
 
-    private const SUBTITUT_PRODUIT = ":" . ListeProduitFacture::PRODUIT;
+    private const SUBTITUT_PRODUIT = ":" . ListeProduitFacture::ID_PRODUIT;
     private const SUBTITUT_QUANTITE = ":" . ListeProduitFacture::QUANTITE;
 
     private static $AJOUTER_FACTURE = "INSERT INTO FACTURE(".Facture::DATE_ACHAT.", ".Facture::PRIX_HT.", ".Facture::PRIX_TTC.") VALUES (".self::SUBTITUT_DATE_ACHAT.", ".self::SUBTITUT_PRIX_HT.", ".self::SUBTITUT_PRIX_TTC.");";
-    private static $AJOUTER_FACTURER = "INSERT INTO FACTURER(".Facture::EMAIL_CLIENT.", ".ListeProduitFacture::FACTURE.") VALUES (".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_ID_FACTURE.");";
-    private static $AJOUTER_LISTE_PRODUIT = "INSERT INTO ListeProduitFacture(".ListeProduitFacture::PRODUIT.", ".ListeProduitFacture::FACTURE.", ".ListeProduitFacture::QUANTITE.") VALUES (".self::SUBTITUT_PRODUIT.", ".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_QUANTITE.");";
+    private static $AJOUTER_FACTURER = "INSERT INTO FACTURER(".Facture::EMAIL_CLIENT.", ".Facture::ID_FACTURE.") VALUES (".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_ID_FACTURE.");";
+    private static $AJOUTER_LISTE_PRODUIT = "INSERT INTO ListeProduitFacture(".ListeProduitFacture::ID_PRODUIT.", ".ListeProduitFacture::ID_FACTURE.", ".ListeProduitFacture::QUANTITE.") VALUES (".self::SUBTITUT_PRODUIT.", ".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_QUANTITE.");";
 
     private static $RECUPERER_FACTURE_PAR_ID = "INSERT INTO Facturer(".Facture::ID_FACTURE.", ".Facture::EMAIL_CLIENT.", ".Facture::ID_PRODUIT.", ".Facture::QUANTITE.") VALUES (".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_NB_PRODUIT.");";
 
