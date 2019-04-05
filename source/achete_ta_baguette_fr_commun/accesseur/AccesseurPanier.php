@@ -35,12 +35,15 @@ class AccesseurPanier
     public function ajouterPanier(Panier $panier)
     {
         try {
-                $requete = self::$connexion->prepare(self::$AJOUTER_PANIER);
-                $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
-                $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $panier->getListeProduit()->getProduit()->getIdProduit(), PDO::PARAM_STR);
-                $requete->bindValue(self::SUBTITUT_QUANTITE, $panier->getListeProduit()->getQuantite(), PDO::PARAM_STR);
+                foreach ($panier->getListeProduit() as $article){
+                    $requete = self::$connexion->prepare(self::$AJOUTER_PANIER);
+                    $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
+                    $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $article->getProduit()->getIdProduit(), PDO::PARAM_STR);
+                    $requete->bindValue(self::SUBTITUT_QUANTITE, $article->getQuantite(), PDO::PARAM_STR);
 
-                $requete->execute();
+                    $requete->execute();
+                }
+
                 return $panier;
 
         } catch (PDOException $e) {

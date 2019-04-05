@@ -11,15 +11,15 @@ $page = (object)
     "titre" => "Panier",
     "messageAction" => "",
     "indicePetitStock" => 5,
-    "nbProduitDefaut" => 1,
+    "quantiteDefaut" => 1,
 
     "emailClient" => Panier::EMAIL_CLIENT,
-    "idProduit" => Panier::ID_PRODUIT,
-    "nbProduit" => Panier::NB_PRODUIT,
+    "idProduit" => Produit::ID_PRODUIT,
+    "quantite" => Article::QUANTITE
 ];
 
 $accesseurProduit = new AccesseurProduit();
-$produit = $accesseurProduit->recupererProduitParId($_GET[Panier::ID_PRODUIT]);
+$produit = $accesseurProduit->recupererProduitParId($_GET[Produit::ID_PRODUIT]);
 
 $produitSimilaireBase = $accesseurProduit->recupererProduitParType($produit->getIdCategorie());
 $produitSimilaire = [];

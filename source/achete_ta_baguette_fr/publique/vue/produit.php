@@ -67,7 +67,7 @@ afficherEntete($page);
                         <div class="col-md-5 product-qty quantite">
                             <div class="row justify-content-center">
                                 <div class="col-md-7 mb-1">
-                                    <input class="form-control" type="number" value="<?= $page->nbProduitDefaut ?>" min="1" name="<?= $page->nbProduit ?>">
+                                    <input class="form-control" type="number" value="<?= $page->quantiteDefaut ?>" min="1" max="<?= $produit->getStock() ?>" name="<?= $page->quantite ?>">
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@ afficherEntete($page);
                             </div><!-- fin stock -->
                         </div><!-- fin choix quantite et stock -->
 
-                        <input type="hidden" name="<?= $page->idProduit ?>" value="<?= $_GET[Panier::ID_PRODUIT] ?>">
+                        <input type="hidden" name="<?= $page->idProduit ?>" value="<?= $_GET[Produit::ID_PRODUIT] ?>">
                         <input type="hidden" name="<?= $page->emailClient ?>" value="<?= $_SESSION[Client::EMAIL] ?>">
 
                         <!-- bouton ajout panier -->
