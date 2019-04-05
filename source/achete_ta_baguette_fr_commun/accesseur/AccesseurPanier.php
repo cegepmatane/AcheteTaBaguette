@@ -73,15 +73,17 @@ class AccesseurPanier
         }
     }
 
-    public function supprimerProduitPanier(Article $produit)
+    public function supprimerProduitPanier(Panier $panier)
     {
         try {
 
-            $requete = self::$connexion->prepare(self::$SUPPRIMER_PRODUIT_PANIER);
-            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $produit->getEmailClient(), PDO::PARAM_STR);
-            $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $produit->getProduit()->getIdProduit(), PDO::PARAM_STR);
+            foreach ($panier->getListeProduit() as $article){
+                $requete = self::$connexion->prepare(self::$SUPPRIMER_PRODUIT_PANIER);
+                $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $panier->getEmailClient(), PDO::PARAM_STR);
+                $requete->bindValue(self::SUBTITUT_ID_PRODUIT, $article->getProduit()->getIdProduit(), PDO::PARAM_STR);
+                $requete->execute();
+            }
 
-            $requete->execute();
             return true;
 
         } catch (PDOException $e) {
