@@ -47,7 +47,7 @@ class AccesseurProduit
     public function recupererProduitParId($idProduit)
     {
         $requete = self::$connexion->prepare(self::$RECUPERER_PRODUIT_PAR_ID);
-        $requete->bindValue(":idProduit", $idProduit);
+        $requete->bindValue(self::SUBSTITUT_ID_PRODUIT, $idProduit);
 
         $requete->execute();
 
@@ -55,7 +55,7 @@ class AccesseurProduit
             $reponse = $requete->fetch();
             return new Produit($reponse);
         } else {
-            echo "Aucune données trouvés !";
+            return false;
         }
     }
 

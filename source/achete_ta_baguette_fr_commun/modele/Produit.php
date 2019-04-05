@@ -76,7 +76,7 @@ class Produit
         $this->setIdProduit($attribut->idProduit ?? "");
         $this->setNom($attribut->nom ?? "");
         $this->setPrix($attribut->prix ?? null);
-        $this->setIdCategorie($attribut->categorie ?? null);
+        $this->setIdCategorie($attribut->idCategorie ?? null);
         $this->setStock($attribut->stock ?? null);
         $this->setSrcImage($attribut->srcImage ?? null);
         $this->setDescription($attribut->description ?? "");
