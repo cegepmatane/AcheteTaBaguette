@@ -29,23 +29,3 @@ $accesseurProduit = new AccesseurProduit();
 if(isset($_POST['supprimer-produit-panier'])) $accesseurPanier->supprimerProduitPanier(new Panier((object) $_POST));
 
 $page->panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
-//$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
-//print_r($listePanier);
-
-
-
-foreach($listePanier as $panier) {
-    $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());
-    $monProduit = (object)
-    [
-        "idProduit" => $panier->getIdProduit(),
-        "nom" => $produit->getNom(),
-        "prix" => $produit->getPrix(),
-        "nombre" => $panier->getNbProduit(),
-        "totalUnitaire" => $produit->getPrix()*$panier->getNbProduit(),
-    ];
-    $page->listeProduit[] = $monProduit;
-
-    $page->totalHT += $produit->getPrix()*$panier->getNbProduit();
-    $page->totalTTC += round($produit->getPrix()*$panier->getNbProduit() + $produit->getPrix()*$panier->getNbProduit() * (0.05+0.09975),2);
-}

@@ -64,22 +64,22 @@ class Panier
 
     public function getPrixHT()
     {
-        return $this->prixHT;
+        return round($this->prixHT, 2);
     }
 
     public function setPrixHT()
     {
         foreach ($this->listeProduit as $article){
-            $this->prixHT = $this->prixHT + $article->getProduit()->getPrix() * $article->getQuantite();
+            $this->prixHT = $this->getPrixHT() + $article->getProduit()->getPrix() * $article->getQuantite();
         }
     }
 
     public function getPrixTTC()
     {
-        return $this->prixTTC;
+        return round($this->prixTTC, 2);
     }
 
-    private function setPrixTTC()
+    public function setPrixTTC()
     {
         $this->prixTTC = $this->getPrixHT() + ($this->getPrixHT() * (0.05 + 0.09975));
     }
