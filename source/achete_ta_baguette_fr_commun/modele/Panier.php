@@ -10,16 +10,14 @@ class Panier
 {
     public const EMAIL_CLIENT = "emailClient";
     public const ID_PRODUIT = "idProduit";
-    public const QUANTITE = "quantite";
     public const PRIX_HT = "prixHT";
     public const PRIX_TTC = "prixTTC";
 
     private $emailClient;
     private $idProduit;
-    private $quantite;
-    private $listeProduit;
     private $prixHT;
     private $prixTTC;
+    private $listeProduit;
 
     public function __construct(object $attribut)
     {
@@ -27,9 +25,10 @@ class Panier
             $attribut = (object) [];
         }
 
-        $this->setEmailClient($attribut->emailClient ?? null);
-        $this->setIdProduit($attribut->idProduit ?? null);
-        $this->setQuantite($attribut->quantite ?? null);
+        $this->setEmailClient($attribut->emailClient ?? "");
+        $this->setListeProduit($attribut ?? null);
+        $this->setPrixHT();
+        $this->setPrixTTC();
     }
 
     public function getEmailClient()
@@ -50,19 +49,7 @@ class Panier
 
     public function setIdProduit($idProduit)
     {
-        $this->idProduit = filter_var($idProduit, FILTER_SANITIZE_STRING);
-        return true;
-    }
-
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    public function setQuantite($quantite)
-    {
-        $this->quantite = filter_var($quantite, FILTER_SANITIZE_STRING);
-        return true;
+        $this->idProduit = $idProduit;
     }
 
     public function getListeProduit()
@@ -70,16 +57,9 @@ class Panier
         return $this->listeProduit;
     }
 
-    public function setListeProduit($listeProduit)
+    public function setListeProduit($article)
     {
-        $this->listeProduit = $listeProduit;
-    }
-
-    public function addProduit($produit)
-    {
-        $this->listeProduit += $produit;
-//        $this->setPrixHT($produit->getPrix(), $this->getQuantite());
-//        $this->setPrixTTC(0.2);
+        $this->listeProduit[] = new Article($article);
     }
 
     public function getPrixHT()
@@ -87,9 +67,11 @@ class Panier
         return $this->prixHT;
     }
 
-    public function setPrixHT($prix, $quantite)
+    public function setPrixHT()
     {
-        $this->prixHT = $this->prixHT + $prix * $quantite;
+        foreach ($this->listeProduit as $article){
+            $this->prixHT = $this->prixHT + $article->getProduit()->getPrix() * $article->getQuantite();
+        }
     }
 
     public function getPrixTTC()
@@ -97,9 +79,9 @@ class Panier
         return $this->prixTTC;
     }
 
-    public function setPrixTTC($taxe)
+    private function setPrixTTC()
     {
-        $this->prixTTC = $this->getPrixHT() * $taxe;
+        $this->prixTTC = $this->getPrixHT() + ($this->getPrixHT() * (0.05 + 0.09975));
     }
 
 
