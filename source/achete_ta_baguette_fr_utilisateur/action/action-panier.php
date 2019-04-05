@@ -18,7 +18,7 @@ require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 $page = (object)
 [
     "titre" => "Panier",
-    "listeProduit" => [],
+    "panier" => [],
     "totalHT" => null,
     "totalTTC" => null,
 ];
@@ -28,7 +28,11 @@ $accesseurProduit = new AccesseurProduit();
 
 if(isset($_POST['supprimer-produit-panier'])) $accesseurPanier->supprimerProduitPanier(new Panier((object) $_POST));
 
-$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+$page->panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+//$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+//print_r($listePanier);
+
+
 
 foreach($listePanier as $panier) {
     $produit = $accesseurProduit->recupererProduitParId($panier->getIdProduit());

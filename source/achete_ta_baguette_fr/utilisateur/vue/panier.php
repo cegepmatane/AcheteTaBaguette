@@ -12,7 +12,6 @@ require_once("../../commun/vue/sidebar-client-fragment.php");
 
 require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier.php");
 require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier-facture.php");
-if(!is_object($page)) $page = (object)[];
 
 afficherEntete($page); ?>
 
@@ -43,18 +42,19 @@ afficherEntete($page); ?>
                         <th>Prix total</th>
                     </tr>
 
-                    <?php foreach($page->listeProduit as $produit) { ?>
+                    <?php foreach($page->panier->getListeProduit() as $article) {
+                        $produit = new Produit($article->getProduit()); ?>
                         <tr>
                             <td>
                                 <form method="post">
                                     <input type="submit" name="supprimer-produit-panier" value="Supprimer" />
-                                    <input type="hidden" name="<?= Panier::ID_PRODUIT ?>" value="<?= $produit->idProduit ?>">
+                                    <input type="hidden" name="<?= Panier::ID_PRODUIT ?>" value="<?= $produit->getIdProduit() ?>">
                                     <input type="hidden" name="<?= Panier::EMAIL_CLIENT ?>" value="<?= $_SESSION[Client::EMAIL] ?>">
                                 </form >
                             </td>
-                            <td><p><span class="font-weight-bold"><?= $produit->nombre ?></span> x <?= $produit->nom ?></p></td>
-                            <td><p><?= $produit->prix ?> CND$</p></td>
-                            <td><p><?= $produit->totalUnitaire ?> CND$</p></td>
+                            <td><p><span class="font-weight-bold"><?= $article->getQuantite() ?></span> x <?= $produit->getNom() ?></p></td>
+                            <td><p><?= $produit->getPrix() ?> CND$</p></td>
+                            <td><p><?= $article->getPrixTotal() ?> CND$</p></td>
                         </tr>
                     <?php } ?>
 
@@ -63,8 +63,8 @@ afficherEntete($page); ?>
             <div class="col-md-3 text-center">
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <p class="font-weight-bold">Prix Total HT : <?= $page->totalHT ?></p>
-                        <p class="font-weight-bold">Prix Total TTC : <?= $page->totalTTC ?></p>
+                        <p class="font-weight-bold">Prix Total HT : <?= $page->panier->getPrixHT() ?></p>
+                        <p class="font-weight-bold">Prix Total TTC : <?= $page->panier->getPrixTTC() ?></p>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -75,11 +75,6 @@ afficherEntete($page); ?>
                 <div class="row">
                     <div class="col-md-12">
 <!--                        <a href="#" class="btn btn-primary">Vider le panier</a>-->
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-12">
-                        <a href="?facture=true" target="_blank" class="btn btn-danger">Generer facture</a>
                     </div>
                 </div>
             </div>

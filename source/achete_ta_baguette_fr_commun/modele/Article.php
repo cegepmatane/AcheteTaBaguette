@@ -8,6 +8,7 @@ class Article
 
     private $quantite;
     private $produit;
+    private $prixTotal;
 
     public function __construct(object $attribut)
     {
@@ -17,6 +18,7 @@ class Article
 
         $this->setQuantite($attribut->quantite ?? null);
         $this->setProduit($attribut->idProduit ?? null);
+        $this->setPrixTotal();
     }
 
     public function getQuantite()
@@ -41,4 +43,15 @@ class Article
         $this->produit = $accesseurProduit->recupererProduitParId($idProduit);
         return true;
     }
+
+    public function getPrixTotal()
+    {
+        return round($this->prixTotal, 2);
+    }
+
+    public function setPrixTotal()
+    {
+        $this->prixTotal = $this->produit->getPrix() * $this->quantite;
+    }
+
 }
