@@ -21,14 +21,10 @@ class Panier
 
     public function __construct(object $attribut)
     {
-        if (!is_object($attribut)) {
-            $attribut = (object) [];
-        }
+        if(!is_object($attribut)) $attribut = (object)[];
 
         $this->setEmailClient($attribut->emailClient ?? "");
         $this->setListeProduit($attribut ?? null);
-        $this->setPrixHT();
-        $this->setPrixTTC();
     }
 
     public function getEmailClient()
@@ -59,7 +55,10 @@ class Panier
 
     public function setListeProduit($article)
     {
-        $this->listeProduit[] = new Article($article);
+        $article = new Article($article);
+        $this->listeProduit[] = $article;
+        $this->setPrixHT($article);
+        $this->setPrixTTC();
     }
 
     public function getPrixHT()
@@ -67,11 +66,9 @@ class Panier
         return round($this->prixHT, 2);
     }
 
-    public function setPrixHT()
+    public function setPrixHT(Article $article)
     {
-        foreach ($this->listeProduit as $article){
-            $this->prixHT = $this->getPrixHT() + $article->getProduit()->getPrix() * $article->getQuantite();
-        }
+        $this->prixHT += $article->getPrixTotal();
     }
 
     public function getPrixTTC()

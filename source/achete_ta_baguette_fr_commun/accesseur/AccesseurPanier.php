@@ -65,8 +65,7 @@ class AccesseurPanier
             for ($i=1; $i < sizeof($listeEnregistrement); $i++){
                 $panier->setListeProduit((object) $listeEnregistrement[$i]);
             }
-            $panier->setPrixHT();
-            $panier->setPrixTTC();
+
             return $panier;
         } catch (PDOException $e) {
             return false;

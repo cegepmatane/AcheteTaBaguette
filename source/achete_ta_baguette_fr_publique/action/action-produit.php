@@ -35,8 +35,7 @@ foreach ($produitSimilaireBase as $unProduit) {
 if (isset($_POST['ajout-au-panier']))
 {
     if (!isset($_SESSION[CLIENT::EMAIL])) header("location: /connexion");
-    $panier = new Panier((object) $_POST);
     $accesseurPanier = new AccesseurPanier();
-    if ($accesseurPanier->ajouterPanier($panier)) $page->messageAction = "Produit ajouté au panier";
+    if ($accesseurPanier->ajouterPanier(new Panier((object) $_POST))) $page->messageAction = "Produit ajouté au panier";
     else $page->messageAction = "Produit déjà présent dans le panier";
 }
