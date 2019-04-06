@@ -22,6 +22,7 @@ $page = (object)
     "panier" => [],
     "totalHT" => null,
     "totalTTC" => null,
+    "pleinOuVide" => null
 ];
 
 $accesseurPanier = new AccesseurPanier();
@@ -29,4 +30,11 @@ $accesseurProduit = new AccesseurProduit();
 
 if(isset($_POST['supprimer-produit-panier'])) $accesseurPanier->supprimerProduitPanier(new Panier((object) $_POST));
 
-$page->panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+$panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
+if($panier) {
+    $page->pleinOuVide = "plein";
+    $page->panier = $panier;
+}
+else {
+    $page->pleinOuVide = "vide";
+}

@@ -61,6 +61,7 @@ class AccesseurPanier
             $requete->execute();
 
             $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+            if(empty($listeEnregistrement)) return false;
             $panier = new Panier((object) $listeEnregistrement[0]);
             for ($i=1; $i < sizeof($listeEnregistrement); $i++){
                 $panier->setListeProduit((object) $listeEnregistrement[$i]);

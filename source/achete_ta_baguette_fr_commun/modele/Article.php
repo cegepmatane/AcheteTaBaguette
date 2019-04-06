@@ -51,7 +51,8 @@ class Article
 
     public function setPrixTotal()
     {
-        $this->prixTotal = $this->produit->getPrix() * $this->quantite;
+        if($this->produit ?? false) $this->prixTotal = $this->produit->getPrix() * $this->quantite;
+        else $this->prixTotal = null;
     }
 
 }
