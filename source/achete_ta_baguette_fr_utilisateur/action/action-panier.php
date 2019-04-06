@@ -15,6 +15,7 @@ require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
 
+if (!isset($_SESSION[CLIENT::EMAIL])) header("location: /");
 $page = (object)
 [
     "titre" => "Panier",
