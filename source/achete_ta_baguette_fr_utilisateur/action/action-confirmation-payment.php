@@ -9,6 +9,7 @@
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Facture.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurPanier.php");
+require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurFacture.php");
 require_once(CHEMIN_RACINE_UTILISATEUR .'/vendor/autoload.php');
 
@@ -45,14 +46,9 @@ try {
 
 $accesseurPanier = new AccesseurPanier();
 $panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
-//print_r($panier);
+print_r($panier);
 
+$facture = $panier->newFacture();
+print_r($facture);
 $accesseurFacture = new AccesseurFacture();
-foreach ($panier as $item){
-    $accesseurFacture->ajouterFacture(new Panier($item));
-    $accesseurPanier->supprimerPanier($item);
-}
-
-
-
-
+if ($accesseurFacture->ajouterFacture($facture)) $accesseurPanier->ViderPanier($panier);
