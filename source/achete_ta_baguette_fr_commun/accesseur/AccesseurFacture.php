@@ -25,6 +25,8 @@ class AccesseurFacture
     private static $AJOUTER_ARTICLE = "INSERT INTO ARTICLE_FACTURE(".Facture::ID_FACTURE.", ".Article::ID_PRODUIT.", ".Article::QUANTITE.") VALUES (".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_QUANTITE.");";
 
     private static $RECUPERER_FACTURE_PAR_EMAIL_CLIENT = "SELECT ".Facture::ID_FACTURE.", ".Facture::EMAIL_CLIENT.", ".Facture::DATE_ACHAT.", ".Facture::PRIX_HT.", ".Facture::PRIX_TTC." FROM FACTURE WHERE ".Facture::EMAIL_CLIENT." LIKE ".self::SUBTITUT_EMAIL_CLIENT.";";
+    private static $RECUPERER_FACTURE_PAR_ID = "SELECT ".Facture::ID_FACTURE.", ".Facture::EMAIL_CLIENT.", ".Facture::DATE_ACHAT.", ".Facture::PRIX_HT.", ".Facture::PRIX_TTC." FROM FACTURE WHERE ".Facture::ID_FACTURE." LIKE ".self::SUBTITUT_ID_FACTURE.";";
+    private static $RECUPERER_DETAIL_FACTURE_PAR_ID = "SELECT ".Article::ID_PRODUIT.", ".Facture::ID_FACTURE.", ".Article::QUANTITE." FROM ARTICLE_FACTURE WHERE ".Facture::ID_FACTURE." LIKE ".self::SUBTITUT_ID_FACTURE.";";
 
     private static $connexion = null;
     public function __construct()
@@ -76,6 +78,32 @@ class AccesseurFacture
 
             return $listefacture;
 
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function recupererDetailFactureParId($idFacture)
+    {
+
+        try {
+            $requete = self::$connexion->prepare(self::$RECUPERER_FACTURE_PAR_ID);
+            $requete->bindValue(self::SUBTITUT_ID_FACTURE, $idFacture, PDO::PARAM_STR);
+            $requete->execute();
+            $reponse = $requete->fetch();
+
+            $facture = new Facture($reponse);
+
+            $requete = self::$connexion->prepare(self::$RECUPERER_DETAIL_FACTURE_PAR_ID);
+            $requete->bindValue(self::SUBTITUT_ID_FACTURE, $idFacture, PDO::PARAM_STR);
+            $requete->execute();
+
+            $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+            foreach ($listeEnregistrement as $enredistrement) {
+                $facture->setListeProduit($enredistrement);
+            }
+
+            return $facture;
         } catch (PDOException $e) {
             return false;
         }
