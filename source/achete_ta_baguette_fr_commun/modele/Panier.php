@@ -14,7 +14,6 @@ class Panier
     public const PRIX_TTC = "prixTTC";
 
     private $emailClient;
-    private $idProduit;
     private $prixHT;
     private $prixTTC;
     private $listeProduit;
@@ -27,6 +26,27 @@ class Panier
         $this->setListeProduit($attribut ?? null);
     }
 
+    public function newFacture()
+    {
+        $attribut = (object)
+        [
+            "emailClient" => $this->getEmailClient(),
+            self::PRIX_HT => $this->getPrixHT(),
+            self::PRIX_TTC => $this->getPrixTTC()
+        ];
+        $facture = new Facture($attribut);
+        foreach ($this->getListeProduit() as $article) {
+            $item = (object)
+            [
+                "quantite" => $article->getQuantite(),
+                "idProduit" => $article->getProduit()->getIdProduit()
+            ];
+            $facture->setListeProduit($item);
+        }
+
+        return $facture;
+    }
+
     public function getEmailClient()
     {
         return $this->emailClient;
@@ -36,16 +56,6 @@ class Panier
     {
         $this->emailClient = filter_var($emailClient, FILTER_SANITIZE_STRING);
         return true;
-    }
-
-    public function getIdProduit()
-    {
-        return $this->idProduit;
-    }
-
-    public function setIdProduit($idProduit)
-    {
-        $this->idProduit = $idProduit;
     }
 
     public function getListeProduit()
