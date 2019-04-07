@@ -24,7 +24,7 @@ class AccesseurFacture
     private static $AJOUTER_FACTURE = "INSERT INTO FACTURE(".Facture::EMAIL_CLIENT.", ".Facture::DATE_ACHAT.", ".Facture::PRIX_HT.", ".Facture::PRIX_TTC.") VALUES (".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_DATE_ACHAT.", ".self::SUBTITUT_PRIX_HT.", ".self::SUBTITUT_PRIX_TTC.");";
     private static $AJOUTER_ARTICLE = "INSERT INTO ARTICLE_FACTURE(".Facture::ID_FACTURE.", ".Article::ID_PRODUIT.", ".Article::QUANTITE.") VALUES (".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_QUANTITE.");";
 
-//    private static $RECUPERER_FACTURE_PAR_ID = "INSERT INTO Facturer(".Facture::ID_FACTURE.", ".Facture::EMAIL_CLIENT.", ".Facture::ID_PRODUIT.", ".Facture::QUANTITE.") VALUES (".self::SUBTITUT_ID_FACTURE.", ".self::SUBTITUT_EMAIL_CLIENT.", ".self::SUBTITUT_ID_PRODUIT.", ".self::SUBTITUT_NB_PRODUIT.");";
+    private static $RECUPERER_FACTURE_PAR_EMAIL_CLIENT = "SELECT ".Facture::ID_FACTURE.", ".Facture::EMAIL_CLIENT.", ".Facture::DATE_ACHAT.", ".Facture::PRIX_HT.", ".Facture::PRIX_TTC." FROM FACTURE WHERE ".Facture::EMAIL_CLIENT." LIKE ".self::SUBTITUT_EMAIL_CLIENT.";";
 
     private static $connexion = null;
     public function __construct()
@@ -58,5 +58,26 @@ class AccesseurFacture
             return false;
         }
 
+    }
+
+    public function recupererListeFacture($emailClient)
+    {
+
+        try {
+            $requete = self::$connexion->prepare(self::$RECUPERER_FACTURE_PAR_EMAIL_CLIENT);
+            $requete->bindValue(self::SUBTITUT_EMAIL_CLIENT, $emailClient, PDO::PARAM_STR);
+            $requete->execute();
+
+            $listefacture =[];
+            $listeEnregistrement = $requete->fetchAll(PDO::FETCH_OBJ);
+            foreach ($listeEnregistrement as $enregistrement) {
+                $listefacture[] = new Facture($enregistrement);
+            }
+
+            return $listefacture;
+
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

@@ -29,6 +29,11 @@
     <div class="col-md-3 text-center">
         <div class="row mb-3">
             <div class="col-md-12">
+                <a href="/facture" class="btn btn-primary">Mes factures</a>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
                 <p class="font-weight-bold">Prix Total HT : <?= $page->panier->getPrixHT() ?></p>
                 <p class="font-weight-bold">Prix Total TTC : <?= $page->panier->getPrixTTC() ?></p>
             </div>

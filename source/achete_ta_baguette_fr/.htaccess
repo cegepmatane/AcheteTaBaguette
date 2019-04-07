@@ -17,6 +17,7 @@ RewriteRule ^mesinformations/?$ /utilisateur/vue/profile.php
 RewriteRule ^panier/?$ /utilisateur/vue/panier.php
 RewriteRule ^payment/?$ /utilisateur/vue/payment.php
 RewriteRule ^merci/?$ /utilisateur/vue/confirmation-payment.php
+RewriteRule ^facture/?$ /utilisateur/vue/facture.php
 
 # Administration
 RewriteRule ^administration/?$ /administration/vue/

@@ -6,10 +6,6 @@
  * Time: 12:49
  */
 
-require_once("../../commun/vue/entete-fragment.php");
-require_once("../../commun/vue/pied-de-page-fragment.php");
-require_once("../../commun/vue/sidebar-client-fragment.php");
-
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Produit.php");
 require_once(CHEMIN_RACINE_COMMUN . "/modele/Panier.php");
 require_once(CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php");
@@ -26,7 +22,6 @@ $page = (object)
 ];
 
 $accesseurPanier = new AccesseurPanier();
-$accesseurProduit = new AccesseurProduit();
 
 if(isset($_POST['supprimer-produit-panier'])) $accesseurPanier->supprimerProduitPanier(new Panier((object) $_POST));
 
