@@ -9,7 +9,6 @@
 class Panier
 {
     public const EMAIL_CLIENT = "emailClient";
-    public const ID_PRODUIT = "idProduit";
     public const PRIX_HT = "prixHT";
     public const PRIX_TTC = "prixTTC";
 

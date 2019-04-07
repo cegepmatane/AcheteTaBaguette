@@ -5,6 +5,7 @@ class Article
 {
     public const QUANTITE = "quantite";
     public const PRODUIT = "produit";
+    public const ID_PRODUIT = "idProduit";
 
     private $quantite;
     private $produit;

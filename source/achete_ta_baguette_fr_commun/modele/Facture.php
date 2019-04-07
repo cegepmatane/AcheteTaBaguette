@@ -22,7 +22,7 @@ class Facture
 
         $this->setIdFacture($attribut->idFacture ?? null);
         $this->setEmailClient($attribut->emailClient ?? "");
-        $this->setDateAchat($attribut->dateAchat ?? "NOW()");
+        $this->setDateAchat($attribut->dateAchat ?? date("Y-m-d H:i:s"));
         $this->setPrixHT($attribut->prixHT ?? "");
         $this->setPrixTTC($attribut->prixTTC ?? "");
         $this->setListeProduit($attribut ?? null);
@@ -90,8 +90,10 @@ class Facture
 
     public function setListeProduit($article)
     {
-        $article = new Article($article);
-        $this->listeProduit[] = $article;
+        if (isset($article->idProduit)){
+            $article = new Article($article);
+            $this->listeProduit[] = $article;
+        }
     }
 
 }
