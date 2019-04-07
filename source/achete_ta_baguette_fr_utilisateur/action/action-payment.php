@@ -16,32 +16,8 @@ require_once(CHEMIN_RACINE_UTILISATEUR .'/vendor/autoload.php');
 
 // Mise en forme du panier pour paypal
 $accesseurPanier = new AccesseurPanier();
-$accesseurProduit = new AccesseurProduit();
-
-$panier = [];
+$panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
 $TVA = 0.14975;
-$prixPanier = 0;
-$listePanier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
-
-foreach ($listePanier as $panierClient) {
-    $produit = $accesseurProduit->recupererProduitParId($panierClient->getIdProduit());
-
-    $items = (object)
-    [
-        "nom" => $produit->getNom(),
-        "description" => $produit->getDescription(),
-        "prix" => $produit->getPrix(),
-        "quantite" => $panierClient->getNbProduit()
-    ];
-    $prixPanier += $produit->getPrix()*$panierClient->getNbProduit();
-    $panier['item'][] = $items;
-}
-$panier['TVA'] = $TVA;
-$panier['prix'] = $prixPanier;
-
-//print_r($panier);
-// Fin Mise en forme du panier pour paypal
-
 
 // -------- Config Paypal --------
 $ids = require(CHEMIN_RACINE_UTILISATEUR .'/configuration/configuration-paypal.php');
@@ -53,24 +29,24 @@ $apiContext = new \PayPal\Rest\ApiContext(
 );
 
 $list = new \PayPal\Api\ItemList();
-foreach ($panier['item'] as $produit) {
+foreach ($panier->getListeProduit() as $article) {
     $item = (new \PayPal\Api\Item())
-        ->setName($produit->nom)
-        ->setDescription($produit->description)
-        ->setPrice($produit->prix)
+        ->setName($article->getProduit()->getNom())
+        ->setDescription($article->getProduit()->getDescription())
+        ->setPrice($article->getProduit()->getPrix())
         ->setCurrency('CAD')
-        ->setQuantity($produit->quantite);
+        ->setQuantity($article->getQuantite());
     $list->addItem($item);
 }
 //print_r($list);
 
 $details = (new \PayPal\Api\Details())
-    ->setTax($panier['prix'] * $panier['TVA'])
-    ->setSubtotal($panier['prix']);
+    ->setTax($panier->getPrixHT() * $TVA)
+    ->setSubtotal($panier->getPrixHT());
 //print_r($details);
 
 $amount = (new \PayPal\Api\Amount())
-    ->setTotal($panier['prix'] + ($panier['prix'] * $panier['TVA']))
+    ->setTotal($panier->getPrixTTC())
     ->setCurrency("CAD")
     ->setDetails($details);
 //print_r($amount);
