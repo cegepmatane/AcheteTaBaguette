@@ -46,9 +46,10 @@ try {
 
 $accesseurPanier = new AccesseurPanier();
 $panier = $accesseurPanier->recupererPanier($_SESSION[Client::EMAIL]);
-print_r($panier);
+//print_r($panier);
 
 $facture = $panier->newFacture();
-print_r($facture);
+//print_r($facture);
 $accesseurFacture = new AccesseurFacture();
-if ($accesseurFacture->ajouterFacture($facture)) $accesseurPanier->ViderPanier($panier);
+if ($facture = $accesseurFacture->ajouterFacture($facture)) $accesseurPanier->ViderPanier($panier);
+//print_r($facture);

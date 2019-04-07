@@ -24,6 +24,7 @@ afficherEntete($page); ?>
         <!-- Contenu -->
         <div class="col-md-10">
             <h1><?= $page->message ?></h1>
+            <a href="/panier?facture=true" target="_blank" class="btn btn-danger">Generer facture</a>
             <a href="/" class="btn btn-primary">Retour à la boutique</a>
         </div><!-- Fin du contenu -->
 

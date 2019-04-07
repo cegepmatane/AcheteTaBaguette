@@ -52,7 +52,7 @@ class AccesseurFacture
                 $requete->bindValue(self::SUBTITUT_QUANTITE, $article->getQuantite(), PDO::PARAM_STR);
                 $requete->execute();
             }
-            return true;
+            return $facture;
 
         } catch (PDOException $e) {
             return false;
