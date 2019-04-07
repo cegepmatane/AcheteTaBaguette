@@ -14,7 +14,7 @@
                     <td>
                         <form method="post">
                             <input type="submit" name="supprimer-produit-panier" value="Supprimer" />
-                            <input type="hidden" name="<?= Panier::ID_PRODUIT ?>" value="<?= $produit->getIdProduit() ?>">
+                            <input type="hidden" name="<?= Article::ID_PRODUIT ?>" value="<?= $produit->getIdProduit() ?>">
                             <input type="hidden" name="<?= Panier::EMAIL_CLIENT ?>" value="<?= $_SESSION[Client::EMAIL] ?>">
                         </form >
                     </td>

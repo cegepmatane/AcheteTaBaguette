@@ -93,7 +93,7 @@ class AccesseurPanier
         }
     }
 
-    public function supprimerPanier(Panier $panier)
+    public function ViderPanier(Panier $panier)
     {
         try {
 
