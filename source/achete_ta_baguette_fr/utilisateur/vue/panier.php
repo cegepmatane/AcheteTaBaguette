@@ -11,7 +11,6 @@ require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
 
 require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier.php");
-require_once(CHEMIN_RACINE_UTILISATEUR . "/action/action-panier-facture.php");
 
 afficherEntete($page); ?>
 
