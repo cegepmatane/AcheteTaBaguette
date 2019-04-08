@@ -20,8 +20,8 @@ class AccesseurProduit
     private static $SUPPRIMER_PRODUIT =
     "DELETE FROM PRODUIT WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
 
-    private static $MISE_A_JOUR_PRODUIT =
-    "UPDATE PRODUIT SET " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::STOCK . " =" . self::SUBSTITUT_STOCK . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ") WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
+//    private static $MISE_A_JOUR_PRODUIT = "UPDATE PRODUIT SET " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::STOCK . " =" . self::SUBSTITUT_STOCK . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ") WHERE " . Produit::ID_PRODUIT . " =" . self::SUBSTITUT_ID_PRODUIT . ";";
+    private static $MISE_A_JOUR_PRODUIT = "UPDATE PRODUIT SET ".Produit::NOM." = ".self::SUBSTITUT_NOM.", ".Produit::DESCRIPTION." = ".self::SUBSTITUT_DESCRIPTION.", ".Produit::PRIX." = ".self::SUBSTITUT_PRIX.", ".Produit::STOCK." = ".self::SUBSTITUT_STOCK.", ".Produit::ID_CATEGORIE." = ".self::SUBSTITUT_CATEGORIE." WHERE ".Produit::ID_PRODUIT." = ".self::SUBSTITUT_ID_PRODUIT.";";
 
     private static $GET_ID_PRODUIT =
     "SELECT " . Produit::ID_PRODUIT . " FROM PRODUIT WHERE " . Produit::NOM . " =" . self::SUBSTITUT_NOM . ", " . Produit::PRIX . " =" . self::SUBSTITUT_PRIX . ", " . Produit::ID_CATEGORIE . " =" . self::SUBSTITUT_CATEGORIE . ";";
@@ -90,7 +90,7 @@ class AccesseurProduit
         $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBSTITUT_STOCK, $produit->getStock(), PDO::PARAM_INT);
         $requete->bindValue(self::SUBSTITUT_DESCRIPTION, $produit->getDescription(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBSTITUT_CATEGORIE, $produit->getCategorie(), PDO::PARAM_STR);
+        $requete->bindValue(self::SUBSTITUT_CATEGORIE, $produit->getIdCategorie(), PDO::PARAM_STR);
         $requete->bindValue(self::SUBSTITUT_SRC_IMAGE, $produit->getSrcImage(), PDO::PARAM_STR);
 
         $requete->execute();
@@ -159,25 +159,25 @@ class AccesseurProduit
         }
     }
 
-    public function miseAJourProduit($produit)
     // Va mettre à jour dans le base de données le produit correspondant à l'id du produit passé en paramètre
     // Le produit de la base de données prendra les valeurs des attributs du produit passé en paramètre
+    public function miseAJourProduit(Produit $produit)
     {
-        $requete = self::$connexion->prepare($MISE_A_JOUR_PRODUIT);
-        $requete->bindValue(self::SUBSTITUT_NOM, $produit->getNom(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBSTITUT_STOCK, $produit->getNbStock(), PDO::PARAM_INT);
-        $requete->bindValue(self::SUBSTITUT_CATEGORIE, $produit->getNomCatégorie(), PDO::PARAM_STR);
-        $requete->bindValue(self::SUBSTITUT_ID_PRODUIT, getIdProduit($produit), PDO::PARAM_STR);
+        try{
+            $requete = self::$connexion->prepare(self::$MISE_A_JOUR_PRODUIT);
+            $requete->bindValue(self::SUBSTITUT_NOM, $produit->getNom(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBSTITUT_DESCRIPTION, $produit->getDescription(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBSTITUT_PRIX, $produit->getPrix(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBSTITUT_STOCK, $produit->getStock(), PDO::PARAM_INT);
+            $requete->bindValue(self::SUBSTITUT_CATEGORIE, $produit->getIdCategorie(), PDO::PARAM_STR);
+            $requete->bindValue(self::SUBSTITUT_ID_PRODUIT, $produit->getIdProduit(), PDO::PARAM_STR);
+            $requete->execute();
 
-        $requete->execute();
+            return $produit;
 
-        if ($requete->rowCount() > 0) {
-            return true;
+        } catch (PDOException $e) {
+            return false;
         }
-
-        return false;
-
     }
 
 }

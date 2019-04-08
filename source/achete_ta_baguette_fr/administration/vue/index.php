@@ -42,7 +42,7 @@
             <td> <?=  $produit->getPrix(); ?></td>
             <td> <?=  "" .$produit->getStock() . ""; ?></td>
             <td> <a href="modifier/<?= $produit->getIdproduit(); ?>">Modifier</a></td>
-            <td> <form method="post" action="index.php">
+            <td> <form method="post">
               <input type="submit" src="../illustration/trash.png"  name="action-supprimer-produit" id="button" value="bar"></input>
               <input type="hidden" name="idProduit" value="<?= $produit->getIdProduit(); ?>"></input>
             </form ></td>
@@ -57,7 +57,7 @@
         <thead><!--  Intitulés des colonnes -->
           <tr>
             <th scope="col">Image</th>
-            <th scope="col">Cat&eacute;gorie</th>
+            <th scope="col">Catégorie</th>
             <th scope="col">Produit</th>
             <th scope="col">Description</th>
             <th scope="col">Prix</th>

@@ -22,3 +22,4 @@ RewriteRule ^facture/?$ /utilisateur/vue/facture.php
 # Administration
 RewriteRule ^administration/?$ /administration/vue/
 RewriteRule ^administration/modifier/([0-9]+)/?$ /administration/vue/page-produit-admin.php?idProduit=$1
+RewriteRule ^administration/modifierok/?$ /administration/vue/modifier-ok.php
