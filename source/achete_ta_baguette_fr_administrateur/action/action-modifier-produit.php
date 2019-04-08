@@ -3,6 +3,7 @@ require_once CHEMIN_RACINE_COMMUN . "/accesseur/AccesseurProduit.php";
 require_once CHEMIN_RACINE_COMMUN . "/modele/Redirection.php";
 require_once CHEMIN_RACINE_COMMUN . "/modele/Produit.php";
 
+if(!isset($_SESSION[Client::ADMINISTRATEUR]) && !$_SESSION[Client::ADMINISTRATEUR]) header('Location: /');
 
 $page = (object)
 [
