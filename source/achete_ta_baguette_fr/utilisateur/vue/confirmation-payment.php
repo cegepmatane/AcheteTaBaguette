@@ -9,6 +9,7 @@
 require_once("../../commun/vue/entete-fragment.php");
 require_once("../../commun/vue/pied-de-page-fragment.php");
 require_once("../../commun/vue/sidebar-client-fragment.php");
+require_once (CHEMIN_RACINE_UTILISATEUR . "/action/action-facture.php");
 require_once (CHEMIN_RACINE_UTILISATEUR . "/action/action-confirmation-payment.php");
 
 afficherEntete($page); ?>
@@ -23,9 +24,23 @@ afficherEntete($page); ?>
 
         <!-- Contenu -->
         <div class="col-md-10">
-            <h1><?= $page->message ?></h1>
-            <a href="/panier?facture=true" target="_blank" class="btn btn-danger">Generer facture</a>
-            <a href="/" class="btn btn-primary">Retour à la boutique</a>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><?= $page->message ?></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <form method="post">
+                        <input type="submit" class="btn btn-danger" name="detail-facture" value="Détail" />
+                        <input type="hidden" name="<?= Facture::ID_FACTURE ?>" value="<?= $facture->getIdFacture() ?>">
+                        <input type="hidden" name="<?= Facture::EMAIL_CLIENT ?>" value="<?= $facture->getEmailClient() ?>">
+                    </form >
+                </div>
+                <div class="col-md-4">
+                    <a href="/" class="btn btn-primary">Retour à la boutique</a>
+                </div>
+            </div>
         </div><!-- Fin du contenu -->
 
     </div><!-- Fin centre de page -->
